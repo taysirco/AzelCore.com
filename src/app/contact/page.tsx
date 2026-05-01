@@ -77,7 +77,7 @@ export default function ContactPage() {
           <div className={styles.contactGrid}>
 
             {/* Contact Cards */}
-            <div className={styles.cardsCol}>
+            <div className={styles.cardsCol} data-nosnippet>
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={`${styles.contactCard} ${styles.whatsappCard}`}>
                 <span className={styles.cardIcon}>💬</span>
                 <h2 className={styles.cardTitle}>واتساب</h2>

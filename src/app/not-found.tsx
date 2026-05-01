@@ -4,7 +4,7 @@ import styles from './not-found.module.css';
 
 export default function NotFound() {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-nosnippet>
       <div className={styles.glow} aria-hidden="true" />
       
       <div className={styles.errorCode}>404</div>

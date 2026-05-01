@@ -76,7 +76,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className={styles.bottomBar}>
         <div className={styles.bottomInner}>
-          <p>© {new Date().getFullYear()} {SITE_NAME} — {OWNER_NAME}. جميع الحقوق محفوظة.</p>
+          <p>© 2026 {SITE_NAME} — {OWNER_NAME}. جميع الحقوق محفوظة.</p>
           <p className={styles.badge}>وكيل جونسون المعتمد 🇺🇸</p>
         </div>
       </div>

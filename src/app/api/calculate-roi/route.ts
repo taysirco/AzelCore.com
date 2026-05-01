@@ -5,7 +5,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { SITE_URL, SITE_NAME_EN } from '@/lib/constants';
 
-export const dynamic = 'force-static';
+// Dynamic: reads query params at runtime
+// Cache-Control header handles CDN caching
 
 // SBC 601 energy reduction coefficients by film type
 const FILM_COEFFICIENTS: Record<string, { name: string; reduction: number; costPerSqm: number; warrantyYears: number }> = {
