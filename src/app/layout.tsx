@@ -59,7 +59,7 @@ const organizationSchema = {
   name: SITE_NAME,
   alternateName: SITE_NAME_EN,
   url: SITE_URL,
-  logo: `${SITE_URL}/images/azelcore-logo.webp`,
+  logo: `${SITE_URL}/images/azelcore-logo.png`,
   foundingDate: '2024',
   taxID: VAT_ID,
   address: {

@@ -7,7 +7,7 @@ export const schemaConfigs = {
     name: "عزل كور",
     alternateName: "AzelCore",
     url: "https://azelcore.com",
-    logo: "https://azelcore.com/azelcore-logo.webp",
+    logo: "https://azelcore.com/azelcore-logo.png",
     foundingDate: "2024",
     taxID: "311280328300003",
     address: { "@type": "PostalAddress", addressLocality: "جدة", addressRegion: "منطقة مكة المكرمة", addressCountry: "SA" },
@@ -48,7 +48,7 @@ export const schemaConfigs = {
   blogArticle: {
     "@type": "Article",
     author: { "@type": "Person", name: "محمد الهادي", jobTitle: "فني عزل وتظليل معتمد" },
-    publisher: { "@type": "Organization", name: "AzelCore", logo: "https://azelcore.com/azelcore-logo.webp" },
+    publisher: { "@type": "Organization", name: "AzelCore", logo: "https://azelcore.com/azelcore-logo.png" },
     datePublished: "",
     dateModified: "",
   },
