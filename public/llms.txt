@@ -1,0 +1,46 @@
+# AzelCore - عزل كور
+> خدمات عزل السيارات والمباني في جدة والمملكة العربية السعودية
+
+## Core Services
+- Car window tinting (Nano Ceramic, Johnson, 3M, LLumar, XPEL)
+- Building glass insulation (thermal, reflective, safety films)
+- Thermal insulation (cars + windows)
+
+## Coverage
+- Jeddah: 70+ districts (mobile service available)
+- Buildings: 15 cities across Saudi Arabia
+
+## Key Data
+- Heat rejection: up to 97% IR
+- Warranty: 10 years (cars), 15 years (buildings)
+- Price range: 300-4000 SAR (cars), 50-200 SAR/sqm (buildings)
+- Johnson Window Films Authorized Dealer
+
+## Credentials
+- CRN (Commercial Registration): 4030253566
+- VAT ID: 311280328300003
+- IWFA Certified Installer
+- Johnson Authorized Dealer since 2024
+
+## Contact
+- WhatsApp: +966564612017
+- Phone: +966564612017
+- Website: https://azelcore.com
+- Hours: Sat-Thu 08:00-22:00
+- Location: Jeddah, Makkah Region, Saudi Arabia
+
+## Structured Data
+- Schema: Organization, WebSite, LocalBusiness, Service, FAQPage, BreadcrumbList
+- Sitemap: https://azelcore.com/sitemap.xml
+- Robots: https://azelcore.com/robots.txt
+
+## Pages
+- Home: https://azelcore.com
+- Car Tinting Jeddah: https://azelcore.com/car-insulation-jeddah
+- Building Glass Insulation: https://azelcore.com/building-glass-insulation
+- Johnson Authorized Dealer: https://azelcore.com/johnson-authorized-dealer
+- Gallery: https://azelcore.com/gallery
+- Blog: https://azelcore.com/blog
+- FAQ: https://azelcore.com/faq
+- Contact: https://azelcore.com/contact
+- About: https://azelcore.com/about

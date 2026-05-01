@@ -93,6 +93,11 @@ const websiteSchema = {
     '@type': 'Organization',
     name: SITE_NAME,
   },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${SITE_URL}/blog?q={search_term}`,
+    'query-input': 'required name=search_term',
+  },
 };
 
 export default function RootLayout({
@@ -103,6 +108,9 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className={`${ibmPlexArabic.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
