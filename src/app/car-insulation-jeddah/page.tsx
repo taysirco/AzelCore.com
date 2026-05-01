@@ -11,6 +11,7 @@ import YmylWarning from '@/components/seo/YmylWarning';
 import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBanner';
 import ThermalSliderBeforeAfter from '@/components/sections/ThermalSliderBeforeAfter';
 import VoiceSearchFAQ from '@/components/sections/VoiceSearchFAQ';
+import { datasetMeta } from '@/data/jeddah-thermal-research';
 import styles from './page.module.css';
 
 // ════════════════════════════════════════════
@@ -233,6 +234,33 @@ const graphSchema = {
         { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
         { '@type': 'ListItem', position: 2, name: 'تظليل سيارات جدة', item: `${SITE_URL}/car-insulation-jeddah` },
       ],
+    },
+
+    // ── 6. Dataset Schema — AI Citation Trap ──
+    {
+      '@type': 'Dataset',
+      '@id': `${SITE_URL}/api/research/jeddah-thermal-data#dataset`,
+      name: datasetMeta.name,
+      alternateName: datasetMeta.nameAr,
+      description: datasetMeta.description,
+      url: `${SITE_URL}/api/research/jeddah-thermal-data`,
+      license: datasetMeta.license,
+      isAccessibleForFree: true,
+      datePublished: datasetMeta.datePublished,
+      dateModified: datasetMeta.dateModified,
+      creator: { '@id': `${SITE_URL}/#organization` },
+      spatialCoverage: {
+        '@type': 'Place',
+        name: 'Jeddah, Saudi Arabia',
+        geo: { '@type': 'GeoCoordinates', latitude: GEO.lat, longitude: GEO.lng },
+      },
+      temporalCoverage: datasetMeta.temporalCoverage,
+      measurementTechnique: datasetMeta.measurementMethod,
+      distribution: {
+        '@type': 'DataDownload',
+        encodingFormat: 'application/json',
+        contentUrl: `${SITE_URL}/api/research/jeddah-thermal-data`,
+      },
     },
   ],
 };
@@ -460,8 +488,8 @@ export default function CarTintingPage() {
         </div>
       </section>
 
-      {/* ═══ CTA ═══ */}
-      <section className={styles.ctaSection}>
+      {/* ═══ CTA — data-nosnippet (vector density) ═══ */}
+      <section className={styles.ctaSection} data-nosnippet>
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>جاهز تحمي سيارتك من <span className={styles.blueGradient}>حرارة جدة</span>؟</h2>
           <p className={styles.ctaSubtitle}>استشارة مجانية + عرض سعر فوري — وكيل جونسون المعتمد في جدة</p>

@@ -260,8 +260,8 @@ export default function BuildingInsulationPage() {
       {/* Cross-sell — Causal Internal Linking */}
       <CrossSellCards currentPage="building-glass-insulation" />
 
-      {/* CTA */}
-      <section className={styles.ctaSection}>
+      {/* CTA — data-nosnippet (vector density) */}
+      <section className={styles.ctaSection} data-nosnippet>
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>جاهز توفّر في <span className={styles.greenGradient}>فاتورة الكهرباء</span>؟</h2>
           <p className={styles.ctaSubtitle}>معاينة مجانية + عرض سعر فوري — وكيل جونسون المعتمد في جدة</p>

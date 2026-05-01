@@ -3,7 +3,7 @@ import styles from './CTASection.module.css';
 
 export default function CTASection() {
   return (
-    <section className={styles.section} id="cta" aria-label="احجز الآن">
+    <section className={styles.section} id="cta" aria-label="احجز الآن" data-nosnippet>
       <div className={styles.glow1} aria-hidden="true" />
       <div className={styles.glow2} aria-hidden="true" />
       <div className={styles.container}>

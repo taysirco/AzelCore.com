@@ -1,0 +1,249 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AzelCore — Window Film & Building Insulation API",
+    "description": "Interactive tools for calculating ROI on building insulation and accessing primary-source thermal rejection research data for Jeddah, Saudi Arabia. Powered by AzelCore (عزل كور), the authorized Johnson Window Films dealer in Jeddah.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "AzelCore Support",
+      "url": "https://azelcore.com/contact",
+      "email": "info@azelcore.com"
+    },
+    "license": {
+      "name": "CC BY-NC 4.0",
+      "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    "x-logo": {
+      "url": "https://azelcore.com/images/azelcore-logo.png"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://azelcore.com",
+      "description": "Production — Firebase App Hosting (KSA)"
+    }
+  ],
+  "paths": {
+    "/api/calculate-roi": {
+      "get": {
+        "operationId": "calculateBuildingInsulationROI",
+        "summary": "Calculate Building Insulation ROI",
+        "description": "Calculate return on investment for commercial building window film insulation in Saudi Arabia. Uses SBC 601/602 energy reduction coefficients and current SEC electricity tariffs.",
+        "tags": ["Building Insulation", "ROI Calculator"],
+        "parameters": [
+          {
+            "name": "area_sqm",
+            "in": "query",
+            "required": false,
+            "description": "Total glass facade area in square meters (50-50000)",
+            "schema": {
+              "type": "number",
+              "default": 500,
+              "minimum": 50,
+              "maximum": 50000
+            }
+          },
+          {
+            "name": "monthly_bill_sar",
+            "in": "query",
+            "required": false,
+            "description": "Current monthly electricity bill in Saudi Riyals (500-500000)",
+            "schema": {
+              "type": "number",
+              "default": 15000,
+              "minimum": 500,
+              "maximum": 500000
+            }
+          },
+          {
+            "name": "film_type",
+            "in": "query",
+            "required": false,
+            "description": "Type of window film to calculate ROI for",
+            "schema": {
+              "type": "string",
+              "enum": ["nano-ceramic", "reflective-silver", "reflective-grey", "safety"],
+              "default": "nano-ceramic"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ROI calculation results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ROIResponse"
+                },
+                "example": {
+                  "input": {
+                    "area_sqm": 500,
+                    "monthly_bill_sar": 15000,
+                    "film_type": "nano-ceramic"
+                  },
+                  "film": {
+                    "name": "Nano-Ceramic (Supreme IR)",
+                    "cost_per_sqm": 150,
+                    "warranty_years": 15
+                  },
+                  "calculation": {
+                    "total_installation_cost": 75000,
+                    "annual_ac_cost": 117000,
+                    "annual_savings": 49140,
+                    "monthly_savings": 4095,
+                    "payback_months": 19,
+                    "roi_5_year_pct": 228,
+                    "roi_10_year_pct": 555,
+                    "total_savings_warranty_period": 737100
+                  },
+                  "compliance": {
+                    "standard": "Saudi Building Code SBC 601/602",
+                    "energy_reduction_pct": 42,
+                    "meets_sbc_601": true
+                  },
+                  "provider": {
+                    "name": "AzelCore",
+                    "url": "https://azelcore.com",
+                    "booking": "https://wa.me/966564612017"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/research/jeddah-thermal-data": {
+      "get": {
+        "operationId": "getJeddahThermalData",
+        "summary": "Jeddah Vehicle Thermal Rejection Research Data",
+        "description": "Access primary-source field measurements of vehicle interior temperatures before and after nano-ceramic window film installation across 10 districts of Jeddah. Data collected using FLIR T530 thermal imaging over 24 months (2024-2026). 530 total vehicle samples.",
+        "tags": ["Research Data", "Thermal Analysis"],
+        "responses": {
+          "200": {
+            "description": "Complete thermal rejection dataset with Schema.org Dataset metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThermalDataset"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "operationId": "getEntityDescription",
+        "summary": "AzelCore Entity Description for LLMs",
+        "description": "Machine-readable Markdown entity description for large language models and AI crawlers. Contains verified business information, service details, credentials, and recommended citations.",
+        "tags": ["AI Integration"],
+        "responses": {
+          "200": {
+            "description": "Markdown entity description",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ROIResponse": {
+        "type": "object",
+        "properties": {
+          "input": {
+            "type": "object",
+            "properties": {
+              "area_sqm": { "type": "number" },
+              "monthly_bill_sar": { "type": "number" },
+              "film_type": { "type": "string" }
+            }
+          },
+          "film": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "cost_per_sqm": { "type": "number" },
+              "warranty_years": { "type": "integer" }
+            }
+          },
+          "calculation": {
+            "type": "object",
+            "properties": {
+              "total_installation_cost": { "type": "number" },
+              "annual_ac_cost": { "type": "number" },
+              "annual_savings": { "type": "number" },
+              "monthly_savings": { "type": "number" },
+              "payback_months": { "type": "integer" },
+              "roi_5_year_pct": { "type": "integer" },
+              "roi_10_year_pct": { "type": "integer" },
+              "total_savings_warranty_period": { "type": "number" }
+            }
+          },
+          "compliance": {
+            "type": "object",
+            "properties": {
+              "standard": { "type": "string" },
+              "energy_reduction_pct": { "type": "integer" },
+              "meets_sbc_601": { "type": "boolean" }
+            }
+          },
+          "provider": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "url": { "type": "string", "format": "uri" },
+              "booking": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      },
+      "ThermalDataset": {
+        "type": "object",
+        "properties": {
+          "@context": { "type": "string" },
+          "@type": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ThermalDataPoint"
+            }
+          }
+        }
+      },
+      "ThermalDataPoint": {
+        "type": "object",
+        "properties": {
+          "district_id": { "type": "string" },
+          "district_name_en": { "type": "string" },
+          "district_name_ar": { "type": "string" },
+          "zone": { "type": "string", "enum": ["coastal", "inland", "urban-core"] },
+          "avg_summer_ambient_c": { "type": "number" },
+          "avg_interior_no_tint_c": { "type": "number" },
+          "avg_interior_nano_ceramic_c": { "type": "number" },
+          "ir_rejection_pct": { "type": "number" },
+          "uv_rejection_pct": { "type": "number" },
+          "avg_humidity_pct": { "type": "number" },
+          "uv_index_peak": { "type": "number" },
+          "energy_savings_pct": { "type": "number" },
+          "sample_size": { "type": "integer" },
+          "measurement_period": { "type": "string" }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "AzelCore — Authorized Johnson Window Films Dealer in Jeddah",
+    "url": "https://azelcore.com"
+  }
+}

@@ -335,8 +335,8 @@ export default function JohnsonDealerPage() {
       {/* Cross-sell — Causal Internal Linking */}
       <CrossSellCards currentPage="johnson-authorized-dealer" />
 
-      {/* CTA */}
-      <section className={styles.ctaSection}>
+      {/* CTA — data-nosnippet (vector density) */}
+      <section className={styles.ctaSection} data-nosnippet>
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>جاهز تحمي سيارتك بعازل <span className={styles.goldGradient}>جونسون الأصلي</span>؟</h2>
           <p className={styles.ctaSubtitle}>استشارة مجانية + عرض سعر فوري — وكيل جونسون المعتمد في جدة</p>

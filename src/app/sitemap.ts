@@ -31,6 +31,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/thermal-windows`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.4 },
     // LLM Direct Feed — AI crawler discovery
     { url: `${SITE_URL}/llms.txt`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.3 },
+    // Agentic Tool Protocol — OpenAPI spec for AI agent discovery
+    { url: `${SITE_URL}/openapi.json`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.3 },
+    // Research Dataset — Primary source citation endpoint
+    { url: `${SITE_URL}/api/research/jeddah-thermal-data`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.5 },
   ];
 
   // pSEO district pages — hyper-local Jeddah coverage

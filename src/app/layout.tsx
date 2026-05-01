@@ -177,14 +177,23 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <Header />
+          {/* ═══ data-nosnippet: Vector Density Forcing ═══ */}
+          {/* Exclude navigation/CTA boilerplate from AI snippet extraction */}
+          {/* This concentrates NLP vector weight on semantic content only */}
+          <div data-nosnippet>
+            <Header />
+          </div>
           <main id="main-content" style={{ paddingTop: 'var(--header-height)' }}>
             {children}
           </main>
-          <Footer />
-          <WhatsAppFloat />
-          <BackToTop />
-          <GeoBanner />
+          <div data-nosnippet>
+            <Footer />
+          </div>
+          <div data-nosnippet>
+            <WhatsAppFloat />
+            <BackToTop />
+            <GeoBanner />
+          </div>
         </ThemeProvider>
       </body>
     </html>
