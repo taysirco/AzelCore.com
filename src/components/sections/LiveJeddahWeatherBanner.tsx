@@ -66,7 +66,7 @@ export default async function LiveJeddahWeatherBanner() {
   const config = alertConfig[level];
 
   return (
-    <div className={`${styles.banner} ${styles[level]}`} role="alert" aria-live="polite">
+    <div className={`${styles.banner} ${styles[level]}`} role="alert" aria-live="polite" data-nosnippet>
       <div className={styles.container}>
         <div className={styles.content}>
           <span className={styles.icon}>{config.icon}</span>
