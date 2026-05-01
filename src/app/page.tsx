@@ -10,6 +10,7 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import PricingSection from '@/components/sections/PricingSection';
 import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
+import LiveReviews from '@/components/sections/LiveReviews';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import { SITE_URL } from '@/lib/constants';
 
@@ -101,6 +102,7 @@ export default function HomePage() {
       <ScrollReveal delay={100}><PricingSection /></ScrollReveal>
       <ScrollReveal><ProcessSection /></ScrollReveal>
       <ScrollReveal delay={50}><TestimonialsSection /></ScrollReveal>
+      <LiveReviews />
       <ScrollReveal><TrustSection /></ScrollReveal>
       <ScrollReveal><FAQSection /></ScrollReveal>
       <ScrollReveal direction="fade"><CTASection /></ScrollReveal>

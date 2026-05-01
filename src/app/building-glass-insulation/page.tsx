@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SITE_URL, WHATSAPP_LINK, PHONE } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, VAT_ID } from '@/lib/constants';
 import { faqs } from '@/data/faqs';
 import { quickAnswers } from '@/data/quick-answers';
 import TldrBait from '@/components/seo/TldrBait';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import YmylWarning from '@/components/seo/YmylWarning';
+import CorporateRoiCalculator from '@/components/sections/CorporateRoiCalculator';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -43,43 +44,50 @@ const savings = [
   { label: 'عمر الفيلم المتوقع', value: '+15 سنة', desc: 'ضمان مصنع رسمي' },
 ];
 
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'عزل واجهات زجاج المباني — جدة',
-  provider: { '@type': 'Organization', name: 'عزل كور', url: SITE_URL },
-  areaServed: { '@type': 'City', name: 'جدة' },
-  description: 'عزل حراري لواجهات المباني والفلل بأفلام نانو سيراميك — توفير 40% من فاتورة الكهرباء',
-  offers: { '@type': 'AggregateOffer', priceCurrency: 'SAR', lowPrice: '50', highPrice: '200', unitText: 'ر.س/مـ٢' },
-};
-
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
-    { '@type': 'ListItem', position: 2, name: 'عزل واجهات مباني', item: `${SITE_URL}/building-glass-insulation` },
-  ],
-};
-
-// FAQPage Schema — Tier 3 (top 5 building-glass FAQs)
+// ═══ Unified @graph — B2BService + FAQ + Breadcrumb ═══
 const buildingFaqs = faqs.filter(f => f.service === 'building-glass').slice(0, 5);
-const faqSchema = {
+
+const graphSchema = {
   '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: buildingFaqs.map(f => ({
-    '@type': 'Question',
-    name: f.question,
-    acceptedAnswer: { '@type': 'Answer', text: f.answer },
-  })),
+  '@graph': [
+    {
+      '@type': ['Service', 'B2BService' as string],
+      '@id': `${SITE_URL}/building-glass-insulation#service`,
+      name: 'عزل واجهات زجاج المباني — جدة والمملكة',
+      description: 'عزل حراري احترافي لواجهات المباني التجارية والفلل — توفير 40% كهرباء. متوافق مع كود البناء السعودي SBC 601 ومعايير ASHRAE 90.1.',
+      provider: { '@id': `${SITE_URL}/#organization` },
+      areaServed: [
+        { '@type': 'City', name: 'جدة', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
+        { '@type': 'Country', name: 'المملكة العربية السعودية' },
+      ],
+      serviceType: 'عزل واجهات زجاج مباني',
+      offers: { '@type': 'AggregateOffer', priceCurrency: 'SAR', lowPrice: '50', highPrice: '200', unitText: 'ر.س/م²' },
+      termsOfService: `${SITE_URL}/about`,
+      audience: { '@type': 'BusinessAudience', audienceType: 'مقاولون، شركات عقارية، ملاك مباني تجارية' },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${SITE_URL}/building-glass-insulation#faq`,
+      mainEntity: buildingFaqs.map(f => ({
+        '@type': 'Question', name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'عزل واجهات مباني', item: `${SITE_URL}/building-glass-insulation` },
+      ],
+    },
+  ],
 };
 
 export default function BuildingInsulationPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      {/* Unified @graph — B2BService + FAQ + Breadcrumb */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }} />
 
       {/* TL;DR Bait — AI Overviews Magnet */}
       <TldrBait summary={quickAnswers.buildingGlass.text} />
@@ -87,7 +95,7 @@ export default function BuildingInsulationPage() {
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image src="/images/hero-building-glass-insulation.png" alt="عزل واجهات زجاج مبنى تجاري في جدة" fill priority style={{ objectFit: 'cover' }} />
+          <Image src="/images/hero-building-glass-insulation.png" alt="عزل واجهات زجاج مبنى تجاري في جدة" fill priority fetchPriority="high" quality={80} sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>
@@ -121,22 +129,25 @@ export default function BuildingInsulationPage() {
         </div>
       </section>
 
-      {/* Building Types */}
+      {/* Building Types — SGE Semantic dl/dt/dd */}
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <span className={styles.overline}>أنواع المباني</span>
             <h2 className={styles.sectionTitle}>حلول عزل لكل نوع مبنى</h2>
+            <p className={styles.sectionSubtitle}>نخدم المشاريع السكنية والتجارية — عقود شركات ومناقصات حكومية</p>
           </div>
-          <div className={styles.typesGrid}>
+          <dl className={styles.typesGrid}>
             {buildingTypes.map((b, i) => (
               <div key={i} className={styles.typeCard}>
-                <span className={styles.typeIcon}>{b.icon}</span>
-                <h3 className={styles.typeTitle}>{b.name}</h3>
-                <p className={styles.typeDesc}>{b.desc}</p>
+                <dt>
+                  <span className={styles.typeIcon}>{b.icon}</span>
+                  {b.name}
+                </dt>
+                <dd>{b.desc}</dd>
               </div>
             ))}
-          </div>
+          </dl>
         </div>
       </section>
 
@@ -148,9 +159,10 @@ export default function BuildingInsulationPage() {
             <h2 className={styles.sectionTitle}>اختر الفيلم المناسب لمبناك</h2>
           </div>
           <div className={styles.filmTable}>
-            <table className={styles.table}>
+            <table className={styles.table} itemScope itemType="http://schema.org/Table">
+              <caption className={styles.tableCaption} itemProp="about">مقارنة أنواع أفلام عزل المباني في السعودية 2026 — حسب معايير ASHRAE و SBC</caption>
               <thead>
-                <tr><th>نوع الفيلم</th><th>حجب IR</th><th>حجب UV</th><th>نفاذية الضوء</th><th>الضمان</th></tr>
+                <tr><th scope="col">نوع الفيلم</th><th scope="col">حجب IR</th><th scope="col">حجب UV</th><th scope="col">نفاذية الضوء</th><th scope="col">الضمان</th></tr>
               </thead>
               <tbody>
                 {filmTypes.map((f, i) => (
@@ -165,29 +177,40 @@ export default function BuildingInsulationPage() {
         </div>
       </section>
 
-      {/* Benefits */}
+      {/* Benefits — SGE Semantic dl/dt/dd */}
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <span className={styles.overline}>المزايا</span>
             <h2 className={styles.sectionTitle}>لماذا عزل واجهات المباني ضرورة في جدة</h2>
           </div>
-          <div className={styles.benefitsGrid}>
+          <dl className={styles.benefitsGrid}>
             {[
-              { icon: '💰', title: 'توفير مالي ضخم', desc: 'تقليل استهلاك الكهرباء بنسبة تصل إلى 40% — استرداد التكلفة خلال 2-3 سنوات.' },
-              { icon: '🌡️', title: 'راحة حرارية', desc: 'تقليل درجة حرارة الزجاج بمقدار 15-20 درجة — بيئة مريحة بدون بقع حرارية.' },
+              { icon: '💰', title: 'توفير مالي ضخم', desc: 'تقليل استهلاك الكهرباء بنسبة تصل إلى 40% — استرداد التكلفة خلال 2-3 سنوات. متوافق مع SBC 601.' },
+              { icon: '🌡️', title: 'راحة حرارية', desc: 'تقليل درجة حرارة الزجاج بمقدار 15-20 درجة — بيئة مريحة بدون بقع حرارية. معيار ASHRAE 55.' },
               { icon: '🛋️', title: 'حماية الأثاث', desc: 'حجب 99% من الأشعة فوق البنفسجية المسببة لبهتان الأثاث والستائر والأرضيات.' },
-              { icon: '🔒', title: 'أمان إضافي', desc: 'أفلام الأمان تمنع تناثر الزجاج عند الكسر — حماية إضافية للعائلة والموظفين.' },
+              { icon: '🔒', title: 'أمان إضافي', desc: 'أفلام الأمان تمنع تناثر الزجاج عند الكسر — مطلوب في المباني التجارية حسب كود البناء السعودي.' },
               { icon: '👁️', title: 'خصوصية ذكية', desc: 'أفلام عاكسة توفر خصوصية نهارية كاملة مع الحفاظ على الرؤية من الداخل.' },
-              { icon: '🌿', title: 'صديق للبيئة', desc: 'تقليل البصمة الكربونية بتخفيض استهلاك الطاقة — متوافق مع رؤية 2030.' },
+              { icon: '🌿', title: 'صديق للبيئة', desc: 'تقليل البصمة الكربونية بتخفيض استهلاك الطاقة — متوافق مع رؤية 2030 وأهداف LEED.' },
             ].map((b, i) => (
               <div key={i} className={styles.benefitCard}>
-                <span className={styles.benefitIcon}>{b.icon}</span>
-                <h3 className={styles.benefitTitle}>{b.title}</h3>
-                <p className={styles.benefitDesc}>{b.desc}</p>
+                <dt><span className={styles.benefitIcon}>{b.icon}</span>{b.title}</dt>
+                <dd>{b.desc}</dd>
               </div>
             ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* Corporate ROI Calculator — B2B Information Gain */}
+      <section className={`${styles.section} ${styles.sectionAlt}`}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.overline}>عقود الشركات</span>
+            <h2 className={styles.sectionTitle}>حاسبة العائد على الاستثمار — مشاريع المباني</h2>
+            <p className={styles.sectionSubtitle}>أداة للمقاولين وملاك العقارات التجارية — احسب توفيرك حسب معايير كود البناء السعودي</p>
           </div>
+          <CorporateRoiCalculator />
         </div>
       </section>
 

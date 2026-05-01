@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SITE_NAME, WHATSAPP_LINK, PHONE, WORKING_HOURS, NAV_LINKS, OWNER_NAME } from '@/lib/constants';
+import { SITE_NAME, WHATSAPP_LINK, PHONE, WORKING_HOURS, NAV_LINKS, OWNER_NAME, CRN, VAT_ID, ADDRESS } from '@/lib/constants';
 import styles from './Footer.module.css';
 
 const serviceLinks = [
@@ -64,9 +64,11 @@ export default function Footer() {
           <h4 className={styles.colTitle}>بيانات النشاط</h4>
           <ul className={styles.businessInfo}>
             <li><span className={styles.infoLabel}>الحالة:</span> منشأة سعودية مسجلة ✅</li>
+            <li><span className={styles.infoLabel}>السجل التجاري:</span> {CRN}</li>
+            <li><span className={styles.infoLabel}>الرقم الضريبي:</span> {VAT_ID}</li>
             <li><span className={styles.infoLabel}>الوكالة:</span> Johnson Window Films 🇺🇸</li>
             <li><span className={styles.infoLabel}>ساعات العمل:</span> {WORKING_HOURS}</li>
-            <li><span className={styles.infoLabel}>الموقع:</span> جدة، منطقة مكة المكرمة</li>
+            <li><span className={styles.infoLabel}>الموقع:</span> {ADDRESS}</li>
           </ul>
         </div>
       </div>

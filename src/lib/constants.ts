@@ -8,7 +8,16 @@ export const CRN = '4030253566';
 export const VAT_ID = '311280328300003';
 export const OWNER_NAME = 'محمد الهادي';
 export const OWNER_TITLE = 'فني عزل وتظليل معتمد — وكيل جونسون الرسمي';
-export const GEO = { lat: 21.0, lng: 39.0 };
+export const GEO = { lat: 21.5424, lng: 39.1727 };
+export const ADDRESS = 'طريق الملك فهد، حي الزهراء، جدة 23425، المملكة العربية السعودية';
+export const ADDRESS_STRUCTURED = {
+  streetAddress: 'طريق الملك فهد',
+  addressLocality: 'جدة',
+  addressRegion: 'منطقة مكة المكرمة',
+  postalCode: '23425',
+  addressCountry: 'SA',
+  neighborhood: 'حي الزهراء',
+};
 export const WORKING_HOURS = 'السبت - الخميس: 8:00 ص - 10:00 م';
 
 export const NAV_LINKS = [
