@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME } from '@/lib/constants';
+import { faqs } from '@/data/faqs';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -51,11 +52,24 @@ const breadcrumbSchema = {
   ],
 };
 
+// FAQPage Schema — Tier 3 (top 5 car-tinting FAQs)
+const carFaqs = faqs.filter(f => f.service === 'car-tinting').slice(0, 5);
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: carFaqs.map(f => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+
 export default function CarTintingPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* Hero */}
       <section className={styles.hero}>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_URL, WHATSAPP_LINK, PHONE } from '@/lib/constants';
+import { faqs } from '@/data/faqs';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -45,6 +46,7 @@ const serviceSchema = {
   provider: { '@type': 'Organization', name: 'عزل كور', url: SITE_URL },
   areaServed: { '@type': 'City', name: 'جدة' },
   description: 'عزل حراري لواجهات المباني والفلل بأفلام نانو سيراميك — توفير 40% من فاتورة الكهرباء',
+  offers: { '@type': 'AggregateOffer', priceCurrency: 'SAR', lowPrice: '50', highPrice: '200', unitText: 'ر.س/مـ٢' },
 };
 
 const breadcrumbSchema = {
@@ -56,11 +58,24 @@ const breadcrumbSchema = {
   ],
 };
 
+// FAQPage Schema — Tier 3 (top 5 building-glass FAQs)
+const buildingFaqs = faqs.filter(f => f.service === 'building-glass').slice(0, 5);
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: buildingFaqs.map(f => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+
 export default function BuildingInsulationPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* Hero */}
       <section className={styles.hero}>

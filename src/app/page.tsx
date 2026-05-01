@@ -40,7 +40,6 @@ const localBusinessSchema = {
     opens: '08:00',
     closes: '22:00',
   },
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '127' },
   areaServed: { '@type': 'City', name: 'جدة' },
   paymentAccepted: 'Cash, Credit Card, Apple Pay, Mada',
   hasOfferCatalog: {

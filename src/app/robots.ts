@@ -9,19 +9,33 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/_next/', '/admin/'],
       },
       {
+        // GPTBot — Bait & Hook: allow blog/home for AI citation, block transactional pages
         userAgent: 'GPTBot',
-        disallow: '/',
+        allow: ['/blog/', '/'],
+        disallow: ['/api/', '/contact/', '/admin/'],
+      },
+      {
+        // ClaudeBot — same strategy
+        userAgent: 'ClaudeBot',
+        allow: ['/blog/'],
+        disallow: ['/api/', '/contact/', '/admin/'],
       },
       {
         userAgent: 'ChatGPT-User',
-        disallow: '/',
+        allow: ['/blog/', '/'],
+        disallow: ['/api/', '/contact/', '/admin/'],
       },
       {
+        // Aggressive scrapers — full block
         userAgent: 'CCBot',
         disallow: '/',
       },
       {
         userAgent: 'anthropic-ai',
+        disallow: '/',
+      },
+      {
+        userAgent: 'Bytespider',
         disallow: '/',
       },
     ],

@@ -112,7 +112,11 @@ const productSchema = {
     offerCount: '4',
     availability: 'https://schema.org/InStock',
   },
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '127' },
+  hasWarranty: {
+    '@type': 'WarrantyPromise',
+    durationOfWarranty: { '@type': 'QuantitativeValue', value: 10, unitCode: 'ANN' },
+    warrantyScope: 'تغير اللون + التقشر + الفقاعات',
+  },
 };
 
 const faqSchema = {
