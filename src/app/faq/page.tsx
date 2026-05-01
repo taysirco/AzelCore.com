@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE_URL, WHATSAPP_LINK } from '@/lib/constants';
 import { faqs } from '@/data/faqs';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -34,6 +35,10 @@ export default function FAQPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <BreadcrumbSchema items={[
+        { name: 'الرئيسية', href: '/' },
+        { name: 'الأسئلة الشائعة', href: '/faq' },
+      ]} />
 
       <section className={styles.pageHeader}>
         <div className={styles.container}>

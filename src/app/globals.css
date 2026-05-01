@@ -194,12 +194,28 @@ ul, ol { list-style: none; }
 .stagger > *:nth-child(4) { animation-delay: 0.4s; }
 .stagger > *:nth-child(5) { animation-delay: 0.5s; }
 
+/* ─── Scroll Reveal ─── */
+.sr-hidden {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.sr-up { transform: translateY(40px); }
+.sr-left { transform: translateX(40px); }
+.sr-right { transform: translateX(-40px); }
+.sr-fade { transform: none; }
+.sr-visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 /* ─── Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+  .sr-hidden { opacity: 1; transform: none; }
 }
 
 /* ─── Typography Responsive ─── */
@@ -211,3 +227,4 @@ ul, ol { list-style: none; }
     --header-height: 64px;
   }
 }
+

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_URL, WHATSAPP_LINK } from '@/lib/constants';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -50,6 +51,10 @@ export default function GalleryPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(imageListSchema) }} />
+      <BreadcrumbSchema items={[
+        { name: 'الرئيسية', href: '/' },
+        { name: 'معرض الأعمال', href: '/gallery' },
+      ]} />
 
       {/* Header */}
       <section className={styles.pageHeader}>

@@ -10,6 +10,7 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import PricingSection from '@/components/sections/PricingSection';
 import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -61,16 +62,17 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
       <HeroSection />
-      <StatsSection />
-      <ServicesSection />
-      <JohnsonSection />
-      <ComparisonSection />
-      <PricingSection />
-      <ProcessSection />
-      <TestimonialsSection />
-      <TrustSection />
-      <FAQSection />
-      <CTASection />
+      <ScrollReveal><StatsSection /></ScrollReveal>
+      <ScrollReveal delay={100}><ServicesSection /></ScrollReveal>
+      <ScrollReveal delay={50}><JohnsonSection /></ScrollReveal>
+      <ScrollReveal><ComparisonSection /></ScrollReveal>
+      <ScrollReveal delay={100}><PricingSection /></ScrollReveal>
+      <ScrollReveal><ProcessSection /></ScrollReveal>
+      <ScrollReveal delay={50}><TestimonialsSection /></ScrollReveal>
+      <ScrollReveal><TrustSection /></ScrollReveal>
+      <ScrollReveal><FAQSection /></ScrollReveal>
+      <ScrollReveal direction="fade"><CTASection /></ScrollReveal>
     </>
   );
 }
+

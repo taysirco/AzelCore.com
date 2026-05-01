@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_URL } from '@/lib/constants';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -56,6 +57,10 @@ const blogPosts = [
 export default function BlogPage() {
   return (
     <>
+      <BreadcrumbSchema items={[
+        { name: 'الرئيسية', href: '/' },
+        { name: 'المدونة', href: '/blog' },
+      ]} />
       <section className={styles.pageHeader}>
         <div className={styles.container}>
           <nav className={styles.breadcrumb}><Link href="/">الرئيسية</Link> / <span>المدونة</span></nav>
