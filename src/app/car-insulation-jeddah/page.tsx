@@ -443,7 +443,7 @@ export default function CarTintingPage() {
                   display: 'block',
                   padding: 'var(--space-5)',
                   borderRadius: 'var(--radius-lg)',
-                  background: 'var(--glass-bg)',
+                  background: 'var(--glass)',
                   border: '1px solid var(--glass-border)',
                   textDecoration: 'none',
                   color: 'inherit',

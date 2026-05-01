@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, VAT_ID } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, VAT_ID, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
 import { faqs } from '@/data/faqs';
 import { quickAnswers } from '@/data/quick-answers';
 import TldrBait from '@/components/seo/TldrBait';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import YmylWarning from '@/components/seo/YmylWarning';
 import CorporateRoiCalculator from '@/components/sections/CorporateRoiCalculator';
+import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBanner';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -64,6 +65,22 @@ const graphSchema = {
       offers: { '@type': 'AggregateOffer', priceCurrency: 'SAR', lowPrice: '50', highPrice: '200', unitText: 'ر.س/م²' },
       termsOfService: `${SITE_URL}/about`,
       audience: { '@type': 'BusinessAudience', audienceType: 'مقاولون، شركات عقارية، ملاك مباني تجارية' },
+      // ── Agentic Schema: ReserveAction ──
+      potentialAction: {
+        '@type': 'ReserveAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: WHATSAPP_LINK,
+          actionPlatform: [
+            'http://schema.org/DesktopWebPlatform',
+            'http://schema.org/MobileWebPlatform',
+          ],
+        },
+        result: {
+          '@type': 'Reservation',
+          name: 'حجز معاينة عزل مباني',
+        },
+      },
     },
     {
       '@type': 'FAQPage',
@@ -88,6 +105,9 @@ export default function BuildingInsulationPage() {
     <>
       {/* Unified @graph — B2BService + FAQ + Breadcrumb */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }} />
+
+      {/* ═══ Live Weather Banner — QDF ISR Signal ═══ */}
+      <LiveJeddahWeatherBanner />
 
       {/* TL;DR Bait — AI Overviews Magnet */}
       <TldrBait summary={quickAnswers.buildingGlass.text} />

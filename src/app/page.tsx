@@ -55,6 +55,27 @@ const homeGraphSchema = {
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'عازل جونسون Supreme IR' } },
         ],
       },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        ratingCount: '127',
+        bestRating: '5',
+      },
+      potentialAction: {
+        '@type': 'ReserveAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: 'https://wa.me/966564612017?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D9%8A%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D8%B2%D9%84%20%D9%88%D8%A7%D9%84%D8%AA%D8%B8%D9%84%D9%8A%D9%84',
+          actionPlatform: [
+            'http://schema.org/DesktopWebPlatform',
+            'http://schema.org/MobileWebPlatform',
+          ],
+        },
+        result: {
+          '@type': 'Reservation',
+          name: 'حجز موعد تظليل أو عزل',
+        },
+      },
     },
     {
       '@type': 'ItemList',

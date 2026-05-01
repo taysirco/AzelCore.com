@@ -3,7 +3,7 @@ import { ibmPlexArabic, inter } from '@/lib/fonts';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
-import { SITE_NAME, SITE_NAME_EN, SITE_URL, VAT_ID, PHONE, OWNER_NAME, OWNER_TITLE, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
+import { SITE_NAME, SITE_NAME_EN, SITE_URL, VAT_ID, CRN, PHONE, OWNER_NAME, OWNER_TITLE, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
 import BackToTop from '@/components/ui/BackToTop';
 import GeoBanner from '@/components/ui/GeoBanner';
@@ -87,6 +87,17 @@ const organizationSchema = {
     '@type': 'Person',
     name: OWNER_NAME,
     jobTitle: OWNER_TITLE,
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    ratingCount: '127',
+    bestRating: '5',
+  },
+  identifier: {
+    '@type': 'PropertyValue',
+    name: 'Commercial Registration (CR)',
+    value: CRN,
   },
 };
 

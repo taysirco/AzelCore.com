@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN } from '@/lib/constants';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import TldrBait from '@/components/seo/TldrBait';
 import CrossSellCards from '@/components/sections/CrossSellCards';
@@ -121,6 +121,22 @@ const graphSchema = {
         '@type': 'WarrantyPromise',
         durationOfWarranty: { '@type': 'QuantitativeValue', value: 10, unitCode: 'ANN' },
         warrantyScope: 'تغير اللون + التقشر + الفقاعات',
+      },
+      // ── Agentic Schema: ReserveAction ──
+      potentialAction: {
+        '@type': 'ReserveAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: WHATSAPP_LINK,
+          actionPlatform: [
+            'http://schema.org/DesktopWebPlatform',
+            'http://schema.org/MobileWebPlatform',
+          ],
+        },
+        result: {
+          '@type': 'Reservation',
+          name: 'حجز موعد تظليل جونسون',
+        },
       },
     },
     {
