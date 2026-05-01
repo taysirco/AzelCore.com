@@ -1,0 +1,72 @@
+/* ═══ Testimonials Section ═══ */
+.section { padding: var(--space-20) 0; background: var(--bg-secondary); }
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-6); }
+
+.header { text-align: center; margin-bottom: var(--space-12); }
+.overline { display: inline-block; font-size: var(--text-sm); font-weight: 600; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-3); }
+.title { font-size: var(--text-4xl); font-weight: 700; margin-bottom: var(--space-3); }
+.subtitle { font-size: var(--text-lg); color: var(--text-secondary); }
+
+/* Grid */
+.grid { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-6); margin-bottom: var(--space-10); }
+
+/* Active Card */
+.activeCard {
+  padding: var(--space-8); background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+.cardHeader { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-5); }
+.avatar { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; border: 2px solid var(--primary); flex-shrink: 0; }
+.cardInfo { flex: 1; }
+.cardName { font-size: var(--text-lg); font-weight: 700; }
+.cardMeta { font-size: var(--text-sm); color: var(--text-muted); }
+.rating { color: var(--secondary); font-size: var(--text-lg); letter-spacing: 2px; flex-shrink: 0; }
+
+.quote {
+  font-size: var(--text-lg); line-height: 2; color: var(--text-secondary);
+  font-style: italic; border-right: 3px solid var(--secondary);
+  padding-right: var(--space-5); margin-bottom: var(--space-5);
+}
+
+.cardFooter { display: flex; gap: var(--space-3); }
+.filmBadge, .dateBadge {
+  padding: var(--space-1) var(--space-3); background: var(--surface-hover);
+  border-radius: var(--radius-full); font-size: var(--text-xs); color: var(--text-muted);
+}
+.filmBadge { color: var(--primary-light); border: 1px solid hsla(210,100%,60%,0.2); }
+
+/* Thumbnails */
+.thumbs { display: flex; flex-direction: column; gap: var(--space-2); }
+.thumb {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-3); border-radius: var(--radius-md);
+  background: var(--surface); border: 1px solid var(--border);
+  cursor: pointer; text-align: right;
+  transition: all var(--duration-fast) ease;
+}
+.thumb:hover { background: var(--surface-hover); border-color: var(--border-light); }
+.thumbActive { border-color: var(--primary); background: var(--surface-hover); box-shadow: var(--shadow-glow); }
+.thumb img { flex-shrink: 0; }
+.thumbInfo { flex: 1; min-width: 0; }
+.thumbName { display: block; font-size: var(--text-sm); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.thumbCar { display: block; font-size: var(--text-xs); color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.thumbRating { color: var(--secondary); font-size: var(--text-xs); flex-shrink: 0; }
+
+/* Stats Bar */
+.statsBar {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4);
+  padding: var(--space-6); background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+}
+.statItem { text-align: center; }
+.statValue { display: block; font-family: var(--font-en); font-size: var(--text-2xl); font-weight: 800; color: var(--secondary); }
+.statLabel { font-size: var(--text-xs); color: var(--text-muted); }
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  .thumbs { flex-direction: row; overflow-x: auto; gap: var(--space-2); padding-bottom: var(--space-2); }
+  .thumb { min-width: 200px; }
+  .statsBar { grid-template-columns: 1fr 1fr; }
+  .title { font-size: var(--text-3xl); }
+}

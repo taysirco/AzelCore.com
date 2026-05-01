@@ -6,6 +6,9 @@ import JohnsonSection from '@/components/sections/JohnsonSection';
 import ComparisonSection from '@/components/sections/ComparisonSection';
 import ProcessSection from '@/components/sections/ProcessSection';
 import TrustSection from '@/components/sections/TrustSection';
+import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import PricingSection from '@/components/sections/PricingSection';
+import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import { SITE_URL } from '@/lib/constants';
 
@@ -62,8 +65,11 @@ export default function HomePage() {
       <ServicesSection />
       <JohnsonSection />
       <ComparisonSection />
+      <PricingSection />
       <ProcessSection />
+      <TestimonialsSection />
       <TrustSection />
+      <FAQSection />
       <CTASection />
     </>
   );

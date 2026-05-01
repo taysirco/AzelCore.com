@@ -1,0 +1,46 @@
+/* ═══ FAQ Section (Homepage) ═══ */
+.section { padding: var(--space-20) 0; background: var(--bg-secondary); }
+.container { max-width: 800px; margin: 0 auto; padding: 0 var(--space-6); }
+
+.header { text-align: center; margin-bottom: var(--space-10); }
+.overline { display: inline-block; font-size: var(--text-sm); font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-3); }
+.title { font-size: var(--text-4xl); font-weight: 700; }
+
+.faqGrid { display: flex; flex-direction: column; gap: var(--space-3); }
+.faqItem {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  transition: border-color var(--duration-fast) ease;
+}
+.faqItem:hover { border-color: var(--border-light); }
+.faqItem[open] { border-color: var(--primary); }
+
+.question {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-4) var(--space-5); cursor: pointer;
+  font-size: var(--text-base); font-weight: 600;
+  list-style: none;
+  transition: background var(--duration-fast) ease;
+}
+.question:hover { background: var(--surface-hover); }
+.question::-webkit-details-marker { display: none; }
+
+.chevron { transition: transform var(--duration-normal) var(--ease-out); color: var(--text-muted); flex-shrink: 0; margin-right: var(--space-3); }
+.faqItem[open] .chevron { transform: rotate(180deg); color: var(--primary-light); }
+
+.answer {
+  padding: 0 var(--space-5) var(--space-4);
+  font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.8;
+  animation: fadeIn var(--duration-normal) ease;
+}
+
+.seeAll { text-align: center; margin-top: var(--space-6); }
+.seeAllLink { color: var(--primary-light); font-weight: 600; font-size: var(--text-base); }
+.seeAllLink:hover { text-decoration: underline; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 768px) {
+  .title { font-size: var(--text-3xl); }
+  .question { font-size: var(--text-sm); padding: var(--space-3) var(--space-4); }
+}
