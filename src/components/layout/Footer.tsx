@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SITE_NAME, WHATSAPP_LINK, PHONE, CRN, VAT_ID, WORKING_HOURS, NAV_LINKS, OWNER_NAME } from '@/lib/constants';
+import { SITE_NAME, WHATSAPP_LINK, PHONE, WORKING_HOURS, NAV_LINKS, OWNER_NAME } from '@/lib/constants';
 import styles from './Footer.module.css';
 
 const serviceLinks = [

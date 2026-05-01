@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SITE_URL, WHATSAPP_LINK, PHONE, CRN } from '@/lib/constants';
+import { SITE_URL, WHATSAPP_LINK, PHONE } from '@/lib/constants';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {

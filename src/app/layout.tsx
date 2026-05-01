@@ -3,7 +3,7 @@ import { ibmPlexArabic, inter } from '@/lib/fonts';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
-import { SITE_NAME, SITE_NAME_EN, SITE_URL, CRN, VAT_ID, PHONE, OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
+import { SITE_NAME, SITE_NAME_EN, SITE_URL, VAT_ID, PHONE, OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
 import './globals.css';
 
 export const viewport: Viewport = {
