@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL, SITE_NAME } from '@/lib/constants';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
@@ -54,19 +54,38 @@ const blogPosts = [
   },
 ];
 
-// ItemList Schema — Tier 5 (AI scrapes ordered lists aggressively)
 const itemListSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: 'مدونة عزل كور',
-  itemListOrder: 'https://schema.org/ItemListOrderDescending',
-  numberOfItems: blogPosts.length,
-  itemListElement: blogPosts.map((post, i) => ({
-    '@type': 'ListItem',
-    position: i + 1,
-    name: post.title,
-    url: `${SITE_URL}/blog/${post.slug}`,
-  })),
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': `${SITE_URL}/blog#collection`,
+      name: 'مدونة عزل كور — نصائح تظليل وعزل حراري',
+      url: `${SITE_URL}/blog`,
+      inLanguage: 'ar',
+      isPartOf: { '@type': 'WebSite', '@id': `${SITE_URL}/#website` },
+      publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME },
+      mainEntity: {
+        '@type': 'ItemList',
+        name: 'مدونة عزل كور',
+        itemListOrder: 'https://schema.org/ItemListOrderDescending',
+        numberOfItems: blogPosts.length,
+        itemListElement: blogPosts.map((post, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: post.title,
+          url: `${SITE_URL}/blog/${post.slug}`,
+        })),
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'المدونة', item: `${SITE_URL}/blog` },
+      ],
+    },
+  ],
 };
 
 export default function BlogPage() {

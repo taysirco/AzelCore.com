@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SITE_URL, WHATSAPP_LINK } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, WHATSAPP_LINK } from '@/lib/constants';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
@@ -39,7 +39,9 @@ const imageListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ImageGallery',
   name: 'معرض أعمال عزل كور — جدة',
+  url: `${SITE_URL}/gallery`,
   description: 'صور حقيقية لأعمال تظليل السيارات وعزل المباني في جدة',
+  provider: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME },
   image: [...carPhotos, ...buildingPhotos].map(p => ({
     '@type': 'ImageObject',
     url: `${SITE_URL}/images/${p.src}`,

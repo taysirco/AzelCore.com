@@ -73,7 +73,7 @@ export default function CrossSellCards({ currentPage }: CrossSellCardsProps) {
   if (!items) return null;
 
   return (
-    <section className={styles.crossSell} aria-label="خدمات مكمّلة">
+    <section className={styles.crossSell} aria-label="خدمات مكمّلة" data-nosnippet>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>خدمات <span>مكمّلة</span> قد تهمك</h2>
         <div className={styles.grid}>
