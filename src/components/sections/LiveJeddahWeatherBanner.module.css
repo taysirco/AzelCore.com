@@ -1,0 +1,109 @@
+/* ═══ LiveJeddahWeatherBanner — QDF Weather Alert ═══ */
+
+.banner {
+  position: relative;
+  z-index: 10;
+  padding: var(--space-3) 0;
+  font-size: var(--text-sm);
+  overflow: hidden;
+}
+
+/* Alert Levels */
+.extreme {
+  background: linear-gradient(90deg, hsl(0, 85%, 18%), hsl(15, 90%, 25%), hsl(0, 85%, 18%));
+  border-bottom: 2px solid hsl(0, 80%, 40%);
+}
+
+.high {
+  background: linear-gradient(90deg, hsl(25, 85%, 15%), hsl(35, 90%, 22%), hsl(25, 85%, 15%));
+  border-bottom: 2px solid hsl(30, 80%, 40%);
+}
+
+.moderate {
+  background: linear-gradient(90deg, hsl(45, 70%, 12%), hsl(50, 80%, 18%), hsl(45, 70%, 12%));
+  border-bottom: 2px solid hsl(45, 70%, 35%);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.icon {
+  font-size: var(--text-lg);
+  animation: pulse-icon 2s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.15); }
+}
+
+.textBlock {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.prefix {
+  color: white;
+  font-weight: 700;
+}
+
+.separator {
+  color: hsla(0, 0%, 100%, 0.3);
+}
+
+.uvBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-2);
+  background: hsla(0, 0%, 100%, 0.1);
+  border-radius: var(--radius-sm);
+  color: hsla(0, 0%, 100%, 0.9);
+  font-weight: 600;
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+.message {
+  color: hsla(0, 0%, 100%, 0.8);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background: hsla(0, 0%, 100%, 0.15);
+  border: 1px solid hsla(0, 0%, 100%, 0.25);
+  border-radius: var(--radius-md);
+  color: white;
+  font-weight: 600;
+  font-size: var(--text-xs);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cta:hover {
+  background: hsla(0, 0%, 100%, 0.25);
+  transform: translateX(-2px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .content { flex-direction: column; gap: var(--space-2); }
+  .separator { display: none; }
+  .textBlock { flex-direction: column; }
+}

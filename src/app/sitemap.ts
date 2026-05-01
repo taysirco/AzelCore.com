@@ -29,6 +29,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Redirect landing pages — included for crawl completeness
     { url: `${SITE_URL}/thermal-cars`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.4 },
     { url: `${SITE_URL}/thermal-windows`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.4 },
+    // LLM Direct Feed — AI crawler discovery
+    { url: `${SITE_URL}/llms.txt`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.3 },
   ];
 
   // pSEO district pages — hyper-local Jeddah coverage

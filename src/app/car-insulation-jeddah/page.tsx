@@ -8,6 +8,9 @@ import { jeddahDistricts } from '@/data/local-jeddah';
 import TldrBait from '@/components/seo/TldrBait';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import YmylWarning from '@/components/seo/YmylWarning';
+import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBanner';
+import ThermalSliderBeforeAfter from '@/components/sections/ThermalSliderBeforeAfter';
+import VoiceSearchFAQ from '@/components/sections/VoiceSearchFAQ';
 import styles from './page.module.css';
 
 // ════════════════════════════════════════════
@@ -112,6 +115,22 @@ const graphSchema = {
         ratingValue: '4.9',
         ratingCount: '127',
         bestRating: '5',
+      },
+      // ── Agentic Schema: ReserveAction ──
+      potentialAction: {
+        '@type': 'ReserveAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: WHATSAPP_LINK,
+          actionPlatform: [
+            'http://schema.org/DesktopWebPlatform',
+            'http://schema.org/MobileWebPlatform',
+          ],
+        },
+        result: {
+          '@type': 'Reservation',
+          name: 'حجز موعد تظليل سيارة',
+        },
       },
     },
 
@@ -228,6 +247,9 @@ export default function CarTintingPage() {
       {/* Single @graph — unified Knowledge Graph */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }} />
 
+      {/* ═══ Live Weather Banner — QDF ISR Signal ═══ */}
+      <LiveJeddahWeatherBanner />
+
       {/* TL;DR Bait — AI Overviews Magnet */}
       <TldrBait summary={quickAnswers.carTinting.text} />
 
@@ -282,6 +304,9 @@ export default function CarTintingPage() {
           </dl>
         </div>
       </section>
+
+      {/* ═══ NavBoost Dwell-Time Trap — Interactive Thermal Slider ═══ */}
+      <ThermalSliderBeforeAfter />
 
       {/* ═══ Tint Comparison — schema.org/Table for SGE ═══ */}
       <section className={`${styles.section} ${styles.sectionAlt}`} id="types">
@@ -384,6 +409,9 @@ export default function CarTintingPage() {
           </div>
         </div>
       </section>
+
+      {/* ═══ Local Voice-Search NLP Bait — Hijazi FAQ ═══ */}
+      <VoiceSearchFAQ />
 
       {/* ═══ YMYL Safety Warnings — E-E-A-T Trust ═══ */}
       <YmylWarning
