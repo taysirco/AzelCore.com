@@ -64,12 +64,11 @@ export default function Header() {
       {/* Mobile Menu */}
       <div className={`${styles.overlay} ${menuOpen ? styles.overlayVisible : ''}`} onClick={() => setMenuOpen(false)} />
       <nav className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`} aria-label="القائمة الجوال">
-        {NAV_LINKS.map((link, i) => (
+        {NAV_LINKS.map((link) => (
           <Link
             key={link.href}
             href={link.href}
             className={styles.mobileLink}
-            style={{ animationDelay: menuOpen ? `${i * 60}ms` : '0ms' }}
             onClick={() => setMenuOpen(false)}
           >
             {link.label}
