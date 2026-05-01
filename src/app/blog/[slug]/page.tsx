@@ -102,6 +102,30 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
+// Service link mapping for internal linking (blog → services, never reverse)
+const serviceLinks: Record<string, { href: string; text: string }[]> = {
+  'tint-laws-saudi-2026': [
+    { href: '/car-insulation-jeddah', text: 'خدمة تظليل سيارات مطابقة لأنظمة المرور' },
+    { href: '/johnson-authorized-dealer', text: 'عازل جونسون — الوكيل المعتمد في جدة' },
+  ],
+  'nano-ceramic-vs-carbon-vs-3m': [
+    { href: '/car-insulation-jeddah', text: 'احجز تظليل نانو سيراميك الآن' },
+    { href: '/johnson-authorized-dealer', text: 'جونسون Supreme IR — الخيار الأعلى أداءً' },
+  ],
+  'best-car-tint-jeddah-2026': [
+    { href: '/car-insulation-jeddah', text: 'خدمة تظليل سيارات في جدة — أسعار وأنواع' },
+    { href: '/johnson-authorized-dealer', text: 'وكيل جونسون المعتمد الوحيد في جدة' },
+  ],
+  'building-insulation-electricity-savings': [
+    { href: '/building-glass-insulation', text: 'خدمة عزل زجاج المباني — وفّر 40% كهرباء' },
+    { href: '/thermal-windows', text: 'عزل حراري للنوافذ والشبابيك' },
+  ],
+  'how-to-spot-fake-tint': [
+    { href: '/car-insulation-jeddah', text: 'تظليل أصلي مع ضمان — عزل كور جدة' },
+    { href: '/johnson-authorized-dealer', text: 'أفلام جونسون الأمريكية الأصلية' },
+  ],
+};
+
 export default function BlogArticlePage({ params }: { params: { slug: string } }) {
   const content = articleContent[params.slug];
   if (!content) notFound();
@@ -109,6 +133,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
   const topic = getTopicBySlug(params.slug);
   const title = topic?.titleAr || params.slug;
   const date = '2026-05-01';
+  const links = serviceLinks[params.slug] || [];
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -163,6 +188,22 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
           {content.warning && (
             <div className={styles.warningBox}>
               <p><strong>⚠️ تحذير:</strong> {content.warning}</p>
+            </div>
+          )}
+
+          {/* Internal Links → Services (Link Equity Pyramid) */}
+          {links.length > 0 && (
+            <div className={styles.ctaBox} style={{ textAlign: 'start' }}>
+              <h3>خدمات ذات صلة</h3>
+              <ul>
+                {links.map((link, i) => (
+                  <li key={i} style={{ marginBottom: '0.5rem' }}>
+                    <Link href={link.href} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>
+                      {link.text} ←
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
 

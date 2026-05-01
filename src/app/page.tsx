@@ -53,12 +53,64 @@ const localBusinessSchema = {
   },
 };
 
+// Services ItemList Schema — Tier 5 (drives SERP carousel)
+const servicesListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'خدمات عزل كور',
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: 3,
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'تظليل سيارات جدة — نانو سيراميك',
+      url: `${SITE_URL}/car-insulation-jeddah`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'عزل زجاج واجهات المباني',
+      url: `${SITE_URL}/building-glass-insulation`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'جونسون وندو فيلم — الوكيل المعتمد',
+      url: `${SITE_URL}/johnson-authorized-dealer`,
+    },
+  ],
+};
+
+// Speculation Rules — instant prefetch for high-priority pages
+const speculationRules = {
+  prefetch: [
+    {
+      source: 'list',
+      urls: [
+        '/car-insulation-jeddah',
+        '/building-glass-insulation',
+        '/johnson-authorized-dealer',
+        '/blog',
+      ],
+    },
+  ],
+};
+
 export default function HomePage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesListSchema) }}
+      />
+      <script
+        type="speculationrules"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(speculationRules) }}
       />
       <HeroSection />
       <ScrollReveal><StatsSection /></ScrollReveal>

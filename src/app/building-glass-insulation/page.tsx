@@ -6,6 +6,7 @@ import { faqs } from '@/data/faqs';
 import { quickAnswers } from '@/data/quick-answers';
 import TldrBait from '@/components/seo/TldrBait';
 import CrossSellCards from '@/components/sections/CrossSellCards';
+import YmylWarning from '@/components/seo/YmylWarning';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -206,6 +207,12 @@ export default function BuildingInsulationPage() {
           </div>
         </div>
       </section>
+
+      {/* YMYL Safety Warning — E-E-A-T Trust */}
+      <YmylWarning
+        title="أمان الزجاج: المباني"
+        text="فيلم الأمان (Safety Film) يمنع تناثر الزجاج عند الكسر ويحمي من الإصابات. مطلوب في المباني التجارية والمدارس حسب كود البناء السعودي."
+      />
 
       {/* Cross-sell — Causal Internal Linking */}
       <CrossSellCards currentPage="building-glass-insulation" />

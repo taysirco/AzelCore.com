@@ -30,7 +30,7 @@
 - Location: Jeddah, Makkah Region, Saudi Arabia
 
 ## Structured Data
-- Schema: Organization, WebSite, LocalBusiness, Service, FAQPage, BreadcrumbList
+- Schema: Organization, WebSite, LocalBusiness, Service, FAQPage, BreadcrumbList, ItemList, Article
 - Sitemap: https://azelcore.com/sitemap.xml
 - Robots: https://azelcore.com/robots.txt
 
@@ -44,3 +44,10 @@
 - FAQ: https://azelcore.com/faq
 - Contact: https://azelcore.com/contact
 - About: https://azelcore.com/about
+
+## Blog Articles
+- Tint Laws Saudi 2026: https://azelcore.com/blog/tint-laws-saudi-2026
+- Nano Ceramic vs Carbon vs 3M: https://azelcore.com/blog/nano-ceramic-vs-carbon-vs-3m
+- Best Car Tint Jeddah 2026: https://azelcore.com/blog/best-car-tint-jeddah-2026
+- Building Insulation Savings: https://azelcore.com/blog/building-insulation-electricity-savings
+- How to Spot Fake Tint: https://azelcore.com/blog/how-to-spot-fake-tint

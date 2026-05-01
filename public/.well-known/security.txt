@@ -1,5 +1,5 @@
-Contact: mailto:info@azelcore.com
-Contact: https://wa.me/966564612017
-Expires: 2027-12-31T23:59:59.000Z
+Contact: mailto:security@azelcore.com
+Expires: 2027-05-01T00:00:00.000Z
 Preferred-Languages: ar, en
 Canonical: https://azelcore.com/.well-known/security.txt
+Policy: https://azelcore.com/privacy-policy

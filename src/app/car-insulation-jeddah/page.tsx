@@ -6,6 +6,7 @@ import { faqs } from '@/data/faqs';
 import { quickAnswers } from '@/data/quick-answers';
 import TldrBait from '@/components/seo/TldrBait';
 import CrossSellCards from '@/components/sections/CrossSellCards';
+import YmylWarning from '@/components/seo/YmylWarning';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -215,6 +216,16 @@ export default function CarTintingPage() {
           </div>
         </div>
       </section>
+
+      {/* YMYL Safety Warnings — E-E-A-T Trust */}
+      <YmylWarning
+        title="تحذير: التظليل المقلد"
+        text="أفلام التظليل المقلدة تحتوي مواد كيميائية تتحلل بالحرارة وتطلق أبخرة سامة داخل المقصورة. تأكد من شهادة المنتج الأصلية."
+      />
+      <YmylWarning
+        title="تحذير قانوني: نسبة التظليل"
+        text="تجاوز نسبة 30% VLT = مخالفة 500-900 ر.س + رفض الفحص الدوري + إلزام بالإزالة على حسابك."
+      />
 
       {/* Cross-sell — Causal Internal Linking */}
       <CrossSellCards currentPage="car-insulation-jeddah" />
