@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { WHATSAPP_LINK } from '@/lib/constants';
 import styles from './HeroSection.module.css';
 
@@ -68,6 +69,20 @@ export default function HeroSection() {
 
   return (
     <section className={styles.hero} id="hero">
+      {/* Background Image */}
+      <div className={styles.heroBg}>
+        <Image
+          src="/images/hero-car-tinting-workshop.png"
+          alt="ورشة تظليل سيارات احترافية — عزل كور جدة"
+          fill
+          priority
+          quality={85}
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
+        />
+      </div>
+      <div className={styles.heroOverlay} aria-hidden="true" />
+
       <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
       <div className={styles.grid} aria-hidden="true" />
 

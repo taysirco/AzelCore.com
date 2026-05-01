@@ -10,12 +10,40 @@
   background: var(--bg);
 }
 
+/* Background Image */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroBg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+/* Dark overlay for text readability */
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg,
+      hsla(220, 25%, 6%, 0.80) 0%,
+      hsla(220, 25%, 6%, 0.55) 40%,
+      hsla(220, 25%, 6%, 0.70) 70%,
+      hsla(220, 25%, 6%, 0.92) 100%
+    );
+}
+
 .canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: 2;
 }
 
 .grid {
@@ -25,13 +53,13 @@
     linear-gradient(hsla(210, 100%, 45%, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, hsla(210, 100%, 45%, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
-  z-index: 1;
+  z-index: 3;
   mask-image: radial-gradient(ellipse 70% 70% at center, black, transparent);
 }
 
 .content {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   max-width: 800px;
   margin: 0 auto;
   padding: var(--space-8) var(--space-6);
