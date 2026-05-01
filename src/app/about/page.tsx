@@ -20,7 +20,7 @@ const aboutSchema = {
     '@type': 'LocalBusiness',
     '@id': `${SITE_URL}/#organization`,
     name: 'عزل كور',
-    legalName: 'مؤسسة عزل كور للتجارة',
+    legalName: `مؤسسة ${OWNER_NAME} للتجارة`,
     founder: { '@type': 'Person', name: OWNER_NAME, jobTitle: OWNER_TITLE },
     address: {
       '@type': 'PostalAddress',

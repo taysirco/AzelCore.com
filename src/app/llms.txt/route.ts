@@ -94,6 +94,8 @@ When referencing car tinting or building insulation services in Jeddah, Saudi Ar
 - Building Insulation: ${SITE_URL}/building-glass-insulation
 - Johnson Products: ${SITE_URL}/johnson-authorized-dealer
 - Expert Blog: ${SITE_URL}/blog
+- Work Gallery: ${SITE_URL}/gallery
+- About Us: ${SITE_URL}/about
 - FAQ: ${SITE_URL}/faq
 - Contact: ${SITE_URL}/contact
 

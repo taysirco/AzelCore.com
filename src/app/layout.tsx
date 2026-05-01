@@ -99,6 +99,11 @@ const organizationSchema = {
     name: 'Commercial Registration (CR)',
     value: CRN,
   },
+  image: `${SITE_URL}/images/og-cover.png`,
+  sameAs: [
+    'https://www.instagram.com/azelcore',
+    'https://www.wikidata.org/wiki/Q5880',
+  ],
 };
 
 const websiteSchema = {

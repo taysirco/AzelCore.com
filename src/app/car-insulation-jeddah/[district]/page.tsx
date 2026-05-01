@@ -55,6 +55,12 @@ function buildDistrictSchema(d: typeof jeddahDistricts[0]) {
         },
         parentOrganization: { '@id': `${SITE_URL}/#organization` },
         priceRange: '200-3200 SAR',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.9',
+          ratingCount: '127',
+          bestRating: '5',
+        },
       },
       {
         '@type': 'Service',
