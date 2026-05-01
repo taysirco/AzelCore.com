@@ -5,8 +5,17 @@ const SITE_URL = 'https://azelcore.com';
 // Static last-modified date — update manually after significant content changes
 const LAST_MODIFIED = '2026-05-01';
 
+// Blog article slugs (must match blog/[slug]/page.tsx generateStaticParams)
+const blogSlugs = [
+  'tint-laws-saudi-2026',
+  'nano-ceramic-vs-carbon-vs-3m',
+  'best-car-tint-jeddah-2026',
+  'building-insulation-electricity-savings',
+  'how-to-spot-fake-tint',
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const staticPages: MetadataRoute.Sitemap = [
     { url: SITE_URL, lastModified: LAST_MODIFIED, changeFrequency: 'weekly', priority: 1.0 },
     { url: `${SITE_URL}/car-insulation-jeddah`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE_URL}/building-glass-insulation`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 },
@@ -20,4 +29,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/thermal-cars`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.4 },
     { url: `${SITE_URL}/thermal-windows`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.4 },
   ];
+
+  // Blog article pages
+  const blogPages: MetadataRoute.Sitemap = blogSlugs.map(slug => ({
+    url: `${SITE_URL}/blog/${slug}`,
+    lastModified: LAST_MODIFIED,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...blogPages];
 }

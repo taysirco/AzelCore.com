@@ -21,8 +21,8 @@ const blogPosts = [
     category: 'تظليل سيارات',
   },
   {
-    slug: 'nano-vs-carbon-tint',
-    title: 'نانو سيراميك ضد كربوني — أيهم أحسن؟',
+    slug: 'nano-ceramic-vs-carbon-vs-3m',
+    title: 'نانو سيراميك مقابل كربوني مقابل 3M — مقارنة بالأرقام',
     excerpt: 'الفرق الحقيقي بين التقنيتين من حيث حجب الحرارة والمتانة والسعر — بالأرقام من الداتاشيت الرسمي.',
     image: 'blog-nano-vs-carbon-tint.png',
     date: '2026-04-10',
@@ -37,7 +37,7 @@ const blogPosts = [
     category: 'قانوني',
   },
   {
-    slug: 'building-insulation-savings',
+    slug: 'building-insulation-electricity-savings',
     title: 'كيف توفر 40% من فاتورة الكهرباء بعزل النوافذ',
     excerpt: 'دراسة حالة حقيقية — كيف وفّرت فيلا في جدة 40% من تكاليف التكييف بعد عزل الواجهات بأفلام نانو سيراميك.',
     image: 'blog-building-insulation-savings.png',
@@ -45,14 +45,29 @@ const blogPosts = [
     category: 'عزل مباني',
   },
   {
-    slug: 'ppf-vs-ceramic-coating',
-    title: 'PPF ضد طلاء سيراميك — أيهم يحمي سيارتك أكثر؟',
-    excerpt: 'الفرق بين بي بي إف وطلاء السيراميك — متى تحتاج كل واحد ومتى تجمع بينهم.',
+    slug: 'how-to-spot-fake-tint',
+    title: '5 علامات تعرف بيها التظليل المقلد من الأصلي',
+    excerpt: 'الفرق بين الفيلم الأصلي والمقلد — 5 اختبارات بسيطة تقدر تسويها بنفسك.',
     image: 'blog-ppf-vs-ceramic-coating.png',
     date: '2026-03-20',
-    category: 'حماية',
+    category: 'نصائح',
   },
 ];
+
+// ItemList Schema — Tier 5 (AI scrapes ordered lists aggressively)
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'مدونة عزل كور',
+  itemListOrder: 'https://schema.org/ItemListOrderDescending',
+  numberOfItems: blogPosts.length,
+  itemListElement: blogPosts.map((post, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: post.title,
+    url: `${SITE_URL}/blog/${post.slug}`,
+  })),
+};
 
 export default function BlogPage() {
   return (
@@ -61,6 +76,8 @@ export default function BlogPage() {
         { name: 'الرئيسية', href: '/' },
         { name: 'المدونة', href: '/blog' },
       ]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+
       <section className={styles.pageHeader}>
         <div className={styles.container}>
           <nav className={styles.breadcrumb}><Link href="/">الرئيسية</Link> / <span>المدونة</span></nav>
@@ -73,20 +90,22 @@ export default function BlogPage() {
         <div className={styles.container}>
           <div className={styles.postsGrid}>
             {blogPosts.map((post) => (
-              <article key={post.slug} className={styles.postCard}>
-                <div className={styles.postImage}>
-                  <Image src={`/images/${post.image}`} alt={post.title} width={400} height={240} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-                  <span className={styles.postCategory}>{post.category}</span>
-                </div>
-                <div className={styles.postContent}>
-                  <time className={styles.postDate} dateTime={post.date}>
-                    {new Date(post.date).toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  </time>
-                  <h2 className={styles.postTitle}>{post.title}</h2>
-                  <p className={styles.postExcerpt}>{post.excerpt}</p>
-                  <span className={styles.readMore}>قراءة المقال ←</span>
-                </div>
-              </article>
+              <Link key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <article className={styles.postCard}>
+                  <div className={styles.postImage}>
+                    <Image src={`/images/${post.image}`} alt={post.title} width={400} height={240} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                    <span className={styles.postCategory}>{post.category}</span>
+                  </div>
+                  <div className={styles.postContent}>
+                    <time className={styles.postDate} dateTime={post.date}>
+                      {new Date(post.date).toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </time>
+                    <h2 className={styles.postTitle}>{post.title}</h2>
+                    <p className={styles.postExcerpt}>{post.excerpt}</p>
+                    <span className={styles.readMore}>قراءة المقال ←</span>
+                  </div>
+                </article>
+              </Link>
             ))}
           </div>
         </div>

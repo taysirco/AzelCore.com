@@ -1,0 +1,85 @@
+/* ═══ CrossSellCards — Smart Internal Linking ═══ */
+.crossSell {
+  padding: var(--space-10) var(--space-6);
+}
+
+.container {
+  max-width: var(--max-width, 1200px);
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: var(--text-2xl, 1.5rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--space-8);
+  color: var(--text, hsl(220, 15%, 93%));
+}
+
+.sectionTitle span {
+  color: var(--primary, hsl(210, 100%, 45%));
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background: var(--glass, hsla(220, 20%, 15%, 0.6));
+  border: 1px solid hsla(210, 100%, 45%, 0.12);
+  border-radius: var(--radius-lg, 12px);
+  backdrop-filter: blur(12px);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: hsla(210, 100%, 45%, 0.4);
+  box-shadow: 0 12px 40px hsla(210, 100%, 45%, 0.08);
+}
+
+.cardIcon {
+  font-size: 2rem;
+}
+
+.cardTitle {
+  font-size: var(--text-lg, 1.125rem);
+  font-weight: 700;
+  color: var(--text, hsl(220, 15%, 93%));
+  margin: 0;
+}
+
+.cardDesc {
+  font-size: var(--text-sm, 0.875rem);
+  line-height: 1.7;
+  color: var(--text-muted, hsl(220, 10%, 55%));
+  margin: 0;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--primary, hsl(210, 100%, 45%));
+  margin-top: auto;
+}
+
+/* Light mode */
+[data-theme="light"] .card {
+  background: hsla(220, 20%, 98%, 0.9);
+  border-color: hsla(210, 100%, 45%, 0.15);
+}
+
+[data-theme="light"] .card:hover {
+  background: white;
+}

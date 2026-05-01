@@ -3,6 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME } from '@/lib/constants';
 import { faqs } from '@/data/faqs';
+import { quickAnswers } from '@/data/quick-answers';
+import TldrBait from '@/components/seo/TldrBait';
+import CrossSellCards from '@/components/sections/CrossSellCards';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -70,6 +73,9 @@ export default function CarTintingPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
+      {/* TL;DR Bait — AI Overviews Magnet */}
+      <TldrBait summary={quickAnswers.carTinting.text} />
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -209,6 +215,9 @@ export default function CarTintingPage() {
           </div>
         </div>
       </section>
+
+      {/* Cross-sell — Causal Internal Linking */}
+      <CrossSellCards currentPage="car-insulation-jeddah" />
 
       {/* CTA */}
       <section className={styles.ctaSection}>
