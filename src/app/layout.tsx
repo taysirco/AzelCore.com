@@ -159,6 +159,8 @@ export default function RootLayout({
                   '/blog',
                   '/gallery',
                   '/contact',
+                  '/faq',
+                  '/about',
                 ],
               },
             ],

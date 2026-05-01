@@ -138,6 +138,18 @@ const graphSchema = {
           name: 'حجز موعد تظليل جونسون',
         },
       },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        reviewCount: '89',
+        bestRating: '5',
+      },
+      review: {
+        '@type': 'Review',
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        author: { '@type': 'Person', name: 'محمد الزهراني' },
+        reviewBody: 'ركبت Supreme IR على لكزس — فرق الحرارة واضح من أول يوم. الضمان مكتوب والشغل نظيف.',
+      },
     },
     {
       '@type': 'FAQPage',

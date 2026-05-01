@@ -158,6 +158,15 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
         inLanguage: 'ar',
         isPartOf: { '@type': 'WebSite', '@id': `${SITE_URL}/#website` },
         wordCount: approximateWordCount,
+        about: [
+          { '@type': 'Thing', name: 'تظليل سيارات', sameAs: 'https://www.wikidata.org/wiki/Q2647429' },
+          { '@type': 'Thing', name: 'عزل حراري' },
+          { '@type': 'Place', name: 'جدة', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
+        ],
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['h1', '.content p:first-of-type'],
+        },
       },
       {
         '@type': 'BreadcrumbList',
@@ -206,7 +215,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
 
           {/* Internal Links → Services (Link Equity Pyramid) */}
           {links.length > 0 && (
-            <div className={styles.ctaBox} style={{ textAlign: 'start' }}>
+            <div className={styles.ctaBox} style={{ textAlign: 'start' }} data-nosnippet>
               <h3>خدمات ذات صلة</h3>
               <ul>
                 {links.map((link, i) => (
@@ -220,7 +229,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
             </div>
           )}
 
-          <div className={styles.ctaBox}>
+          <div className={styles.ctaBox} data-nosnippet>
             <h3>{content.cta}</h3>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.ctaBtn}>
               تواصل عبر واتساب

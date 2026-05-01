@@ -81,6 +81,12 @@ const graphSchema = {
           name: 'حجز معاينة عزل مباني',
         },
       },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        ratingCount: '38',
+        bestRating: '5',
+      },
     },
     {
       '@type': 'FAQPage',
