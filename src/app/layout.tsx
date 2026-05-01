@@ -119,6 +119,38 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
+        {/* Speculation Rules API — site-wide instant navigation */}
+        <script
+          type="speculationrules"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            prefetch: [
+              {
+                source: 'list',
+                urls: [
+                  '/car-insulation-jeddah',
+                  '/building-glass-insulation',
+                  '/johnson-authorized-dealer',
+                  '/blog',
+                  '/gallery',
+                  '/contact',
+                ],
+              },
+            ],
+            prerender: [
+              {
+                source: 'document_rules',
+                where: {
+                  and: [
+                    { href_matches: '/*' },
+                    { not: { href_matches: '/api/*' } },
+                    { not: { href_matches: '/_next/*' } },
+                  ],
+                },
+                eagerness: 'moderate',
+              },
+            ],
+          }) }}
+        />
       </head>
       <body>
         <ThemeProvider>

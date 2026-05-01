@@ -76,7 +76,8 @@ export default function HeroSection() {
           alt="ورشة تظليل سيارات احترافية — عزل كور جدة"
           fill
           priority
-          quality={85}
+          fetchPriority="high"
+          quality={80}
           sizes="100vw"
           style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
         />

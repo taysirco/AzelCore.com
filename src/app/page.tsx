@@ -82,21 +82,6 @@ const servicesListSchema = {
   ],
 };
 
-// Speculation Rules — instant prefetch for high-priority pages
-const speculationRules = {
-  prefetch: [
-    {
-      source: 'list',
-      urls: [
-        '/car-insulation-jeddah',
-        '/building-glass-insulation',
-        '/johnson-authorized-dealer',
-        '/blog',
-      ],
-    },
-  ],
-};
-
 export default function HomePage() {
   return (
     <>
@@ -107,10 +92,6 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesListSchema) }}
-      />
-      <script
-        type="speculationrules"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(speculationRules) }}
       />
       <HeroSection />
       <ScrollReveal><StatsSection /></ScrollReveal>

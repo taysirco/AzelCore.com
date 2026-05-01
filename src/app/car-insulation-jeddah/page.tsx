@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, SITE_NAME_EN, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN } from '@/lib/constants';
 import { faqs } from '@/data/faqs';
 import { quickAnswers } from '@/data/quick-answers';
 import TldrBait from '@/components/seo/TldrBait';
@@ -9,10 +9,14 @@ import CrossSellCards from '@/components/sections/CrossSellCards';
 import YmylWarning from '@/components/seo/YmylWarning';
 import styles from './page.module.css';
 
+// ════════════════════════════════════════════
+// Metadata — generateMetadata (static export)
+// ════════════════════════════════════════════
+
 export const metadata: Metadata = {
-  title: 'تظليل سيارات جدة — نانو سيراميك + ضمان 10 سنوات',
-  description: 'أفضل تظليل سيارات في جدة بأفلام نانو سيراميك أمريكية من جونسون و 3M. حجب 97% حرارة، ضمان 10 سنوات، لا يحجب الإشارات. احجز الآن.',
-  keywords: ['تظليل سيارات جدة', 'تظليل نانو سيراميك', 'عزل حراري سيارات', 'تظليل 3M جدة', 'تظليل جونسون'],
+  title: 'تظليل سيارات جدة — نانو سيراميك + ضمان 10 سنوات | عزل كور',
+  description: 'أفضل تظليل سيارات في جدة بأفلام نانو سيراميك أمريكية من جونسون و 3M. حجب 97% حرارة، ضمان 10 سنوات، لا يحجب الإشارات. وكيل جونسون المعتمد.',
+  keywords: ['تظليل سيارات جدة', 'تظليل نانو سيراميك', 'عزل حراري سيارات', 'تظليل 3M جدة', 'تظليل جونسون', 'أفضل محل تظليل جدة'],
   alternates: { canonical: `${SITE_URL}/car-insulation-jeddah` },
   openGraph: {
     title: 'تظليل سيارات جدة — نانو سيراميك أمريكي | عزل كور',
@@ -21,6 +25,10 @@ export const metadata: Metadata = {
     images: [{ url: '/images/hero-car-tinting-process.png', width: 1200, height: 630 }],
   },
 };
+
+// ════════════════════════════════════════════
+// Data Constants
+// ════════════════════════════════════════════
 
 const tintTypes = [
   { name: 'نانو سيراميك', ir: '95-97%', uv: '99%', warranty: '10 سنوات', price: '1,200 - 3,200', signal: '✅ لا يحجب', best: true },
@@ -37,51 +45,208 @@ const vltGuide = [
   { level: '70%', desc: 'شبه شفاف — للزجاج الأمامي. حماية UV/IR بدون تغيير المظهر.', legal: '✅ الأمامي' },
 ];
 
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'تظليل سيارات جدة — نانو سيراميك أمريكي',
-  provider: { '@type': 'Organization', name: 'عزل كور', url: SITE_URL },
-  areaServed: { '@type': 'City', name: 'جدة' },
-  description: 'تظليل سيارات احترافي بأفلام نانو سيراميك أمريكية من جونسون و 3M مع ضمان 10 سنوات',
-  offers: { '@type': 'AggregateOffer', priceCurrency: 'SAR', lowPrice: '200', highPrice: '3200' },
-};
+const benefits = [
+  { icon: '🔬', title: 'فحص بكاميرا FLIR', desc: 'نثبت الفرق بالأرقام — اختبار حقيقي بالكاميرا الحرارية قبل وبعد التركيب.' },
+  { icon: '🖥️', title: 'قص كمبيوتر دقيق', desc: 'قص بالكمبيوتر حسب موديل السيارة — بدون شفرة تلمس الزجاج.' },
+  { icon: '🏭', title: 'بيئة نظيفة', desc: 'تركيب في ورشة مغلقة ومكيفة — صفر غبار وصفر فقاعات.' },
+  { icon: '📜', title: 'شهادة ضمان رسمية', desc: 'ضمان مكتوب من المصنع + فاتورة ضريبية رسمية.' },
+  { icon: '⏱️', title: 'تركيب سريع', desc: 'سيدان كاملة في 2-3 ساعات — SUV في 3-5 ساعات.' },
+  { icon: '📡', title: 'لا يحجب الإشارات', desc: 'أفلام غير معدنية — الهاتف و GPS و Apple Pay يعملون بشكل طبيعي.' },
+];
 
-const breadcrumbSchema = {
+const processSteps = [
+  { step: '01', title: 'الاستشارة', desc: 'نحلل نوع سيارتك واحتياجك ونقترح أفضل فيلم ودرجة VLT.', icon: '💬' },
+  { step: '02', title: 'التنظيف العميق', desc: 'تنظيف شامل للزجاج بمحلول خاص لضمان التصاق مثالي.', icon: '🧹' },
+  { step: '03', title: 'القص والتركيب', desc: 'قص كمبيوتر دقيق + تركيب احترافي في بيئة مغلقة ونظيفة.', icon: '✂️' },
+  { step: '04', title: 'الفحص والتسليم', desc: 'فحص جودة + اختبار حراري + شهادة ضمان + تعليمات العناية.', icon: '✅' },
+];
+
+// ════════════════════════════════════════════
+// JSON-LD @graph — Unified Knowledge Graph
+// Combines: AutoBodyShop + Organization + Service + FAQ + Breadcrumb
+// ════════════════════════════════════════════
+
+const carFaqs = faqs.filter(f => f.service === 'car-tinting').slice(0, 5);
+
+const graphSchema = {
   '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
-    { '@type': 'ListItem', position: 2, name: 'تظليل سيارات جدة', item: `${SITE_URL}/car-insulation-jeddah` },
+  '@graph': [
+    // ── 1. AutoBodyShop (Local Entity — Jeddah) ──
+    {
+      '@type': 'AutoBodyShop',
+      '@id': `${SITE_URL}/#autobodyshop`,
+      name: 'عزل كور — تظليل سيارات جدة',
+      alternateName: 'AzelCore Car Tinting Jeddah',
+      url: `${SITE_URL}/car-insulation-jeddah`,
+      telephone: PHONE,
+      image: `${SITE_URL}/images/hero-car-tinting-process.png`,
+      logo: `${SITE_URL}/images/azelcore-logo.png`,
+      description: 'ورشة تظليل سيارات احترافية في جدة — وكيل جونسون المعتمد الوحيد. أفلام نانو سيراميك أمريكية تحجب 97% حرارة مع ضمان 10 سنوات.',
+      priceRange: '200-3200 SAR',
+      currenciesAccepted: 'SAR',
+      paymentAccepted: 'نقدي, تحويل بنكي, مدى, Apple Pay',
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 21.5424,
+        longitude: 39.1727,
+      },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'جدة',
+        addressLocality: 'جدة',
+        addressRegion: 'منطقة مكة المكرمة',
+        postalCode: '23441',
+        addressCountry: 'SA',
+      },
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+          opens: '08:00',
+          closes: '22:00',
+        },
+      ],
+      sameAs: [
+        'https://www.wikidata.org/wiki/Q5880', // Jeddah city entity
+      ],
+      parentOrganization: { '@id': `${SITE_URL}/#organization` },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        ratingCount: '127',
+        bestRating: '5',
+      },
+    },
+
+    // ── 2. Organization (Parent KSA Company) ──
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      alternateName: SITE_NAME_EN,
+      url: SITE_URL,
+      logo: `${SITE_URL}/images/azelcore-logo.png`,
+      foundingDate: '2024',
+      taxID: VAT_ID,
+      legalName: `مؤسسة ${OWNER_NAME} للتجارة`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'جدة',
+        addressRegion: 'منطقة مكة المكرمة',
+        addressCountry: 'SA',
+      },
+      founder: {
+        '@type': 'Person',
+        name: OWNER_NAME,
+        jobTitle: OWNER_TITLE,
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: PHONE,
+        contactType: 'customer service',
+        availableLanguage: ['ar', 'en'],
+      },
+    },
+
+    // ── 3. Service + AggregateOffer + WarrantyPromise ──
+    {
+      '@type': 'Service',
+      '@id': `${SITE_URL}/car-insulation-jeddah#service`,
+      name: 'تظليل سيارات جدة — نانو سيراميك أمريكي',
+      description: 'تظليل سيارات احترافي بأفلام نانو سيراميك أمريكية من جونسون و 3M مع ضمان 10 سنوات وقص كمبيوتر دقيق',
+      provider: { '@id': `${SITE_URL}/#autobodyshop` },
+      areaServed: {
+        '@type': 'City',
+        name: 'جدة',
+        sameAs: 'https://www.wikidata.org/wiki/Q5880',
+      },
+      serviceType: 'تظليل سيارات',
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'SAR',
+        lowPrice: '200',
+        highPrice: '3200',
+        offerCount: '4',
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'أنواع التظليل',
+        itemListElement: tintTypes.map((t, i) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: t.name,
+            description: `حجب IR: ${t.ir} | UV: ${t.uv} | ضمان: ${t.warranty}`,
+          },
+          price: t.price.split(' - ')[0].replace(',', ''),
+          priceCurrency: 'SAR',
+          position: i + 1,
+        })),
+      },
+      termsOfService: `${SITE_URL}/about`,
+      warranty: {
+        '@type': 'WarrantyPromise',
+        warrantyScope: {
+          '@type': 'WarrantyScope',
+          name: 'ضمان شامل ضد التغير اللوني والفقاعات',
+        },
+        durationOfWarranty: {
+          '@type': 'QuantitativeValue',
+          value: 10,
+          unitCode: 'ANN',
+        },
+      },
+    },
+
+    // ── 4. FAQPage ──
+    {
+      '@type': 'FAQPage',
+      '@id': `${SITE_URL}/car-insulation-jeddah#faq`,
+      mainEntity: carFaqs.map(f => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    },
+
+    // ── 5. BreadcrumbList ──
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${SITE_URL}/car-insulation-jeddah#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'تظليل سيارات جدة', item: `${SITE_URL}/car-insulation-jeddah` },
+      ],
+    },
   ],
 };
 
-// FAQPage Schema — Tier 3 (top 5 car-tinting FAQs)
-const carFaqs = faqs.filter(f => f.service === 'car-tinting').slice(0, 5);
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: carFaqs.map(f => ({
-    '@type': 'Question',
-    name: f.question,
-    acceptedAnswer: { '@type': 'Answer', text: f.answer },
-  })),
-};
+// ════════════════════════════════════════════
+// Page Component — RSC (Server Component)
+// ════════════════════════════════════════════
 
 export default function CarTintingPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      {/* Single @graph — unified Knowledge Graph */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }} />
 
       {/* TL;DR Bait — AI Overviews Magnet */}
       <TldrBait summary={quickAnswers.carTinting.text} />
 
-      {/* Hero */}
+      {/* ═══ Hero — RSC above the fold, priority LCP image ═══ */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image src="/images/hero-car-tinting-process.png" alt="فني يركب تظليل نانو سيراميك على سيارة في جدة" fill priority style={{ objectFit: 'cover' }} />
+          <Image
+            src="/images/hero-car-tinting-process.png"
+            alt="فني يركب تظليل نانو سيراميك على سيارة في ورشة عزل كور جدة"
+            fill
+            priority={true}
+            fetchPriority="high"
+            quality={80}
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
+          />
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>
@@ -100,33 +265,28 @@ export default function CarTintingPage() {
         </div>
       </section>
 
-      {/* Why Us */}
+      {/* ═══ Why Us — Semantic <dl> for SGE extraction ═══ */}
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <span className={styles.overline}>لماذا عزل كور</span>
             <h2 className={styles.sectionTitle}>تظليل سيارات احترافي — مش مجرد لصق فيلم</h2>
           </div>
-          <div className={styles.benefitsGrid}>
-            {[
-              { icon: '🔬', title: 'فحص بكاميرا FLIR', desc: 'نثبت الفرق بالأرقام — اختبار حقيقي بالكاميرا الحرارية قبل وبعد التركيب.' },
-              { icon: '🖥️', title: 'قص كمبيوتر دقيق', desc: 'قص بالكمبيوتر حسب موديل السيارة — بدون شفرة تلمس الزجاج.' },
-              { icon: '🏭', title: 'بيئة نظيفة', desc: 'تركيب في ورشة مغلقة ومكيفة — صفر غبار وصفر فقاعات.' },
-              { icon: '📜', title: 'شهادة ضمان رسمية', desc: 'ضمان مكتوب من المصنع + فاتورة ضريبية رسمية.' },
-              { icon: '⏱️', title: 'تركيب سريع', desc: 'سيدان كاملة في 2-3 ساعات — SUV في 3-5 ساعات.' },
-              { icon: '📡', title: 'لا يحجب الإشارات', desc: 'أفلام غير معدنية — الهاتف و GPS و Apple Pay يعملون بشكل طبيعي.' },
-            ].map((b, i) => (
-              <div key={i} className={styles.benefitCard}>
-                <span className={styles.benefitIcon}>{b.icon}</span>
-                <h3 className={styles.benefitTitle}>{b.title}</h3>
-                <p className={styles.benefitDesc}>{b.desc}</p>
+          <dl className={styles.benefitsDl}>
+            {benefits.map((b, i) => (
+              <div key={i}>
+                <dt>
+                  <span className={styles.benefitIcon} aria-hidden="true">{b.icon}</span>
+                  {b.title}
+                </dt>
+                <dd>{b.desc}</dd>
               </div>
             ))}
-          </div>
+          </dl>
         </div>
       </section>
 
-      {/* Tint Types */}
+      {/* ═══ Tint Comparison — schema.org/Table for SGE ═══ */}
       <section className={`${styles.section} ${styles.sectionAlt}`} id="types">
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
@@ -135,9 +295,23 @@ export default function CarTintingPage() {
             <p className={styles.sectionSubtitle}>كل الأرقام حقيقية من الداتاشيت الرسمي — لا مبالغات.</p>
           </div>
           <div className={styles.typesTable}>
-            <table className={styles.table}>
+            <table
+              className={styles.table}
+              itemScope
+              itemType="http://schema.org/Table"
+            >
+              <caption className={styles.tableCaption} itemProp="about">
+                مقارنة أنواع تظليل السيارات في جدة 2026 — نانو سيراميك vs كربوني vs هايبرد
+              </caption>
               <thead>
-                <tr><th>النوع</th><th>حجب IR</th><th>حجب UV</th><th>الضمان</th><th>السعر (سيدان)</th><th>الإشارات</th></tr>
+                <tr>
+                  <th scope="col">النوع</th>
+                  <th scope="col">حجب IR</th>
+                  <th scope="col">حجب UV</th>
+                  <th scope="col">الضمان</th>
+                  <th scope="col">السعر (سيدان)</th>
+                  <th scope="col">الإشارات</th>
+                </tr>
               </thead>
               <tbody>
                 {tintTypes.map((t, i) => (
@@ -153,26 +327,28 @@ export default function CarTintingPage() {
         </div>
       </section>
 
-      {/* VLT Guide */}
+      {/* ═══ VLT Guide ═══ */}
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <span className={styles.overline}>دليل الدرجات</span>
             <h2 className={styles.sectionTitle}>درجات التظليل — أي VLT يناسبك؟</h2>
           </div>
-          <div className={styles.vltGrid}>
+          <dl className={styles.vltGrid}>
             {vltGuide.map((v, i) => (
               <div key={i} className={styles.vltCard}>
-                <div className={styles.vltLevel}>{v.level}</div>
-                <p className={styles.vltDesc}>{v.desc}</p>
-                <span className={styles.vltLegal}>{v.legal}</span>
+                <dt className={styles.vltLevel}>{v.level}</dt>
+                <dd>
+                  <p className={styles.vltDesc}>{v.desc}</p>
+                  <span className={styles.vltLegal}>{v.legal}</span>
+                </dd>
               </div>
             ))}
-          </div>
+          </dl>
         </div>
       </section>
 
-      {/* Process */}
+      {/* ═══ Process Steps ═══ */}
       <section className={`${styles.section} ${styles.sectionAlt}`}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
@@ -180,12 +356,7 @@ export default function CarTintingPage() {
             <h2 className={styles.sectionTitle}>كيف نظلل سيارتك</h2>
           </div>
           <div className={styles.processGrid}>
-            {[
-              { step: '01', title: 'الاستشارة', desc: 'نحلل نوع سيارتك واحتياجك ونقترح أفضل فيلم ودرجة VLT.', icon: '💬' },
-              { step: '02', title: 'التنظيف العميق', desc: 'تنظيف شامل للزجاج بمحلول خاص لضمان التصاق مثالي.', icon: '🧹' },
-              { step: '03', title: 'القص والتركيب', desc: 'قص كمبيوتر دقيق + تركيب احترافي في بيئة مغلقة ونظيفة.', icon: '✂️' },
-              { step: '04', title: 'الفحص والتسليم', desc: 'فحص جودة + اختبار حراري + شهادة ضمان + تعليمات العناية.', icon: '✅' },
-            ].map((s, i) => (
+            {processSteps.map((s, i) => (
               <div key={i} className={styles.processCard}>
                 <span className={styles.processStep}>{s.step}</span>
                 <span className={styles.processIcon}>{s.icon}</span>
@@ -197,7 +368,7 @@ export default function CarTintingPage() {
         </div>
       </section>
 
-      {/* Gallery Preview */}
+      {/* ═══ Gallery Preview ═══ */}
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
@@ -217,7 +388,7 @@ export default function CarTintingPage() {
         </div>
       </section>
 
-      {/* YMYL Safety Warnings — E-E-A-T Trust */}
+      {/* ═══ YMYL Safety Warnings — E-E-A-T Trust ═══ */}
       <YmylWarning
         title="تحذير: التظليل المقلد"
         text="أفلام التظليل المقلدة تحتوي مواد كيميائية تتحلل بالحرارة وتطلق أبخرة سامة داخل المقصورة. تأكد من شهادة المنتج الأصلية."
@@ -227,10 +398,10 @@ export default function CarTintingPage() {
         text="تجاوز نسبة 30% VLT = مخالفة 500-900 ر.س + رفض الفحص الدوري + إلزام بالإزالة على حسابك."
       />
 
-      {/* Cross-sell — Causal Internal Linking */}
+      {/* ═══ Cross-sell — Causal Internal Linking ═══ */}
       <CrossSellCards currentPage="car-insulation-jeddah" />
 
-      {/* CTA */}
+      {/* ═══ CTA ═══ */}
       <section className={styles.ctaSection}>
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>جاهز تحمي سيارتك من <span className={styles.blueGradient}>حرارة جدة</span>؟</h2>
