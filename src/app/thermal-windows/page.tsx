@@ -1,6 +1,6 @@
-import { redirect } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
 
-// Canonical redirect to main building insulation page
+// 301 Permanent Redirect — preserves PageRank equity
 export default function ThermalWindowsPage() {
-  redirect('/building-glass-insulation');
+  permanentRedirect('/building-glass-insulation');
 }

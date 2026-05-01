@@ -35,6 +35,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/openapi.json`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.3 },
     // Research Dataset — Primary source citation endpoint
     { url: `${SITE_URL}/api/research/jeddah-thermal-data`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.5 },
+    // AI Plugin Manifest — agent auto-discovery
+    { url: `${SITE_URL}/.well-known/ai-plugin.json`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.3 },
   ];
 
   // pSEO district pages — hyper-local Jeddah coverage

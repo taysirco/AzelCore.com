@@ -1,6 +1,6 @@
-import { redirect } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
 
-// Canonical redirect to main car tinting page
+// 301 Permanent Redirect — preserves PageRank equity
 export default function ThermalCarsPage() {
-  redirect('/car-insulation-jeddah');
+  permanentRedirect('/car-insulation-jeddah');
 }
