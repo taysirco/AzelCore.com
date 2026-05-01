@@ -3,6 +3,8 @@
   "short_name": "عزل كور",
   "description": "وكيل جونسون المعتمد في جدة — تظليل سيارات بأفلام نانو سيراميك أمريكية، عزل زجاج مباني، ضمان 10 سنوات",
   "start_url": "/",
+  "id": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0a0e17",
   "theme_color": "#0066cc",

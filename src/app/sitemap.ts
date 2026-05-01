@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next';
 import { jeddahDistricts } from '@/data/local-jeddah';
-
-const SITE_URL = 'https://azelcore.com';
+import { SITE_URL } from '@/lib/constants';
 
 // Static last-modified date — update manually after significant content changes
 const LAST_MODIFIED = '2026-05-01';
@@ -26,9 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/gallery`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/about`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.7 },
     { url: `${SITE_URL}/contact`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.6 },
-    // Redirect landing pages — included for crawl completeness
-    { url: `${SITE_URL}/thermal-cars`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.4 },
-    { url: `${SITE_URL}/thermal-windows`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.4 },
     // LLM Direct Feed — AI crawler discovery
     { url: `${SITE_URL}/llms.txt`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.3 },
     // Agentic Tool Protocol — OpenAPI spec for AI agent discovery
