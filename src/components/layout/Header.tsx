@@ -29,8 +29,8 @@ export default function Header() {
             <Image
               src="/images/azelcore-logo.png"
               alt="عزل كور — تظليل وعزل حراري احترافي"
-              width={140}
-              height={40}
+              width={170}
+              height={48}
               priority
             />
           </Link>
