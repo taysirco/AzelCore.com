@@ -103,8 +103,8 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className={styles.ctaSection}>
+      {/* CTA — data-nosnippet (vector density) */}
+      <section className={styles.ctaSection} data-nosnippet>
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>عجبك شغلنا؟</h2>
           <p className={styles.ctaSubtitle}>سيارتك أو مبناك ممكن يكون المشروع القادم — تواصل معنا الآن.</p>

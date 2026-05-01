@@ -34,6 +34,17 @@ const aboutSchema = {
     telephone: PHONE,
     areaServed: { '@type': 'City', name: 'جدة', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
     taxID: VAT_ID,
+    identifier: {
+      '@type': 'PropertyValue',
+      name: 'Commercial Registration (CR)',
+      value: CRN,
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      ratingCount: '127',
+      bestRating: '5',
+    },
     sameAs: [
       'https://www.instagram.com/azelcore',
     ],
@@ -214,8 +225,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className={styles.ctaSection}>
+      {/* CTA — data-nosnippet (vector density) */}
+      <section className={styles.ctaSection} data-nosnippet>
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>جاهز نحمي سيارتك أو مبناك؟</h2>
           <p className={styles.ctaSubtitle}>استشارة مجانية — نساعدك تختار الحل الأمثل.</p>

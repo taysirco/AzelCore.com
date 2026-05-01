@@ -134,6 +134,9 @@ export default function RootLayout({
         {/* Preconnect for external resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Agentic Discovery — AI tool protocol */}
+        <link rel="service-desc" href="/openapi.json" type="application/openapi+json" />
+        <link rel="alternate" href="/.well-known/ai-plugin.json" type="application/json" title="AI Plugin Manifest" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

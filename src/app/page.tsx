@@ -12,7 +12,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import LiveReviews from '@/components/sections/LiveReviews';
 import ScrollReveal from '@/components/ui/ScrollReveal';
-import { SITE_URL, GEO, ADDRESS_STRUCTURED, CRN, VAT_ID, PHONE } from '@/lib/constants';
+import { SITE_URL, GEO, ADDRESS_STRUCTURED, CRN, VAT_ID, PHONE, WHATSAPP_LINK } from '@/lib/constants';
 
 export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
@@ -46,6 +46,11 @@ const homeGraphSchema = {
       areaServed: { '@type': 'City', name: 'جدة', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
       paymentAccepted: 'Cash, Credit Card, Apple Pay, Mada',
       taxID: VAT_ID,
+      identifier: {
+        '@type': 'PropertyValue',
+        name: 'Commercial Registration (CR)',
+        value: CRN,
+      },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'خدمات العزل والتظليل',
@@ -65,7 +70,7 @@ const homeGraphSchema = {
         '@type': 'ReserveAction',
         target: {
           '@type': 'EntryPoint',
-          urlTemplate: 'https://wa.me/966564612017?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D9%8A%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D8%B2%D9%84%20%D9%88%D8%A7%D9%84%D8%AA%D8%B8%D9%84%D9%8A%D9%84',
+          urlTemplate: WHATSAPP_LINK,
           actionPlatform: [
             'http://schema.org/DesktopWebPlatform',
             'http://schema.org/MobileWebPlatform',

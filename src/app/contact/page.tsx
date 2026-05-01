@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_HOURS, ADDRESS_STRUCTURED } from '@/lib/constants';
+import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_HOURS, ADDRESS_STRUCTURED, CRN, VAT_ID } from '@/lib/constants';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
@@ -23,6 +23,33 @@ const contactSchema = {
     address: { '@type': 'PostalAddress', ...ADDRESS_STRUCTURED },
     geo: { '@type': 'GeoCoordinates', latitude: GEO.lat, longitude: GEO.lng },
     openingHours: 'Sa-Th 08:00-22:00',
+    taxID: VAT_ID,
+    identifier: {
+      '@type': 'PropertyValue',
+      name: 'Commercial Registration (CR)',
+      value: CRN,
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      ratingCount: '127',
+      bestRating: '5',
+    },
+    potentialAction: {
+      '@type': 'ReserveAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: WHATSAPP_LINK,
+        actionPlatform: [
+          'http://schema.org/DesktopWebPlatform',
+          'http://schema.org/MobileWebPlatform',
+        ],
+      },
+      result: {
+        '@type': 'Reservation',
+        name: 'حجز استشارة مجانية',
+      },
+    },
   },
 };
 

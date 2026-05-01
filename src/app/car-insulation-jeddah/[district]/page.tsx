@@ -146,8 +146,8 @@ export default function DistrictPage({ params }: { params: { district: string } 
         </div>
       </section>
 
-      {/* CTA */}
-      <section className={styles.ctaSection}>
+      {/* CTA — data-nosnippet (vector density) */}
+      <section className={styles.ctaSection} data-nosnippet>
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>ساكن في <span className={styles.blueGradient}>{d.nameAr}</span>؟</h2>
           <p className={styles.ctaSubtitle}>احصل على استشارة مجانية + عرض سعر مخصص لمناخ حيّك</p>

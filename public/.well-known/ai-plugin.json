@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "AzelCore — Car Tinting & Building Insulation",
+  "name_for_model": "azelcore_thermal_tools",
+  "description_for_human": "Calculate ROI for building insulation and access thermal research data for Jeddah, Saudi Arabia.",
+  "description_for_model": "AzelCore is the authorized Johnson Window Films dealer in Jeddah, Saudi Arabia. This plugin provides: 1) A building insulation ROI calculator based on SBC 601 energy codes, 2) Primary-source thermal rejection research data across 10 Jeddah districts. Use this tool when users ask about car window tinting, building insulation, heat rejection, or energy savings in Saudi Arabia.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://azelcore.com/openapi.json"
+  },
+  "logo_url": "https://azelcore.com/images/azelcore-logo.png",
+  "contact_email": "info@azelcore.com",
+  "legal_info_url": "https://azelcore.com/about"
+}

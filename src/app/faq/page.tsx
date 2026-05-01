@@ -100,8 +100,8 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* Still Have Questions */}
-      <section className={styles.ctaSection}>
+      {/* Still Have Questions — data-nosnippet (vector density) */}
+      <section className={styles.ctaSection} data-nosnippet>
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>ما لقيت إجابة سؤالك؟</h2>
           <p className={styles.ctaSubtitle}>تواصل معنا مباشرة — نرد في أقل من 5 دقائق.</p>
