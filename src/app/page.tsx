@@ -18,68 +18,54 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
 };
 
-// LocalBusiness Schema for home
-const localBusinessSchema = {
+// Unified @graph — LocalBusiness + ServicesItemList
+const homeGraphSchema = {
   '@context': 'https://schema.org',
-  '@type': 'AutoRepair',
-  '@id': `${SITE_URL}/#organization`,
-  name: 'عزل كور — تظليل سيارات جدة',
-  alternateName: 'AzelCore',
-  legalName: 'مؤسسة عزل كور للتجارة',
-  url: SITE_URL,
-  telephone: PHONE,
-  image: `${SITE_URL}/images/og-cover.png`,
-  priceRange: '$$',
-  address: {
-    '@type': 'PostalAddress',
-    ...ADDRESS_STRUCTURED,
-  },
-  geo: { '@type': 'GeoCoordinates', latitude: GEO.lat.toString(), longitude: GEO.lng.toString() },
-  openingHoursSpecification: {
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-    opens: '08:00',
-    closes: '22:00',
-  },
-  areaServed: { '@type': 'City', name: 'جدة', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
-  paymentAccepted: 'Cash, Credit Card, Apple Pay, Mada',
-  taxID: VAT_ID,
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'خدمات العزل والتظليل',
-    itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'تظليل سيارات نانو سيراميك' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'عزل زجاج مباني' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'عازل جونسون Supreme IR' } },
-    ],
-  },
-};
-
-// Services ItemList Schema — Tier 5 (drives SERP carousel)
-const servicesListSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: 'خدمات عزل كور',
-  itemListOrder: 'https://schema.org/ItemListOrderAscending',
-  numberOfItems: 3,
-  itemListElement: [
+  '@graph': [
     {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'تظليل سيارات جدة — نانو سيراميك',
-      url: `${SITE_URL}/car-insulation-jeddah`,
+      '@type': 'AutoRepair',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'عزل كور — تظليل سيارات جدة',
+      alternateName: 'AzelCore',
+      legalName: 'مؤسسة عزل كور للتجارة',
+      url: SITE_URL,
+      telephone: PHONE,
+      image: `${SITE_URL}/images/og-cover.png`,
+      priceRange: '$$',
+      address: {
+        '@type': 'PostalAddress',
+        ...ADDRESS_STRUCTURED,
+      },
+      geo: { '@type': 'GeoCoordinates', latitude: GEO.lat.toString(), longitude: GEO.lng.toString() },
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+        opens: '08:00',
+        closes: '22:00',
+      },
+      areaServed: { '@type': 'City', name: 'جدة', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
+      paymentAccepted: 'Cash, Credit Card, Apple Pay, Mada',
+      taxID: VAT_ID,
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'خدمات العزل والتظليل',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'تظليل سيارات نانو سيراميك' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'عزل زجاج مباني' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'عازل جونسون Supreme IR' } },
+        ],
+      },
     },
     {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'عزل زجاج واجهات المباني',
-      url: `${SITE_URL}/building-glass-insulation`,
-    },
-    {
-      '@type': 'ListItem',
-      position: 3,
-      name: 'جونسون وندو فيلم — الوكيل المعتمد',
-      url: `${SITE_URL}/johnson-authorized-dealer`,
+      '@type': 'ItemList',
+      name: 'خدمات عزل كور',
+      itemListOrder: 'https://schema.org/ItemListOrderAscending',
+      numberOfItems: 3,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'تظليل سيارات جدة — نانو سيراميك', url: `${SITE_URL}/car-insulation-jeddah` },
+        { '@type': 'ListItem', position: 2, name: 'عزل زجاج واجهات المباني', url: `${SITE_URL}/building-glass-insulation` },
+        { '@type': 'ListItem', position: 3, name: 'جونسون وندو فيلم — الوكيل المعتمد', url: `${SITE_URL}/johnson-authorized-dealer` },
+      ],
     },
   ],
 };
@@ -89,11 +75,7 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesListSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeGraphSchema) }}
       />
       <HeroSection />
       <ScrollReveal><StatsSection /></ScrollReveal>

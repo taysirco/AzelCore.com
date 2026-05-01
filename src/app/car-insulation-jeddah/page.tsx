@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SITE_URL, SITE_NAME, SITE_NAME_EN, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, SITE_NAME_EN, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
 import { faqs } from '@/data/faqs';
 import { quickAnswers } from '@/data/quick-answers';
+import { jeddahDistricts } from '@/data/local-jeddah';
 import TldrBait from '@/components/seo/TldrBait';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import YmylWarning from '@/components/seo/YmylWarning';
@@ -87,16 +88,12 @@ const graphSchema = {
       paymentAccepted: 'نقدي, تحويل بنكي, مدى, Apple Pay',
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: 21.5424,
-        longitude: 39.1727,
+        latitude: GEO.lat,
+        longitude: GEO.lng,
       },
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'جدة',
-        addressLocality: 'جدة',
-        addressRegion: 'منطقة مكة المكرمة',
-        postalCode: '23441',
-        addressCountry: 'SA',
+        ...ADDRESS_STRUCTURED,
       },
       openingHoursSpecification: [
         {
@@ -400,6 +397,40 @@ export default function CarTintingPage() {
 
       {/* ═══ Cross-sell — Causal Internal Linking ═══ */}
       <CrossSellCards currentPage="car-insulation-jeddah" />
+
+      {/* ═══ District Hub → Spoke Links — pSEO Internal Linking ═══ */}
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.overline}>تغطية أحياء جدة</span>
+            <h2 className={styles.sectionTitle}>نخدم جميع أحياء جدة — حلول مخصصة لكل حي</h2>
+            <p className={styles.sectionSubtitle}>كل حي له مناخه الخاص — نوصي بالفيلم المثالي حسب الرطوبة والحرارة والقرب من البحر.</p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 'var(--space-4)' }}>
+            {jeddahDistricts.map(d => (
+              <Link
+                key={d.id}
+                href={`/car-insulation-jeddah/${d.id}`}
+                style={{
+                  display: 'block',
+                  padding: 'var(--space-5)',
+                  borderRadius: 'var(--radius-lg)',
+                  background: 'var(--glass-bg)',
+                  border: '1px solid var(--glass-border)',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  transition: 'transform 0.2s, border-color 0.2s',
+                }}
+              >
+                <h3 style={{ fontSize: '1.1rem', marginBottom: 'var(--space-2)' }}>تظليل سيارات {d.nameAr} 🚗</h3>
+                <p style={{ fontSize: '0.85rem', opacity: 0.7, lineHeight: 1.6 }}>
+                  رطوبة {d.humidity} • UV {d.uvIndex} • {d.zone} جدة
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ═══ CTA ═══ */}
       <section className={styles.ctaSection}>

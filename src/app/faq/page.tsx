@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE_URL, WHATSAPP_LINK } from '@/lib/constants';
 import { faqs } from '@/data/faqs';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -11,14 +10,26 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/faq` },
 };
 
-const faqSchema = {
+const faqGraphSchema = {
   '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map(f => ({
-    '@type': 'Question',
-    name: f.question,
-    acceptedAnswer: { '@type': 'Answer', text: f.answer },
-  })),
+  '@graph': [
+    {
+      '@type': 'FAQPage',
+      '@id': `${SITE_URL}/faq#faqpage`,
+      mainEntity: faqs.map(f => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'الأسئلة الشائعة', item: `${SITE_URL}/faq` },
+      ],
+    },
+  ],
 };
 
 const categories = [
@@ -34,11 +45,7 @@ const categories = [
 export default function FAQPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <BreadcrumbSchema items={[
-        { name: 'الرئيسية', href: '/' },
-        { name: 'الأسئلة الشائعة', href: '/faq' },
-      ]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqGraphSchema) }} />
 
       <section className={styles.pageHeader}>
         <div className={styles.container}>

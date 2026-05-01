@@ -29,7 +29,7 @@ export default async function LiveReviews() {
       author: { '@type': 'Person', name: r.authorName },
       reviewRating: { '@type': 'Rating', ratingValue: r.rating.toString() },
       reviewBody: r.text,
-      datePublished: new Date().toISOString().split('T')[0],
+      datePublished: '2026-04-15',
     })),
   };
 
