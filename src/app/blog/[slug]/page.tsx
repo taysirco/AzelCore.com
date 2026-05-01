@@ -135,31 +135,44 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
   const date = '2026-05-01';
   const links = serviceLinks[params.slug] || [];
 
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: title,
-    author: { '@type': 'Person', name: OWNER_NAME },
-    publisher: { '@type': 'Organization', name: SITE_NAME, logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/azelcore-logo.png` } },
-    datePublished: date,
-    dateModified: date,
-    mainEntityOfPage: `${SITE_URL}/blog/${params.slug}`,
-  };
+  const approximateWordCount = (
+    content.intro + ' ' + 
+    content.sections.map(s => s.heading + ' ' + s.body).join(' ') + ' ' + 
+    (content.warning || '') + ' ' + 
+    content.cta
+  ).split(/\s+/).length;
 
-  const breadcrumbSchema = {
+  const articleGraphSchema = {
     '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: 'المدونة', item: `${SITE_URL}/blog` },
-      { '@type': 'ListItem', position: 3, name: title, item: `${SITE_URL}/blog/${params.slug}` },
+    '@graph': [
+      {
+        '@type': 'Article',
+        '@id': `${SITE_URL}/blog/${params.slug}#article`,
+        headline: title,
+        author: { '@type': 'Person', name: OWNER_NAME },
+        publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME, logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/azelcore-logo.png` } },
+        datePublished: date,
+        dateModified: date,
+        mainEntityOfPage: `${SITE_URL}/blog/${params.slug}`,
+        image: `${SITE_URL}/images/blog-${params.slug.split('-').slice(0, 3).join('-')}.png`,
+        inLanguage: 'ar',
+        isPartOf: { '@type': 'WebSite', '@id': `${SITE_URL}/#website` },
+        wordCount: approximateWordCount,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'المدونة', item: `${SITE_URL}/blog` },
+          { '@type': 'ListItem', position: 3, name: title, item: `${SITE_URL}/blog/${params.slug}` },
+        ],
+      },
     ],
   };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleGraphSchema) }} />
 
       <article className={styles.article}>
         <nav className={styles.breadcrumb} aria-label="مسار التنقل">

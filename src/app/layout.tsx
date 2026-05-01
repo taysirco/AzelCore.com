@@ -3,7 +3,7 @@ import { ibmPlexArabic, inter } from '@/lib/fonts';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
-import { SITE_NAME, SITE_NAME_EN, SITE_URL, VAT_ID, PHONE, OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
+import { SITE_NAME, SITE_NAME_EN, SITE_URL, VAT_ID, PHONE, OWNER_NAME, OWNER_TITLE, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
 import BackToTop from '@/components/ui/BackToTop';
 import GeoBanner from '@/components/ui/GeoBanner';
@@ -59,18 +59,24 @@ export const metadata: Metadata = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': `${SITE_URL}/#organization`,
   name: SITE_NAME,
   alternateName: SITE_NAME_EN,
+  legalName: 'مؤسسة عزل كور للتجارة',
   url: SITE_URL,
   logo: `${SITE_URL}/images/azelcore-logo.png`,
   foundingDate: '2024',
   taxID: VAT_ID,
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'جدة',
-    addressRegion: 'منطقة مكة المكرمة',
-    addressCountry: 'SA',
+    ...ADDRESS_STRUCTURED,
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: GEO.lat,
+    longitude: GEO.lng,
+  },
+  areaServed: { '@type': 'City', name: 'جدة', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: PHONE,
@@ -112,6 +118,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+        {/* Preconnect for external resources */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
