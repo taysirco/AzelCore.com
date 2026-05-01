@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} — تظليل وعزل حراري احترافي في جدة`,
     description: 'وكيل جونسون المعتمد — أفلام عزل نانو سيراميك أمريكية مع ضمان عمر السيارة',
-    images: [{ url: '/images/og-cover.webp', width: 1200, height: 630, alt: 'عزل كور — تظليل وعزل حراري جدة' }],
+    images: [{ url: '/images/og-cover.png', width: 1200, height: 630, alt: 'عزل كور — تظليل وعزل حراري جدة' }],
   },
   twitter: {
     card: 'summary_large_image',

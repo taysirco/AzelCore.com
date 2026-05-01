@@ -54,7 +54,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image src="/images/about-workshop-interior.webp" alt="ورشة عزل كور — تظليل سيارات جدة" fill priority style={{ objectFit: 'cover' }} />
+          <Image src="/images/about-workshop-interior.png" alt="ورشة عزل كور — تظليل سيارات جدة" fill priority style={{ objectFit: 'cover' }} />
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>
@@ -90,7 +90,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className={styles.storyImage}>
-              <Image src="/images/why-choose-us-workshop.webp" alt="فريق عزل كور في الورشة" width={500} height={400} style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: 'var(--radius-lg)' }} />
+              <Image src="/images/why-choose-us-workshop.png" alt="فريق عزل كور في الورشة" width={500} height={400} style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: 'var(--radius-lg)' }} />
             </div>
           </div>
         </div>

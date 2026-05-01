@@ -24,7 +24,7 @@ const localBusinessSchema = {
   alternateName: 'AzelCore',
   url: SITE_URL,
   telephone: '+966564612017',
-  image: `${SITE_URL}/images/og-cover.webp`,
+  image: `${SITE_URL}/images/og-cover.png`,
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',

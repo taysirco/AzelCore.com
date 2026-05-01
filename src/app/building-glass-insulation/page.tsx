@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: 'عزل واجهات زجاج المباني — توفير 40% كهرباء | عزل كور جدة',
     description: 'أفلام نانو سيراميك للمباني تحجب 97% حرارة — ضمان 15 سنة',
     url: `${SITE_URL}/building-glass-insulation`,
-    images: [{ url: '/images/hero-building-glass-insulation.webp', width: 1200, height: 630 }],
+    images: [{ url: '/images/hero-building-glass-insulation.png', width: 1200, height: 630 }],
   },
 };
 
@@ -65,7 +65,7 @@ export default function BuildingInsulationPage() {
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image src="/images/hero-building-glass-insulation.webp" alt="عزل واجهات زجاج مبنى تجاري في جدة" fill priority style={{ objectFit: 'cover' }} />
+          <Image src="/images/hero-building-glass-insulation.png" alt="عزل واجهات زجاج مبنى تجاري في جدة" fill priority style={{ objectFit: 'cover' }} />
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>
@@ -179,7 +179,7 @@ export default function BuildingInsulationPage() {
           <div className={styles.galleryGrid}>
             {['building-tint-before-after', 'commercial-facade-tinting', 'villa-window-insulation-jeddah', 'office-window-tinting', 'reflective-film-building', 'gallery-building-after-01'].map((img, i) => (
               <div key={i} className={styles.galleryItem}>
-                <Image src={`/images/${img}.webp`} alt={`عزل واجهات مباني جدة — مشروع ${i + 1}`} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <Image src={`/images/${img}.png`} alt={`عزل واجهات مباني جدة — مشروع ${i + 1}`} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
               </div>
             ))}
           </div>

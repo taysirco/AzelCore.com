@@ -11,27 +11,27 @@ export const metadata: Metadata = {
 };
 
 const carPhotos = [
-  { src: 'gallery-car-before-01.webp', caption: 'سيارة قبل التظليل' },
-  { src: 'gallery-car-after-01.webp', caption: 'سيارة بعد تظليل جونسون Supreme IR' },
-  { src: 'gallery-car-before-02.webp', caption: 'SUV قبل التظليل' },
-  { src: 'gallery-car-after-02.webp', caption: 'SUV بعد تظليل نانو سيراميك' },
-  { src: 'gallery-car-before-03.webp', caption: 'سيارة سيدان قبل العزل' },
-  { src: 'gallery-car-after-03.webp', caption: 'سيارة سيدان بعد التظليل الكامل' },
-  { src: 'nano-ceramic-tint-applied.webp', caption: 'فيلم نانو سيراميك أثناء التركيب' },
-  { src: 'thermal-camera-car-test.webp', caption: 'اختبار كاميرا حرارية — قبل وبعد' },
-  { src: 'car-tint-heat-comparison.webp', caption: 'مقارنة حرارية — فيلم عادي vs نانو سيراميك' },
+  { src: 'gallery-car-before-01.png', caption: 'سيارة قبل التظليل' },
+  { src: 'gallery-car-after-01.png', caption: 'سيارة بعد تظليل جونسون Supreme IR' },
+  { src: 'gallery-car-before-02.png', caption: 'SUV قبل التظليل' },
+  { src: 'gallery-car-after-02.png', caption: 'SUV بعد تظليل نانو سيراميك' },
+  { src: 'gallery-car-before-03.png', caption: 'سيارة سيدان قبل العزل' },
+  { src: 'gallery-car-after-03.png', caption: 'سيارة سيدان بعد التظليل الكامل' },
+  { src: 'nano-ceramic-tint-applied.png', caption: 'فيلم نانو سيراميك أثناء التركيب' },
+  { src: 'thermal-camera-car-test.png', caption: 'اختبار كاميرا حرارية — قبل وبعد' },
+  { src: 'car-tint-heat-comparison.png', caption: 'مقارنة حرارية — فيلم عادي vs نانو سيراميك' },
 ];
 
 const buildingPhotos = [
-  { src: 'gallery-building-before-01.webp', caption: 'مبنى قبل العزل' },
-  { src: 'gallery-building-after-01.webp', caption: 'مبنى بعد عزل الواجهة' },
-  { src: 'gallery-building-before-02.webp', caption: 'فيلا قبل العزل' },
-  { src: 'gallery-building-after-02.webp', caption: 'فيلا بعد تركيب فيلم عاكس' },
-  { src: 'building-tint-before-after.webp', caption: 'قبل وبعد — واجهة تجارية' },
-  { src: 'commercial-facade-tinting.webp', caption: 'عزل واجهة مبنى تجاري' },
-  { src: 'villa-window-insulation-jeddah.webp', caption: 'عزل نوافذ فيلا في جدة' },
-  { src: 'office-window-tinting.webp', caption: 'عزل مكاتب إدارية' },
-  { src: 'reflective-film-building.webp', caption: 'فيلم عاكس على واجهة زجاجية' },
+  { src: 'gallery-building-before-01.png', caption: 'مبنى قبل العزل' },
+  { src: 'gallery-building-after-01.png', caption: 'مبنى بعد عزل الواجهة' },
+  { src: 'gallery-building-before-02.png', caption: 'فيلا قبل العزل' },
+  { src: 'gallery-building-after-02.png', caption: 'فيلا بعد تركيب فيلم عاكس' },
+  { src: 'building-tint-before-after.png', caption: 'قبل وبعد — واجهة تجارية' },
+  { src: 'commercial-facade-tinting.png', caption: 'عزل واجهة مبنى تجاري' },
+  { src: 'villa-window-insulation-jeddah.png', caption: 'عزل نوافذ فيلا في جدة' },
+  { src: 'office-window-tinting.png', caption: 'عزل مكاتب إدارية' },
+  { src: 'reflective-film-building.png', caption: 'فيلم عاكس على واجهة زجاجية' },
 ];
 
 const imageListSchema = {

@@ -17,8 +17,8 @@ export const eeatSignals = {
       rule: "صور حقيقية فقط — لا ستوك، لا AI Generated",
       exifRequired: true,
       gpsRequired: true, // إحداثيات جدة
-      namingConvention: "[الخدمة]-[التفصيل]-[الموقع]-[السنة].webp",
-      example: "nano-ceramic-lexus-es-jeddah-2026.webp",
+      namingConvention: "[الخدمة]-[التفصيل]-[الموقع]-[السنة].png",
+      example: "nano-ceramic-lexus-es-jeddah-2026.png",
     },
     beforeAfterGallery: {
       minPairs: 5,
@@ -57,7 +57,7 @@ export const eeatSignals = {
         name: "محمد الهادي",
         title: "فني عزل وتظليل معتمد — وكيل جونسون الرسمي",
         certification: "Johnson Authorized Dealer + IWFA",
-        photo: "about-owner-portrait.webp",
+        photo: "about-owner-portrait.png",
       },
     },
   },
