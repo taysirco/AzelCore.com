@@ -1,0 +1,88 @@
+/* ═══ Building Insulation Page ═══ */
+
+.hero { position: relative; min-height: 75vh; display: flex; align-items: center; }
+.heroBg { position: absolute; inset: 0; z-index: 0; }
+.heroOverlay { position: absolute; inset: 0; background: linear-gradient(135deg, hsla(220,25%,6%,0.88), hsla(220,25%,6%,0.55)); }
+.heroContent { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: var(--space-12) var(--space-6); text-align: center; }
+
+.breadcrumb { font-size: var(--text-sm); color: hsla(0,0%,100%,0.6); margin-bottom: var(--space-5); }
+.breadcrumb a { color: hsla(0,0%,100%,0.7); transition: color 0.2s; }
+.breadcrumb a:hover { color: white; }
+
+.heroTitle { font-size: var(--text-5xl); font-weight: 700; color: white; line-height: 1.2; margin-bottom: var(--space-5); }
+.greenGradient { background: linear-gradient(135deg, hsl(150,70%,45%), hsl(150,70%,65%)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.heroSubtitle { font-size: var(--text-lg); color: hsla(0,0%,100%,0.8); line-height: 1.8; margin-bottom: var(--space-8); }
+.heroActions { display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap; }
+
+.primaryBtn { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-4) var(--space-8); background: linear-gradient(135deg, hsl(142,70%,38%), hsl(142,70%,30%)); color: white; border-radius: var(--radius-lg); font-weight: 700; font-size: var(--text-base); transition: all var(--duration-normal) var(--ease-out); box-shadow: 0 4px 20px hsla(142,70%,40%,0.3); }
+.primaryBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px hsla(142,70%,40%,0.4); }
+.secondaryBtn { padding: var(--space-4) var(--space-6); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); color: var(--text); font-weight: 500; transition: all var(--duration-fast) ease; }
+.secondaryBtn:hover { background: var(--surface-hover); }
+
+/* Stats */
+.statsSection { padding: var(--space-12) 0; background: var(--surface-elevated); border-bottom: 1px solid var(--border); }
+.statsGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-6); }
+.statCard { text-align: center; padding: var(--space-6); }
+.statValue { display: block; font-family: var(--font-en); font-size: var(--text-4xl); font-weight: 800; background: linear-gradient(135deg, hsl(150,70%,45%), var(--primary-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: var(--space-2); }
+.statLabel { display: block; font-size: var(--text-sm); font-weight: 600; margin-bottom: var(--space-1); }
+.statDesc { font-size: var(--text-xs); color: var(--text-muted); }
+
+/* Sections */
+.section { padding: var(--space-24) 0; }
+.sectionAlt { background: var(--bg-secondary); }
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-6); }
+.sectionHeader { text-align: center; margin-bottom: var(--space-12); }
+.overline { display: inline-block; font-size: var(--text-sm); font-weight: 600; color: hsl(150,70%,45%); margin-bottom: var(--space-3); text-transform: uppercase; letter-spacing: 0.1em; }
+.sectionTitle { font-size: var(--text-4xl); font-weight: 700; margin-bottom: var(--space-4); }
+
+/* Building Types */
+.typesGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); }
+.typeCard { padding: var(--space-6); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); text-align: center; transition: all var(--duration-normal) var(--ease-out); }
+.typeCard:hover { transform: translateY(-4px); border-color: hsl(150,70%,45%); box-shadow: 0 4px 20px hsla(150,70%,45%,0.1); }
+.typeIcon { font-size: var(--text-4xl); display: block; margin-bottom: var(--space-4); }
+.typeTitle { font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-2); }
+.typeDesc { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.7; }
+
+/* Film Table */
+.filmTable { overflow-x: auto; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--surface); }
+.table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 500px; }
+.table th { padding: var(--space-4) var(--space-5); background: var(--surface-elevated); font-weight: 600; color: var(--text-muted); text-align: right; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
+.table td { padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--border); color: var(--text-secondary); }
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover { background: var(--surface-hover); }
+.bestRow { background: hsla(150,70%,45%,0.04); }
+.filmName { font-weight: 600; color: var(--text); }
+.bestRow .filmName { color: hsl(150,70%,45%); }
+
+/* Benefits */
+.benefitsGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+.benefitCard { padding: var(--space-6); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); text-align: center; transition: all var(--duration-normal) var(--ease-out); }
+.benefitCard:hover { transform: translateY(-4px); border-color: hsl(150,70%,45%); }
+.benefitIcon { font-size: var(--text-3xl); display: block; margin-bottom: var(--space-3); }
+.benefitTitle { font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-2); }
+.benefitDesc { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.7; }
+
+/* Gallery */
+.galleryGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.galleryItem { border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 4/3; background: var(--surface); transition: transform var(--duration-normal) var(--ease-out); }
+.galleryItem:hover { transform: scale(1.02); }
+
+/* CTA */
+.ctaSection { padding: var(--space-20) 0; text-align: center; background: linear-gradient(135deg, var(--bg-secondary), hsla(150,70%,45%,0.03)); }
+.ctaTitle { font-size: var(--text-4xl); font-weight: 700; margin-bottom: var(--space-4); }
+.ctaSubtitle { font-size: var(--text-lg); color: var(--text-secondary); margin-bottom: var(--space-8); }
+.ctaActions { display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap; }
+
+@media (max-width: 768px) {
+  .heroTitle { font-size: var(--text-4xl); }
+  .statsGrid { grid-template-columns: 1fr 1fr; }
+  .typesGrid { grid-template-columns: 1fr 1fr; }
+  .benefitsGrid { grid-template-columns: 1fr 1fr; }
+  .galleryGrid { grid-template-columns: 1fr 1fr; }
+  .heroActions, .ctaActions { flex-direction: column; align-items: center; }
+  .primaryBtn, .secondaryBtn { width: 100%; text-align: center; justify-content: center; }
+  .sectionTitle, .ctaTitle { font-size: var(--text-3xl); }
+}
+@media (max-width: 480px) {
+  .statsGrid, .typesGrid, .benefitsGrid, .galleryGrid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,111 @@
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { SITE_URL, WHATSAPP_LINK } from '@/lib/constants';
+import styles from './page.module.css';
+
+export const metadata: Metadata = {
+  title: 'معرض أعمالنا — تظليل سيارات وعزل مباني في جدة',
+  description: 'شاهد أعمالنا في تظليل السيارات وعزل واجهات المباني في جدة. صور حقيقية قبل وبعد — أفلام جونسون و 3M الأمريكية.',
+  alternates: { canonical: `${SITE_URL}/gallery` },
+};
+
+const carPhotos = [
+  { src: 'gallery-car-before-01.webp', caption: 'سيارة قبل التظليل' },
+  { src: 'gallery-car-after-01.webp', caption: 'سيارة بعد تظليل جونسون Supreme IR' },
+  { src: 'gallery-car-before-02.webp', caption: 'SUV قبل التظليل' },
+  { src: 'gallery-car-after-02.webp', caption: 'SUV بعد تظليل نانو سيراميك' },
+  { src: 'gallery-car-before-03.webp', caption: 'سيارة سيدان قبل العزل' },
+  { src: 'gallery-car-after-03.webp', caption: 'سيارة سيدان بعد التظليل الكامل' },
+  { src: 'nano-ceramic-tint-applied.webp', caption: 'فيلم نانو سيراميك أثناء التركيب' },
+  { src: 'thermal-camera-car-test.webp', caption: 'اختبار كاميرا حرارية — قبل وبعد' },
+  { src: 'car-tint-heat-comparison.webp', caption: 'مقارنة حرارية — فيلم عادي vs نانو سيراميك' },
+];
+
+const buildingPhotos = [
+  { src: 'gallery-building-before-01.webp', caption: 'مبنى قبل العزل' },
+  { src: 'gallery-building-after-01.webp', caption: 'مبنى بعد عزل الواجهة' },
+  { src: 'gallery-building-before-02.webp', caption: 'فيلا قبل العزل' },
+  { src: 'gallery-building-after-02.webp', caption: 'فيلا بعد تركيب فيلم عاكس' },
+  { src: 'building-tint-before-after.webp', caption: 'قبل وبعد — واجهة تجارية' },
+  { src: 'commercial-facade-tinting.webp', caption: 'عزل واجهة مبنى تجاري' },
+  { src: 'villa-window-insulation-jeddah.webp', caption: 'عزل نوافذ فيلا في جدة' },
+  { src: 'office-window-tinting.webp', caption: 'عزل مكاتب إدارية' },
+  { src: 'reflective-film-building.webp', caption: 'فيلم عاكس على واجهة زجاجية' },
+];
+
+const imageListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  name: 'معرض أعمال عزل كور — جدة',
+  description: 'صور حقيقية لأعمال تظليل السيارات وعزل المباني في جدة',
+  image: [...carPhotos, ...buildingPhotos].map(p => ({
+    '@type': 'ImageObject',
+    url: `${SITE_URL}/images/${p.src}`,
+    caption: p.caption,
+  })),
+};
+
+export default function GalleryPage() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(imageListSchema) }} />
+
+      {/* Header */}
+      <section className={styles.pageHeader}>
+        <div className={styles.container}>
+          <nav className={styles.breadcrumb} aria-label="مسار التنقل">
+            <Link href="/">الرئيسية</Link> / <span>أعمالنا</span>
+          </nav>
+          <h1 className={styles.pageTitle}>معرض <span className={styles.highlight}>أعمالنا</span></h1>
+          <p className={styles.pageSubtitle}>صور حقيقية قبل وبعد — كل مشروع بأيدي فريقنا في جدة.</p>
+        </div>
+      </section>
+
+      {/* Car Gallery */}
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.overline}>🚗 تظليل سيارات</span>
+            <h2 className={styles.sectionTitle}>أعمال تظليل السيارات</h2>
+          </div>
+          <div className={styles.galleryGrid}>
+            {carPhotos.map((p, i) => (
+              <figure key={i} className={styles.galleryItem}>
+                <Image src={`/images/${p.src}`} alt={p.caption} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <figcaption className={styles.caption}>{p.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Building Gallery */}
+      <section className={`${styles.section} ${styles.sectionAlt}`}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.overline}>🏢 عزل مباني</span>
+            <h2 className={styles.sectionTitle}>مشاريع عزل واجهات المباني</h2>
+          </div>
+          <div className={styles.galleryGrid}>
+            {buildingPhotos.map((p, i) => (
+              <figure key={i} className={styles.galleryItem}>
+                <Image src={`/images/${p.src}`} alt={p.caption} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <figcaption className={styles.caption}>{p.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className={styles.ctaSection}>
+        <div className={styles.container}>
+          <h2 className={styles.ctaTitle}>عجبك شغلنا؟</h2>
+          <p className={styles.ctaSubtitle}>سيارتك أو مبناك ممكن يكون المشروع القادم — تواصل معنا الآن.</p>
+          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>تواصل عبر واتساب</a>
+        </div>
+      </section>
+    </>
+  );
+}

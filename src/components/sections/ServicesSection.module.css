@@ -1,0 +1,94 @@
+.section { padding: var(--space-24) 0; }
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-6); }
+.header { text-align: center; margin-bottom: var(--space-16); }
+.overline {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--primary-light);
+  margin-bottom: var(--space-3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.title {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  line-height: 1.2;
+}
+.subtitle {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+.card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+.card:hover { transform: translateY(-6px); }
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--duration-normal) ease;
+}
+.card:hover .cardGlow { opacity: 1; }
+.cardContent {
+  position: relative;
+  padding: var(--space-8);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  height: 100%;
+  transition: border-color var(--duration-normal) ease;
+}
+.card:hover .cardContent { border-color: inherit; }
+.featured .cardContent {
+  border-color: hsla(35, 95%, 55%, 0.3);
+  background: linear-gradient(135deg, var(--surface), hsla(35, 95%, 55%, 0.03));
+}
+.icon { font-size: var(--text-3xl); display: block; margin-bottom: var(--space-4); }
+.cardTitle {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+.cardDesc {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--space-5);
+}
+.features { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5); }
+.featureTag {
+  padding: var(--space-1) var(--space-3);
+  background: var(--surface-hover);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.featured .featureTag {
+  background: hsla(35, 95%, 55%, 0.1);
+  color: var(--secondary-light);
+}
+.cardArrow {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--primary-light);
+  transition: color var(--duration-fast) ease;
+}
+.card:hover .cardArrow { color: var(--primary); }
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  .title { font-size: var(--text-3xl); }
+}

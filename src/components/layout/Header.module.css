@@ -1,0 +1,187 @@
+/* ═══ Header — Glassmorphism ═══ */
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.scrolled {
+  background: var(--glass);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.logo { display: flex; align-items: center; flex-shrink: 0; }
+.logo img { height: 36px; width: auto; }
+
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.navLink {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all var(--duration-fast) var(--ease-out);
+  position: relative;
+}
+
+.navLink:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  border-radius: var(--radius-full);
+  transition: width var(--duration-normal) var(--ease-out);
+}
+
+.navLink:hover::after { width: 60%; }
+
+/* Actions */
+.actions { display: flex; align-items: center; gap: var(--space-3); }
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  background: hsl(142, 70%, 40%);
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: all var(--duration-fast) var(--ease-out);
+  white-space: nowrap;
+}
+
+.ctaBtn:hover {
+  background: hsl(142, 70%, 35%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px hsla(142, 70%, 40%, 0.3);
+}
+
+.ctaBtn svg { flex-shrink: 0; }
+
+/* Burger */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--space-2);
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.burgerOpen span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.burgerOpen span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burgerOpen span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: hsla(0, 0%, 0%, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) ease;
+}
+
+.overlayVisible { opacity: 1; pointer-events: auto; }
+
+/* Mobile Menu */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(320px, 85vw);
+  height: 100vh;
+  z-index: 1001;
+  background: var(--surface);
+  padding: calc(var(--header-height) + var(--space-8)) var(--space-6) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: right var(--duration-slow) var(--ease-out);
+  overflow-y: auto;
+}
+
+.mobileMenuOpen { right: 0; }
+
+.mobileLink {
+  padding: var(--space-4) var(--space-4);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  transition: all var(--duration-fast) ease;
+  opacity: 0;
+  animation: fadeUp 0.4s var(--ease-out) both;
+}
+
+.mobileLink:hover { color: var(--text); background: var(--surface-hover); }
+
+.mobileCta {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: hsl(142, 70%, 40%);
+  color: white;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--text-lg);
+}
+
+@media (max-width: 1024px) {
+  .nav { display: none; }
+  .burger { display: flex; }
+}
+
+@media (max-width: 480px) {
+  .ctaBtn span { display: none; }
+}
