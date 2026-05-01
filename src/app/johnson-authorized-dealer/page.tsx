@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID } from '@/lib/constants';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import TldrBait from '@/components/seo/TldrBait';
 import CrossSellCards from '@/components/sections/CrossSellCards';
@@ -96,50 +96,56 @@ const faqs = [
   { q: 'هل جونسون متوافق مع قوانين المرور السعودية؟', a: 'نعم، نوفر جميع درجات الـ VLT من 5% إلى 70%. ننصح عملاءنا بالدرجات المتوافقة مع أنظمة المرور ونقدم استشارة مجانية بخصوص الدرجة المناسبة.' },
 ];
 
-// JSON-LD Product schema
-const productSchema = {
+// ═══ Unified @graph — Product + FAQ + Breadcrumb ═══
+const graphSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Product',
-  name: 'Johnson Supreme IR Window Film',
-  description: 'فيلم تظليل نانو سيراميك أمريكي يحجب 97% من الأشعة تحت الحمراء',
-  brand: { '@type': 'Brand', name: 'Johnson Window Films' },
-  manufacturer: { '@type': 'Organization', name: 'Johnson Window Films', url: 'https://www.johnsonwindowfilms.com' },
-  category: 'Window Film',
-  image: `${SITE_URL}/images/hero-car-tinting-jeddah.png`,
-  offers: {
-    '@type': 'AggregateOffer',
-    priceCurrency: 'SAR',
-    lowPrice: '600',
-    highPrice: '3200',
-    offerCount: '4',
-    availability: 'https://schema.org/InStock',
-  },
-  hasWarranty: {
-    '@type': 'WarrantyPromise',
-    durationOfWarranty: { '@type': 'QuantitativeValue', value: 10, unitCode: 'ANN' },
-    warrantyScope: 'تغير اللون + التقشر + الفقاعات',
-  },
-};
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map(f => ({
-    '@type': 'Question',
-    name: f.q,
-    acceptedAnswer: { '@type': 'Answer', text: f.a },
-  })),
+  '@graph': [
+    {
+      '@type': 'Product',
+      '@id': `${SITE_URL}/johnson-authorized-dealer#product`,
+      name: 'Johnson Supreme IR Window Film',
+      description: 'فيلم تظليل نانو سيراميك أمريكي يحجب 97% من الأشعة تحت الحمراء',
+      brand: { '@type': 'Brand', name: 'Johnson Window Films' },
+      manufacturer: { '@type': 'Organization', name: 'Johnson Window Films', url: 'https://www.johnsonwindowfilms.com' },
+      category: 'Window Film',
+      image: `${SITE_URL}/images/hero-car-tinting-jeddah.png`,
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'SAR',
+        lowPrice: '600',
+        highPrice: '3200',
+        offerCount: '4',
+        availability: 'https://schema.org/InStock',
+      },
+      hasWarranty: {
+        '@type': 'WarrantyPromise',
+        durationOfWarranty: { '@type': 'QuantitativeValue', value: 10, unitCode: 'ANN' },
+        warrantyScope: 'تغير اللون + التقشر + الفقاعات',
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${SITE_URL}/johnson-authorized-dealer#faq`,
+      mainEntity: faqs.map(f => ({
+        '@type': 'Question', name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'وكيل جونسون المعتمد', item: `${SITE_URL}/johnson-authorized-dealer` },
+      ],
+    },
+  ],
 };
 
 export default function JohnsonDealerPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <BreadcrumbSchema items={[
-        { name: 'الرئيسية', href: '/' },
-        { name: 'وكيل جونسون المعتمد', href: '/johnson-authorized-dealer' },
-      ]} />
+      {/* Unified @graph — Product + FAQ + Breadcrumb */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }} />
 
       {/* TL;DR Bait — AI Overviews Magnet */}
       <TldrBait summary="على عكس الأفلام التجارية مجهولة المصدر، أفلام جونسون الأمريكية (منذ 1961) تقدم 5 خطوط إنتاج متخصصة أبرزها Supreme IR بنسبة حجب 97% للأشعة تحت الحمراء. عزل كور هو الوكيل المعتمد الوحيد في جدة — مع ضمان يصل لعمر السيارة وشهادة IWFA لكل فني تركيب." />
@@ -147,7 +153,7 @@ export default function JohnsonDealerPage() {
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image src="/images/hero-car-tinting-jeddah.png" alt="تظليل جونسون Supreme IR على سيارة في جدة" fill priority style={{ objectFit: 'cover' }} />
+          <Image src="/images/hero-car-tinting-jeddah.png" alt="تظليل جونسون Supreme IR على سيارة في جدة" fill priority fetchPriority="high" quality={80} sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>
@@ -179,7 +185,7 @@ export default function JohnsonDealerPage() {
             <span className={styles.overline}>لماذا جونسون</span>
             <h2 className={styles.sectionTitle}>شركة أمريكية بخبرة تتجاوز 60 عاماً</h2>
           </div>
-          <div className={styles.whyGrid}>
+          <dl className={styles.whyGrid}>
             {[
               { icon: '🇺🇸', title: 'صناعة أمريكية', desc: 'مصنعة في الولايات المتحدة منذ 1961 بأعلى معايير الجودة العالمية.' },
               { icon: '🔬', title: 'تقنية CST™', desc: 'Ceramic Scratch Technology — مقاومة خدوش متقدمة تحافظ على وضوح الزجاج لسنوات.' },
@@ -189,12 +195,11 @@ export default function JohnsonDealerPage() {
               { icon: '✅', title: 'أصالة مضمونة', desc: 'كل رول فيلم يحمل رقم تسلسلي من المصنع. شهادة ضمان رسمية مع كل تركيب.' },
             ].map((item, i) => (
               <div key={i} className={styles.whyCard}>
-                <span className={styles.whyIcon}>{item.icon}</span>
-                <h3 className={styles.whyTitle}>{item.title}</h3>
-                <p className={styles.whyDesc}>{item.desc}</p>
+                <dt><span className={styles.whyIcon}>{item.icon}</span>{item.title}</dt>
+                <dd>{item.desc}</dd>
               </div>
             ))}
-          </div>
+          </dl>
         </div>
       </section>
 
@@ -268,15 +273,16 @@ export default function JohnsonDealerPage() {
           </div>
 
           <div className={styles.tableWrap}>
-            <table className={styles.table}>
+            <table className={styles.table} itemScope itemType="http://schema.org/Table">
+              <caption className={styles.tableCaption} itemProp="about">مقارنة أفلام جونسون مقابل المنافسين 2026 — بيانات من الداتاشيت الرسمي</caption>
               <thead>
                 <tr>
-                  <th>الفيلم</th>
-                  <th>حجب IR</th>
-                  <th>TSER</th>
-                  <th>UV</th>
-                  <th>الضمان</th>
-                  <th>حجب إشارات؟</th>
+                  <th scope="col">الفيلم</th>
+                  <th scope="col">حجب IR</th>
+                  <th scope="col">TSER</th>
+                  <th scope="col">UV</th>
+                  <th scope="col">الضمان</th>
+                  <th scope="col">حجب إشارات؟</th>
                 </tr>
               </thead>
               <tbody>

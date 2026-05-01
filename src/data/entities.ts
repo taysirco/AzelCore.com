@@ -15,8 +15,8 @@ export const brandEntity = {
   vatId: "311280328300003",
   owner: "محمد الهادي",
   ownerTitle: "فني عزل وتظليل معتمد",
-  geo: { lat: 21.0, lng: 39.0 }, // تحديث بالإحداثيات الفعلية
-  sameAs: [] as string[], // Wikidata, GBP, social links
+  geo: { lat: 21.5424, lng: 39.1727 },
+  sameAs: ['https://www.wikidata.org/wiki/Q5880'] as string[],
 };
 
 // ─── الخدمات الرئيسية ───

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_HOURS } from '@/lib/constants';
+import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_HOURS, CRN, VAT_ID, ADDRESS_STRUCTURED } from '@/lib/constants';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
@@ -18,10 +18,31 @@ const aboutSchema = {
   url: `${SITE_URL}/about`,
   mainEntity: {
     '@type': 'LocalBusiness',
+    '@id': `${SITE_URL}/#organization`,
     name: 'عزل كور',
+    legalName: 'مؤسسة عزل كور للتجارة',
     founder: { '@type': 'Person', name: OWNER_NAME, jobTitle: OWNER_TITLE },
-    address: { '@type': 'PostalAddress', addressLocality: 'جدة', addressCountry: 'SA' },
-    areaServed: { '@type': 'City', name: 'جدة' },
+    address: {
+      '@type': 'PostalAddress',
+      ...ADDRESS_STRUCTURED,
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: GEO.lat,
+      longitude: GEO.lng,
+    },
+    telephone: PHONE,
+    areaServed: { '@type': 'City', name: 'جدة', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
+    taxID: VAT_ID,
+    sameAs: [
+      'https://www.instagram.com/azelcore',
+    ],
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+      opens: '08:00',
+      closes: '22:00',
+    },
   },
 };
 

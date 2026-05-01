@@ -12,7 +12,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import LiveReviews from '@/components/sections/LiveReviews';
 import ScrollReveal from '@/components/ui/ScrollReveal';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL, GEO, ADDRESS_STRUCTURED, CRN, VAT_ID, PHONE } from '@/lib/constants';
 
 export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
@@ -22,27 +22,28 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'AutoRepair',
+  '@id': `${SITE_URL}/#organization`,
   name: 'عزل كور — تظليل سيارات جدة',
   alternateName: 'AzelCore',
+  legalName: 'مؤسسة عزل كور للتجارة',
   url: SITE_URL,
-  telephone: '+966564612017',
+  telephone: PHONE,
   image: `${SITE_URL}/images/og-cover.png`,
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'جدة',
-    addressRegion: 'منطقة مكة المكرمة',
-    addressCountry: 'SA',
+    ...ADDRESS_STRUCTURED,
   },
-  geo: { '@type': 'GeoCoordinates', latitude: '21.0', longitude: '39.0' },
+  geo: { '@type': 'GeoCoordinates', latitude: GEO.lat.toString(), longitude: GEO.lng.toString() },
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
     opens: '08:00',
     closes: '22:00',
   },
-  areaServed: { '@type': 'City', name: 'جدة' },
+  areaServed: { '@type': 'City', name: 'جدة', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
   paymentAccepted: 'Cash, Credit Card, Apple Pay, Mada',
+  taxID: VAT_ID,
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'خدمات العزل والتظليل',

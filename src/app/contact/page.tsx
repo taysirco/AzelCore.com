@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_HOURS } from '@/lib/constants';
+import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_HOURS, ADDRESS_STRUCTURED } from '@/lib/constants';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
@@ -17,9 +17,10 @@ const contactSchema = {
   url: `${SITE_URL}/contact`,
   mainEntity: {
     '@type': 'LocalBusiness',
+    '@id': `${SITE_URL}/#organization`,
     name: 'عزل كور',
     telephone: PHONE,
-    address: { '@type': 'PostalAddress', addressLocality: 'جدة', addressCountry: 'SA' },
+    address: { '@type': 'PostalAddress', ...ADDRESS_STRUCTURED },
     geo: { '@type': 'GeoCoordinates', latitude: GEO.lat, longitude: GEO.lng },
     openingHours: 'Sa-Th 08:00-22:00',
   },

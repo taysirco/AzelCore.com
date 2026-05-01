@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { jeddahDistricts } from '@/data/local-jeddah';
 
 const SITE_URL = 'https://azelcore.com';
 
@@ -30,6 +31,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/thermal-windows`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.4 },
   ];
 
+  // pSEO district pages — hyper-local Jeddah coverage
+  const districtPages: MetadataRoute.Sitemap = jeddahDistricts.map(d => ({
+    url: `${SITE_URL}/car-insulation-jeddah/${d.id}`,
+    lastModified: LAST_MODIFIED,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   // Blog article pages
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map(slug => ({
     url: `${SITE_URL}/blog/${slug}`,
@@ -38,5 +47,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...blogPages];
+  return [...staticPages, ...districtPages, ...blogPages];
 }
