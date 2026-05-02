@@ -3,6 +3,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import StatsSection from '@/components/sections/StatsSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import JohnsonSection from '@/components/sections/JohnsonSection';
+import YMYLWarning from '@/components/sections/YMYLWarning';
 import ComparisonSection from '@/components/sections/ComparisonSection';
 import ProcessSection from '@/components/sections/ProcessSection';
 import TrustSection from '@/components/sections/TrustSection';
@@ -118,6 +119,7 @@ export default function HomePage() {
       <ScrollReveal><StatsSection /></ScrollReveal>
       <ScrollReveal delay={100}><ServicesSection /></ScrollReveal>
       <ScrollReveal delay={50}><JohnsonSection /></ScrollReveal>
+      <ScrollReveal><YMYLWarning /></ScrollReveal>
       <ScrollReveal><ComparisonSection /></ScrollReveal>
       <ScrollReveal delay={100}><PricingSection /></ScrollReveal>
       <ScrollReveal><ProcessSection /></ScrollReveal>
