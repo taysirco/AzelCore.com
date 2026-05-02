@@ -24,7 +24,7 @@ const homeGraphSchema = {
   '@graph': [
     {
       '@type': 'AutoRepair',
-      '@id': `${SITE_URL}/#organization`,
+      '@id': `${SITE_URL}/#localbusiness`,
       name: 'عزل كور — تظليل سيارات جدة',
       alternateName: 'AzelCore',
       legalName: 'مؤسسة عزل كور للتجارة',

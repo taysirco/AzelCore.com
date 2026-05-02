@@ -62,8 +62,6 @@ export const config = {
     '/car-insulation-jeddah/:district*',
     '/building-glass-insulation',
     '/johnson-authorized-dealer',
-    '/thermal-cars',
-    '/thermal-windows',
     '/contact',
   ],
 };

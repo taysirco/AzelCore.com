@@ -51,3 +51,8 @@
 - Best Car Tint Jeddah 2026: https://azelcore.com/blog/best-car-tint-jeddah-2026
 - Building Insulation Savings: https://azelcore.com/blog/building-insulation-electricity-savings
 - How to Spot Fake Tint: https://azelcore.com/blog/how-to-spot-fake-tint
+
+## API Endpoints
+- ROI Calculator: https://azelcore.com/api/calculate-roi (GET, query params: area_sqm, monthly_bill_sar, film_type)
+- Thermal Research Data: https://azelcore.com/api/research/jeddah-thermal-data (GET, primary-source FLIR data)
+- OpenAPI Spec: https://azelcore.com/openapi.json

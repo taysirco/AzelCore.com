@@ -82,6 +82,17 @@ const nextConfig: NextConfig = {
         destination: '/:path+',
         permanent: true,
       },
+      // Legacy URL 301s — edge-level (faster than page-level permanentRedirect)
+      {
+        source: '/thermal-cars',
+        destination: '/car-insulation-jeddah',
+        permanent: true,
+      },
+      {
+        source: '/thermal-windows',
+        destination: '/building-glass-insulation',
+        permanent: true,
+      },
     ];
   },
 };
