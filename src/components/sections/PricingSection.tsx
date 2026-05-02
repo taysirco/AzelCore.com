@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { carTintingPrices } from '@/data/pricing-tiers';
 import { WHATSAPP_LINK } from '@/lib/constants';
+import PriceReveal from '@/components/ui/PriceReveal';
 import styles from './PricingSection.module.css';
 
 export default function PricingSection() {
@@ -22,11 +23,11 @@ export default function PricingSection() {
               <h3 className={styles.cardTitle}>{tier.filmType}</h3>
               <div className={styles.priceRow}>
                 <span className={styles.priceLabel}>سيدان</span>
-                <span className={styles.priceValue}>{tier.sedan.price} <small>ر.س</small></span>
+                <PriceReveal price={tier.sedan.price} label="السعر" />
               </div>
               <div className={styles.priceRow}>
                 <span className={styles.priceLabel}>SUV / دبل</span>
-                <span className={styles.priceValue}>{tier.suv.price} <small>ر.س</small></span>
+                <PriceReveal price={tier.suv.price} label="السعر" />
               </div>
               <div className={styles.warrantyRow}>
                 <span>🛡️ ضمان</span>

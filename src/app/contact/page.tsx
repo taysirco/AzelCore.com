@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_HOURS, ADDRESS_STRUCTURED, CRN, VAT_ID } from '@/lib/constants';
+import CopyButton from '@/components/ui/CopyButton';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -136,7 +137,8 @@ export default function ContactPage() {
                 <h3 className={styles.trustTitle}>بيانات النشاط</h3>
                 <div className={styles.trustGrid}>
                   <div className={styles.trustItem}><span className={styles.trustLabel}>الحالة</span><span className={styles.trustValue}>منشأة مسجلة ✅</span></div>
-                  <div className={styles.trustItem}><span className={styles.trustLabel}>الضريبة</span><span className={styles.trustValue}>مسجل في ZATCA</span></div>
+                  <div className={styles.trustItem}><span className={styles.trustLabel}>السجل التجاري</span><span className={styles.trustValue}><CopyButton valueToCopy={CRN} label={CRN} /></span></div>
+                  <div className={styles.trustItem}><span className={styles.trustLabel}>الضريبة</span><span className={styles.trustValue}><CopyButton valueToCopy={VAT_ID} label="مسجل في ZATCA" /></span></div>
                   <div className={styles.trustItem}><span className={styles.trustLabel}>الوكالة</span><span className={styles.trustValue}>Johnson Window Films</span></div>
                   <div className={styles.trustItem}><span className={styles.trustLabel}>المدينة</span><span className={styles.trustValue}>جدة</span></div>
                 </div>

@@ -1,0 +1,39 @@
+/* ═══ Copy Button Micro-interaction ═══ */
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--surface-hover, hsl(220, 18%, 16%));
+  color: var(--text-secondary, hsl(220, 10%, 70%));
+  border: 1px solid var(--border, hsl(220, 15%, 18%));
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.copyBtn:hover {
+  background: var(--surface-elevated, hsl(220, 18%, 14%));
+  color: var(--text, white);
+  border-color: var(--border-light, hsl(220, 15%, 25%));
+  transform: translateY(-1px);
+}
+
+.copyBtn svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.copyBtn.copied {
+  background: hsla(142, 70%, 40%, 0.15);
+  color: hsl(142, 70%, 55%);
+  border-color: hsla(142, 70%, 40%, 0.4);
+}
+
+.copyBtn.copied svg {
+  transform: scale(1.1);
+}

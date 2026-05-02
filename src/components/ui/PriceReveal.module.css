@@ -1,0 +1,70 @@
+/* ═══ Price Reveal Micro-interaction ═══ */
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 120px;
+  min-height: 36px;
+}
+
+.revealBtn {
+  background: var(--surface-hover, hsl(220, 18%, 16%));
+  color: var(--primary-light, hsl(210, 100%, 60%));
+  border: 1px dashed var(--border-light, hsl(220, 15%, 25%));
+  border-radius: var(--radius-sm);
+  padding: 4px 12px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.revealBtn:hover {
+  background: var(--glass, hsla(220, 20%, 15%, 0.6));
+  border-style: solid;
+  color: var(--primary, hsl(210, 100%, 45%));
+  transform: translateY(-1px);
+}
+
+.revealBtn svg {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.revealBtn:hover svg {
+  transform: scale(1.1);
+}
+
+.priceDisplay {
+  animation: revealIn 0.4s var(--ease-spring) forwards;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.currency {
+  font-size: 0.7em;
+  color: var(--text-secondary);
+  font-weight: normal;
+}
+
+@keyframes revealIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(4px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
