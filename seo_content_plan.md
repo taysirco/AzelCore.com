@@ -1,6 +1,6 @@
 # 🎯 AzelCore.com — الخطة الشاملة v2.0: السيو + المحتوى + الملفات الداعمة
 
-> **آخر تحديث**: 1 مايو 2026 | **الحالة**: مراجعة نهائية
+> **آخر تحديث**: 3 مايو 2026 | **الحالة**: ✅ تنفيذ مكتمل (Sprint 1-3)
 
 ## ═══ القسم 1: هندسة JSON-LD المتقدمة (9 طبقات — v1 كان 7) ═══
 
@@ -198,15 +198,16 @@ export default async function sitemap() {
 
 ### 3.4 قائمة الملفات المفقودة الكاملة
 
-| الملف | المحتوى | الأولوية | متى يُبنى |
-|-------|---------|----------|-----------|
-| `data/districts-content.ts` | فقرات + FAQ لكل حي (10 أحياء) | 🟡 | Sprint 3 |
-| `data/cities-content.ts` | فقرات + توصيات لكل مدينة (15) | 🟡 | Sprint 3 |
-| `data/blog-content/*.ts` | محتوى 10 مقالات كاملة | 🟡 | Sprint 2-3 |
-| `public/favicon.ico` | تحويل من `azelcore-favicon.webp` | 🔴 | Sprint 1 |
-| `public/manifest.json` | PWA metadata + icons | 🟡 | Sprint 1 |
-| `public/llms.txt` | اكتشاف AI Agents | 🔴 | Sprint 1 |
-| `public/.well-known/security.txt` | Security contact | 🟢 | Sprint 2 |
+| الملف | المحتوى | الأولوية | الحالة |
+|-------|---------|----------|--------|
+| `data/districts-content.ts` | فقرات + FAQ لكل حي (10 أحياء × 3 FAQ = 30) | 🟡 | ✅ مكتمل |
+| `data/cities-content.ts` | فقرات + توصيات لكل مدينة (15 × 3 FAQ = 45) | 🟡 | ✅ مكتمل |
+| `data/blog-content/*.ts` | محتوى 10 مقالات كاملة + warnings | 🟡 | ✅ مكتمل |
+| `public/favicon.ico` | تحويل من `azelcore-favicon.webp` | 🔴 | ✅ مكتمل |
+| `public/manifest.json` | PWA metadata + icons | 🟡 | ✅ مكتمل |
+| `public/llms.txt` | اكتشاف AI Agents | 🔴 | ✅ مكتمل |
+| `public/.well-known/security.txt` | Security contact | 🟢 | ✅ مكتمل |
+| `app/api/og/route.tsx` | Dynamic OG Images (Dark Social) | 🟡 | ✅ مكتمل |
 
 ---
 
