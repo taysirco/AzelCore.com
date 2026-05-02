@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ district:
       title: `تظليل سيارات ${d.nameAr} — عزل كور جدة`,
       description: `حلول تظليل مخصصة لـ ${d.nameAr} حسب المناخ المحلي`,
       url: `${SITE_URL}/car-insulation-jeddah/${district}`,
+      images: [{ url: `${SITE_URL}/api/og?title=${encodeURIComponent(`تظليل سيارات ${d.nameAr}`)}&subtitle=${encodeURIComponent(`حماية من رطوبة ${d.humidity} وأشعة UV ${d.uvIndex}`)}&type=car`, width: 1200, height: 630 }],
     },
   };
 }

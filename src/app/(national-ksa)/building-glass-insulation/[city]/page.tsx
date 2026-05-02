@@ -31,6 +31,7 @@ export function generateMetadata({ params }: { params: { city: string } }): Meta
       title: `عزل مباني في ${cityObj.nameAr} | ضمان 15 سنة`,
       description: `أفضل عزل زجاج مباني في ${cityObj.nameAr}. تقليل التكييف 40%.`,
       url: `${SITE_URL}/building-glass-insulation/${cityObj.id}`,
+      images: [{ url: `${SITE_URL}/api/og?title=${encodeURIComponent(`عزل مباني ${cityObj.nameAr}`)}&subtitle=${encodeURIComponent(`تخفيض فاتورة التكييف 40%`)}&type=building`, width: 1200, height: 630 }],
     },
   };
 }
