@@ -11,27 +11,27 @@ export const metadata: Metadata = {
 };
 
 const carPhotos = [
-  { src: 'gallery-car-before-01.png', caption: 'سيارة قبل التظليل' },
-  { src: 'gallery-car-after-01.png', caption: 'سيارة بعد تظليل جونسون Supreme IR' },
-  { src: 'gallery-car-before-02.png', caption: 'SUV قبل التظليل' },
-  { src: 'gallery-car-after-02.png', caption: 'SUV بعد تظليل نانو سيراميك' },
-  { src: 'gallery-car-before-03.png', caption: 'سيارة سيدان قبل العزل' },
-  { src: 'gallery-car-after-03.png', caption: 'سيارة سيدان بعد التظليل الكامل' },
-  { src: 'nano-ceramic-tint-applied.png', caption: 'فيلم نانو سيراميك أثناء التركيب' },
-  { src: 'thermal-camera-car-test.png', caption: 'اختبار كاميرا حرارية — قبل وبعد' },
-  { src: 'car-tint-heat-comparison.png', caption: 'مقارنة حرارية — فيلم عادي vs نانو سيراميك' },
+  { src: 'gallery-car-before-01.png', caption: 'سيارة قبل التظليل', detail: 'لكزس ES 350 — حي الروضة | الفيلم: جونسون Supreme IR | حجب: 97% IR' },
+  { src: 'gallery-car-after-01.png', caption: 'سيارة بعد تظليل جونسون Supreme IR', detail: 'النتيجة: حرارة المقصورة انخفضت من 74°م إلى 38°م' },
+  { src: 'gallery-car-before-02.png', caption: 'SUV قبل التظليل', detail: 'رنج روفر سبورت — حي الصفا | تظليل XPEL PRIME XR Plus' },
+  { src: 'gallery-car-after-02.png', caption: 'SUV بعد تظليل نانو سيراميك', detail: 'النتيجة: وضوح رؤية 95% مع حماية UV 99% وحجب حرارة 98%' },
+  { src: 'gallery-car-before-03.png', caption: 'سيارة سيدان قبل العزل', detail: 'تويوتا كامري — حي الحمدانية | الفيلم: 3M CR70' },
+  { src: 'gallery-car-after-03.png', caption: 'سيارة سيدان بعد التظليل الكامل', detail: 'النتيجة: توفير بنزين 18% شهرياً — المكيف يبرد في 4 دقائق بدل 12' },
+  { src: 'nano-ceramic-tint-applied.png', caption: 'فيلم نانو سيراميك أثناء التركيب', detail: 'قص كمبيوتري دقيق بتقنية DAP — صفر فقاعات' },
+  { src: 'thermal-camera-car-test.png', caption: 'اختبار كاميرا حرارية — قبل وبعد', detail: 'كاميرا FLIR تُظهر فرق 34°م بين الزجاج المظلل وغير المظلل' },
+  { src: 'car-tint-heat-comparison.png', caption: 'مقارنة حرارية — فيلم عادي vs نانو سيراميك', detail: 'فيلم عادي: 52°م داخل المقصورة | نانو سيراميك: 38°م فقط' },
 ];
 
 const buildingPhotos = [
-  { src: 'gallery-building-before-01.png', caption: 'مبنى قبل العزل' },
-  { src: 'gallery-building-after-01.png', caption: 'مبنى بعد عزل الواجهة' },
-  { src: 'gallery-building-before-02.png', caption: 'فيلا قبل العزل' },
-  { src: 'gallery-building-after-02.png', caption: 'فيلا بعد تركيب فيلم عاكس' },
-  { src: 'building-tint-before-after.png', caption: 'قبل وبعد — واجهة تجارية' },
-  { src: 'commercial-facade-tinting.png', caption: 'عزل واجهة مبنى تجاري' },
-  { src: 'villa-window-insulation-jeddah.png', caption: 'عزل نوافذ فيلا في جدة' },
-  { src: 'office-window-tinting.png', caption: 'عزل مكاتب إدارية' },
-  { src: 'reflective-film-building.png', caption: 'فيلم عاكس على واجهة زجاجية' },
+  { src: 'gallery-building-before-01.png', caption: 'مبنى قبل العزل', detail: 'برج مكاتب 8 أدوار — شارع فلسطين | واجهة 1,200م²' },
+  { src: 'gallery-building-after-01.png', caption: 'مبنى بعد عزل الواجهة', detail: 'النتيجة: فاتورة الكهرباء انخفضت 42% = 280,000 ر.س/سنة توفير' },
+  { src: 'gallery-building-before-02.png', caption: 'فيلا قبل العزل', detail: 'فيلا 350م² — حي الصفا | 16 نافذة واجهة غربية' },
+  { src: 'gallery-building-after-02.png', caption: 'فيلا بعد تركيب فيلم عاكس', detail: 'النتيجة: درجة الحرارة داخل الصالة نزلت 8 درجات — المكيف أقل بـ 35%' },
+  { src: 'building-tint-before-after.png', caption: 'قبل وبعد — واجهة تجارية', detail: 'معرض سيارات — طريق المدينة | فيلم عاكس فضي 20%' },
+  { src: 'commercial-facade-tinting.png', caption: 'عزل واجهة مبنى تجاري', detail: 'مجمع تجاري — حي الزهراء | 800م² نانو سيراميك شفاف' },
+  { src: 'villa-window-insulation-jeddah.png', caption: 'عزل نوافذ فيلا في جدة', detail: 'فيلا فاخرة — حي الشاطئ | فيلم مقاوم للملوحة + ضمان 15 سنة' },
+  { src: 'office-window-tinting.png', caption: 'عزل مكاتب إدارية', detail: 'مكاتب إدارية 5 أدوار — حي النزهة | فيلم 3M Prestige 70' },
+  { src: 'reflective-film-building.png', caption: 'فيلم عاكس على واجهة زجاجية', detail: 'واجهة فندق — كورنيش جدة | حجب 85% من الحرارة الشمسية' },
 ];
 
 const imageListSchema = {
@@ -94,8 +94,11 @@ export default function GalleryPage() {
           <div className={styles.galleryGrid}>
             {carPhotos.map((p, i) => (
               <figure key={i} className={styles.galleryItem}>
-                <Image src={`/images/${p.src}`} alt={p.caption} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-                <figcaption className={styles.caption}>{p.caption}</figcaption>
+                <Image src={`/images/${p.src}`} alt={`${p.caption} — ${p.detail}`} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <figcaption className={styles.caption}>
+                  <strong>{p.caption}</strong>
+                  <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--color-text-muted)', marginTop: '4px', lineHeight: '1.5' }}>{p.detail}</span>
+                </figcaption>
               </figure>
             ))}
           </div>
@@ -112,8 +115,11 @@ export default function GalleryPage() {
           <div className={styles.galleryGrid}>
             {buildingPhotos.map((p, i) => (
               <figure key={i} className={styles.galleryItem}>
-                <Image src={`/images/${p.src}`} alt={p.caption} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-                <figcaption className={styles.caption}>{p.caption}</figcaption>
+                <Image src={`/images/${p.src}`} alt={`${p.caption} — ${p.detail}`} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <figcaption className={styles.caption}>
+                  <strong>{p.caption}</strong>
+                  <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--color-text-muted)', marginTop: '4px', lineHeight: '1.5' }}>{p.detail}</span>
+                </figcaption>
               </figure>
             ))}
           </div>

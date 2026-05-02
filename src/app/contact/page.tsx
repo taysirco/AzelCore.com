@@ -158,6 +158,50 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* Service Coverage */}
+      <section className={styles.section} style={{ background: 'var(--color-surface-elevated, #0f1923)' }}>
+        <div className={styles.container} style={{ maxWidth: '800px', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text)', marginBottom: '1rem' }}>📍 نطاق الخدمة</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '1rem', textAlign: 'right' }}>
+            <div style={{ background: 'var(--color-surface)', borderRadius: '12px', padding: '1rem', border: '1px solid var(--color-border)' }}>
+              <p style={{ fontWeight: 700, color: 'var(--color-primary)', marginBottom: '0.5rem' }}>🚗 تظليل سيارات</p>
+              <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: '1.7' }}>جميع أحياء جدة + خدمة متنقلة. نوصل لموقعك خلال 30-60 دقيقة.</p>
+            </div>
+            <div style={{ background: 'var(--color-surface)', borderRadius: '12px', padding: '1rem', border: '1px solid var(--color-border)' }}>
+              <p style={{ fontWeight: 700, color: 'var(--color-primary)', marginBottom: '0.5rem' }}>🏢 عزل مباني</p>
+              <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: '1.7' }}>15 مدينة سعودية. فريق متخصص للمشاريع الكبيرة (500م²+).</p>
+            </div>
+            <div style={{ background: 'var(--color-surface)', borderRadius: '12px', padding: '1rem', border: '1px solid var(--color-border)' }}>
+              <p style={{ fontWeight: 700, color: 'var(--color-primary)', marginBottom: '0.5rem' }}>⏱️ وقت الاستجابة</p>
+              <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: '1.7' }}>رد واتساب: أقل من 5 دقائق. عرض سعر: خلال ساعة.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact FAQ */}
+      <section className={styles.section}>
+        <div className={styles.container} style={{ maxWidth: '700px' }}>
+          <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--color-text)', marginBottom: '1.5rem', textAlign: 'center' }}>أسئلة شائعة عن الحجز والتواصل</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {[
+              { q: 'هل أحتاج حجز موعد مسبق؟', a: 'نعم، ننصح بالحجز قبل 24 ساعة لضمان توفر الفني. في الحالات العاجلة ممكن نخدمك نفس اليوم حسب الجدول.' },
+              { q: 'هل الخدمة المتنقلة متاحة في حيّي؟', a: 'نغطي كل أحياء جدة بدون استثناء. الفني يصل بسيارة مجهزة بكل الأدوات. التركيب في جراجك أو موقف مظلل.' },
+              { q: 'كم مدة التظليل الكامل للسيارة؟', a: 'تظليل سيارة سيدان كامل: 2-3 ساعات. SUV: 3-4 ساعات. تسلّم سيارتك جاهزة نفس اليوم.' },
+              { q: 'هل تقبلون الدفع بالتقسيط؟', a: 'نقبل: كاش، مدى، فيزا، Apple Pay، STC Pay. للمشاريع الكبيرة (مباني): خطط دفع مرنة.' },
+            ].map((faq, i) => (
+              <details key={i} style={{ background: 'var(--color-surface)', borderRadius: '12px', padding: '1rem 1.25rem', border: '1px solid var(--color-border)', cursor: 'pointer' }}>
+                <summary style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--color-text)', listStyle: 'none', display: 'flex', justifyContent: 'space-between' }}>
+                  {faq.q}
+                  <span style={{ color: 'var(--color-primary)' }}>+</span>
+                </summary>
+                <p style={{ marginTop: '0.75rem', lineHeight: '1.8', color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }
