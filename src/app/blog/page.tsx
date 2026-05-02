@@ -51,6 +51,46 @@ const blogPosts = [
     date: '2026-03-20',
     category: 'نصائح',
   },
+  {
+    slug: 'ppf-vs-ceramic-coating',
+    title: 'PPF مقابل النانو سيراميك للطلاء — أيهما تحتاج؟',
+    excerpt: 'كثير يخلطون بينهم — لكنهم منتجين مختلفين تماماً. هنا المقارنة الشاملة بالأرقام.',
+    image: 'blog-ppf-vs-ceramic-coating.png',
+    date: '2026-03-15',
+    category: 'مقارنات',
+  },
+  {
+    slug: 'jeddah-heat-car-damage',
+    title: 'ماذا تفعل شمس جدة بسيارتك؟ — 7 أضرار لا تعرفها',
+    excerpt: 'من تشقق الجلد لتلف الشاشات — أضرار حقيقية بالأرقام. والحل الأذكى لحماية سيارتك.',
+    image: 'blog-jeddah-heat-car.png',
+    date: '2026-03-10',
+    category: 'معلومات',
+  },
+  {
+    slug: 'tint-signal-interference',
+    title: 'هل التظليل يأثر على إشارة الجوال و GPS؟ — الحقيقة التقنية',
+    excerpt: 'الجواب يعتمد على نوع الفيلم — هنا الشرح الفيزيائي الكامل مع جدول لكل نوع.',
+    image: 'blog-tint-signal-interference.png',
+    date: '2026-03-05',
+    category: 'تقني',
+  },
+  {
+    slug: 'vision-2030-energy-efficiency',
+    title: 'رؤية 2030 وكفاءة الطاقة — دور عزل المباني في تحقيق الأهداف',
+    excerpt: 'المباني تستهلك 70% من الكهرباء في السعودية. كيف يساهم عزل الزجاج في تحقيق أهداف رؤية 2030؟',
+    image: 'blog-vision-2030-energy.png',
+    date: '2026-02-28',
+    category: 'عزل مباني',
+  },
+  {
+    slug: 'car-tint-maintenance-guide',
+    title: 'دليل العناية بتظليل السيارة — 10 نصائح لإطالة عمر الفيلم',
+    excerpt: 'استثمرت في تظليل ممتاز؟ هنا 10 نصائح من خبرائنا تمدد عمره من 10 لـ 15+ سنة.',
+    image: 'blog-car-tint-maintenance.png',
+    date: '2026-02-20',
+    category: 'نصائح',
+  },
 ];
 
 const itemListSchema = {
