@@ -118,7 +118,7 @@ const serviceLinks: Record<string, { href: string; text: string }[]> = {
   ],
   'building-insulation-electricity-savings': [
     { href: '/building-glass-insulation', text: 'خدمة عزل زجاج المباني — وفّر 40% كهرباء' },
-    { href: '/thermal-windows', text: 'عزل حراري للنوافذ والشبابيك' },
+    { href: '/johnson-authorized-dealer', text: 'أفلام جونسون للعزل الحراري — الوكيل المعتمد' },
   ],
   'how-to-spot-fake-tint': [
     { href: '/car-insulation-jeddah', text: 'تظليل أصلي مع ضمان — عزل كور جدة' },

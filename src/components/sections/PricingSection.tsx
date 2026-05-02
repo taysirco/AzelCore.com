@@ -37,7 +37,7 @@ export default function PricingSection() {
                   <li key={j}>✓ {item}</li>
                 ))}
               </ul>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={`${styles.cardBtn} ${i === 0 ? styles.cardBtnPrimary : ''}`}>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={`${styles.cardBtn} ${i === 0 ? styles.cardBtnPrimary : ''}`} data-nosnippet>
                 احجز الآن
               </a>
             </div>

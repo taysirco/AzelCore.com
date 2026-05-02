@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK } from '@/lib/constants';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -37,26 +36,33 @@ const buildingPhotos = [
 
 const imageListSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ImageGallery',
-  name: 'معرض أعمال عزل كور — جدة',
-  url: `${SITE_URL}/gallery`,
-  description: 'صور حقيقية لأعمال تظليل السيارات وعزل المباني في جدة',
-  provider: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME },
-  image: [...carPhotos, ...buildingPhotos].map(p => ({
-    '@type': 'ImageObject',
-    url: `${SITE_URL}/images/${p.src}`,
-    caption: p.caption,
-  })),
+  '@graph': [
+    {
+      '@type': 'ImageGallery',
+      name: 'معرض أعمال عزل كور — جدة',
+      url: `${SITE_URL}/gallery`,
+      description: 'صور حقيقية لأعمال تظليل السيارات وعزل المباني في جدة',
+      provider: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME },
+      image: [...carPhotos, ...buildingPhotos].map(p => ({
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/images/${p.src}`,
+        caption: p.caption,
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'معرض الأعمال', item: `${SITE_URL}/gallery` },
+      ],
+    },
+  ],
 };
 
 export default function GalleryPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(imageListSchema) }} />
-      <BreadcrumbSchema items={[
-        { name: 'الرئيسية', href: '/' },
-        { name: 'معرض الأعمال', href: '/gallery' },
-      ]} />
 
       {/* Header */}
       <section className={styles.pageHeader}>

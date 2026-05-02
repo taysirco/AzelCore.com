@@ -51,10 +51,9 @@ const homeGraphSchema = {
         name: 'Commercial Registration (CR)',
         value: CRN,
       },
-      parentOrganization: { '@id': `${SITE_URL}/#organization` },
+
       sameAs: [
         'https://www.instagram.com/azelcore',
-        'https://www.wikidata.org/wiki/Q5880',
       ],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
