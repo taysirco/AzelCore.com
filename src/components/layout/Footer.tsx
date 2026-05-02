@@ -6,8 +6,8 @@ const serviceLinks = [
   { href: '/car-insulation-jeddah', label: 'تظليل سيارات جدة' },
   { href: '/building-glass-insulation', label: 'عزل زجاج مباني' },
   { href: '/johnson-authorized-dealer', label: 'عازل جونسون (وكيل معتمد)' },
-  { href: '/thermal-cars', label: 'عزل حراري سيارات' },
-  { href: '/thermal-windows', label: 'عزل حراري نوافذ' },
+  { href: '/gallery', label: 'معرض أعمالنا' },
+  { href: '/blog', label: 'المدونة' },
 ];
 
 const infoLinks = [

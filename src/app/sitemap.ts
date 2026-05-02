@@ -25,14 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/gallery`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/about`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.7 },
     { url: `${SITE_URL}/contact`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.6 },
-    // LLM Direct Feed — AI crawler discovery
-    { url: `${SITE_URL}/llms.txt`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.3 },
-    // Agentic Tool Protocol — OpenAPI spec for AI agent discovery
-    { url: `${SITE_URL}/openapi.json`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.3 },
-    // Research Dataset — Primary source citation endpoint
+    // Research Dataset — Primary source citation endpoint (valuable for SGE)
     { url: `${SITE_URL}/api/research/jeddah-thermal-data`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.5 },
-    // AI Plugin Manifest — agent auto-discovery
-    { url: `${SITE_URL}/.well-known/ai-plugin.json`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.3 },
   ];
 
   // pSEO district pages — hyper-local Jeddah coverage

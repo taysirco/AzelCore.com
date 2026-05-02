@@ -102,7 +102,6 @@ const organizationSchema = {
   image: `${SITE_URL}/images/og-cover.png`,
   sameAs: [
     'https://www.instagram.com/azelcore',
-    'https://www.wikidata.org/wiki/Q5880',
   ],
 };
 

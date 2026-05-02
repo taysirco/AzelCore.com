@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_HOURS, CRN, VAT_ID, ADDRESS_STRUCTURED } from '@/lib/constants';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -13,48 +12,59 @@ export const metadata: Metadata = {
 
 const aboutSchema = {
   '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  name: 'من نحن — عزل كور',
-  url: `${SITE_URL}/about`,
-  mainEntity: {
-    '@type': 'LocalBusiness',
-    '@id': `${SITE_URL}/#organization`,
-    name: 'عزل كور',
-    legalName: `مؤسسة ${OWNER_NAME} للتجارة`,
-    founder: { '@type': 'Person', name: OWNER_NAME, jobTitle: OWNER_TITLE },
-    address: {
-      '@type': 'PostalAddress',
-      ...ADDRESS_STRUCTURED,
+  '@graph': [
+    {
+      '@type': 'AboutPage',
+      name: 'من نحن — عزل كور',
+      url: `${SITE_URL}/about`,
+      mainEntity: {
+        '@type': 'LocalBusiness',
+        '@id': `${SITE_URL}/#organization`,
+        name: 'عزل كور',
+        legalName: `مؤسسة ${OWNER_NAME} للتجارة`,
+        founder: { '@type': 'Person', name: OWNER_NAME, jobTitle: OWNER_TITLE },
+        address: {
+          '@type': 'PostalAddress',
+          ...ADDRESS_STRUCTURED,
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: GEO.lat,
+          longitude: GEO.lng,
+        },
+        telephone: PHONE,
+        areaServed: { '@type': 'City', name: 'جدة', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
+        taxID: VAT_ID,
+        identifier: {
+          '@type': 'PropertyValue',
+          name: 'Commercial Registration (CR)',
+          value: CRN,
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.9',
+          ratingCount: '127',
+          bestRating: '5',
+        },
+        sameAs: [
+          'https://www.instagram.com/azelcore',
+        ],
+        openingHoursSpecification: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+          opens: '08:00',
+          closes: '22:00',
+        },
+      },
     },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: GEO.lat,
-      longitude: GEO.lng,
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'من نحن', item: `${SITE_URL}/about` },
+      ],
     },
-    telephone: PHONE,
-    areaServed: { '@type': 'City', name: 'جدة', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
-    taxID: VAT_ID,
-    identifier: {
-      '@type': 'PropertyValue',
-      name: 'Commercial Registration (CR)',
-      value: CRN,
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      ratingCount: '127',
-      bestRating: '5',
-    },
-    sameAs: [
-      'https://www.instagram.com/azelcore',
-    ],
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-      opens: '08:00',
-      closes: '22:00',
-    },
-  },
+  ],
 };
 
 const milestones = [
@@ -83,10 +93,6 @@ export default function AboutPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }} />
-      <BreadcrumbSchema items={[
-        { name: 'الرئيسية', href: '/' },
-        { name: 'من نحن', href: '/about' },
-      ]} />
 
       {/* Hero */}
       <section className={styles.hero}>

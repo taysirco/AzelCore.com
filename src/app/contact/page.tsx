@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_HOURS, ADDRESS_STRUCTURED, CRN, VAT_ID } from '@/lib/constants';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -12,55 +11,62 @@ export const metadata: Metadata = {
 
 const contactSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ContactPage',
-  name: 'تواصل معنا — عزل كور',
-  url: `${SITE_URL}/contact`,
-  mainEntity: {
-    '@type': 'LocalBusiness',
-    '@id': `${SITE_URL}/#organization`,
-    name: 'عزل كور',
-    telephone: PHONE,
-    address: { '@type': 'PostalAddress', ...ADDRESS_STRUCTURED },
-    geo: { '@type': 'GeoCoordinates', latitude: GEO.lat, longitude: GEO.lng },
-    openingHours: 'Sa-Th 08:00-22:00',
-    taxID: VAT_ID,
-    identifier: {
-      '@type': 'PropertyValue',
-      name: 'Commercial Registration (CR)',
-      value: CRN,
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      ratingCount: '127',
-      bestRating: '5',
-    },
-    potentialAction: {
-      '@type': 'ReserveAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: WHATSAPP_LINK,
-        actionPlatform: [
-          'http://schema.org/DesktopWebPlatform',
-          'http://schema.org/MobileWebPlatform',
-        ],
+  '@graph': [
+    {
+      '@type': 'ContactPage',
+      name: 'تواصل معنا — عزل كور',
+      url: `${SITE_URL}/contact`,
+      mainEntity: {
+        '@type': 'LocalBusiness',
+        '@id': `${SITE_URL}/#organization`,
+        name: 'عزل كور',
+        telephone: PHONE,
+        address: { '@type': 'PostalAddress', ...ADDRESS_STRUCTURED },
+        geo: { '@type': 'GeoCoordinates', latitude: GEO.lat, longitude: GEO.lng },
+        openingHours: 'Sa-Th 08:00-22:00',
+        taxID: VAT_ID,
+        identifier: {
+          '@type': 'PropertyValue',
+          name: 'Commercial Registration (CR)',
+          value: CRN,
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.9',
+          ratingCount: '127',
+          bestRating: '5',
+        },
+        potentialAction: {
+          '@type': 'ReserveAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: WHATSAPP_LINK,
+            actionPlatform: [
+              'http://schema.org/DesktopWebPlatform',
+              'http://schema.org/MobileWebPlatform',
+            ],
+          },
+          result: {
+            '@type': 'Reservation',
+            name: 'حجز استشارة مجانية',
+          },
+        },
       },
-      result: {
-        '@type': 'Reservation',
-        name: 'حجز استشارة مجانية',
-      },
     },
-  },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'تواصل معنا', item: `${SITE_URL}/contact` },
+      ],
+    },
+  ],
 };
 
 export default function ContactPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }} />
-      <BreadcrumbSchema items={[
-        { name: 'الرئيسية', href: '/' },
-        { name: 'تواصل معنا', href: '/contact' },
-      ]} />
 
       <section className={styles.pageHeader}>
         <div className={styles.container}>

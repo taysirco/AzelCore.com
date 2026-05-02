@@ -34,7 +34,7 @@ const services = [
     icon: '🌡️',
     title: 'عزل حراري متقدم',
     desc: 'حلول حرارية شاملة للسيارات والمباني — اختبارات حقيقية بكاميرا FLIR تثبت كفاءة العزل.',
-    href: '/thermal-cars',
+    href: '/car-insulation-jeddah',
     gradient: 'linear-gradient(135deg, hsla(15, 90%, 55%, 0.12), hsla(35, 95%, 55%, 0.08))',
     borderColor: 'hsla(15, 90%, 55%, 0.2)',
     features: ['اختبار FLIR', 'انخفاض 47%', 'مقارنة حقيقية'],
