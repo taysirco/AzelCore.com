@@ -9,6 +9,8 @@ import CrossSellCards from '@/components/sections/CrossSellCards';
 import YmylWarning from '@/components/seo/YmylWarning';
 import CorporateRoiCalculator from '@/components/sections/CorporateRoiCalculator';
 import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBanner';
+import { ksaCities } from '@/data/local-jeddah';
+import { citiesContent as citiesContentData } from '@/data/cities-content';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -269,6 +271,40 @@ export default function BuildingInsulationPage() {
         title="أمان الزجاج: المباني"
         text="فيلم الأمان (Safety Film) يمنع تناثر الزجاج عند الكسر ويحمي من الإصابات. مطلوب في المباني التجارية والمدارس حسب كود البناء السعودي."
       />
+
+      {/* KSA Cities Coverage — pSEO Content from cities-content.ts */}
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.overline}>تغطية وطنية</span>
+            <h2 className={styles.sectionTitle}>نخدم 15 مدينة سعودية</h2>
+            <p className={styles.sectionSubtitle}>عزل واجهات مباني احترافي في كل أنحاء المملكة — كل مدينة بتوصية مخصصة لمناخها.</p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.25rem', maxWidth: '1000px', margin: '0 auto' }}>
+            {ksaCities.map(city => {
+              const content = citiesContentData[city.id];
+              return (
+                <details key={city.id} style={{ background: 'var(--color-surface)', borderRadius: '14px', padding: '1.25rem', border: '1px solid var(--color-border)', cursor: 'pointer' }}>
+                  <summary style={{ fontWeight: 700, fontSize: '1.1rem', color: 'var(--color-text)', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span>🏙️ {city.nameAr} <span style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', fontWeight: 400 }}>({city.avgTemp} | {city.humidity} رطوبة)</span></span>
+                    <span style={{ fontSize: '1.2rem', color: 'var(--color-primary)' }}>+</span>
+                  </summary>
+                  {content && (
+                    <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                      <p style={{ lineHeight: '1.8', color: 'var(--color-text-muted)', fontSize: '0.95rem' }}>{content.paragraph}</p>
+                      <div style={{ background: 'var(--color-surface-elevated, #0f1923)', borderRadius: '10px', padding: '0.75rem 1rem' }}>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--color-primary)', fontWeight: 600 }}>💰 تقدير التوفير</p>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--color-text)', marginTop: '0.25rem' }}>{content.savingsEstimate}</p>
+                      </div>
+                      <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)' }}><strong>الفيلم الموصى:</strong> {content.recommendedFilm}</p>
+                    </div>
+                  )}
+                </details>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* Cross-sell — Causal Internal Linking */}
       <CrossSellCards currentPage="building-glass-insulation" />
