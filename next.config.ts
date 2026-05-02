@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
           // Signals optimal edge-cache performance to crawl bots
           { key: 'Server-Timing', value: 'edge;desc="Firebase CDN";dur=0.8, cache;desc="HIT";dur=0, render;desc="SSG";dur=1.2' },
           { key: 'X-Edge-Cache', value: 'HIT' },
-          { key: 'X-Served-By', value: 'Firebase App Hosting — KSA Edge' },
+          { key: 'X-Served-By', value: 'Firebase App Hosting - KSA Edge' },
         ],
       },
       {
