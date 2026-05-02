@@ -13,6 +13,53 @@ function getTopicBySlug(slug: string): BlogTopic | undefined {
 }
 
 // ═══════════════════════════════════════════
+// Smart Text Formatter — Converts raw string blobs into readable paragraphs
+// ═══════════════════════════════════════════
+const SmartTextFormatter = ({ text }: { text: string }) => {
+  if (!text) return null;
+
+  // If text already has line breaks, just split by them
+  if (text.includes('\n')) {
+    return (
+      <>
+        {text.split('\n').filter(p => p.trim() !== '').map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </>
+    );
+  }
+
+  // Otherwise, smartly break long walls of text by periods.
+  const sentences = text.split(/(?<=\.)\s+/);
+  if (sentences.length <= 2) {
+    return <p>{text}</p>;
+  }
+
+  const paragraphs = [];
+  for (let i = 0; i < sentences.length; i += 2) {
+    const chunk = sentences.slice(i, i + 2).join(' ');
+    if (chunk.trim()) paragraphs.push(chunk);
+  }
+
+  return (
+    <>
+      {paragraphs.map((p, i) => {
+        // Highlight bold-like structures "الزجاج الأمامي: ..."
+        const parts = p.split(/(:|—|-)/);
+        if (parts.length > 1 && parts[0].length < 50 && !parts[0].includes('.')) {
+          return (
+            <p key={i}>
+              <strong>{parts[0]}</strong>{parts.slice(1).join('')}
+            </p>
+          );
+        }
+        return <p key={i}>{p}</p>;
+      })}
+    </>
+  );
+};
+
+// ═══════════════════════════════════════════
 // Static Params (SSG — all article slugs)
 // ═══════════════════════════════════════════
 export const dynamicParams = false; // 404 for unknown slugs — all pages are pre-built
@@ -143,7 +190,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
           {content.sections.map((section, i) => (
             <div key={i}>
               <h2>{section.heading}</h2>
-              <p>{section.body}</p>
+              <SmartTextFormatter text={section.body} />
             </div>
           ))}
 
