@@ -66,6 +66,14 @@
   color: var(--primary, hsl(210, 100%, 45%));
 }
 
+.readTime {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-muted, hsl(220, 10%, 55%));
+  margin-bottom: var(--space-6);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid hsla(220, 15%, 30%, 0.3);
+}
+
 .content {
   font-size: var(--text-lg, 1.125rem);
   line-height: 2;

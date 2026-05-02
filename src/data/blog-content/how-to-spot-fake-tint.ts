@@ -1,7 +1,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'blog-ppf-vs-ceramic-coating.png',
+  ogImage: 'blog-spot-fake-tint.png',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'تظليل أصلي مع ضمان — عزل كور جدة' },
     { href: '/johnson-authorized-dealer', text: 'أفلام جونسون الأمريكية الأصلية' },

@@ -6,25 +6,8 @@ import { blogTopics, type BlogTopic } from '@/data/blog-topics';
 import { articles, articleSlugs } from '@/data/blog-content';
 import styles from './page.module.css';
 
-// ═══════════════════════════════════════════
-// Helper: resolve blog-topics.ts topic by slug
-// ═══════════════════════════════════════════
-const slugTopicMap: Record<string, string> = {
-  'tint-laws-saudi-2026': 'tint-laws-saudi',
-  'nano-ceramic-vs-carbon-vs-3m': 'nano-ceramic-vs-carbon',
-  'best-car-tint-jeddah-2026': 'best-car-tint-jeddah',
-  'building-insulation-electricity-savings': 'building-insulation-electricity',
-  'how-to-spot-fake-tint': 'spot-fake-tint',
-  'ppf-vs-ceramic-coating': 'ppf-vs-ceramic-coating',
-  'jeddah-heat-car-damage': 'jeddah-heat-car-damage',
-  'tint-signal-interference': 'tint-signal-interference',
-  'vision-2030-energy-efficiency': 'vision-2030-energy-efficiency',
-  'car-tint-maintenance-guide': 'car-tint-maintenance-guide',
-};
-
 function getTopicBySlug(slug: string): BlogTopic | undefined {
-  const topicSlug = slugTopicMap[slug] || slug;
-  return blogTopics.find(t => t.slug === topicSlug || t.slug === slug);
+  return blogTopics.find(t => t.slug === slug);
 }
 
 // ═══════════════════════════════════════════
@@ -97,7 +80,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
         ],
         speakable: {
           '@type': 'SpeakableSpecification',
-          cssSelector: ['h1', '.content p:first-of-type'],
+          cssSelector: [`#article-${params.slug}-title`, `#article-${params.slug}-intro`],
         },
       },
       {
@@ -115,6 +98,11 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleGraphSchema) }} />
 
+      {/* ── Voice SEO Target — Article ── */}
+      <div id={`article-${params.slug}-intro`} style={{ position: 'absolute', left: '-9999px', top: 0 }} aria-hidden="true">
+        {content.intro.slice(0, 200)}
+      </div>
+
       <article className={styles.article}>
         <nav className={styles.breadcrumb} aria-label="مسار التنقل">
           <Link href="/">الرئيسية</Link> / <Link href="/blog">المدونة</Link> / <span>{title}</span>
@@ -127,7 +115,11 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
           </time>
         </div>
 
-        <h1 className={styles.title}>{title}</h1>
+        <h1 id={`article-${params.slug}-title`} className={styles.title}>{title}</h1>
+
+        <div className={styles.readTime} data-nosnippet>
+          🕐 {Math.ceil(approximateWordCount / 200)} دقائق قراءة · {approximateWordCount} كلمة
+        </div>
 
         <div className={styles.content}>
           <p>{content.intro}</p>

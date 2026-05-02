@@ -47,7 +47,7 @@ const blogPosts = [
     slug: 'how-to-spot-fake-tint',
     title: '5 علامات تعرف بيها التظليل المقلد من الأصلي',
     excerpt: 'الفرق بين الفيلم الأصلي والمقلد — 5 اختبارات بسيطة تقدر تسويها بنفسك.',
-    image: 'blog-ppf-vs-ceramic-coating.png',
+    image: 'blog-spot-fake-tint.png',
     date: '2026-03-20',
     category: 'نصائح',
   },
