@@ -9,6 +9,8 @@ import CrossSellCards from '@/components/sections/CrossSellCards';
 import styles from '../page.module.css';
 
 // ═══ SSG: Pre-build all 10 district routes at build time ═══
+export const dynamicParams = false; // 404 for unknown districts — all pages are pre-built
+
 export function generateStaticParams() {
   return jeddahDistricts.map(d => ({ district: d.id }));
 }

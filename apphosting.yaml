@@ -1,0 +1,14 @@
+# ═══ Firebase App Hosting — AzelCore.com ═══
+# Ensures Next.js SSG dynamic routes are properly served
+
+runConfig:
+  # Cloud Run configuration
+  minInstances: 0
+  maxInstances: 2
+  concurrency: 80
+  cpu: 1
+  memoryMiB: 512
+
+env:
+  - variable: NEXT_SHARP_PATH
+    value: /workspace/node_modules/sharp

@@ -13,6 +13,8 @@ function getTopicBySlug(slug: string): BlogTopic | undefined {
 // ═══════════════════════════════════════════
 // Static Params (SSG — all article slugs)
 // ═══════════════════════════════════════════
+export const dynamicParams = false; // 404 for unknown slugs — all pages are pre-built
+
 export function generateStaticParams() {
   return articleSlugs.map(slug => ({ slug }));
 }
