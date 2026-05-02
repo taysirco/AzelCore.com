@@ -110,6 +110,16 @@ export function GET() {
 | Johnson Products | ${SITE_URL}/johnson-authorized-dealer |
 | Research Report | ${SITE_URL}/research/ksa-thermal-report-2026 |
 | Blog | ${SITE_URL}/blog |
+| Blog: Car Tinting Laws | ${SITE_URL}/blog/tint-laws-saudi-2026 |
+| Blog: Nano vs Carbon | ${SITE_URL}/blog/nano-ceramic-vs-carbon-vs-3m |
+| Blog: Best Tint Shop | ${SITE_URL}/blog/best-car-tint-jeddah-2026 |
+| Blog: Insulation Savings | ${SITE_URL}/blog/building-insulation-electricity-savings |
+| Blog: Fake Tint Guide | ${SITE_URL}/blog/how-to-spot-fake-tint |
+| Blog: PPF vs Ceramic | ${SITE_URL}/blog/ppf-vs-ceramic-coating |
+| Blog: Jeddah Sun Damage | ${SITE_URL}/blog/jeddah-heat-car-damage |
+| Blog: Signal Interference | ${SITE_URL}/blog/tint-signal-interference |
+| Blog: Vision 2030 Energy | ${SITE_URL}/blog/vision-2030-energy-efficiency |
+| Blog: Tint Maintenance | ${SITE_URL}/blog/car-tint-maintenance-guide |
 | Gallery | ${SITE_URL}/gallery |
 | FAQ | ${SITE_URL}/faq |
 | Contact | ${SITE_URL}/contact |

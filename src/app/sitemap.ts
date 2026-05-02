@@ -12,6 +12,11 @@ const blogSlugs = [
   'best-car-tint-jeddah-2026',
   'building-insulation-electricity-savings',
   'how-to-spot-fake-tint',
+  'ppf-vs-ceramic-coating',
+  'jeddah-heat-car-damage',
+  'tint-signal-interference',
+  'vision-2030-energy-efficiency',
+  'car-tint-maintenance-guide',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

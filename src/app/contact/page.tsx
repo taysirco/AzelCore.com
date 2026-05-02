@@ -60,6 +60,10 @@ const contactSchema = {
         { '@type': 'ListItem', position: 2, name: 'تواصل معنا', item: `${SITE_URL}/contact` },
       ],
     },
+    {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['#voice-answer-contact-1'],
+    },
   ],
 };
 
@@ -67,6 +71,11 @@ export default function ContactPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }} />
+
+      {/* ── Voice SEO Target — Contact ── */}
+      <div id="voice-answer-contact-1" style={{ position: 'absolute', left: '-9999px', top: 0 }} aria-hidden="true">
+        تواصل مع عزل كور جدة عبر واتساب أو اتصال مباشر على 0564612017. ساعات العمل من السبت للخميس 8 صباحاً حتى 10 مساءً.
+      </div>
 
       <section className={styles.pageHeader}>
         <div className={styles.container}>
