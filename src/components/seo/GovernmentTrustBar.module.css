@@ -1,0 +1,123 @@
+.trustBar {
+  padding: 1.5rem 0;
+  border-top: 1px solid hsla(220, 15%, 30%, 0.3);
+  border-bottom: 1px solid hsla(220, 15%, 30%, 0.3);
+  background: hsla(220, 25%, 11%, 0.4);
+  margin: 3rem 0;
+}
+
+.trustContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.trustTitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: hsl(220, 15%, 65%);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.entitiesList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.entityLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: hsla(220, 20%, 15%, 0.5);
+  border: 1px solid hsla(220, 15%, 30%, 0.5);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.entityLink:hover {
+  background: hsla(210, 100%, 45%, 0.1);
+  border-color: hsla(210, 100%, 45%, 0.3);
+  transform: translateY(-2px);
+}
+
+.entityIcon {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  filter: grayscale(1);
+  transition: filter 0.2s;
+}
+
+.entityLink:hover .entityIcon {
+  filter: grayscale(0);
+}
+
+.entityInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.entityAbbr {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: hsl(220, 20%, 90%);
+  line-height: 1.2;
+}
+
+.entityName {
+  font-size: 0.7rem;
+  color: hsl(220, 15%, 60%);
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Light mode */
+:global([data-theme='light']) .trustBar {
+  background: hsla(220, 15%, 97%, 0.8);
+  border-color: hsla(220, 15%, 90%, 1);
+}
+
+:global([data-theme='light']) .trustTitle {
+  color: hsl(220, 15%, 45%);
+}
+
+:global([data-theme='light']) .entityLink {
+  background: white;
+  border-color: hsla(220, 15%, 90%, 1);
+}
+
+:global([data-theme='light']) .entityLink:hover {
+  background: hsla(210, 100%, 97%, 1);
+  border-color: hsla(210, 100%, 80%, 1);
+}
+
+:global([data-theme='light']) .entityAbbr {
+  color: hsl(220, 25%, 20%);
+}
+
+@media (max-width: 768px) {
+  .entitiesList {
+    gap: 1rem;
+  }
+  
+  .entityLink {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .entityName {
+    max-width: none;
+    white-space: normal;
+  }
+}

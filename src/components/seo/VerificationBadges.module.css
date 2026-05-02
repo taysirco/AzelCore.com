@@ -1,0 +1,66 @@
+.badgesWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.85rem;
+  background: hsla(210, 100%, 45%, 0.08);
+  border: 1px solid hsla(210, 100%, 45%, 0.2);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.badge:hover {
+  background: hsla(210, 100%, 45%, 0.15);
+  border-color: hsla(210, 100%, 45%, 0.4);
+  transform: translateY(-2px);
+}
+
+.badgeIcon {
+  font-size: 1.25rem;
+  filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.2));
+}
+
+.badgeInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.badgeTitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: hsl(210, 100%, 65%);
+  line-height: 1.2;
+}
+
+.badgeGrantor {
+  font-size: 0.65rem;
+  color: hsl(220, 15%, 60%);
+  margin-top: 0.1rem;
+}
+
+/* Light mode */
+:global([data-theme='light']) .badge {
+  background: white;
+  border-color: hsla(210, 100%, 45%, 0.2);
+  box-shadow: 0 2px 8px hsla(220, 20%, 85%, 0.5);
+}
+
+:global([data-theme='light']) .badge:hover {
+  box-shadow: 0 4px 12px hsla(210, 100%, 45%, 0.15);
+}
+
+:global([data-theme='light']) .badgeTitle {
+  color: hsl(210, 100%, 40%);
+}
+
+:global([data-theme='light']) .badgeGrantor {
+  color: hsl(220, 15%, 45%);
+}

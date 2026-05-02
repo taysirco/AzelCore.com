@@ -2,11 +2,14 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, VAT_ID } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID } from '@/lib/constants';
 import { jeddahDistricts } from '@/data/local-jeddah';
 import TldrBait from '@/components/seo/TldrBait';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import { districtsContent } from '@/data/districts-content';
+import GovernmentTrustBar from '@/components/seo/GovernmentTrustBar';
+import ExpertReviewBox from '@/components/seo/ExpertReviewBox';
+import VerificationBadges from '@/components/seo/VerificationBadges';
 import styles from '../page.module.css';
 
 // ═══ SSG: Pre-build all 10 district routes at build time ═══
@@ -144,6 +147,11 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
         </section>
       )}
 
+      {/* ═══ E-E-A-T: Government Trust Signals ═══ */}
+      <div className={styles.container} style={{ marginBottom: 'var(--space-8)' }}>
+        <GovernmentTrustBar entityKeys={['GOV.SASO', 'GOV.TRAFFIC', 'GOV.BALADI']} />
+      </div>
+
       {/* Climate Data — dl/dt/dd for SGE */}
       <section className={styles.section}>
         <div className={styles.container}>
@@ -178,6 +186,11 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
               <dd><strong>{d.recommendation}</strong></dd>
             </div>
           </dl>
+
+          {/* ═══ E-E-A-T: Verification Badges ═══ */}
+          <div style={{ marginTop: 'var(--space-6)' }}>
+            <VerificationBadges sector="التظليل" />
+          </div>
         </div>
       </section>
 
@@ -223,6 +236,19 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>تواصل عبر واتساب</a>
             <a href={`tel:${PHONE}`} className={styles.secondaryBtn}>📞 {PHONE}</a>
           </div>
+        </div>
+      </section>
+
+      {/* ═══ E-E-A-T: Expert Review Entity ═══ */}
+      <section className={styles.section} style={{ paddingTop: 0 }}>
+        <div className={styles.container}>
+          <ExpertReviewBox
+            expertName={OWNER_NAME}
+            expertTitle={OWNER_TITLE}
+            organization="خبراء العزل وتظليل السيارات بجدة"
+            quote={`نضمن لك في ${d.nameAr} تركيب تظليل نانو سيراميك أصلي يتناسب مع الرطوبة والحرارة العالية، مع التزامنا التام بنظام المرور السعودي ونسبة 30%.`}
+            reviewDate={new Date().toISOString().split('T')[0]}
+          />
         </div>
       </section>
 

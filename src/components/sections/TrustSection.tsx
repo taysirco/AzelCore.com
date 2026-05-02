@@ -1,5 +1,7 @@
 import styles from './TrustSection.module.css';
 import { OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
+import ExpertReviewBox from '../seo/ExpertReviewBox';
+import GovernmentTrustBar from '../seo/GovernmentTrustBar';
 
 const credentials = [
   { icon: '📋', title: 'منشأة مسجلة', value: 'وزارة التجارة', desc: 'منشأة سعودية مسجلة رسمياً لدى وزارة التجارة' },
@@ -31,16 +33,20 @@ export default function TrustSection() {
           ))}
         </div>
 
-        {/* Expert Box */}
-        <div className={styles.expertBox}>
-          <div className={styles.expertAvatar}>👤</div>
-          <div className={styles.expertInfo}>
-            <h3 className={styles.expertName}>{OWNER_NAME}</h3>
-            <p className={styles.expertTitle}>{OWNER_TITLE}</p>
-            <p className={styles.expertQuote}>
-              &ldquo;نستخدم فقط الأفلام الأصلية من المصنع مباشرة — لا نقبل بأي منتج مقلد أو مجهول المصدر. كل رول فيلم يحمل رقم تسلسلي يمكن تتبعه.&rdquo;
-            </p>
-          </div>
+        {/* Expert Box (Centralized E-E-A-T Component) */}
+        <div style={{ marginTop: '2rem' }}>
+          <ExpertReviewBox 
+            expertName={OWNER_NAME}
+            expertTitle={OWNER_TITLE}
+            organization="Johnson Window Films (الوكيل المعتمد)"
+            quote="نستخدم فقط الأفلام الأصلية من المصنع مباشرة — لا نقبل بأي منتج مقلد أو مجهول المصدر. كل رول فيلم يحمل رقم تسلسلي يمكن تتبعه."
+            reviewDate={new Date().toISOString().split('T')[0]} // Static for today as we just launched
+          />
+        </div>
+
+        {/* Government Trust Anchors */}
+        <div style={{ marginTop: '2rem' }}>
+          <GovernmentTrustBar entityKeys={['GOV.SASO', 'GOV.TRAFFIC', 'GOV.SBC', 'GOV.BALADI']} />
         </div>
       </div>
     </section>

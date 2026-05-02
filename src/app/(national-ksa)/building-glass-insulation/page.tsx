@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, VAT_ID, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
 import { faqs } from '@/data/faqs';
 import { quickAnswers } from '@/data/quick-answers';
 import TldrBait from '@/components/seo/TldrBait';
@@ -11,6 +11,9 @@ import CorporateRoiCalculator from '@/components/sections/CorporateRoiCalculator
 import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBanner';
 import { ksaCities } from '@/data/local-jeddah';
 import { citiesContent as citiesContentData } from '@/data/cities-content';
+import GovernmentTrustBar from '@/components/seo/GovernmentTrustBar';
+import ExpertReviewBox from '@/components/seo/ExpertReviewBox';
+import VerificationBadges from '@/components/seo/VerificationBadges';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -149,6 +152,11 @@ export default function BuildingInsulationPage() {
         </div>
       </section>
 
+      {/* ═══ E-E-A-T: Government Trust Signals ═══ */}
+      <div style={{ marginTop: 'var(--space-6)', marginBottom: 'var(--space-2)' }}>
+        <GovernmentTrustBar entityKeys={['GOV.SASO', 'GOV.SBC', 'GOV.BALADI']} />
+      </div>
+
       {/* Savings Stats */}
       <section className={styles.statsSection}>
         <div className={styles.container}>
@@ -234,6 +242,11 @@ export default function BuildingInsulationPage() {
               </div>
             ))}
           </dl>
+
+          {/* ═══ E-E-A-T: Verification Badges ═══ */}
+          <div style={{ marginTop: 'var(--space-6)' }}>
+            <VerificationBadges sector="المباني" />
+          </div>
         </div>
       </section>
 
@@ -306,8 +319,20 @@ export default function BuildingInsulationPage() {
         </div>
       </section>
 
-      {/* Cross-sell — Causal Internal Linking */}
       <CrossSellCards currentPage="building-glass-insulation" />
+
+      {/* ═══ E-E-A-T: Expert Review Entity ═══ */}
+      <section className={styles.section} style={{ paddingTop: 0 }}>
+        <div className={styles.container}>
+          <ExpertReviewBox
+            expertName={OWNER_NAME}
+            expertTitle={OWNER_TITLE}
+            organization="عزل كور لخدمات مشاريع المباني"
+            quote="تطبيق معايير كود البناء السعودي (SBC) في العزل الزجاجي ليس خياراً بل ضرورة لتقليل الهدر المالي. نضمن لك أفلام عزل معتمدة توفر حتى 40% من استهلاك التكييف وتطيل عمر الأثاث والمعدات داخل المبنى."
+            reviewDate={new Date().toISOString().split('T')[0]}
+          />
+        </div>
+      </section>
 
       {/* CTA — data-nosnippet (vector density) */}
       <section className={styles.ctaSection} data-nosnippet>

@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { jeddahDistricts } from '@/data/local-jeddah';
+import { jeddahDistricts, ksaCities } from '@/data/local-jeddah';
 import { SITE_URL } from '@/lib/constants';
 
 // Static last-modified date — update manually after significant content changes
@@ -46,6 +46,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // pSEO city pages — National KSA coverage
+  const cityPages: MetadataRoute.Sitemap = ksaCities.map(c => ({
+    url: `${SITE_URL}/building-glass-insulation/${c.id}`,
+    lastModified: LAST_MODIFIED,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   // Blog article pages
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map(slug => ({
     url: `${SITE_URL}/blog/${slug}`,
@@ -54,5 +62,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...districtPages, ...blogPages];
+  return [...staticPages, ...districtPages, ...cityPages, ...blogPages];
 }

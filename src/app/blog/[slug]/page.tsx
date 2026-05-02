@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { SITE_URL, SITE_NAME, WHATSAPP_LINK, OWNER_NAME } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, WHATSAPP_LINK, OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
 import { blogTopics, type BlogTopic } from '@/data/blog-topics';
 import { articles, articleSlugs } from '@/data/blog-content';
+import ExpertReviewBox from '@/components/seo/ExpertReviewBox';
+import GovernmentTrustBar from '@/components/seo/GovernmentTrustBar';
 import styles from './page.module.css';
 
 function getTopicBySlug(slug: string): BlogTopic | undefined {
@@ -69,6 +71,12 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
         '@id': `${SITE_URL}/blog/${slug}#article`,
         headline: title,
         author: { '@type': 'Person', name: OWNER_NAME },
+        reviewedBy: {
+          '@type': 'Person',
+          name: OWNER_NAME,
+          jobTitle: OWNER_TITLE,
+          url: `${SITE_URL}/johnson-authorized-dealer`
+        },
         publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME, logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/azelcore-logo.png` } },
         datePublished: date,
         dateModified: date,
@@ -125,6 +133,10 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
           🕐 {Math.ceil(approximateWordCount / 200)} دقائق قراءة · {approximateWordCount} كلمة
         </div>
 
+        <div style={{ margin: '2rem 0' }}>
+          <GovernmentTrustBar entityKeys={['GOV.SASO', 'GOV.SBC', 'GOV.BALADI']} />
+        </div>
+
         <div className={styles.content}>
           <p>{content.intro}</p>
 
@@ -163,6 +175,16 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
               تواصل عبر واتساب
             </a>
           </div>
+        </div>
+
+        <div style={{ marginTop: '3rem', marginBottom: '2rem' }}>
+          <ExpertReviewBox
+            expertName={OWNER_NAME}
+            expertTitle={OWNER_TITLE}
+            organization={SITE_NAME}
+            quote="المعلومات الواردة في هذا الدليل مبنية على خبرتنا الميدانية وتطبيقنا لمعايير الجودة السعودية (SASO). احرص دائماً على التعامل مع وكيل معتمد لضمان النتيجة."
+            reviewDate={date}
+          />
         </div>
 
         <Link href="/blog" className={styles.backLink}>→ العودة للمدونة</Link>

@@ -64,4 +64,23 @@ export const schemaConfigs = {
     "@type": "BreadcrumbList",
     itemListElement: [], // يُملأ ديناميكياً
   },
+
+  // WarrantyPromise (E-E-A-T)
+  warrantyPromise: {
+    "@type": "WarrantyPromise",
+    durationOfWarranty: {
+      "@type": "QuantitativeValue",
+      value: "10",
+      unitCode: "ANN" // Years
+    },
+    warrantyScope: "http://schema.org/LaborBringsWarranty"
+  },
+
+  // ReviewedBy (YMYL)
+  reviewedBy: {
+    "@type": "Person",
+    name: "محمد الهادي",
+    jobTitle: "فني عزل وتظليل معتمد",
+    url: "https://azelcore.com/johnson-authorized-dealer"
+  }
 };

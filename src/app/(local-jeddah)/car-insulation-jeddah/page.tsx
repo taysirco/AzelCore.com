@@ -12,6 +12,9 @@ import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBann
 import ThermalSliderBeforeAfter from '@/components/sections/ThermalSliderBeforeAfter';
 import VoiceSearchFAQ from '@/components/sections/VoiceSearchFAQ';
 import { datasetMeta } from '@/data/jeddah-thermal-research';
+import GovernmentTrustBar from '@/components/seo/GovernmentTrustBar';
+import ExpertReviewBox from '@/components/seo/ExpertReviewBox';
+import VerificationBadges from '@/components/seo/VerificationBadges';
 import styles from './page.module.css';
 
 // ════════════════════════════════════════════
@@ -320,6 +323,11 @@ export default function CarTintingPage() {
         </div>
       </section>
 
+      {/* ═══ E-E-A-T: Government Trust Signals ═══ */}
+      <div style={{ marginTop: 'var(--space-6)', marginBottom: 'var(--space-2)' }}>
+        <GovernmentTrustBar entityKeys={['GOV.SASO', 'GOV.TRAFFIC', 'GOV.BALADI']} />
+      </div>
+
       {/* ═══ Why Us — Semantic <dl> for SGE extraction ═══ */}
       <section className={styles.section}>
         <div className={styles.container}>
@@ -338,6 +346,11 @@ export default function CarTintingPage() {
               </div>
             ))}
           </dl>
+
+          {/* ═══ E-E-A-T: Verification Badges ═══ */}
+          <div style={{ marginTop: 'var(--space-6)' }}>
+            <VerificationBadges sector="التظليل" />
+          </div>
         </div>
       </section>
 
@@ -458,6 +471,19 @@ export default function CarTintingPage() {
         title="تحذير قانوني: نسبة التظليل"
         text="تجاوز نسبة 30% VLT = مخالفة 500-900 ر.س + رفض الفحص الدوري + إلزام بالإزالة على حسابك."
       />
+
+      {/* ═══ E-E-A-T: Expert Review Entity ═══ */}
+      <section className={styles.section} style={{ paddingTop: 0 }}>
+        <div className={styles.container}>
+          <ExpertReviewBox
+            expertName={OWNER_NAME}
+            expertTitle={OWNER_TITLE}
+            organization="عزل كور (وكيل جونسون)"
+            quote="تظليل النانو سيراميك الأصلي هو استثمار حقيقي لحماية سيارتك وصحتك من أشعة UV الضارة. احرص دائماً على الالتزام بنسبة 30% المقررة من المرور وتأكد من شهادة الضمان المعتمدة."
+            reviewDate={new Date().toISOString().split('T')[0]}
+          />
+        </div>
+      </section>
 
       {/* ═══ Cross-sell — Causal Internal Linking ═══ */}
       <CrossSellCards currentPage="car-insulation-jeddah" />

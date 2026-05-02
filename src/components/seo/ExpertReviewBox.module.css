@@ -1,0 +1,189 @@
+.reviewBox {
+  margin: 2rem 0;
+  border-radius: 12px;
+  border: 1px solid hsla(210, 100%, 45%, 0.2);
+  background: linear-gradient(135deg, hsla(220, 25%, 11%, 0.95), hsla(220, 20%, 8%, 0.98));
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  position: relative;
+}
+
+.reviewBox::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, hsl(210, 100%, 45%), hsl(185, 80%, 45%));
+}
+
+.header {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid hsla(220, 15%, 30%, 0.3);
+  display: flex;
+  align-items: center;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: hsla(210, 100%, 45%, 0.1);
+  border: 1px solid hsla(210, 100%, 45%, 0.25);
+  border-radius: 20px;
+  padding: 0.35rem 0.85rem;
+}
+
+.badgeIcon {
+  font-size: 0.9rem;
+}
+
+.badgeText {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: hsl(210, 100%, 65%);
+  letter-spacing: 0.02em;
+}
+
+.content {
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.avatarSection {
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, hsl(210, 100%, 45%), hsl(185, 80%, 45%));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px hsla(210, 100%, 45%, 0.3);
+}
+
+.avatarIcon {
+  font-size: 1.5rem;
+}
+
+.info {
+  flex: 1;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+}
+
+.label {
+  color: hsl(220, 10%, 55%);
+  font-weight: 500;
+}
+
+.value {
+  color: hsl(220, 15%, 85%);
+  font-weight: 600;
+}
+
+.expertLink {
+  color: hsl(210, 100%, 65%);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px dashed hsla(210, 100%, 65%, 0.4);
+  transition: color 0.2s;
+}
+
+.expertLink:hover {
+  color: hsl(210, 100%, 75%);
+}
+
+.title {
+  font-size: 0.8rem;
+  color: hsl(220, 10%, 55%);
+  margin: 0.15rem 0;
+  line-height: 1.4;
+}
+
+.org {
+  font-size: 0.75rem;
+  color: hsl(185, 60%, 50%);
+  margin: 0;
+}
+
+.quote {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: hsla(220, 20%, 15%, 0.5);
+  border-right: 3px solid hsl(35, 95%, 55%);
+  font-size: 0.85rem;
+  color: hsl(220, 15%, 80%);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.date {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.72rem;
+  color: hsl(220, 10%, 45%);
+}
+
+/* Compact variant — no quote, smaller */
+.compact .content {
+  padding: 0.75rem 1rem;
+}
+
+.compact .avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.compact .avatarIcon {
+  font-size: 1.1rem;
+}
+
+/* Light mode */
+:global([data-theme='light']) .reviewBox {
+  background: linear-gradient(135deg, hsla(220, 15%, 97%, 0.95), hsla(220, 10%, 94%, 0.98));
+  border-color: hsla(210, 100%, 45%, 0.15);
+}
+
+:global([data-theme='light']) .value {
+  color: hsl(220, 25%, 20%);
+}
+
+:global([data-theme='light']) .quote {
+  background: hsla(220, 15%, 92%, 0.7);
+  color: hsl(220, 20%, 25%);
+}
+
+:global([data-theme='light']) .title {
+  color: hsl(220, 10%, 40%);
+}
+
+@media (max-width: 480px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .meta {
+    justify-content: center;
+  }
+
+  .quote {
+    border-right: none;
+    border-top: 3px solid hsl(35, 95%, 55%);
+  }
+}
