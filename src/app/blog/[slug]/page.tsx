@@ -20,20 +20,21 @@ export function generateStaticParams() {
 }
 
 // ═══════════════════════════════════════════
-// Metadata
+// Metadata (Next.js 16 — params is Promise)
 // ═══════════════════════════════════════════
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const article = articles[params.slug];
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const article = articles[slug];
   if (!article) return {};
-  const topic = getTopicBySlug(params.slug);
-  const title = topic?.titleAr || params.slug;
+  const topic = getTopicBySlug(slug);
+  const title = topic?.titleAr || slug;
   return {
     title,
     description: article.content.intro.slice(0, 155),
-    alternates: { canonical: `${SITE_URL}/blog/${params.slug}` },
+    alternates: { canonical: `${SITE_URL}/blog/${slug}` },
     openGraph: {
       title,
-      url: `${SITE_URL}/blog/${params.slug}`,
+      url: `${SITE_URL}/blog/${slug}`,
       type: 'article',
       images: [{ url: `/images/${article.ogImage}`, width: 1200, height: 630 }],
     },
@@ -41,15 +42,16 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 }
 
 // ═══════════════════════════════════════════
-// Page Component
+// Page Component (Next.js 16 — async + await params)
 // ═══════════════════════════════════════════
-export default function BlogArticlePage({ params }: { params: { slug: string } }) {
-  const article = articles[params.slug];
+export default async function BlogArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const article = articles[slug];
   if (!article) notFound();
 
   const { content, serviceLinks } = article;
-  const topic = getTopicBySlug(params.slug);
-  const title = topic?.titleAr || params.slug;
+  const topic = getTopicBySlug(slug);
+  const title = topic?.titleAr || slug;
   const date = '2026-05-01';
 
   const approximateWordCount = (
@@ -64,13 +66,13 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
     '@graph': [
       {
         '@type': 'Article',
-        '@id': `${SITE_URL}/blog/${params.slug}#article`,
+        '@id': `${SITE_URL}/blog/${slug}#article`,
         headline: title,
         author: { '@type': 'Person', name: OWNER_NAME },
         publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME, logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/azelcore-logo.png` } },
         datePublished: date,
         dateModified: date,
-        mainEntityOfPage: `${SITE_URL}/blog/${params.slug}`,
+        mainEntityOfPage: `${SITE_URL}/blog/${slug}`,
         image: `${SITE_URL}/images/${article.ogImage}`,
         inLanguage: 'ar',
         isPartOf: { '@type': 'WebSite', '@id': `${SITE_URL}/#website` },
@@ -82,7 +84,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
         ],
         speakable: {
           '@type': 'SpeakableSpecification',
-          cssSelector: [`#article-${params.slug}-title`, `#article-${params.slug}-intro`],
+          cssSelector: [`#article-${slug}-title`, `#article-${slug}-intro`],
         },
       },
       {
@@ -90,7 +92,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
           { '@type': 'ListItem', position: 2, name: 'المدونة', item: `${SITE_URL}/blog` },
-          { '@type': 'ListItem', position: 3, name: title, item: `${SITE_URL}/blog/${params.slug}` },
+          { '@type': 'ListItem', position: 3, name: title, item: `${SITE_URL}/blog/${slug}` },
         ],
       },
     ],
@@ -101,7 +103,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleGraphSchema) }} />
 
       {/* ── Voice SEO Target — Article ── */}
-      <div id={`article-${params.slug}-intro`} style={{ position: 'absolute', left: '-9999px', top: 0 }} aria-hidden="true">
+      <div id={`article-${slug}-intro`} style={{ position: 'absolute', left: '-9999px', top: 0 }} aria-hidden="true">
         {content.intro.slice(0, 200)}
       </div>
 
@@ -117,7 +119,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
           </time>
         </div>
 
-        <h1 id={`article-${params.slug}-title`} className={styles.title}>{title}</h1>
+        <h1 id={`article-${slug}-title`} className={styles.title}>{title}</h1>
 
         <div className={styles.readTime} data-nosnippet>
           🕐 {Math.ceil(approximateWordCount / 200)} دقائق قراءة · {approximateWordCount} كلمة
