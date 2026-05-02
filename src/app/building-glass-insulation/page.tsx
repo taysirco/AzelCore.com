@@ -103,14 +103,30 @@ const graphSchema = {
         { '@type': 'ListItem', position: 2, name: 'عزل واجهات مباني', item: `${SITE_URL}/building-glass-insulation` },
       ],
     },
+    // ── SpeakableSpecification — Voice Search Monopoly (B2B) ──
+    {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['#voice-answer-b2b-1', '#voice-answer-b2b-2', '#voice-answer-b2b-3'],
+    },
   ],
 };
 
 export default function BuildingInsulationPage() {
   return (
     <>
-      {/* Unified @graph — B2BService + FAQ + Breadcrumb */}
+      {/* Unified @graph — B2BService + FAQ + Breadcrumb + Speakable */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }} />
+
+      {/* ═══ Voice Search Speakable Answers — B2B TTS Targets ═══ */}
+      <div id="voice-answer-b2b-1" style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+        عزل واجهات المباني يوفر 40% من فاتورة الكهرباء. أفلام نانو سيراميك أمريكية متوافقة مع كود البناء السعودي. ضمان 15 سنة.
+      </div>
+      <div id="voice-answer-b2b-2" style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+        تكلفة عزل زجاج المباني تبدأ من 50 ريال للمتر المربع. العائد على الاستثمار خلال 7 إلى 18 شهر حسب مساحة الواجهة.
+      </div>
+      <div id="voice-answer-b2b-3" style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+        عزل كور يخدم المباني التجارية والفلل والمدارس في 15 مدينة سعودية. فريق متخصص وعقود شركات ومناقصات حكومية.
+      </div>
 
       {/* ═══ Live Weather Banner — QDF ISR Signal ═══ */}
       <LiveJeddahWeatherBanner />

@@ -3,7 +3,7 @@ import { jeddahDistricts } from '@/data/local-jeddah';
 import { SITE_URL } from '@/lib/constants';
 
 // Static last-modified date — update manually after significant content changes
-const LAST_MODIFIED = '2026-05-01';
+const LAST_MODIFIED = '2026-05-02';
 
 // Blog article slugs (must match blog/[slug]/page.tsx generateStaticParams)
 const blogSlugs = [
@@ -27,6 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/contact`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.6 },
     // Research Dataset — Primary source citation endpoint (valuable for SGE)
     { url: `${SITE_URL}/api/research/jeddah-thermal-data`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.5 },
+    // Research Report — Perplexity Citation Trap
+    { url: `${SITE_URL}/research/ksa-thermal-report-2026`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.6 },
   ];
 
   // pSEO district pages — hyper-local Jeddah coverage
