@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_URL, SITE_NAME } from '@/lib/constants';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -91,10 +90,6 @@ const itemListSchema = {
 export default function BlogPage() {
   return (
     <>
-      <BreadcrumbSchema items={[
-        { name: 'الرئيسية', href: '/' },
-        { name: 'المدونة', href: '/blog' },
-      ]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
       <section className={styles.pageHeader}>

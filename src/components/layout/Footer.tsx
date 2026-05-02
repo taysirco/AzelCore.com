@@ -12,10 +12,8 @@ const serviceLinks = [
 
 const infoLinks = [
   { href: '/about', label: 'من نحن' },
-  { href: '/gallery', label: 'معرض الأعمال' },
-  { href: '/blog', label: 'المدونة' },
-  { href: '/contact', label: 'تواصل معنا' },
   { href: '/faq', label: 'الأسئلة الشائعة' },
+  { href: '/contact', label: 'تواصل معنا' },
 ];
 
 export default function Footer() {

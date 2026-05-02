@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, OWNER_NAME } from '@/lib/constants';
 import { blogTopics, type BlogTopic } from '@/data/blog-topics';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import styles from './page.module.css';
 
 // Blog article content — maps slug to full article sections

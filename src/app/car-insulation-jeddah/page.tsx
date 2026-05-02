@@ -108,7 +108,7 @@ const graphSchema = {
         },
       ],
       sameAs: [
-        'https://www.wikidata.org/wiki/Q5880', // Jeddah city entity
+        'https://www.instagram.com/azelcore',
       ],
       parentOrganization: { '@id': `${SITE_URL}/#organization` },
       aggregateRating: {
