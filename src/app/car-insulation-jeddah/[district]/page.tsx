@@ -6,6 +6,7 @@ import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, VAT_ID } from '@
 import { jeddahDistricts } from '@/data/local-jeddah';
 import TldrBait from '@/components/seo/TldrBait';
 import CrossSellCards from '@/components/sections/CrossSellCards';
+import { districtsContent } from '@/data/districts-content';
 import styles from '../page.module.css';
 
 // ═══ SSG: Pre-build all 10 district routes at build time ═══
@@ -92,10 +93,23 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
   if (!d) notFound();
 
   const schema = buildDistrictSchema(d);
+  const localContent = districtsContent[district];
+
+  // FAQPage Schema for district-specific FAQs
+  const faqSchema = localContent ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: localContent.faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  } : null;
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
       <TldrBait summary={`في ${d.nameAr} بجدة، الرطوبة تصل ${d.humidity} مع أشعة UV بمستوى ${d.uvIndex} وتآكل ملحي ${d.saltCorrosion}. نوصي بـ ${d.recommendation}. وكيل جونسون المعتمد — ضمان 10 سنوات.`} />
 
@@ -118,6 +132,17 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
           </div>
         </div>
       </section>
+
+      {/* Local Paragraph — Unique Content per District */}
+      {localContent && (
+        <section className={styles.section}>
+          <div className={styles.container}>
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.9', color: 'var(--color-text-muted)', maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+              {localContent.localParagraph}
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Climate Data — dl/dt/dd for SGE */}
       <section className={styles.section}>
@@ -155,6 +180,39 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
           </dl>
         </div>
       </section>
+
+      {/* Expert Tip */}
+      {localContent && (
+        <section className={styles.section} style={{ background: 'var(--color-surface-elevated, #1a1a2e)' }}>
+          <div className={styles.container} style={{ maxWidth: '700px', textAlign: 'center' }}>
+            <p style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--color-primary)', marginBottom: '0.75rem', fontWeight: 600 }}>💡 نصيحة الخبير</p>
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.9', color: 'var(--color-text)' }}>{localContent.expertTip}</p>
+          </div>
+        </section>
+      )}
+
+      {/* FAQ — District-Specific (3 unique questions per district) */}
+      {localContent && (
+        <section className={styles.section}>
+          <div className={styles.container}>
+            <div className={styles.sectionHeader}>
+              <span className={styles.overline}>أسئلة سكان {d.nameAr}</span>
+              <h2 className={styles.sectionTitle}>أسئلة شائعة عن التظليل في {d.nameAr}</h2>
+            </div>
+            <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {localContent.faqs.map((faq, i) => (
+                <details key={i} style={{ background: 'var(--color-surface)', borderRadius: '12px', padding: '1.25rem 1.5rem', border: '1px solid var(--color-border)', cursor: 'pointer' }}>
+                  <summary style={{ fontWeight: 700, fontSize: '1.05rem', color: 'var(--color-text)', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    {faq.question}
+                    <span style={{ fontSize: '1.2rem', color: 'var(--color-primary)' }}>+</span>
+                  </summary>
+                  <p style={{ marginTop: '0.75rem', lineHeight: '1.8', color: 'var(--color-text-muted)', fontSize: '0.95rem' }}>{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA — data-nosnippet (vector density) */}
       <section className={styles.ctaSection} data-nosnippet>
