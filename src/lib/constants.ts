@@ -2,7 +2,7 @@ export const SITE_URL = 'https://azelcore.com';
 export const SITE_NAME = 'عزل كور';
 export const SITE_NAME_EN = 'AzelCore';
 export const WHATSAPP = '+966564612017';
-export const WHATSAPP_LINK = `https://wa.me/966564612017?text=${encodeURIComponent('السلام عليكم، أبي استفسر عن خدمات العزل والتظليل')}`;
+export const WHATSAPP_LINK = `https://api.whatsapp.com/send/?phone=966564612017&text=${encodeURIComponent('السلام عليكم، أبي استفسر عن خدمات العزل والتظليل')}`;
 export const PHONE = '+966564612017';
 export const CRN = '4030253566';
 export const VAT_ID = '311280328300003';
