@@ -29,6 +29,11 @@ const faqGraphSchema = {
         { '@type': 'ListItem', position: 2, name: 'الأسئلة الشائعة', item: `${SITE_URL}/faq` },
       ],
     },
+    // ── SpeakableSpecification — FAQ Voice Search Monopoly ──
+    {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['#voice-answer-faq-1', '#voice-answer-faq-2', '#voice-answer-faq-3'],
+    },
   ],
 };
 
@@ -110,6 +115,16 @@ export default function FAQPage() {
           </a>
         </div>
       </section>
+      {/* ═══ Voice Search Speakable Answers — FAQ TTS Targets ═══ */}
+      <div id="voice-answer-faq-1" style={{ display: 'none' }} aria-hidden="true">
+        نعم التظليل مسموح في السعودية بشروط. الزجاج الأمامي يجب يكون 70% شفافية والخلفي مفتوح. عزل كور ينصحك بالدرجة المناسبة.
+      </div>
+      <div id="voice-answer-faq-2" style={{ display: 'none' }} aria-hidden="true">
+        الفرق بين نانو سيراميك وكربوني إن النانو سيراميك يحجب 97% حرارة والكربوني 70% بس. النانو سيراميك أغلى لكن أفضل بكثير في حرارة جدة.
+      </div>
+      <div id="voice-answer-faq-3" style={{ display: 'none' }} aria-hidden="true">
+        تظليل نانو سيراميك ما يحجب إشارة الجوال أبداً. لأنه خالي من المعادن. الجوال وGPS وأبل باي كلها تشتغل عادي.
+      </div>
     </>
   );
 }

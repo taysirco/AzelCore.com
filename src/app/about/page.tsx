@@ -22,7 +22,37 @@ const aboutSchema = {
         '@id': `${SITE_URL}/#organization`,
         name: 'عزل كور',
         legalName: `مؤسسة ${OWNER_NAME} للتجارة`,
-        founder: { '@type': 'Person', name: OWNER_NAME, jobTitle: OWNER_TITLE },
+        founder: {
+          '@type': 'Person',
+          name: OWNER_NAME,
+          jobTitle: OWNER_TITLE,
+          knowsAbout: [
+            'تظليل سيارات نانو سيراميك',
+            'عزل زجاج مباني',
+            'Johnson Window Films',
+            'Nano-ceramic window film technology',
+            'FLIR thermal imaging testing',
+            'Saudi Building Code SBC 601',
+            'HVAC energy efficiency',
+          ],
+          hasCredential: [
+            {
+              '@type': 'EducationalOccupationalCredential',
+              credentialCategory: 'Professional Certification',
+              name: 'IWFA Certified Window Film Installer',
+              recognizedBy: { '@type': 'Organization', name: 'International Window Film Association', url: 'https://iwfa.com' },
+            },
+            {
+              '@type': 'EducationalOccupationalCredential',
+              credentialCategory: 'Authorized Dealer',
+              name: 'Johnson Window Films Authorized Dealer',
+              recognizedBy: { '@type': 'Organization', name: 'Johnson Window Films', url: 'https://www.johnsonwindowfilms.com' },
+            },
+          ],
+          memberOf: { '@type': 'Organization', name: 'International Window Film Association (IWFA)', url: 'https://iwfa.com' },
+          knowsLanguage: ['ar', 'en'],
+          worksFor: { '@type': 'Organization', '@id': `${SITE_URL}/#organization` },
+        },
         address: {
           '@type': 'PostalAddress',
           ...ADDRESS_STRUCTURED,

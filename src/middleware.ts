@@ -63,5 +63,10 @@ export const config = {
     '/building-glass-insulation',
     '/johnson-authorized-dealer',
     '/contact',
+    '/about',
+    '/faq',
+    '/gallery',
+    '/blog',
+    '/blog/:slug*',
   ],
 };

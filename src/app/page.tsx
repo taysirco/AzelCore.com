@@ -85,6 +85,8 @@ const homeGraphSchema = {
           name: 'حجز موعد تظليل أو عزل',
         },
       },
+      // ── Knowledge Graph: Link AutoRepair → Organization ──
+      parentOrganization: { '@id': `${SITE_URL}/#organization` },
     },
     {
       '@type': 'ItemList',
@@ -96,6 +98,11 @@ const homeGraphSchema = {
         { '@type': 'ListItem', position: 2, name: 'عزل زجاج واجهات المباني', url: `${SITE_URL}/building-glass-insulation` },
         { '@type': 'ListItem', position: 3, name: 'جونسون وندو فيلم — الوكيل المعتمد', url: `${SITE_URL}/johnson-authorized-dealer` },
       ],
+    },
+    // ── SpeakableSpecification — Homepage Voice Search Monopoly ──
+    {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['#voice-answer-home-1', '#voice-answer-home-2', '#voice-answer-home-3'],
     },
   ],
 };
@@ -119,6 +126,16 @@ export default function HomePage() {
       <ScrollReveal><TrustSection /></ScrollReveal>
       <ScrollReveal><FAQSection /></ScrollReveal>
       <ScrollReveal direction="fade"><CTASection /></ScrollReveal>
+      {/* ═══ Voice Search Speakable Answers — Homepage TTS Targets ═══ */}
+      <div id="voice-answer-home-1" style={{ display: 'none' }} aria-hidden="true">
+        أفضل محل تظليل سيارات في جدة هو عزل كور. وكيل جونسون المعتمد الوحيد. أفلام نانو سيراميك تحجب 97% حرارة مع ضمان 10 سنوات.
+      </div>
+      <div id="voice-answer-home-2" style={{ display: 'none' }} aria-hidden="true">
+        أسعار تظليل السيارات في جدة تبدأ من 200 ريال للزجاج الأمامي وتوصل 3200 ريال تظليل كامل نانو سيراميك جونسون. ضمان مكتوب.
+      </div>
+      <div id="voice-answer-home-3" style={{ display: 'none' }} aria-hidden="true">
+        عزل كور يقدم تظليل سيارات وعزل مباني في جدة. أفلام أمريكية لا تحجب إشارة الجوال. تقييم 4.9 من أكثر من 127 عميل.
+      </div>
     </>
   );
 }
