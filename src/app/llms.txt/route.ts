@@ -49,7 +49,7 @@ export function GET() {
 - **UV Protection**: 99%
 - **Temperature Drop**: 74°C → 38°C cabin temperature in 12 minutes
 - **Warranty**: Up to vehicle lifetime
-- **Brands**: Johnson Window Films (Authorized Dealer), 3M, XPEL
+- **Brands**: Johnson Window Films (Authorized Dealer), 3M Window Films (Authorized Dealer), XPEL
 - **Service Area**: All 70+ districts of Jeddah
 - **Sample Size**: 530 vehicles tested across 10 districts (2024–2026)
 

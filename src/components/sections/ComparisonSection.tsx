@@ -3,7 +3,7 @@ import styles from './ComparisonSection.module.css';
 const headers = ['نوع الفيلم', 'حجب IR', 'حجب UV', 'TSER', 'الضمان', 'السعر (سيدان)'];
 const rows = [
   { cells: ['Johnson Supreme IR ⭐', '97%', '99%', '72%', 'عمر السيارة', '1,800-3,200 ر.س'], highlight: true },
-  { cells: ['3M Crystalline', '97%', '99.9%', '90%', 'عمر السيارة', '2,000-3,500 ر.س'], highlight: false },
+  { cells: ['3M Crystalline ⭐', '97%', '99.9%', '90%', 'عمر السيارة', '2,000-3,500 ر.س'], highlight: true },
   { cells: ['XPEL PRIME XR+', '98%', '99%', '96%', '10 سنوات', '2,500-4,000 ر.س'], highlight: false },
   { cells: ['LLumar CTX', '95%', '99%', '88%', '7 سنوات', '1,200-2,500 ر.س'], highlight: false },
   { cells: ['Johnson InsulatIR', '92%', '99%', '65%', 'عمر السيارة', '1,200-2,500 ر.س'], highlight: true },

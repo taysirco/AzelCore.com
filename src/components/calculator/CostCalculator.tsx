@@ -18,8 +18,9 @@ const CAR_SIZES: Option[] = [
 
 const FILM_TYPES: Option[] = [
   { id: 'carbon', label: 'فيلم كربوني (اقتصادي)', priceModifier: 600 },
-  { id: 'ceramic-basic', label: 'نانو سيراميك (أساسي)', priceModifier: 1100 },
-  { id: 'ceramic-premium', label: 'نانو سيراميك XPEL/3M', priceModifier: 1800 },
+  { id: 'ceramic-basic', label: 'نانو سيراميك جونسون Marathon', priceModifier: 1100 },
+  { id: 'ceramic-johnson', label: 'جونسون Supreme IR ⭐', priceModifier: 1800 },
+  { id: 'ceramic-3m', label: '3M Crystalline ⭐ (200+ طبقة نانو)', priceModifier: 2400 },
 ];
 
 const ADDONS: Option[] = [

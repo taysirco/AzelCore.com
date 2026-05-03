@@ -48,6 +48,13 @@ const serviceMap: Record<string, CrossSellItem[]> = {
       href: '/johnson-authorized-dealer',
       linkText: 'اكتشف جونسون',
     },
+    {
+      icon: '🔴',
+      title: 'أفلام 3M للمباني التجارية',
+      description: '3M تُنتج أفلاماً معمارية متخصصة بحجب حراري فائق — مثالية للأبراج التجارية والواجهات الزجاجية.',
+      href: '/3m-authorized-dealer',
+      linkText: 'اكتشف 3M',
+    },
   ],
   'johnson-authorized-dealer': [
     {
