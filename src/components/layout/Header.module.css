@@ -32,7 +32,7 @@
 }
 
 .logo { display: flex; align-items: center; flex-shrink: 0; }
-.logo img { height: 40px; width: auto; }
+.logo img { height: 46px; width: auto; }
 
 /* Nav */
 .nav {
@@ -212,10 +212,10 @@
 }
 
 @media (max-width: 768px) {
-  .logo img { height: 48px; }
+  .logo img { height: 55px; }
 }
 
 @media (max-width: 480px) {
   .ctaBtn span { display: none; }
-  .logo img { height: 46px; }
+  .logo img { height: 53px; }
 }
