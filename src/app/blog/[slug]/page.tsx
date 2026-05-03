@@ -110,7 +110,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
     content.cta
   ).split(/\s+/).length;
 
-  const articleGraphSchema = {
+  const articleGraphSchema: any = {
     '@context': 'https://schema.org',
     '@graph': [
       {
@@ -152,6 +152,20 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
       },
     ],
   };
+  if (content.faqs && content.faqs.length > 0) {
+    articleGraphSchema['@graph'].push({
+      '@type': 'FAQPage',
+      '@id': `${SITE_URL}/blog/${slug}#faq`,
+      mainEntity: content.faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.a,
+        },
+      })),
+    });
+  }
 
   return (
     <>
@@ -185,6 +199,13 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
         </div>
 
         <div className={styles.content}>
+          {content.quickAnswer && (
+            <div className={styles.quickAnswerBox}>
+              <div className={styles.quickAnswerBadge}>الإجابة السريعة (TL;DR)</div>
+              <p><strong>{content.quickAnswer}</strong></p>
+            </div>
+          )}
+
           <p>{content.intro}</p>
 
           {/* ═══ Table of Contents (Outline) ═══ */}
@@ -199,12 +220,47 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
             </div>
           )}
 
+          {content.table && (
+            <div className={styles.tableWrapper}>
+              <table className={styles.comparisonTable}>
+                <thead>
+                  <tr>
+                    {content.table.headers.map((h, i) => (
+                      <th key={i}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {content.table.rows.map((row, i) => (
+                    <tr key={i}>
+                      {row.map((cell, j) => (
+                        <td key={j} dangerouslySetInnerHTML={{ __html: cell }} />
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
           {content.sections.map((section, i) => (
             <div key={i}>
               <h2>{section.heading}</h2>
               <SmartTextFormatter text={section.body} />
             </div>
           ))}
+
+          {content.faqs && content.faqs.length > 0 && (
+            <div className={styles.faqBox}>
+              <h2>الأسئلة الشائعة</h2>
+              {content.faqs.map((faq, i) => (
+                <details key={i} className={styles.faqItem}>
+                  <summary>{faq.q}</summary>
+                  <p>{faq.a}</p>
+                </details>
+              ))}
+            </div>
+          )}
 
           {content.warning && (
             <div className={styles.warningBox}>
@@ -237,13 +293,23 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
         </div>
 
         <div style={{ marginTop: '3rem', marginBottom: '2rem' }}>
-          <ExpertReviewBox
-            expertName={OWNER_NAME}
-            expertTitle={OWNER_TITLE}
-            organization={SITE_NAME}
-            quote="المعلومات الواردة في هذا الدليل مبنية على خبرتنا الميدانية وتطبيقنا لمعايير الجودة السعودية (SASO). احرص دائماً على التعامل مع وكيل معتمد لضمان النتيجة."
-            reviewDate={date}
-          />
+          {content.expertReview ? (
+            <ExpertReviewBox
+              expertName={content.expertReview.author}
+              expertTitle={content.expertReview.role}
+              organization={SITE_NAME}
+              quote={content.expertReview.text}
+              reviewDate={date}
+            />
+          ) : (
+            <ExpertReviewBox
+              expertName={OWNER_NAME}
+              expertTitle={OWNER_TITLE}
+              organization={SITE_NAME}
+              quote="المعلومات الواردة في هذا الدليل مبنية على خبرتنا الميدانية وتطبيقنا لمعايير الجودة السعودية (SASO). احرص دائماً على التعامل مع وكيل معتمد لضمان النتيجة."
+              reviewDate={date}
+            />
+          )}
         </div>
 
         <Link href="/blog" className={styles.backLink}>→ العودة للمدونة</Link>
