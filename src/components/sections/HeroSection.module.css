@@ -122,6 +122,7 @@
 
 .titleLine {
   display: block;
+  color: white;
 }
 
 .titleGradient {
@@ -153,7 +154,7 @@
 /* Subtitle */
 .subtitle {
   font-size: var(--text-xl);
-  color: var(--text-secondary);
+  color: hsla(0, 0%, 100%, 0.8);
   line-height: 1.8;
   max-width: 640px;
   margin: 0 auto var(--space-10);
