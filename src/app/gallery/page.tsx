@@ -69,8 +69,8 @@ export default function GalleryPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(imageListSchema) }} />
 
       {/* ── Voice SEO Target — Gallery ── */}
-      <div id="voice-answer-gallery-1" style={{ position: 'absolute', left: '-9999px', top: 0 }} aria-hidden="true">
-        معرض أعمال عزل كور يضم 18 صورة حقيقية قبل وبعد لتظليل سيارات وعزل مباني في جدة بأفلام جونسون الأمريكية.
+      <div id="voice-answer-gallery-1" className="sr-only" aria-hidden="true">
+        معرض أعمال عزل كور — تصفح أكثر من 30 سيارة تم تظليلها في جدة بأنواع الأفلام المختلفة.
       </div>
 
       {/* Header */}

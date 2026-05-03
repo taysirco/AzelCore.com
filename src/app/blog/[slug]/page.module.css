@@ -133,6 +133,42 @@
   color: hsl(15, 90%, 55%);
 }
 
+.tocBox {
+  margin: var(--space-8) 0;
+  padding: var(--space-6);
+  background: hsla(220, 20%, 20%, 0.4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.tocBox h3 {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  color: var(--primary-light);
+}
+
+.tocBox ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tocBox li {
+  position: relative;
+  padding-right: var(--space-4);
+  margin-bottom: var(--space-2);
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+}
+
+.tocBox li::before {
+  content: '•';
+  position: absolute;
+  right: 0;
+  color: var(--primary);
+}
+
 .ctaBox {
   margin-top: var(--space-10);
   padding: var(--space-8);

@@ -158,7 +158,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleGraphSchema) }} />
 
       {/* ── Voice SEO Target — Article ── */}
-      <div id={`article-${slug}-intro`} style={{ position: 'absolute', left: '-9999px', top: 0 }} aria-hidden="true">
+      <div id={`article-${slug}-intro`} className="sr-only" aria-hidden="true">
         {content.intro.slice(0, 200)}
       </div>
 
@@ -186,6 +186,18 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
 
         <div className={styles.content}>
           <p>{content.intro}</p>
+
+          {/* ═══ Table of Contents (Outline) ═══ */}
+          {topic?.outline && topic.outline.length > 0 && (
+            <div className={styles.tocBox} data-nosnippet>
+              <h3>جدول المحتويات:</h3>
+              <ul>
+                {topic.outline.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {content.sections.map((section, i) => (
             <div key={i}>

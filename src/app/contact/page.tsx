@@ -74,8 +74,8 @@ export default function ContactPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }} />
 
       {/* ── Voice SEO Target — Contact ── */}
-      <div id="voice-answer-contact-1" style={{ position: 'absolute', left: '-9999px', top: 0 }} aria-hidden="true">
-        تواصل مع عزل كور جدة عبر واتساب أو اتصال مباشر على 0564612017. ساعات العمل من السبت للخميس 8 صباحاً حتى 10 مساءً.
+      <div id="voice-answer-contact-1" className="sr-only" aria-hidden="true">
+        يمكنكم التواصل مع خدمة عملاء عزل كور في جدة على الرقم {PHONE} أو زيارة الفرع. مواعيد العمل من السبت للخميس.
       </div>
 
       <section className={styles.pageHeader}>

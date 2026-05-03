@@ -137,7 +137,7 @@ export default function BlogPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
       {/* ── Voice SEO Target — Blog ── */}
-      <div id="voice-answer-blog-1" style={{ position: 'absolute', left: '-9999px', top: 0 }} aria-hidden="true">
+      <div id="voice-answer-blog-1" className="sr-only" aria-hidden="true">
         مدونة عزل كور تضم 10 مقالات متخصصة في تظليل السيارات وعزل المباني — مقارنات أفلام، قوانين التظليل، ونصائح العناية.
       </div>
 
