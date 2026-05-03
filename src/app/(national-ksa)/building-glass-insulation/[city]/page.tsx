@@ -5,7 +5,7 @@ import { SITE_URL, WHATSAPP_LINK, OWNER_NAME, OWNER_TITLE } from '@/lib/constant
 import { citiesContent } from '@/data/cities-content';
 import { ksaCities } from '@/data/local-jeddah';
 import CrossSellCards from '@/components/sections/CrossSellCards';
-import YmylWarning from '@/components/seo/YmylWarning';
+import ServiceDisclaimer from '@/components/seo/ServiceDisclaimer';
 import CorporateRoiCalculator from '@/components/sections/CorporateRoiCalculator';
 import GovernmentTrustBar from '@/components/seo/GovernmentTrustBar';
 import ExpertReviewBox from '@/components/seo/ExpertReviewBox';
@@ -129,7 +129,7 @@ export default function BuildingInsulationCityPage({ params }: { params: { city:
 
       <CorporateRoiCalculator />
 
-      <YmylWarning
+      <ServiceDisclaimer
         title="أمان الزجاج وكود البناء SBC"
         text={`المشاريع التجارية في ${cityObj.nameAr} مُلزمة بتطبيق كود البناء السعودي (SBC 601) لترشيد الطاقة. العزل التجاري الغير معتمد يعرضك لمخالفات بلدية وعدم اجتياز فحص الدفاع المدني.`}
       />

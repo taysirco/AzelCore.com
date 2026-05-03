@@ -23,7 +23,7 @@ export interface ArticleReview {
 }
 
 export interface ArticleData {
-  /** AEO Bait: 40-60 words max, extremely dense */
+  /** AEO Highlights: 40-60 words max, extremely dense */
   quickAnswer?: string;
   intro: string;
   sections: ArticleSection[];

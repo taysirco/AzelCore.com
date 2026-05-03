@@ -1,4 +1,4 @@
-// ═══ VoiceSearchFAQ — Local Voice-Search NLP Bait ═══
+// ═══ VoiceSearchFAQ — Local FAQ Section ═══
 // Hijazi dialect FAQ block with FAQPage schema
 // Targets voice search intents in ar-SA locale
 

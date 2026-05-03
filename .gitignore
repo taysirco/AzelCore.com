@@ -42,3 +42,4 @@ azelcore-53453-firebase-adminsdk-*.json
 *-firebase-adminsdk-*.json
 *.p12
 service-account*.json
+plans/

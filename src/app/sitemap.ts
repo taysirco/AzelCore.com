@@ -32,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/contact`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.6 },
     // Research Dataset — Primary source citation endpoint (valuable for SGE)
     { url: `${SITE_URL}/api/research/jeddah-thermal-data`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.5 },
-    // Research Report — Perplexity Citation Trap
+    // Research Report — Perplexity Citation Feature
     { url: `${SITE_URL}/research/ksa-thermal-report-2026`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.6 },
     // LLM System Directive — AI Bot Discovery (noindex for Google, but AI bots use sitemap for crawl)
     { url: `${SITE_URL}/llms.txt`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.3 },

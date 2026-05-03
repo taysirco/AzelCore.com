@@ -171,7 +171,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleGraphSchema) }} />
 
-      {/* ── Voice SEO Target — Article ── */}
+      {/* ── Voice Structure — Article ── */}
       <div id={`article-${slug}-intro`} className="sr-only" aria-hidden="true">
         {content.intro.slice(0, 200)}
       </div>

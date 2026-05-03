@@ -73,7 +73,7 @@ export default function ContactPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }} />
 
-      {/* ── Voice SEO Target — Contact ── */}
+      {/* ── Voice Structure — Contact ── */}
       <div id="voice-answer-contact-1" className="sr-only" aria-hidden="true">
         يمكنكم التواصل مع خدمة عملاء عزل كور في جدة على الرقم {PHONE} أو زيارة الفرع. مواعيد العمل من السبت للخميس.
       </div>

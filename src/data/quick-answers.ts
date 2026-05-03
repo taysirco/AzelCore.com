@@ -1,4 +1,4 @@
-// ═══ AzelCore.com — Quick Answers (TL;DR Bait) ═══
+// ═══ AzelCore.com — Quick Answers (TL;DR Highlights) ═══
 // المعادلة: مشكلة ← تقنية + رقم ← تحدي محلي ← ميزة ← ضمان ← قيمة نهائية
 
 export const quickAnswers = {

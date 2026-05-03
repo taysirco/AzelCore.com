@@ -5,9 +5,9 @@ import { SITE_URL, SITE_NAME, SITE_NAME_EN, WHATSAPP_LINK, PHONE, OWNER_NAME, OW
 import { faqs } from '@/data/faqs';
 import { quickAnswers } from '@/data/quick-answers';
 import { jeddahDistricts } from '@/data/local-jeddah';
-import TldrBait from '@/components/seo/TldrBait';
+import ServiceSummary from '@/components/seo/ServiceSummary';
 import CrossSellCards from '@/components/sections/CrossSellCards';
-import YmylWarning from '@/components/seo/YmylWarning';
+import ServiceDisclaimer from '@/components/seo/ServiceDisclaimer';
 import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBanner';
 import ThermalSliderBeforeAfter from '@/components/sections/ThermalSliderBeforeAfter';
 import VoiceSearchFAQ from '@/components/sections/VoiceSearchFAQ';
@@ -239,7 +239,7 @@ const graphSchema = {
       ],
     },
 
-    // ── 6. Dataset Schema — AI Citation Trap ──
+    // ── 6. Dataset Schema — AI Citation Feature ──
     {
       '@type': 'Dataset',
       '@id': `${SITE_URL}/api/research/jeddah-thermal-data#dataset`,
@@ -289,8 +289,8 @@ export default function CarTintingPage() {
       {/* ═══ Live Weather Banner — QDF ISR Signal ═══ */}
       <LiveJeddahWeatherBanner />
 
-      {/* TL;DR Bait — AI Overviews Magnet */}
-      <TldrBait summary={quickAnswers.carTinting.text} />
+      {/* TL;DR Highlights — Page Summary */}
+      <ServiceSummary summary={quickAnswers.carTinting.text} />
 
       {/* ═══ Hero — RSC above the fold, priority LCP image ═══ */}
       <section className={styles.hero}>
@@ -354,7 +354,7 @@ export default function CarTintingPage() {
         </div>
       </section>
 
-      {/* ═══ NavBoost Dwell-Time Trap — Interactive Thermal Slider ═══ */}
+      {/* ═══ Interaction Dwell-Time Feature — Interactive Thermal Slider ═══ */}
       <ThermalSliderBeforeAfter />
 
       {/* ═══ Tint Comparison — schema.org/Table for SGE ═══ */}
@@ -459,15 +459,15 @@ export default function CarTintingPage() {
         </div>
       </section>
 
-      {/* ═══ Local Voice-Search NLP Bait — Hijazi FAQ ═══ */}
+      {/* ═══ Local FAQ Section — Hijazi FAQ ═══ */}
       <VoiceSearchFAQ />
 
       {/* ═══ YMYL Safety Warnings — E-E-A-T Trust ═══ */}
-      <YmylWarning
+      <ServiceDisclaimer
         title="تحذير: التظليل المقلد"
         text="أفلام التظليل المقلدة تحتوي مواد كيميائية تتحلل بالحرارة وتطلق أبخرة سامة داخل المقصورة. تأكد من شهادة المنتج الأصلية."
       />
-      <YmylWarning
+      <ServiceDisclaimer
         title="تحذير قانوني: نسبة التظليل"
         text="تجاوز نسبة 30% VLT = مخالفة 500-900 ر.س + رفض الفحص الدوري + إلزام بالإزالة على حسابك."
       />

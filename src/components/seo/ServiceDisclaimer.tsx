@@ -1,6 +1,6 @@
-import styles from './YmylWarning.module.css';
+import styles from './ServiceDisclaimer.module.css';
 
-interface YmylWarningProps {
+interface ServiceDisclaimerProps {
   title: string;
   text: string;
 }
@@ -9,7 +9,7 @@ interface YmylWarningProps {
  * YMYL Safety Warning — Required for health/safety/money topics.
  * Signals to Google that we transparently disclose risks (E-E-A-T Trust).
  */
-export default function YmylWarning({ title, text }: YmylWarningProps) {
+export default function ServiceDisclaimer({ title, text }: ServiceDisclaimerProps) {
   return (
     <aside className={styles.warning} role="alert" aria-label="تحذير سلامة">
       <div className={styles.warningBox}>

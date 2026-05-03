@@ -1,6 +1,6 @@
 'use client';
 
-// ═══ ThermalSliderBeforeAfter — NavBoost Dwell-Time Trap ═══
+// ═══ ThermalSliderBeforeAfter — Interaction Dwell-Time Feature ═══
 // Interactive before/after slider for thermal comparison
 // Maximizes touch interactions → CrUX dwell-time signals
 

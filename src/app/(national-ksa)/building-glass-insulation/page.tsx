@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
 import { faqs } from '@/data/faqs';
 import { quickAnswers } from '@/data/quick-answers';
-import TldrBait from '@/components/seo/TldrBait';
+import ServiceSummary from '@/components/seo/ServiceSummary';
 import CrossSellCards from '@/components/sections/CrossSellCards';
-import YmylWarning from '@/components/seo/YmylWarning';
+import ServiceDisclaimer from '@/components/seo/ServiceDisclaimer';
 import CorporateRoiCalculator from '@/components/sections/CorporateRoiCalculator';
 import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBanner';
 import { ksaCities } from '@/data/local-jeddah';
@@ -127,8 +127,8 @@ export default function BuildingInsulationPage() {
       {/* ═══ Live Weather Banner — QDF ISR Signal ═══ */}
       <LiveJeddahWeatherBanner />
 
-      {/* TL;DR Bait — AI Overviews Magnet */}
-      <TldrBait summary={quickAnswers.buildingGlass.text} />
+      {/* TL;DR Highlights — Page Summary */}
+      <ServiceSummary summary={quickAnswers.buildingGlass.text} />
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -280,7 +280,7 @@ export default function BuildingInsulationPage() {
       </section>
 
       {/* YMYL Safety Warning — E-E-A-T Trust */}
-      <YmylWarning
+      <ServiceDisclaimer
         title="أمان الزجاج: المباني"
         text="فيلم الأمان (Safety Film) يمنع تناثر الزجاج عند الكسر ويحمي من الإصابات. مطلوب في المباني التجارية والمدارس حسب كود البناء السعودي."
       />

@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/reindex/', '/_next/', '/admin/'],
       },
       {
-        // GPTBot — Bait & Hook: allow blog/home/llms.txt for AI citation, block transactional pages
+        // GPTBot — Highlights & Hook: allow blog/home/llms.txt for AI citation, block transactional pages
         userAgent: 'GPTBot',
         allow: ['/blog/', '/', '/llms.txt', '/api/research/', '/api/calculate-roi', '/openapi.json', '/.well-known/ai-plugin.json', '/research/'],
         disallow: ['/api/reindex/', '/contact/', '/admin/'],

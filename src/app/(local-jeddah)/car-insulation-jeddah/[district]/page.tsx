@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID } from '@/lib/constants';
 import { jeddahDistricts } from '@/data/local-jeddah';
-import TldrBait from '@/components/seo/TldrBait';
+import ServiceSummary from '@/components/seo/ServiceSummary';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import { districtsContent } from '@/data/districts-content';
 import GovernmentTrustBar from '@/components/seo/GovernmentTrustBar';
@@ -115,7 +115,7 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
-      <TldrBait summary={`في ${d.nameAr} بجدة، الرطوبة تصل ${d.humidity} مع أشعة UV بمستوى ${d.uvIndex} وتآكل ملحي ${d.saltCorrosion}. نوصي بـ ${d.recommendation}. وكيل جونسون المعتمد — ضمان 10 سنوات.`} />
+      <ServiceSummary summary={`في ${d.nameAr} بجدة، الرطوبة تصل ${d.humidity} مع أشعة UV بمستوى ${d.uvIndex} وتآكل ملحي ${d.saltCorrosion}. نوصي بـ ${d.recommendation}. وكيل جونسون المعتمد — ضمان 10 سنوات.`} />
 
       {/* Hero */}
       <section className={styles.hero}>

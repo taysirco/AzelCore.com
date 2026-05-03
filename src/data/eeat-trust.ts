@@ -110,7 +110,7 @@ export const eeatSignals = {
 };
 
 // ─── YMYL Safety Warnings (تحذيرات السلامة الإلزامية) ───
-export const yymylWarnings = [
+export const yserviceDisclaimers = [
   {
     id: "fake-film",
     title: "تحذير: التظليل المقلد",

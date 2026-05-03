@@ -68,7 +68,7 @@ export default function GalleryPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(imageListSchema) }} />
 
-      {/* ── Voice SEO Target — Gallery ── */}
+      {/* ── Voice Structure — Gallery ── */}
       <div id="voice-answer-gallery-1" className="sr-only" aria-hidden="true">
         معرض أعمال عزل كور — تصفح أكثر من 30 سيارة تم تظليلها في جدة بأنواع الأفلام المختلفة.
       </div>

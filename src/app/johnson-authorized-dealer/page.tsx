@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN } from '@/lib/constants';
-import TldrBait from '@/components/seo/TldrBait';
+import ServiceSummary from '@/components/seo/ServiceSummary';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import styles from './page.module.css';
 
@@ -181,8 +181,8 @@ export default function JohnsonDealerPage() {
 
 
 
-      {/* TL;DR Bait — AI Overviews Magnet */}
-      <TldrBait summary="على عكس الأفلام التجارية مجهولة المصدر، أفلام جونسون الأمريكية (منذ 1961) تقدم 5 خطوط إنتاج متخصصة أبرزها Supreme IR بنسبة حجب 97% للأشعة تحت الحمراء. عزل كور هو الوكيل المعتمد الوحيد في جدة — مع ضمان يصل لعمر السيارة وشهادة IWFA لكل فني تركيب." />
+      {/* TL;DR Highlights — Page Summary */}
+      <ServiceSummary summary="على عكس الأفلام التجارية مجهولة المصدر، أفلام جونسون الأمريكية (منذ 1961) تقدم 5 خطوط إنتاج متخصصة أبرزها Supreme IR بنسبة حجب 97% للأشعة تحت الحمراء. عزل كور هو الوكيل المعتمد الوحيد في جدة — مع ضمان يصل لعمر السيارة وشهادة IWFA لكل فني تركيب." />
 
       {/* Hero */}
       <section className={styles.hero}>

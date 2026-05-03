@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/constants';
 import CostCalculator from '@/components/calculator/CostCalculator';
-import TldrBait from '@/components/seo/TldrBait';
+import ServiceSummary from '@/components/seo/ServiceSummary';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -31,7 +31,7 @@ export default function CalculatorPage() {
 
       <section className={styles.calculatorSection}>
         <div className={styles.container}>
-          <TldrBait summary="استخدم حاسبة عزل كور الذكية لمعرفة التكلفة التقريبية لتظليل سيارتك بأفلام النانو سيراميك والكربون. الأسعار تعتمد على حجم السيارة ونوع الفيلم المختار." />
+          <ServiceSummary summary="استخدم حاسبة عزل كور الذكية لمعرفة التكلفة التقريبية لتظليل سيارتك بأفلام النانو سيراميك والكربون. الأسعار تعتمد على حجم السيارة ونوع الفيلم المختار." />
           
           <div className={styles.calculatorWrapper}>
             <CostCalculator />

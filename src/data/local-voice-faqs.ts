@@ -1,4 +1,4 @@
-// ═══ AzelCore — Local Voice-Search NLP Bait ═══
+// ═══ AzelCore — Local FAQ Section ═══
 // Hijazi dialect + conversational Arabic for voice search intent capture
 // Targets: Google Voice Search, Siri, Google Assistant (ar-SA locale)
 
