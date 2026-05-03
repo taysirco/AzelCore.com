@@ -118,7 +118,7 @@ const graphSchema = {
       },
       hasWarranty: {
         '@type': 'WarrantyPromise',
-        durationOfWarranty: { '@type': 'QuantitativeValue', value: 10, unitCode: 'ANN' },
+        durationOfWarranty: { '@type': 'QuantitativeValue', value: 15, unitCode: 'ANN' },
         warrantyScope: 'تغير اللون + التقشر + الفقاعات',
       },
       potentialAction: {

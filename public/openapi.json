@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "AzelCore — Window Film & Building Insulation API",
-    "description": "Interactive tools for calculating ROI on building insulation and accessing primary-source thermal rejection research data for Jeddah, Saudi Arabia. Powered by AzelCore (عزل كور), the authorized Johnson Window Films dealer in Jeddah.",
+    "description": "Interactive tools for calculating ROI on building insulation and accessing primary-source thermal rejection research data for Jeddah, Saudi Arabia. Powered by AzelCore (عزل كور), the authorized Johnson & 3M Window Films dealer in Jeddah.",
     "version": "1.0.0",
     "contact": {
       "name": "AzelCore Support",
@@ -14,7 +14,7 @@
       "url": "https://creativecommons.org/licenses/by-nc/4.0/"
     },
     "x-logo": {
-      "url": "https://azelcore.com/images/azelcore-logo.png"
+      "url": "https://azelcore.com/images/azelcore-logo.webp"
     }
   },
   "servers": [
@@ -243,7 +243,7 @@
     }
   },
   "externalDocs": {
-    "description": "AzelCore — Authorized Johnson Window Films Dealer in Jeddah",
+    "description": "AzelCore — Authorized Johnson & 3M Window Films Dealer in Jeddah",
     "url": "https://azelcore.com"
   }
 }

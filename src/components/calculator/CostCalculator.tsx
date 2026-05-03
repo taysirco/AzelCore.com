@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import styles from './CostCalculator.module.css';
-import { WHATSAPP_LINK } from '@/lib/constants';
 
 interface Option {
   id: string;
@@ -18,6 +17,7 @@ const CAR_SIZES: Option[] = [
 
 const FILM_TYPES: Option[] = [
   { id: 'carbon', label: 'فيلم كربوني (اقتصادي)', priceModifier: 600 },
+  { id: 'renegade', label: 'جونسون Renegade (كلاسيكي)', priceModifier: 800 },
   { id: 'ceramic-basic', label: 'نانو سيراميك جونسون Marathon', priceModifier: 1100 },
   { id: 'ceramic-johnson', label: 'جونسون Supreme IR ⭐', priceModifier: 1800 },
   { id: 'ceramic-3m', label: '3M Crystalline ⭐ (200+ طبقة نانو)', priceModifier: 2400 },
@@ -159,7 +159,7 @@ export default function CostCalculator() {
               {copied ? '✅ تم نسخ السعر' : '📋 نسخ التسعيرة'}
             </button>
             <a 
-              href={`${WHATSAPP_LINK}?text=${getWhatsAppMessage()}`} 
+              href={`https://api.whatsapp.com/send/?phone=966564612017&text=${getWhatsAppMessage()}`} 
               target="_blank" 
               rel="noopener noreferrer" 
               className={styles.whatsappBtn}

@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { SITE_URL, WHATSAPP_LINK, OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
 import { citiesContent } from '@/data/cities-content';
 import { ksaCities } from '@/data/local-jeddah';
 import CrossSellCards from '@/components/sections/CrossSellCards';
+import SiloNav from '@/components/seo/SiloNav';
 import ServiceDisclaimer from '@/components/seo/ServiceDisclaimer';
 import CorporateRoiCalculator from '@/components/sections/CorporateRoiCalculator';
 import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
@@ -19,8 +20,9 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: { params: { city: string } }): Metadata {
-  const cityObj = ksaCities.find(c => c.id === params.city);
+export async function generateMetadata({ params }: { params: Promise<{ city: string }> }): Promise<Metadata> {
+  const { city } = await params;
+  const cityObj = ksaCities.find(c => c.id === city);
   if (!cityObj) return {};
 
   return {
@@ -36,16 +38,65 @@ export function generateMetadata({ params }: { params: { city: string } }): Meta
   };
 }
 
-export default function BuildingInsulationCityPage({ params }: { params: { city: string } }) {
-  const cityObj = ksaCities.find(c => c.id === params.city);
-  const content = citiesContent[params.city];
+// ═══ City-Specific @graph Schema ═══
+function buildCitySchema(cityObj: typeof ksaCities[0], content: any) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': `${SITE_URL}/building-glass-insulation/${cityObj.id}#service`,
+        name: `عزل واجهات زجاج المباني في ${cityObj.nameAr}`,
+        serviceType: 'عزل حراري للمباني',
+        provider: { '@id': `${SITE_URL}/#organization` },
+        areaServed: {
+          '@type': 'City',
+          name: cityObj.nameAr,
+          containedInPlace: { '@type': 'Country', name: 'المملكة العربية السعودية' },
+        },
+        description: `عزل حراري احترافي لواجهات المباني والفلل في ${cityObj.nameAr}. حرارة تصل ${cityObj.avgTemp} ورطوبة ${cityObj.humidity}.`,
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'SAR',
+          lowPrice: '50',
+          highPrice: '200',
+          unitText: 'متر مربع',
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: content.faqs.map((faq: any) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+        })),
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'عزل المباني', item: `${SITE_URL}/building-glass-insulation` },
+          { '@type': 'ListItem', position: 3, name: `عزل مباني ${cityObj.nameAr}`, item: `${SITE_URL}/building-glass-insulation/${cityObj.id}` },
+        ],
+      },
+    ],
+  };
+}
+
+export default async function BuildingInsulationCityPage({ params }: { params: Promise<{ city: string }> }) {
+  const { city } = await params;
+  const cityObj = ksaCities.find(c => c.id === city);
+  const content = citiesContent[city];
 
   if (!cityObj || !content) {
     notFound();
   }
 
+  const citySchema = buildCitySchema(cityObj, content);
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(citySchema) }} />
       <section className={styles.hero} style={{ minHeight: '50vh', paddingTop: '100px', paddingBottom: '60px' }}>
         <div className={styles.heroBg} style={{ background: 'var(--bg)' }}>
           <div className={styles.heroOverlay} style={{ background: 'linear-gradient(to bottom, var(--bg) 0%, transparent 100%)' }} />
@@ -142,10 +193,17 @@ export default function BuildingInsulationCityPage({ params }: { params: { city:
             expertTitle={OWNER_TITLE}
             organization="عزل كور لخدمات مشاريع المباني"
             quote={`أشرفنا على العديد من مشاريع العزل في ${cityObj.nameAr}. التعامل مع مناخ المنطقة (حرارة تصل ${cityObj.avgTemp} ورطوبة ${cityObj.humidity}) يتطلب اختيار فيلم نانو سيراميك بمواصفات دقيقة جداً لتجنب الكسر الحراري للزجاج.`}
-            reviewDate={new Date().toISOString().split('T')[0]}
+            reviewDate="2026-05-01"
           />
         </div>
       </section>
+
+      <SiloNav
+        items={ksaCities.map(c => ({ id: c.id, nameAr: c.nameAr }))}
+        currentId={city}
+        basePath="/building-glass-insulation"
+        label="عزل مباني في مدن أخرى"
+      />
 
       <CrossSellCards currentPage={`building-glass-insulation-${cityObj.id}`} />
     </>

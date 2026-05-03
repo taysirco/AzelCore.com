@@ -62,6 +62,8 @@ export const config = {
     '/car-insulation-jeddah/:district*',
     '/building-glass-insulation',
     '/johnson-authorized-dealer',
+    '/3m-authorized-dealer',
+    '/calculator',
     '/contact',
     '/about',
     '/faq',

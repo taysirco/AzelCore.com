@@ -65,6 +65,15 @@ const contactSchema = {
       '@type': 'SpeakableSpecification',
       cssSelector: ['#voice-answer-contact-1'],
     },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        { '@type': 'Question', name: 'هل أحتاج حجز موعد مسبق؟', acceptedAnswer: { '@type': 'Answer', text: 'نعم، ننصح بالحجز قبل 24 ساعة لضمان توفر الفني. في الحالات العاجلة ممكن نخدمك نفس اليوم حسب الجدول.' } },
+        { '@type': 'Question', name: 'هل الخدمة المتنقلة متاحة في حيّي؟', acceptedAnswer: { '@type': 'Answer', text: 'نغطي كل أحياء جدة بدون استثناء. الفني يصل بسيارة مجهزة بكل الأدوات.' } },
+        { '@type': 'Question', name: 'كم مدة التظليل الكامل للسيارة؟', acceptedAnswer: { '@type': 'Answer', text: 'تظليل سيارة سيدان كامل: 2-3 ساعات. SUV: 3-4 ساعات. تسلّم سيارتك جاهزة نفس اليوم.' } },
+        { '@type': 'Question', name: 'هل تقبلون الدفع بالتقسيط؟', acceptedAnswer: { '@type': 'Answer', text: 'نقبل: كاش، مدى، فيزا، Apple Pay، STC Pay. للمشاريع الكبيرة: خطط دفع مرنة.' } },
+      ],
+    },
   ],
 };
 
@@ -139,7 +148,7 @@ export default function ContactPage() {
                   <div className={styles.trustItem}><span className={styles.trustLabel}>الحالة</span><span className={styles.trustValue}>منشأة مسجلة ✅</span></div>
                   <div className={styles.trustItem}><span className={styles.trustLabel}>السجل التجاري</span><span className={styles.trustValue}><CopyButton valueToCopy={CRN} label={CRN} /></span></div>
                   <div className={styles.trustItem}><span className={styles.trustLabel}>الضريبة</span><span className={styles.trustValue}><CopyButton valueToCopy={VAT_ID} label="مسجل في ZATCA" /></span></div>
-                  <div className={styles.trustItem}><span className={styles.trustLabel}>الوكالة</span><span className={styles.trustValue}>Johnson Window Films</span></div>
+                  <div className={styles.trustItem}><span className={styles.trustLabel}>الوكالة</span><span className={styles.trustValue}>Johnson & 3M Window Films</span></div>
                   <div className={styles.trustItem}><span className={styles.trustLabel}>المدينة</span><span className={styles.trustValue}>جدة</span></div>
                 </div>
               </div>

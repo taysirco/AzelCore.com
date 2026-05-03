@@ -329,7 +329,7 @@ export default function BuildingInsulationPage() {
             expertTitle={OWNER_TITLE}
             organization="عزل كور لخدمات مشاريع المباني"
             quote="تطبيق معايير كود البناء السعودي (SBC) في العزل الزجاجي ليس خياراً بل ضرورة لتقليل الهدر المالي. نضمن لك أفلام عزل معتمدة توفر حتى 40% من استهلاك التكييف وتطيل عمر الأثاث والمعدات داخل المبنى."
-            reviewDate={new Date().toISOString().split('T')[0]}
+            reviewDate="2026-05-01"
           />
         </div>
       </section>

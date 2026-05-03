@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK } from '@/lib/constants';
+import CrossSellCards from '@/components/sections/CrossSellCards';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -134,6 +135,8 @@ export default function GalleryPage() {
           <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>تواصل عبر واتساب</a>
         </div>
       </section>
+
+      <CrossSellCards currentPage="gallery" />
     </>
   );
 }

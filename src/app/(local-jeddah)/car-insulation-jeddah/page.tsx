@@ -480,7 +480,7 @@ export default function CarTintingPage() {
             expertTitle={OWNER_TITLE}
             organization="عزل كور (وكيل جونسون و 3M)"
             quote="تظليل النانو سيراميك الأصلي هو استثمار حقيقي لحماية سيارتك وصحتك من أشعة UV الضارة. احرص دائماً على الالتزام بنسبة 30% المقررة من المرور وتأكد من شهادة الضمان المعتمدة."
-            reviewDate={new Date().toISOString().split('T')[0]}
+            reviewDate="2026-05-01"
           />
         </div>
       </section>

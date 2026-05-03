@@ -84,12 +84,28 @@ const productLines = [
     bestFor: 'الميزانية المحدودة + السيارات الاقتصادية',
     color: 'neutral',
   },
+  {
+    id: 'renegade',
+    name: 'Renegade',
+    nameAr: 'رينيجيد',
+    tier: 'كلاسيكي',
+    tech: 'صبغي ثابت اللون (Color-Stable)',
+    ir: 50,
+    uv: 99,
+    tser: 45,
+    vlt: '5% - 35%',
+    warranty: '5 سنوات',
+    description: 'مظهر أنيق كلاسيكي بلون فحمي موحد لا يتحول بنفسجياً. تقنية Color-Stable Charcoal تضمن ثبات اللون لسنوات مع حماية UV كاملة — الخيار الأمثل لمن يريد مظهر راقي بميزانية ذكية.',
+    features: ['لون ثابت لسنوات', 'حماية UV 99%', 'بدون تحول بنفسجي', 'لا يحجب الإشارات', 'ضمان 5 سنوات'],
+    bestFor: 'من يريد مظهر كلاسيكي أنيق بدون تداخل مع الإشارات',
+    color: 'charcoal',
+  },
 ];
 
 const faqs = [
   { q: 'هل عزل كور وكيل رسمي لجونسون؟', a: 'نعم، عزل كور وكيل معتمد ومسجل رسمياً لدى شركة Johnson Window Films الأمريكية. كل منتجاتنا أصلية مع رقم تسلسلي قابل للتحقق.' },
   { q: 'ما الفرق بين Supreme IR و InsulatIR؟', a: 'Supreme IR هو الفلاجشيب بحجب 97% IR و TSER 72%، بينما InsulatIR يحجب 92% IR و TSER 65%. كلاهما نانو سيراميك مع ضمان عمر السيارة، لكن Supreme IR يوفر أداء أعلى في حرارة جدة الشديدة.' },
-  { q: 'كم مدة الضمان على عازل جونسون؟', a: 'Supreme IR و InsulatIR: ضمان عمر السيارة. Marathon و Ray Guard: ضمان 5 سنوات. الضمان يشمل التغير اللوني والفقاعات وتقشر الفيلم.' },
+  { q: 'كم مدة الضمان على عازل جونسون؟', a: 'Supreme IR و InsulatIR: ضمان عمر السيارة. Marathon و Ray Guard و Renegade: ضمان 5 سنوات. الضمان يشمل التغير اللوني والفقاعات وتقشر الفيلم.' },
   { q: 'هل عازل جونسون يحجب إشارات الجوال؟', a: 'لا! جميع خطوط إنتاج جونسون مصممة بتقنية غير معدنية لا تؤثر على إشارات الهاتف أو GPS أو الرادار أو أنظمة الدفع بدون تلامس.' },
   { q: 'كم وقت يستغرق تظليل السيارة بجونسون؟', a: 'تظليل سيارة سيدان كاملة يستغرق من 2-4 ساعات حسب الموديل. SUV قد يستغرق 3-5 ساعات. نوصي بحجز موعد مسبق لضمان التركيب في بيئة نظيفة.' },
   { q: 'هل جونسون متوافق مع قوانين المرور السعودية؟', a: 'نعم، نوفر جميع درجات الـ VLT من 5% إلى 70%. ننصح عملاءنا بالدرجات المتوافقة مع أنظمة المرور ونقدم استشارة مجانية بخصوص الدرجة المناسبة.' },
@@ -111,14 +127,14 @@ const graphSchema = {
       offers: {
         '@type': 'AggregateOffer',
         priceCurrency: 'SAR',
-        lowPrice: '600',
+        lowPrice: '400',
         highPrice: '3200',
-        offerCount: '4',
+        offerCount: '5',
         availability: 'https://schema.org/InStock',
       },
       hasWarranty: {
         '@type': 'WarrantyPromise',
-        durationOfWarranty: { '@type': 'QuantitativeValue', value: 10, unitCode: 'ANN' },
+        durationOfWarranty: { '@type': 'QuantitativeValue', value: 15, unitCode: 'ANN' },
         warrantyScope: 'تغير اللون + التقشر + الفقاعات',
       },
       // ── Agentic Schema: ReserveAction ──
@@ -242,7 +258,7 @@ export default function JohnsonDealerPage() {
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <span className={styles.overline}>خطوط الإنتاج</span>
-            <h2 className={styles.sectionTitle}>4 خطوط إنتاج لكل احتياج وميزانية</h2>
+            <h2 className={styles.sectionTitle}>5 خطوط إنتاج لكل احتياج وميزانية</h2>
             <p className={styles.sectionSubtitle}>كل الأرقام من الداتاشيت الرسمي — قابلة للتحقق من موقع جونسون مباشرة.</p>
           </div>
 
@@ -372,7 +388,7 @@ export default function JohnsonDealerPage() {
         جونسون سوبريم آي آر هو الأفضل. يحجب 97% حرارة وما يأثر على إشارة الجوال لأنه نانو سيراميك بدون معادن. ضمان عمر السيارة.
       </div>
       <div id="voice-answer-johnson-3" style={{ display: 'none' }} aria-hidden="true">
-        جونسون عنده 4 خطوط: سوبريم آي آر وإنسيلات آي آر وماراثون وراي جارد. الأسعار من 600 إلى 3200 ريال.
+        جونسون عنده 5 خطوط: سوبريم آي آر وإنسيلات آي آر وماراثون وراي جارد ورينيجيد. الأسعار من 400 إلى 3200 ريال.
       </div>
     </>
   );

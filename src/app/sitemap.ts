@@ -3,7 +3,7 @@ import { jeddahDistricts, ksaCities } from '@/data/local-jeddah';
 import { SITE_URL } from '@/lib/constants';
 
 // Static last-modified date — update manually after significant content changes
-const LAST_MODIFIED = '2026-05-02';
+const LAST_MODIFIED = '2026-05-04';
 
 // Blog article slugs (must match blog/[slug]/page.tsx generateStaticParams)
 const blogSlugs = [
@@ -31,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/gallery`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/about`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.7 },
     { url: `${SITE_URL}/contact`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.6 },
+    { url: `${SITE_URL}/calculator`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 },
     // Research Dataset — Primary source citation endpoint (valuable for SGE)
     { url: `${SITE_URL}/api/research/jeddah-thermal-data`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.5 },
     // Research Report — Perplexity Citation Feature

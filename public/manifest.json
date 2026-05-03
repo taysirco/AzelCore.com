@@ -22,14 +22,14 @@
       "type": "image/png"
     },
     {
-      "src": "/images/azelcore-favicon.png",
+      "src": "/images/azelcore-favicon.webp",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/webp"
     },
     {
-      "src": "/images/azelcore-logo.png",
+      "src": "/images/azelcore-logo.webp",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any maskable"
     }
   ]

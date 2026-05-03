@@ -17,9 +17,29 @@ export const metadata: Metadata = {
   },
 };
 
+const calculatorSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'حاسبة تكلفة العزل وتظليل السيارات — عزل كور',
+  url: `${SITE_URL}/calculator`,
+  description: 'أداة ذكية لحساب التكلفة التقديرية لتظليل وعزل سيارتك بأفلام النانو سيراميك وجونسون في جدة.',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'All',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'SAR'
+  },
+  provider: {
+    '@type': 'Organization',
+    '@id': `${SITE_URL}/#organization`
+  }
+};
+
 export default function CalculatorPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(calculatorSchema) }} />
       <section className={styles.hero}>
         <div className={styles.container}>
           <h1 className={styles.title}>حاسبة تكلفة العزل</h1>

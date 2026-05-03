@@ -52,6 +52,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: SITE_URL,
+    languages: {
+      'ar-SA': SITE_URL,
+    },
   },
 };
 
@@ -87,12 +90,6 @@ const organizationSchema = {
     '@type': 'Person',
     name: OWNER_NAME,
     jobTitle: OWNER_TITLE,
-  },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    ratingCount: '127',
-    bestRating: '5',
   },
   identifier: {
     '@type': 'PropertyValue',
@@ -165,6 +162,7 @@ export default function RootLayout({
                   '/building-glass-insulation',
                   '/johnson-authorized-dealer',
                   '/3m-authorized-dealer',
+                  '/calculator',
                   '/blog',
                   '/gallery',
                   '/contact',

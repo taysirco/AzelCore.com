@@ -6,6 +6,7 @@ import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT
 import { jeddahDistricts } from '@/data/local-jeddah';
 import ServiceSummary from '@/components/seo/ServiceSummary';
 import CrossSellCards from '@/components/sections/CrossSellCards';
+import SiloNav from '@/components/seo/SiloNav';
 import { districtsContent } from '@/data/districts-content';
 import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
 import AuthorProfile from '@/components/seo/AuthorProfile';
@@ -115,7 +116,7 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
-      <ServiceSummary summary={`في ${d.nameAr} بجدة، الرطوبة تصل ${d.humidity} مع أشعة UV بمستوى ${d.uvIndex} وتآكل ملحي ${d.saltCorrosion}. نوصي بـ ${d.recommendation}. وكيل جونسون و 3M المعتمد — ضمان 10 سنوات.`} />
+      <ServiceSummary summary={`في ${d.nameAr} بجدة، الرطوبة تصل ${d.humidity} مع أشعة UV بمستوى ${d.uvIndex} وتآكل ملحي ${d.saltCorrosion}. نوصي بـ ${d.recommendation}. وكيل جونسون و 3M المعتمد — ضمان عمر السيارة.`} />
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -248,10 +249,17 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
             expertTitle={OWNER_TITLE}
             organization="خبراء العزل وتظليل السيارات بجدة"
             quote={`نضمن لك في ${d.nameAr} تركيب تظليل نانو سيراميك أصلي يتناسب مع الرطوبة والحرارة العالية، مع التزامنا التام بنظام المرور السعودي ونسبة 30%.`}
-            reviewDate={new Date().toISOString().split('T')[0]}
+            reviewDate="2026-05-01"
           />
         </div>
       </section>
+
+      <SiloNav
+        items={jeddahDistricts.map(x => ({ id: x.id, nameAr: x.nameAr }))}
+        currentId={district}
+        basePath="/car-insulation-jeddah"
+        label="أحياء جدة الأخرى"
+      />
 
       <CrossSellCards currentPage="car-insulation-jeddah" />
     </>
