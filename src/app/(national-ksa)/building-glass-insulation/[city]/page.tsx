@@ -24,7 +24,7 @@ export function generateMetadata({ params }: { params: { city: string } }): Meta
   if (!cityObj) return {};
 
   return {
-    title: `عزل واجهات زجاج المباني في ${cityObj.nameAr} — وفّر 40% كهرباء | عزل كور`,
+    title: `عزل واجهات زجاج المباني في ${cityObj.nameAr} — وفّر 40% كهرباء`,
     description: `عزل حراري احترافي لواجهات المباني والفلل في ${cityObj.nameAr}. نانو سيراميك يحجب 97% حرارة، متوافق مع كود البناء السعودي. خصم للمشاريع.`,
     alternates: { canonical: `${SITE_URL}/building-glass-insulation/${cityObj.id}` },
     openGraph: {

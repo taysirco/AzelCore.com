@@ -26,11 +26,11 @@ export async function generateMetadata({ params }: { params: Promise<{ district:
   if (!d) return {};
 
   return {
-    title: `تظليل سيارات ${d.nameAr} جدة — نانو سيراميك | عزل كور`,
+    title: `تظليل سيارات ${d.nameAr} جدة — نانو سيراميك`,
     description: `أفضل تظليل سيارات في ${d.nameAr} بجدة. رطوبة ${d.humidity}، أشعة UV ${d.uvIndex}. نوصي بـ ${d.recommendation.split('—')[0].trim()}. وكيل جونسون المعتمد.`,
     alternates: { canonical: `${SITE_URL}/car-insulation-jeddah/${district}` },
     openGraph: {
-      title: `تظليل سيارات ${d.nameAr} — عزل كور جدة`,
+      title: `تظليل سيارات ${d.nameAr} — جدة`,
       description: `حلول تظليل مخصصة لـ ${d.nameAr} حسب المناخ المحلي`,
       url: `${SITE_URL}/car-insulation-jeddah/${district}`,
       images: [{ url: `${SITE_URL}/api/og?title=${encodeURIComponent(`تظليل سيارات ${d.nameAr}`)}&subtitle=${encodeURIComponent(`حماية من رطوبة ${d.humidity} وأشعة UV ${d.uvIndex}`)}&type=car`, width: 1200, height: 630 }],

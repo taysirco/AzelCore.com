@@ -5,7 +5,7 @@ import ServiceSummary from '@/components/seo/ServiceSummary';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'حاسبة تكلفة عزل وتظليل السيارات | عزل كور',
+  title: 'حاسبة تكلفة عزل وتظليل السيارات',
   description: 'احسب التكلفة التقديرية لعزل وتظليل سيارتك في جدة (نانو سيراميك، 3M، لومار). أداة ذكية لمعرفة الأسعار التقريبية قبل الحجز.',
   alternates: {
     canonical: `${SITE_URL}/calculator`,

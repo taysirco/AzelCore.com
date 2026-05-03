@@ -5,7 +5,7 @@ import CopyButton from '@/components/ui/CopyButton';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'تواصل معنا — عزل كور جدة | واتساب واتصال مباشر',
+  title: 'تواصل معنا — واتساب واتصال مباشر | جدة',
   description: 'تواصل مع عزل كور لحجز موعد تظليل سيارات أو عزل مباني في جدة. واتساب، اتصال مباشر، أو زيارة ورشتنا.',
   alternates: { canonical: `${SITE_URL}/contact` },
 };

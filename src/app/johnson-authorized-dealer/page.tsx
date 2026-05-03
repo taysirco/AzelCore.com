@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   keywords: ['عازل جونسون', 'Johnson Window Films', 'وكيل جونسون جدة', 'Supreme IR', 'تظليل جونسون', 'نانو سيراميك جونسون'],
   alternates: { canonical: `${SITE_URL}/johnson-authorized-dealer` },
   openGraph: {
-    title: 'وكيل جونسون المعتمد — Johnson Window Films | عزل كور جدة',
+    title: 'وكيل جونسون المعتمد — Johnson Window Films | جدة',
     description: '5 خطوط إنتاج أمريكية — Supreme IR بحجب 97% IR — ضمان عمر السيارة',
     url: `${SITE_URL}/johnson-authorized-dealer`,
     images: [{ url: '/images/hero-car-tinting-jeddah.webp', width: 1200, height: 630 }],

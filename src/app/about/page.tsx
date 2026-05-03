@@ -5,7 +5,7 @@ import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_H
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'من نحن — فريق عزل كور | خبراء التظليل والعزل في جدة',
+  title: 'من نحن — خبراء التظليل والعزل في جدة',
   description: 'تعرف على فريق عزل كور المتخصص في تظليل السيارات والعزل الحراري في جدة. وكيل جونسون المعتمد — فنيون معتمدون + ضمان حقيقي.',
   alternates: { canonical: `${SITE_URL}/about` },
 };

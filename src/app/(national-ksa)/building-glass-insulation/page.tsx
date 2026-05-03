@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   keywords: ['عزل مباني جدة', 'عزل واجهات زجاج', 'فيلم حراري مباني', 'عزل فلل جدة', 'توفير كهرباء'],
   alternates: { canonical: `${SITE_URL}/building-glass-insulation` },
   openGraph: {
-    title: 'عزل واجهات زجاج المباني — توفير 40% كهرباء | عزل كور جدة',
+    title: 'عزل واجهات زجاج المباني — توفير 40% كهرباء | جدة',
     description: 'أفلام نانو سيراميك للمباني تحجب 97% حرارة — ضمان 15 سنة',
     url: `${SITE_URL}/building-glass-insulation`,
     images: [{ url: '/images/hero-building-glass-insulation.webp', width: 1200, height: 630 }],

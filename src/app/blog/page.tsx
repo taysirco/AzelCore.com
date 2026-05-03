@@ -5,7 +5,7 @@ import { SITE_URL, SITE_NAME } from '@/lib/constants';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'مدونة عزل كور — نصائح تظليل وعزل حراري من خبراء',
+  title: 'مدونة — نصائح تظليل وعزل حراري من خبراء',
   description: 'مقالات متخصصة في تظليل السيارات وعزل المباني — نصائح فنية، مقارنات أفلام، قوانين التظليل السعودية، وأكثر.',
   alternates: { canonical: `${SITE_URL}/blog` },
 };

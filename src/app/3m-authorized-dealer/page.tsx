@@ -7,12 +7,12 @@ import CrossSellCards from '@/components/sections/CrossSellCards';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'وكيل 3M المعتمد في جدة — 3M Window Films | عزل كور',
+  title: 'وكيل 3M المعتمد في جدة — 3M Window Films',
   description: 'عزل كور الوكيل الرسمي لأفلام 3M الأمريكية في جدة. Crystalline يحجب 97% من الأشعة تحت الحمراء مع 99.9% حجب UV. 4 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.',
   keywords: ['عازل 3M', '3M Window Films', 'وكيل 3M جدة', '3M Crystalline', 'تظليل 3M', '3M Ceramic IR', 'نانو سيراميك 3M'],
   alternates: { canonical: `${SITE_URL}/3m-authorized-dealer` },
   openGraph: {
-    title: 'وكيل 3M المعتمد — 3M Window Films | عزل كور جدة',
+    title: 'وكيل 3M المعتمد — 3M Window Films | جدة',
     description: '4 خطوط إنتاج أمريكية — Crystalline بحجب 97% IR + 99.9% UV — ضمان عمر السيارة',
     url: `${SITE_URL}/3m-authorized-dealer`,
     images: [{ url: '/images/hero-car-tinting-jeddah.webp', width: 1200, height: 630 }],
