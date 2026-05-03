@@ -24,6 +24,7 @@ export const NAV_LINKS = [
   { href: '/', label: 'الرئيسية' },
   { href: '/car-insulation-jeddah', label: 'تظليل سيارات' },
   { href: '/building-glass-insulation', label: 'عزل مباني' },
+  { href: '/calculator', label: 'حاسبة التكلفة' },
   { href: '/johnson-authorized-dealer', label: 'جونسون ⭐' },
   { href: '/gallery', label: 'أعمالنا' },
   { href: '/blog', label: 'المدونة' },
