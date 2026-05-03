@@ -1,9 +1,9 @@
 'use client';
 
-import styles from './VerificationBadges.module.css';
+import styles from './Certifications.module.css';
 import { getBadgesBySector } from '@/data/trust-anchors';
 
-interface VerificationBadgesProps {
+interface CertificationsProps {
   /** The sector to get badges for (e.g., 'تظليل سيارات', 'عزل مباني', 'الشركة') */
   sector: string;
 }
@@ -14,7 +14,7 @@ interface VerificationBadgesProps {
  * Displays visual badges proving compliance, licensing, or authorized dealership.
  * Pulled dynamically from the central trust-anchors database.
  */
-export default function VerificationBadges({ sector }: VerificationBadgesProps) {
+export default function Certifications({ sector }: CertificationsProps) {
   const badges = getBadgesBySector(sector);
 
   if (badges.length === 0) return null;

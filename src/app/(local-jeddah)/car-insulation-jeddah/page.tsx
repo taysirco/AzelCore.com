@@ -12,9 +12,9 @@ import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBann
 import ThermalSliderBeforeAfter from '@/components/sections/ThermalSliderBeforeAfter';
 import VoiceSearchFAQ from '@/components/sections/VoiceSearchFAQ';
 import { datasetMeta } from '@/data/jeddah-thermal-research';
-import GovernmentTrustBar from '@/components/seo/GovernmentTrustBar';
-import ExpertReviewBox from '@/components/seo/ExpertReviewBox';
-import VerificationBadges from '@/components/seo/VerificationBadges';
+import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
+import AuthorProfile from '@/components/seo/AuthorProfile';
+import Certifications from '@/components/seo/Certifications';
 import styles from './page.module.css';
 
 // ════════════════════════════════════════════
@@ -325,7 +325,7 @@ export default function CarTintingPage() {
 
       {/* ═══ E-E-A-T: Government Trust Signals ═══ */}
       <div style={{ marginTop: 'var(--space-6)', marginBottom: 'var(--space-2)' }}>
-        <GovernmentTrustBar entityKeys={['GOV.SASO', 'GOV.TRAFFIC', 'GOV.BALADI']} />
+        <OfficialPartnerBar entityKeys={['GOV.SASO', 'GOV.TRAFFIC', 'GOV.BALADI']} />
       </div>
 
       {/* ═══ Why Us — Semantic <dl> for SGE extraction ═══ */}
@@ -349,12 +349,12 @@ export default function CarTintingPage() {
 
           {/* ═══ E-E-A-T: Verification Badges ═══ */}
           <div style={{ marginTop: 'var(--space-6)' }}>
-            <VerificationBadges sector="التظليل" />
+            <Certifications sector="التظليل" />
           </div>
         </div>
       </section>
 
-      {/* ═══ Interaction Dwell-Time Feature — Interactive Thermal Slider ═══ */}
+      {/* ═══ Interaction Engagement Feature — Interactive Thermal Slider ═══ */}
       <ThermalSliderBeforeAfter />
 
       {/* ═══ Tint Comparison — schema.org/Table for SGE ═══ */}
@@ -475,7 +475,7 @@ export default function CarTintingPage() {
       {/* ═══ E-E-A-T: Expert Review Entity ═══ */}
       <section className={styles.section} style={{ paddingTop: 0 }}>
         <div className={styles.container}>
-          <ExpertReviewBox
+          <AuthorProfile
             expertName={OWNER_NAME}
             expertTitle={OWNER_TITLE}
             organization="عزل كور (وكيل جونسون)"
@@ -488,7 +488,7 @@ export default function CarTintingPage() {
       {/* ═══ Cross-sell — Causal Internal Linking ═══ */}
       <CrossSellCards currentPage="car-insulation-jeddah" />
 
-      {/* ═══ District Hub → Spoke Links — pSEO Internal Linking ═══ */}
+      {/* ═══ District Hub → Spoke Links — dynamic-pages Internal Linking ═══ */}
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>

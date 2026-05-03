@@ -13,9 +13,9 @@ interface ServiceSummaryProps {
 export default function ServiceSummary({ summary, label = 'خلاصة الخدمة' }: ServiceSummaryProps) {
   return (
     <div className={styles.serviceSummary} role="complementary" aria-label="ملخص الخدمة">
-      <div className={styles.baitBox}>
-        <span className={styles.baitLabel}>{label}</span>
-        <p className={styles.baitText}>{summary}</p>
+      <div className={styles.summaryBox}>
+        <span className={styles.summaryLabel}>{label}</span>
+        <p className={styles.summaryText}>{summary}</p>
       </div>
     </div>
   );

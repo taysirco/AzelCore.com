@@ -1,4 +1,4 @@
-import { schemaConfigs } from '@/data/schema-configs';
+import { schemaConfigs } from '@/data/structured-data';
 import { SITE_URL } from '@/lib/constants';
 
 // ═══ Schema Isolation: Service + Organization (National KSA Scope) ═══

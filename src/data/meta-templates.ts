@@ -28,14 +28,14 @@ export const metaTemplates = {
     },
   },
 
-  // ─── صفحة pSEO حي ───
+  // ─── صفحة dynamic-pages حي ───
   districtPage: {
     titleTemplate: "تظليل سيارات حي {district} جدة — {recommendation} | AzelCore",
     descriptionTemplate: "أفضل تظليل سيارات في حي {district} بجدة. {climateNote}. نانو سيراميك بضمان 10 سنوات. خدمة متنقلة متاحة.",
     h1Template: "تظليل سيارات حي {district} جدة — {recommendation}",
   },
 
-  // ─── صفحة pSEO مدينة ───
+  // ─── صفحة dynamic-pages مدينة ───
   cityPage: {
     titleTemplate: "تظليل مباني {city} — عزل زجاج واجهات احترافي | AzelCore",
     descriptionTemplate: "خدمات عزل وتظليل زجاج المباني في {city}. فيلم حراري يقلل التكييف {savingPercent}%. ضمان 15 سنة. اطلب عرض سعر.",

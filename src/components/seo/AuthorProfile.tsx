@@ -1,8 +1,8 @@
 'use client';
 
-import styles from './ExpertReviewBox.module.css';
+import styles from './AuthorProfile.module.css';
 
-interface ExpertReviewBoxProps {
+interface AuthorProfileProps {
   /** Expert name */
   expertName: string;
   /** Expert title/role */
@@ -26,7 +26,7 @@ interface ExpertReviewBoxProps {
  * Generates ReviewedBy Schema markup when used.
  * 
  * Usage:
- * <ExpertReviewBox
+ * <AuthorProfile
  *   expertName="محمد الهادي"
  *   expertTitle="فني عزل وتظليل معتمد — وكيل جونسون الرسمي"
  *   organization="Johnson Window Films"
@@ -34,7 +34,7 @@ interface ExpertReviewBoxProps {
  *   reviewDate="2026-04-15"
  * />
  */
-export default function ExpertReviewBox({
+export default function AuthorProfile({
   expertName,
   expertTitle,
   expertUrl,
@@ -42,7 +42,7 @@ export default function ExpertReviewBox({
   quote,
   reviewDate = '2026-04-15',
   variant = 'full',
-}: ExpertReviewBoxProps) {
+}: AuthorProfileProps) {
   // ReviewedBy Schema — injected inline
   const reviewedBySchema = {
     '@context': 'https://schema.org',

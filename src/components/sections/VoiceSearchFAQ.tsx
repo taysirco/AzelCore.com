@@ -3,7 +3,7 @@
 // Targets voice search intents in ar-SA locale
 
 import { SITE_URL } from '@/lib/constants';
-import { localVoiceFaqs } from '@/data/local-voice-faqs';
+import { localVoiceFaqs } from '@/data/frequently-asked-questions';
 import styles from './VoiceSearchFAQ.module.css';
 
 const voiceFaqSchema = {

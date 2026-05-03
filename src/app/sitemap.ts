@@ -38,7 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/llms.txt`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.3 },
   ];
 
-  // pSEO district pages — hyper-local Jeddah coverage
+  // dynamic-pages district pages — hyper-local Jeddah coverage
   const districtPages: MetadataRoute.Sitemap = jeddahDistricts.map(d => ({
     url: `${SITE_URL}/car-insulation-jeddah/${d.id}`,
     lastModified: LAST_MODIFIED,
@@ -46,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // pSEO city pages — National KSA coverage
+  // dynamic-pages city pages — National KSA coverage
   const cityPages: MetadataRoute.Sitemap = ksaCities.map(c => ({
     url: `${SITE_URL}/building-glass-insulation/${c.id}`,
     lastModified: LAST_MODIFIED,

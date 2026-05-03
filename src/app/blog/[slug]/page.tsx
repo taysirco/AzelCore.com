@@ -4,8 +4,8 @@ import { notFound } from 'next/navigation';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
 import { blogTopics, type BlogTopic } from '@/data/blog-topics';
 import { articles, articleSlugs } from '@/data/blog-content';
-import ExpertReviewBox from '@/components/seo/ExpertReviewBox';
-import GovernmentTrustBar from '@/components/seo/GovernmentTrustBar';
+import AuthorProfile from '@/components/seo/AuthorProfile';
+import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
 import styles from './page.module.css';
 
 function getTopicBySlug(slug: string): BlogTopic | undefined {
@@ -195,7 +195,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
         </div>
 
         <div style={{ margin: '2rem 0' }}>
-          <GovernmentTrustBar entityKeys={['GOV.SASO', 'GOV.SBC', 'GOV.BALADI']} />
+          <OfficialPartnerBar entityKeys={['GOV.SASO', 'GOV.SBC', 'GOV.BALADI']} />
         </div>
 
         <div className={styles.content}>
@@ -294,7 +294,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
 
         <div style={{ marginTop: '3rem', marginBottom: '2rem' }}>
           {content.expertReview ? (
-            <ExpertReviewBox
+            <AuthorProfile
               expertName={content.expertReview.author}
               expertTitle={content.expertReview.role}
               organization={SITE_NAME}
@@ -302,7 +302,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
               reviewDate={date}
             />
           ) : (
-            <ExpertReviewBox
+            <AuthorProfile
               expertName={OWNER_NAME}
               expertTitle={OWNER_TITLE}
               organization={SITE_NAME}

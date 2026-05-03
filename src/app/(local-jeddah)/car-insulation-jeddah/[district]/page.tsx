@@ -7,9 +7,9 @@ import { jeddahDistricts } from '@/data/local-jeddah';
 import ServiceSummary from '@/components/seo/ServiceSummary';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import { districtsContent } from '@/data/districts-content';
-import GovernmentTrustBar from '@/components/seo/GovernmentTrustBar';
-import ExpertReviewBox from '@/components/seo/ExpertReviewBox';
-import VerificationBadges from '@/components/seo/VerificationBadges';
+import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
+import AuthorProfile from '@/components/seo/AuthorProfile';
+import Certifications from '@/components/seo/Certifications';
 import styles from '../page.module.css';
 
 // ═══ SSG: Pre-build all 10 district routes at build time ═══
@@ -150,7 +150,7 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
 
       {/* ═══ E-E-A-T: Government Trust Signals ═══ */}
       <div className={styles.container} style={{ marginBottom: 'var(--space-8)' }}>
-        <GovernmentTrustBar entityKeys={['GOV.SASO', 'GOV.TRAFFIC', 'GOV.BALADI']} />
+        <OfficialPartnerBar entityKeys={['GOV.SASO', 'GOV.TRAFFIC', 'GOV.BALADI']} />
       </div>
 
       {/* Climate Data — dl/dt/dd for SGE */}
@@ -190,7 +190,7 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
 
           {/* ═══ E-E-A-T: Verification Badges ═══ */}
           <div style={{ marginTop: 'var(--space-6)' }}>
-            <VerificationBadges sector="التظليل" />
+            <Certifications sector="التظليل" />
           </div>
         </div>
       </section>
@@ -243,7 +243,7 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
       {/* ═══ E-E-A-T: Expert Review Entity ═══ */}
       <section className={styles.section} style={{ paddingTop: 0 }}>
         <div className={styles.container}>
-          <ExpertReviewBox
+          <AuthorProfile
             expertName={OWNER_NAME}
             expertTitle={OWNER_TITLE}
             organization="خبراء العزل وتظليل السيارات بجدة"

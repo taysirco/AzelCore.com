@@ -11,9 +11,9 @@ import CorporateRoiCalculator from '@/components/sections/CorporateRoiCalculator
 import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBanner';
 import { ksaCities } from '@/data/local-jeddah';
 import { citiesContent as citiesContentData } from '@/data/cities-content';
-import GovernmentTrustBar from '@/components/seo/GovernmentTrustBar';
-import ExpertReviewBox from '@/components/seo/ExpertReviewBox';
-import VerificationBadges from '@/components/seo/VerificationBadges';
+import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
+import AuthorProfile from '@/components/seo/AuthorProfile';
+import Certifications from '@/components/seo/Certifications';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -154,7 +154,7 @@ export default function BuildingInsulationPage() {
 
       {/* ═══ E-E-A-T: Government Trust Signals ═══ */}
       <div style={{ marginTop: 'var(--space-6)', marginBottom: 'var(--space-2)' }}>
-        <GovernmentTrustBar entityKeys={['GOV.SASO', 'GOV.SBC', 'GOV.BALADI']} />
+        <OfficialPartnerBar entityKeys={['GOV.SASO', 'GOV.SBC', 'GOV.BALADI']} />
       </div>
 
       {/* Savings Stats */}
@@ -245,7 +245,7 @@ export default function BuildingInsulationPage() {
 
           {/* ═══ E-E-A-T: Verification Badges ═══ */}
           <div style={{ marginTop: 'var(--space-6)' }}>
-            <VerificationBadges sector="المباني" />
+            <Certifications sector="المباني" />
           </div>
         </div>
       </section>
@@ -285,7 +285,7 @@ export default function BuildingInsulationPage() {
         text="فيلم الأمان (Safety Film) يمنع تناثر الزجاج عند الكسر ويحمي من الإصابات. مطلوب في المباني التجارية والمدارس حسب كود البناء السعودي."
       />
 
-      {/* KSA Cities Coverage — pSEO Content from cities-content.ts */}
+      {/* KSA Cities Coverage — dynamic-pages Content from cities-content.ts */}
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
@@ -324,7 +324,7 @@ export default function BuildingInsulationPage() {
       {/* ═══ E-E-A-T: Expert Review Entity ═══ */}
       <section className={styles.section} style={{ paddingTop: 0 }}>
         <div className={styles.container}>
-          <ExpertReviewBox
+          <AuthorProfile
             expertName={OWNER_NAME}
             expertTitle={OWNER_TITLE}
             organization="عزل كور لخدمات مشاريع المباني"

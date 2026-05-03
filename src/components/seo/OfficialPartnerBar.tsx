@@ -1,9 +1,9 @@
 'use client';
 
-import styles from './GovernmentTrustBar.module.css';
+import styles from './OfficialPartnerBar.module.css';
 import { GOVERNMENT_ENTITIES } from '@/data/trust-anchors';
 
-interface GovernmentTrustBarProps {
+interface OfficialPartnerBarProps {
   /** Array of entity keys to display. If empty, displays all. */
   entityKeys?: string[];
   /** Title for the bar. Default: 'مرجعياتنا والمعايير المعتمدة' */
@@ -16,10 +16,10 @@ interface GovernmentTrustBarProps {
  * Displays official government bodies and standards organizations to boost E-E-A-T.
  * Provides authoritative outbound links which Google rewards for YMYL queries.
  */
-export default function GovernmentTrustBar({ 
+export default function OfficialPartnerBar({ 
   entityKeys,
   title = 'مرجعياتنا والمعايير المعتمدة'
-}: GovernmentTrustBarProps) {
+}: OfficialPartnerBarProps) {
   
   const entitiesToDisplay = entityKeys 
     ? GOVERNMENT_ENTITIES.filter(gov => entityKeys.includes(gov.key))

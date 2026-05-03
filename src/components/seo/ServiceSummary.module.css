@@ -5,7 +5,7 @@
   padding: var(--space-4) var(--space-6);
 }
 
-.baitBox {
+.summaryBox {
   position: relative;
   padding: var(--space-5) var(--space-6);
   background: var(--glass, hsla(220, 20%, 15%, 0.6));
@@ -15,7 +15,7 @@
   backdrop-filter: blur(12px);
 }
 
-.baitLabel {
+.summaryLabel {
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 700;
@@ -25,7 +25,7 @@
   margin-bottom: var(--space-2);
 }
 
-.baitText {
+.summaryText {
   font-size: 1rem;
   line-height: 1.8;
   color: var(--text, hsl(220, 15%, 93%));
@@ -33,7 +33,7 @@
 }
 
 /* Light mode */
-[data-theme="light"] .baitBox {
+[data-theme="light"] .summaryBox {
   background: hsla(210, 40%, 97%, 0.9);
   border-color: hsla(210, 100%, 45%, 0.3);
 }

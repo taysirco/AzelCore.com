@@ -7,9 +7,9 @@ import { ksaCities } from '@/data/local-jeddah';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import ServiceDisclaimer from '@/components/seo/ServiceDisclaimer';
 import CorporateRoiCalculator from '@/components/sections/CorporateRoiCalculator';
-import GovernmentTrustBar from '@/components/seo/GovernmentTrustBar';
-import ExpertReviewBox from '@/components/seo/ExpertReviewBox';
-import VerificationBadges from '@/components/seo/VerificationBadges';
+import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
+import AuthorProfile from '@/components/seo/AuthorProfile';
+import Certifications from '@/components/seo/Certifications';
 import styles from '../page.module.css';
 
 // ═══ SSG: Pre-build 15 city routes at build time ═══
@@ -68,7 +68,7 @@ export default function BuildingInsulationCityPage({ params }: { params: { city:
 
       {/* ═══ E-E-A-T: Government Trust Signals ═══ */}
       <div style={{ marginTop: 'var(--space-6)', marginBottom: 'var(--space-2)' }}>
-        <GovernmentTrustBar entityKeys={['GOV.SASO', 'GOV.SBC', 'GOV.BALADI']} />
+        <OfficialPartnerBar entityKeys={['GOV.SASO', 'GOV.SBC', 'GOV.BALADI']} />
       </div>
 
       <section className={styles.section}>
@@ -104,7 +104,7 @@ export default function BuildingInsulationCityPage({ params }: { params: { city:
 
           {/* ═══ E-E-A-T: Verification Badges ═══ */}
           <div style={{ marginTop: 'var(--space-8)' }}>
-            <VerificationBadges sector="المباني" />
+            <Certifications sector="المباني" />
           </div>
         </div>
       </section>
@@ -137,7 +137,7 @@ export default function BuildingInsulationCityPage({ params }: { params: { city:
       {/* ═══ E-E-A-T: Expert Review Entity ═══ */}
       <section className={styles.section} style={{ paddingTop: 0 }}>
         <div className={styles.container}>
-          <ExpertReviewBox
+          <AuthorProfile
             expertName={OWNER_NAME}
             expertTitle={OWNER_TITLE}
             organization="عزل كور لخدمات مشاريع المباني"

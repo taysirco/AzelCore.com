@@ -1,7 +1,7 @@
 import styles from './TrustSection.module.css';
 import { OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
-import ExpertReviewBox from '../seo/ExpertReviewBox';
-import GovernmentTrustBar from '../seo/GovernmentTrustBar';
+import AuthorProfile from '../seo/AuthorProfile';
+import OfficialPartnerBar from '../seo/OfficialPartnerBar';
 
 const credentials = [
   { icon: '📋', title: 'منشأة مسجلة', value: 'وزارة التجارة', desc: 'منشأة سعودية مسجلة رسمياً لدى وزارة التجارة' },
@@ -35,7 +35,7 @@ export default function TrustSection() {
 
         {/* Expert Box (Centralized E-E-A-T Component) */}
         <div style={{ marginTop: '2rem' }}>
-          <ExpertReviewBox 
+          <AuthorProfile 
             expertName={OWNER_NAME}
             expertTitle={OWNER_TITLE}
             organization="Johnson Window Films (الوكيل المعتمد)"
@@ -46,7 +46,7 @@ export default function TrustSection() {
 
         {/* Government Trust Anchors */}
         <div style={{ marginTop: '2rem' }}>
-          <GovernmentTrustBar entityKeys={['GOV.SASO', 'GOV.TRAFFIC', 'GOV.SBC', 'GOV.BALADI']} />
+          <OfficialPartnerBar entityKeys={['GOV.SASO', 'GOV.TRAFFIC', 'GOV.SBC', 'GOV.BALADI']} />
         </div>
       </div>
     </section>

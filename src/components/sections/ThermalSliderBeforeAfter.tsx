@@ -1,6 +1,6 @@
 'use client';
 
-// ═══ ThermalSliderBeforeAfter — Interaction Dwell-Time Feature ═══
+// ═══ ThermalSliderBeforeAfter — Interaction Engagement Feature ═══
 // Interactive before/after slider for thermal comparison
 // Maximizes touch interactions → CrUX dwell-time signals
 
