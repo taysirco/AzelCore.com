@@ -31,7 +31,7 @@ const homeGraphSchema = {
       legalName: 'مؤسسة عزل كور للتجارة',
       url: SITE_URL,
       telephone: PHONE,
-      image: `${SITE_URL}/images/og-cover.png`,
+      image: `${SITE_URL}/images/og-cover.webp`,
       priceRange: '$$',
       address: {
         '@type': 'PostalAddress',

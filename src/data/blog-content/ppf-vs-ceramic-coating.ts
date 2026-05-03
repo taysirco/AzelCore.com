@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'blog-ppf-vs-ceramic-coating.png',
+  ogImage: 'blog-ppf-vs-ceramic-coating.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'خدمة حماية السيارات الشاملة — تظليل + PPF بجدة' },
     { href: '/johnson-authorized-dealer', text: 'أفلام جونسون للحماية الحرارية وحماية الطلاء' },

@@ -72,7 +72,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className={styles.heroBg}>
         <Image
-          src="/images/hero-car-tinting-workshop.png"
+          src="/images/hero-car-tinting-workshop.webp"
           alt="ورشة تظليل سيارات احترافية — عزل كور جدة"
           fill
           priority

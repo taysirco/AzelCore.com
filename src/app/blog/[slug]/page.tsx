@@ -124,7 +124,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
           jobTitle: OWNER_TITLE,
           url: `${SITE_URL}/johnson-authorized-dealer`
         },
-        publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME, logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/azelcore-logo.png` } },
+        publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME, logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/azelcore-logo.webp` } },
         datePublished: date,
         dateModified: date,
         mainEntityOfPage: `${SITE_URL}/blog/${slug}`,

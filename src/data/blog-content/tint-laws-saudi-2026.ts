@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'blog-tint-laws-saudi-2026.png',
+  ogImage: 'blog-tint-laws-saudi-2026.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'تظليل نانو سيراميك مطابق لنظام المرور (00 و 01)' },
     { href: '/johnson-authorized-dealer', text: 'عازل جونسون الأصلي — معتمد لدى الفحص الدوري' },

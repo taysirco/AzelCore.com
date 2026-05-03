@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: 'تظليل سيارات جدة — نانو سيراميك أمريكي | عزل كور',
     description: 'أفلام نانو سيراميك تحجب 97% IR — ضمان 10 سنوات — وكيل جونسون المعتمد',
     url: `${SITE_URL}/car-insulation-jeddah`,
-    images: [{ url: '/images/hero-car-tinting-process.png', width: 1200, height: 630 }],
+    images: [{ url: '/images/hero-car-tinting-process.webp', width: 1200, height: 630 }],
   },
 };
 
@@ -87,8 +87,8 @@ const graphSchema = {
       alternateName: 'AzelCore Car Tinting Jeddah',
       url: `${SITE_URL}/car-insulation-jeddah`,
       telephone: PHONE,
-      image: `${SITE_URL}/images/hero-car-tinting-process.png`,
-      logo: `${SITE_URL}/images/azelcore-logo.png`,
+      image: `${SITE_URL}/images/hero-car-tinting-process.webp`,
+      logo: `${SITE_URL}/images/azelcore-logo.webp`,
       description: 'ورشة تظليل سيارات احترافية في جدة — وكيل جونسون المعتمد الوحيد. أفلام نانو سيراميك أمريكية تحجب 97% حرارة مع ضمان 10 سنوات.',
       priceRange: '200-3200 SAR',
       currenciesAccepted: 'SAR',
@@ -145,7 +145,7 @@ const graphSchema = {
       name: SITE_NAME,
       alternateName: SITE_NAME_EN,
       url: SITE_URL,
-      logo: `${SITE_URL}/images/azelcore-logo.png`,
+      logo: `${SITE_URL}/images/azelcore-logo.webp`,
       foundingDate: '2024',
       taxID: VAT_ID,
       legalName: `مؤسسة ${OWNER_NAME} للتجارة`,
@@ -296,7 +296,7 @@ export default function CarTintingPage() {
       <section className={styles.hero}>
         <div className={styles.heroBg}>
           <Image
-            src="/images/hero-car-tinting-process.png"
+            src="/images/hero-car-tinting-process.webp"
             alt="فني يركب تظليل نانو سيراميك على سيارة في ورشة عزل كور جدة"
             fill
             priority={true}
@@ -449,7 +449,7 @@ export default function CarTintingPage() {
           <div className={styles.galleryGrid}>
             {['gallery-car-after-01', 'gallery-car-after-02', 'gallery-car-after-03', 'car-tint-heat-comparison', 'thermal-camera-car-test', 'nano-ceramic-tint-applied'].map((img, i) => (
               <div key={i} className={styles.galleryItem}>
-                <Image src={`/images/${img}.png`} alt={`تظليل سيارات جدة — عمل ${i + 1}`} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <Image src={`/images/${img}.webp`} alt={`تظليل سيارات جدة — عمل ${i + 1}`} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
               </div>
             ))}
           </div>

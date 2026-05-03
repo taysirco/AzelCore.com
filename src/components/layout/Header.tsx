@@ -27,7 +27,7 @@ export default function Header() {
         <div className={styles.inner}>
           <Link href="/" className={styles.logo} aria-label={SITE_NAME}>
             <Image
-              src="/images/azelcore-logo.png"
+              src="/images/azelcore-logo.webp"
               alt="عزل كور — تظليل وعزل حراري احترافي"
               width={170}
               height={48}

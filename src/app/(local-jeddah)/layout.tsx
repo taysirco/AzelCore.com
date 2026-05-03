@@ -16,7 +16,7 @@ export default function LocalJeddahLayout({
     "parentOrganization": {
       "@id": `${SITE_URL}/#organization`
     },
-    "image": `${SITE_URL}/images/og-cover.png`,
+    "image": `${SITE_URL}/images/og-cover.webp`,
     "url": `${SITE_URL}/car-insulation-jeddah`,
     "telephone": "+966564612017",
   };

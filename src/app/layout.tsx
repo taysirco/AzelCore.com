@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} — تظليل وعزل حراري احترافي في جدة`,
     description: 'وكيل جونسون المعتمد — أفلام عزل نانو سيراميك أمريكية مع ضمان عمر السيارة',
-    images: [{ url: '/images/og-cover.png', width: 1200, height: 630, alt: 'عزل كور — تظليل وعزل حراري جدة' }],
+    images: [{ url: '/images/og-cover.webp', width: 1200, height: 630, alt: 'عزل كور — تظليل وعزل حراري جدة' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -64,7 +64,7 @@ const organizationSchema = {
   alternateName: SITE_NAME_EN,
   legalName: 'مؤسسة عزل كور للتجارة',
   url: SITE_URL,
-  logo: `${SITE_URL}/images/azelcore-logo.png`,
+  logo: `${SITE_URL}/images/azelcore-logo.webp`,
   foundingDate: '2024',
   taxID: VAT_ID,
   address: {
@@ -99,7 +99,7 @@ const organizationSchema = {
     name: 'Commercial Registration (CR)',
     value: CRN,
   },
-  image: `${SITE_URL}/images/og-cover.png`,
+  image: `${SITE_URL}/images/og-cover.webp`,
   sameAs: [
     'https://www.instagram.com/azelcore',
   ],

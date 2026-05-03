@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'blog-vision-2030-energy.png',
+  ogImage: 'blog-vision-2030-energy.webp',
   serviceLinks: [
     { href: '/building-glass-insulation', text: 'عزل زجاج مباني متوافق مع SBC 601 — جدة' },
     { href: '/johnson-authorized-dealer', text: 'أفلام جونسون التجارية للعزل الحراري المعتمدة' },

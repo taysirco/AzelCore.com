@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'blog-best-car-tint-jeddah.png',
+  ogImage: 'blog-best-car-tint-jeddah.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'خدمة تظليل سيارات بجدة — أسعار ومواصفات 2026' },
     { href: '/johnson-authorized-dealer', text: 'الوكيل المعتمد الوحيد لجونسون في جدة' },

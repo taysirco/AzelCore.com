@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'blog-spot-fake-tint.png',
+  ogImage: 'blog-spot-fake-tint.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'تركيب تظليل نانو سيراميك أصلي بجدة' },
     { href: '/johnson-authorized-dealer', text: 'تحقق من اعتمادنا لدى شركة جونسون الأمريكية' },

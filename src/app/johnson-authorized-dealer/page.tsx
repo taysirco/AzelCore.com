@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: 'وكيل جونسون المعتمد — Johnson Window Films | عزل كور جدة',
     description: '5 خطوط إنتاج أمريكية — Supreme IR بحجب 97% IR — ضمان عمر السيارة',
     url: `${SITE_URL}/johnson-authorized-dealer`,
-    images: [{ url: '/images/hero-car-tinting-jeddah.png', width: 1200, height: 630 }],
+    images: [{ url: '/images/hero-car-tinting-jeddah.webp', width: 1200, height: 630 }],
   },
 };
 
@@ -107,7 +107,7 @@ const graphSchema = {
       brand: { '@type': 'Brand', name: 'Johnson Window Films' },
       manufacturer: { '@type': 'Organization', name: 'Johnson Window Films', url: 'https://www.johnsonwindowfilms.com' },
       category: 'Window Film',
-      image: `${SITE_URL}/images/hero-car-tinting-jeddah.png`,
+      image: `${SITE_URL}/images/hero-car-tinting-jeddah.webp`,
       offers: {
         '@type': 'AggregateOffer',
         priceCurrency: 'SAR',
@@ -187,7 +187,7 @@ export default function JohnsonDealerPage() {
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image src="/images/hero-car-tinting-jeddah.png" alt="تظليل جونسون Supreme IR على سيارة في جدة" fill priority fetchPriority="high" quality={80} sizes="100vw" style={{ objectFit: 'cover' }} />
+          <Image src="/images/hero-car-tinting-jeddah.webp" alt="تظليل جونسون Supreme IR على سيارة في جدة" fill priority fetchPriority="high" quality={80} sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>

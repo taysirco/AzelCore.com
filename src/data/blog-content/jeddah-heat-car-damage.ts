@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'blog-jeddah-heat-car.png',
+  ogImage: 'blog-jeddah-heat-car.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'احمِ سيارتك من حرارة جدة — تظليل نانو سيراميك' },
     { href: '/johnson-authorized-dealer', text: 'جونسون Supreme IR — 97% حجب حرارة' },

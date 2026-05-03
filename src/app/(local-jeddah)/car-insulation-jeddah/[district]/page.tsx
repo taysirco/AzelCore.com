@@ -49,7 +49,7 @@ function buildDistrictSchema(d: typeof jeddahDistricts[0]) {
         name: `عزل كور — تظليل سيارات ${d.nameAr}`,
         url: `${SITE_URL}/car-insulation-jeddah/${d.id}`,
         telephone: PHONE,
-        image: `${SITE_URL}/images/hero-car-tinting-process.png`,
+        image: `${SITE_URL}/images/hero-car-tinting-process.webp`,
         description: `تظليل سيارات احترافي في ${d.nameAr} بجدة. رطوبة ${d.humidity} و UV ${d.uvIndex} تتطلب ${d.recommendation.split('—')[0].trim()}.`,
         areaServed: {
           '@type': 'Place',
@@ -120,7 +120,7 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image src="/images/hero-car-tinting-process.png" alt={`تظليل سيارات في ${d.nameAr} جدة`} fill priority fetchPriority="high" quality={80} sizes="100vw" style={{ objectFit: 'cover' }} />
+          <Image src="/images/hero-car-tinting-process.webp" alt={`تظليل سيارات في ${d.nameAr} جدة`} fill priority fetchPriority="high" quality={80} sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>

@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'blog-building-insulation-savings.png',
+  ogImage: 'blog-building-insulation-savings.webp',
   serviceLinks: [
     { href: '/building-glass-insulation', text: 'خدمة عزل زجاج المباني — وفّر حتى 44% من فاتورة الكهرباء' },
     { href: '/johnson-authorized-dealer', text: 'أفلام جونسون التجارية للعزل الحراري' },

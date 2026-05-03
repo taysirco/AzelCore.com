@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'blog-tint-signal-interference.png',
+  ogImage: 'blog-tint-signal-interference.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'تظليل نانو سيراميك — صفر تداخل مع الإشارات' },
     { href: '/johnson-authorized-dealer', text: 'أفلام جونسون — خالية من المعادن بنسبة 100%' },

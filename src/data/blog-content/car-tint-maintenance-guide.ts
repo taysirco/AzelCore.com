@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'blog-car-tint-maintenance.png',
+  ogImage: 'blog-car-tint-maintenance.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'تظليل سيارات بضمان 10 سنوات + فحص سنوي مجاني' },
     { href: '/johnson-authorized-dealer', text: 'وكيل جونسون المعتمد — أفلام بضمان عمر السيارة' },

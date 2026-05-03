@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'blog-nano-vs-carbon-tint.png',
+  ogImage: 'blog-nano-vs-carbon-tint.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'احجز تظليل نانو سيراميك بجدة الآن' },
     { href: '/johnson-authorized-dealer', text: 'جونسون Supreme IR — الخيار الأعلى أداءً بمواصفات الوكالة' },
