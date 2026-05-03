@@ -21,11 +21,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — تظليل وعزل حراري احترافي في جدة | وكيل جونسون المعتمد`,
+    default: `${SITE_NAME} — تظليل وعزل حراري احترافي في جدة | وكيل جونسون و 3M المعتمد`,
     template: `%s | ${SITE_NAME}`,
   },
-  description: 'عزل كور — وكيل جونسون المعتمد في جدة. تظليل سيارات بأفلام نانو سيراميك أمريكية، عزل زجاج مباني، ضمان 10 سنوات. احجز الآن.',
-  keywords: ['تظليل سيارات جدة', 'عزل حراري', 'عازل جونسون', 'نانو سيراميك', 'تظليل مباني', 'عزل زجاج', 'Johnson Window Films'],
+  description: 'عزل كور — وكيل جونسون و 3M المعتمد في جدة. تظليل سيارات بأفلام نانو سيراميك أمريكية، عزل زجاج مباني، ضمان 10 سنوات. احجز الآن.',
+  keywords: ['تظليل سيارات جدة', 'عزل حراري', 'عازل جونسون', 'عازل 3M', '3M Crystalline', 'نانو سيراميك', 'تظليل مباني', 'عزل زجاج', 'Johnson Window Films', '3M Window Films'],
   authors: [{ name: OWNER_NAME }],
   creator: SITE_NAME_EN,
   publisher: SITE_NAME,
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: SITE_NAME,
     title: `${SITE_NAME} — تظليل وعزل حراري احترافي في جدة`,
-    description: 'وكيل جونسون المعتمد — أفلام عزل نانو سيراميك أمريكية مع ضمان عمر السيارة',
+    description: 'وكيل جونسون و 3M المعتمد — أفلام عزل نانو سيراميك أمريكية مع ضمان عمر السيارة',
     images: [{ url: '/images/og-cover.webp', width: 1200, height: 630, alt: 'عزل كور — تظليل وعزل حراري جدة' }],
   },
   twitter: {

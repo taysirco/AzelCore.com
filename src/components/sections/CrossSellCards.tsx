@@ -25,6 +25,13 @@ const serviceMap: Record<string, CrossSellItem[]> = {
       href: '/johnson-authorized-dealer',
       linkText: 'اكتشف جونسون',
     },
+    {
+      icon: '🔴',
+      title: 'عازل 3M — Crystalline',
+      description: '200+ طبقة نانو — أعلى TSER في العالم بنسبة 90%. شبه شفاف ومطابق لنظام المرور.',
+      href: '/3m-authorized-dealer',
+      linkText: 'اكتشف 3M',
+    },
   ],
   'building-glass-insulation': [
     {
@@ -51,11 +58,27 @@ const serviceMap: Record<string, CrossSellItem[]> = {
       linkText: 'خدمة تظليل السيارات',
     },
     {
-      icon: '🏢',
-      title: 'عزل زجاج المباني',
-      description: 'أفلام عزل حراري للواجهات والنوافذ — توفير 35-45% من فاتورة التكييف.',
-      href: '/building-glass-insulation',
-      linkText: 'خدمة عزل المباني',
+      icon: '🔴',
+      title: 'عازل 3M — بديل قوي',
+      description: '3M Crystalline بـ 200+ طبقة نانو — TSER 90% وحجب UV 99.9%. وكيل معتمد أيضاً.',
+      href: '/3m-authorized-dealer',
+      linkText: 'مقارنة مع 3M',
+    },
+  ],
+  '3m-authorized-dealer': [
+    {
+      icon: '🚗',
+      title: 'تظليل سيارات جدة',
+      description: 'عزل حراري احترافي بأفلام نانو سيراميك — حرارة مقصورتك تنزل من 72°م لـ 38°م.',
+      href: '/car-insulation-jeddah',
+      linkText: 'خدمة تظليل السيارات',
+    },
+    {
+      icon: '🇺🇸',
+      title: 'عازل جونسون — بديل قوي',
+      description: 'Johnson Supreme IR بحجب 97% IR. تقنية CST™ لمقاومة الخدوش. وكيل معتمد أيضاً.',
+      href: '/johnson-authorized-dealer',
+      linkText: 'مقارنة مع جونسون',
     },
   ],
 };

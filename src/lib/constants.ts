@@ -7,7 +7,7 @@ export const PHONE = '+966564612017';
 export const CRN = '4030253566';
 export const VAT_ID = '311280328300003';
 export const OWNER_NAME = 'محمد الهادي';
-export const OWNER_TITLE = 'فني عزل وتظليل معتمد — وكيل جونسون الرسمي';
+export const OWNER_TITLE = 'فني عزل وتظليل معتمد — وكيل جونسون و 3M الرسمي';
 export const GEO = { lat: 21.5424, lng: 39.1727 };
 export const ADDRESS = 'طريق الملك فهد، حي الزهراء، جدة 23425، المملكة العربية السعودية';
 export const ADDRESS_STRUCTURED = {
@@ -26,6 +26,7 @@ export const NAV_LINKS = [
   { href: '/building-glass-insulation', label: 'عزل مباني' },
   { href: '/calculator', label: 'حاسبة التكلفة' },
   { href: '/johnson-authorized-dealer', label: 'جونسون ⭐' },
+  { href: '/3m-authorized-dealer', label: '3M ⭐' },
   { href: '/gallery', label: 'أعمالنا' },
   { href: '/blog', label: 'المدونة' },
   { href: '/contact', label: 'تواصل معنا' },

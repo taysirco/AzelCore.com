@@ -88,7 +88,7 @@ export const serviceEntities = [
 
 // ─── ماركات الأفلام ───
 export const filmBrands = [
-  { name: "3M", nameAr: "ثري ام", flagship: "Crystalline Series", origin: "أمريكي", authorized: true },
+  { name: "3M", nameAr: "ثري ام", flagship: "Crystalline Series", origin: "أمريكي", authorized: true, isDealer: true },
   { name: "LLumar", nameAr: "لومار", flagship: "CTX Series", origin: "أمريكي", authorized: true },
   { name: "XPEL", nameAr: "إكسبل", flagship: "PRIME XR Plus", origin: "أمريكي", authorized: true },
   { name: "SunTek", nameAr: "صن تك", flagship: "CXP Series", origin: "أمريكي", authorized: true },

@@ -20,6 +20,7 @@ const CRITICAL_URLS = [
   `${SITE_URL}/car-insulation-jeddah`,
   `${SITE_URL}/building-glass-insulation`,
   `${SITE_URL}/johnson-authorized-dealer`,
+  `${SITE_URL}/3m-authorized-dealer`,
   `${SITE_URL}/blog`,
   `${SITE_URL}/gallery`,
   `${SITE_URL}/contact`,

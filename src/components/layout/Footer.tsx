@@ -6,6 +6,7 @@ const serviceLinks = [
   { href: '/car-insulation-jeddah', label: 'تظليل سيارات جدة' },
   { href: '/building-glass-insulation', label: 'عزل زجاج مباني' },
   { href: '/johnson-authorized-dealer', label: 'عازل جونسون (وكيل معتمد)' },
+  { href: '/3m-authorized-dealer', label: 'عازل 3M (وكيل معتمد)' },
   { href: '/gallery', label: 'معرض أعمالنا' },
   { href: '/blog', label: 'المدونة' },
 ];
@@ -64,7 +65,7 @@ export default function Footer() {
             <li><span className={styles.infoLabel}>الحالة:</span> منشأة سعودية مسجلة ✅</li>
             <li><span className={styles.infoLabel}>السجل التجاري:</span> {CRN}</li>
             <li><span className={styles.infoLabel}>الرقم الضريبي:</span> {VAT_ID}</li>
-            <li><span className={styles.infoLabel}>الوكالة:</span> Johnson Window Films 🇺🇸</li>
+            <li><span className={styles.infoLabel}>الوكالات:</span> Johnson 🇺🇸 + 3M 🇺🇸</li>
             <li><span className={styles.infoLabel}>ساعات العمل:</span> {WORKING_HOURS}</li>
             <li><span className={styles.infoLabel}>الموقع:</span> {ADDRESS}</li>
           </ul>
