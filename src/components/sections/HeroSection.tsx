@@ -114,7 +114,10 @@ export default function HeroSection() {
             احجز موعدك الآن
           </a>
           <a href="/johnson-authorized-dealer" className={styles.secondaryBtn}>
-            تعرف على عازل جونسون ←
+            عازل جونسون ←
+          </a>
+          <a href="/3m-authorized-dealer" className={styles.secondaryBtn}>
+            عازل 3M ←
           </a>
         </div>
 

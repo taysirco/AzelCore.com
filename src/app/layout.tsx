@@ -100,6 +100,10 @@ const organizationSchema = {
     value: CRN,
   },
   image: `${SITE_URL}/images/og-cover.webp`,
+  brand: [
+    { '@type': 'Brand', name: 'Johnson Window Films', url: 'https://www.johnsonwindowfilms.com' },
+    { '@type': 'Brand', name: '3M Window Films', url: 'https://www.3m.com' },
+  ],
   sameAs: [
     'https://www.instagram.com/azelcore',
   ],
@@ -160,6 +164,7 @@ export default function RootLayout({
                   '/car-insulation-jeddah',
                   '/building-glass-insulation',
                   '/johnson-authorized-dealer',
+                  '/3m-authorized-dealer',
                   '/blog',
                   '/gallery',
                   '/contact',
