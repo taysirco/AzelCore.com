@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN } from '@/lib/constants';
 import ServiceSummary from '@/components/seo/ServiceSummary';
+import AuthorProfile from '@/components/seo/AuthorProfile';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import styles from './page.module.css';
 
@@ -342,6 +343,15 @@ export default function ThreeMDealerPage() {
           </div>
         </div>
       </section>
+
+      {/* Author E-E-A-T */}
+      <AuthorProfile
+        expertName={OWNER_NAME}
+        expertTitle={OWNER_TITLE}
+        organization="عزل كور (وكيل جونسون و 3M)"
+        quote="3M Crystalline هو أفضل فيلم شفاف في العالم — 200+ طبقة نانو تحجب 97% حرارة بدون تغيير لون الزجاج. اختيارك للفيلم الصح يعتمد على نوع سيارتك واستخدامك اليومي — تواصل معنا للاستشارة المجانية."
+        reviewDate="2026-01-15"
+      />
 
       {/* Cross-sell */}
       <CrossSellCards currentPage="3m-authorized-dealer" />

@@ -6,6 +6,7 @@ const article: ArticleModule = {
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'تظليل نانو سيراميك — صفر تداخل مع الإشارات' },
     { href: '/johnson-authorized-dealer', text: 'أفلام جونسون — خالية من المعادن بنسبة 100%' },
+    { href: '/3m-authorized-dealer', text: 'أفلام 3M — تقنية غير معدنية بالكامل' },
   ],
   content: {
     quickAnswer: 'التظليل المعدني (Metalized) يحجب 20-60% من إشارات الجوال وGPS وBluetooth لأنه يعمل كقفص فاراداي. التظليل النانو سيراميك والكربوني لا يحجبان أي إشارة لأنهما خاليان من المعادن 100%. في عصر شبكات 5G، اختيار فيلم خالٍ من المعادن أصبح ضرورة.',

@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ district:
 
   return {
     title: `تظليل سيارات ${d.nameAr} جدة — نانو سيراميك`,
-    description: `أفضل تظليل سيارات في ${d.nameAr} بجدة. رطوبة ${d.humidity}، أشعة UV ${d.uvIndex}. نوصي بـ ${d.recommendation.split('—')[0].trim()}. وكيل جونسون المعتمد.`,
+    description: `أفضل تظليل سيارات في ${d.nameAr} بجدة. رطوبة ${d.humidity}، أشعة UV ${d.uvIndex}. نوصي بـ ${d.recommendation.split('—')[0].trim()}. وكيل جونسون و 3M المعتمد.`,
     alternates: { canonical: `${SITE_URL}/car-insulation-jeddah/${district}` },
     openGraph: {
       title: `تظليل سيارات ${d.nameAr} — جدة`,
@@ -115,7 +115,7 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
-      <ServiceSummary summary={`في ${d.nameAr} بجدة، الرطوبة تصل ${d.humidity} مع أشعة UV بمستوى ${d.uvIndex} وتآكل ملحي ${d.saltCorrosion}. نوصي بـ ${d.recommendation}. وكيل جونسون المعتمد — ضمان 10 سنوات.`} />
+      <ServiceSummary summary={`في ${d.nameAr} بجدة، الرطوبة تصل ${d.humidity} مع أشعة UV بمستوى ${d.uvIndex} وتآكل ملحي ${d.saltCorrosion}. نوصي بـ ${d.recommendation}. وكيل جونسون و 3M المعتمد — ضمان 10 سنوات.`} />
 
       {/* Hero */}
       <section className={styles.hero}>

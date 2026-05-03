@@ -41,7 +41,7 @@ const FALLBACK_REVIEWS: GoogleReview[] = [
   {
     authorName: 'فيصل العمري',
     rating: 5,
-    text: 'وكيل جونسون الوحيد المعتمد في جدة. جربت محلات كثير قبلهم — الفرق واضح في الجودة.',
+    text: 'وكيل جونسون و 3M المعتمد في جدة. جربت محلات كثير قبلهم — الفرق واضح في الجودة.',
     relativeTimeDescription: 'قبل 3 أسابيع',
     profilePhotoUrl: '',
   },

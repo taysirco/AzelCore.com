@@ -6,6 +6,7 @@ const article: ArticleModule = {
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'احجز تظليل نانو سيراميك بجدة الآن' },
     { href: '/johnson-authorized-dealer', text: 'جونسون Supreme IR — الخيار الأعلى أداءً بمواصفات الوكالة' },
+    { href: '/3m-authorized-dealer', text: '3M Crystalline — 200+ طبقة نانو بحجب 97% IR' },
   ],
   content: {
     quickAnswer: 'نانو سيراميك هو الأفضل لحجب الحرارة (TSER يصل لـ 65% و IR 97%) ومثالي لأجواء جدة. التظليل الكربوني ممتاز اقتصادياً (IR 80%) لكنه أقل عزلاً. أما 3M Crystalline فهو الأفضل للزجاج الأمامي بفضل تقنية الـ 200 طبقة (شفاف ويجتاز الفحص الدوري).',

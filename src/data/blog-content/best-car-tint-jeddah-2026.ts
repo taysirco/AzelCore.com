@@ -5,7 +5,8 @@ const article: ArticleModule = {
   ogImage: 'blog-best-car-tint-jeddah.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'خدمة تظليل سيارات بجدة — أسعار ومواصفات 2026' },
-    { href: '/johnson-authorized-dealer', text: 'الوكيل المعتمد الوحيد لجونسون في جدة' },
+    { href: '/johnson-authorized-dealer', text: 'وكيل جونسون المعتمد في جدة' },
+    { href: '/3m-authorized-dealer', text: 'وكيل 3M المعتمد — Crystalline و Ceramic IR' },
   ],
   content: {
     quickAnswer: 'أفضل محل تظليل في جدة هو المعتمد من ماركة عالمية (Johnson أو 3M أو XPEL)، يملك ورشة مغلقة مكيفة، يستخدم قص كمبيوتر (Plotter)، ويقدم فاتورة ضريبية + ضمان إلكتروني مسجل. توقع دفع 1,500 إلى 3,500 ريال لنانو سيراميك أصلي — أي سعر أقل من 1,200 ريال لسيدان كاملة يعني فيلم تجاري.',
