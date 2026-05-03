@@ -32,7 +32,7 @@
   font-size: 8rem;
   font-weight: 900;
   line-height: 1;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent, hsl(185, 80%, 45%)) 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent, hsl(185, 80%, 45%)) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -44,7 +44,7 @@
 .title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--text);
   margin-bottom: 0.75rem;
   position: relative;
   z-index: 1;
@@ -52,7 +52,7 @@
 
 .description {
   font-size: 1rem;
-  color: var(--color-text-muted);
+  color: var(--text-muted);
   max-width: 480px;
   margin: 0 auto 2rem;
   line-height: 1.7;
@@ -74,7 +74,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 2rem;
-  background: var(--color-primary);
+  background: var(--primary);
   color: #fff;
   border-radius: 12px;
   font-weight: 600;
@@ -94,9 +94,9 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 2rem;
-  background: var(--color-surface);
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
   border-radius: 12px;
   font-weight: 600;
   font-size: 1rem;
@@ -105,7 +105,7 @@
 }
 
 .secondaryBtn:hover {
-  background: var(--color-surface-elevated);
+  background: var(--surface-elevated);
   transform: translateY(-2px);
 }
 
@@ -120,14 +120,14 @@
 }
 
 .link {
-  color: var(--color-text-muted);
+  color: var(--text-muted);
   text-decoration: none;
   font-size: 0.875rem;
   transition: color 0.2s ease;
 }
 
 .link:hover {
-  color: var(--color-primary);
+  color: var(--primary);
 }
 
 @media (max-width: 480px) {

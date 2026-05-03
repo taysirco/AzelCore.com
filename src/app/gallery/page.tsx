@@ -97,7 +97,7 @@ export default function GalleryPage() {
                 <Image src={`/images/${p.src}`} alt={`${p.caption} — ${p.detail}`} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
                 <figcaption className={styles.caption}>
                   <strong>{p.caption}</strong>
-                  <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--color-text-muted)', marginTop: '4px', lineHeight: '1.5' }}>{p.detail}</span>
+                  <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px', lineHeight: '1.5' }}>{p.detail}</span>
                 </figcaption>
               </figure>
             ))}
@@ -118,7 +118,7 @@ export default function GalleryPage() {
                 <Image src={`/images/${p.src}`} alt={`${p.caption} — ${p.detail}`} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
                 <figcaption className={styles.caption}>
                   <strong>{p.caption}</strong>
-                  <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--color-text-muted)', marginTop: '4px', lineHeight: '1.5' }}>{p.detail}</span>
+                  <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px', lineHeight: '1.5' }}>{p.detail}</span>
                 </figcaption>
               </figure>
             ))}

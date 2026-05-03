@@ -1,6 +1,6 @@
 .calculatorCard {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -14,7 +14,7 @@
 
 .section h3 {
   font-size: 1.25rem;
-  color: var(--color-text-light);
+  color: var(--text-secondary);
   margin-bottom: 1rem;
   font-weight: 600;
 }
@@ -26,11 +26,11 @@
 }
 
 .optionBtn {
-  background: var(--color-bg);
-  border: 2px solid var(--color-border);
+  background: var(--bg);
+  border: 2px solid var(--border);
   border-radius: 8px;
   padding: 1rem;
-  color: var(--color-text);
+  color: var(--text);
   font-family: inherit;
   font-size: 1rem;
   cursor: pointer;
@@ -39,12 +39,12 @@
 }
 
 .optionBtn:hover {
-  border-color: var(--color-primary-dark);
+  border-color: var(--primary);
 }
 
 .optionBtn.active {
-  background: var(--color-primary-dark);
-  border-color: var(--color-primary);
+  background: var(--primary);
+  border-color: var(--primary);
   color: white;
   box-shadow: 0 0 15px rgba(0, 102, 255, 0.2);
 }
@@ -53,11 +53,11 @@
   text-align: center;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--border);
 }
 
 .calcBtn {
-  background: var(--color-primary);
+  background: var(--primary);
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -73,13 +73,13 @@
 }
 
 .calcBtn:hover {
-  background: var(--color-primary-light);
+  background: var(--primary-light);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
 }
 
 .calcBtn:disabled {
-  background: var(--color-border);
+  background: var(--border);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -88,8 +88,8 @@
 
 .resultBox {
   margin-top: 2rem;
-  background: var(--color-bg);
-  border: 1px solid var(--color-primary);
+  background: var(--bg);
+  border: 1px solid var(--primary);
   border-radius: 12px;
   padding: 2rem;
   text-align: center;
@@ -98,14 +98,14 @@
 
 .resultBox h4 {
   font-size: 1.2rem;
-  color: var(--color-text-muted);
+  color: var(--text-muted);
   margin-bottom: 0.5rem;
 }
 
 .priceRange {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--color-secondary);
+  color: var(--secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,12 +115,12 @@
 
 .currency {
   font-size: 1.2rem;
-  color: var(--color-text-muted);
+  color: var(--text-muted);
 }
 
 .disclaimer {
   font-size: 0.85rem;
-  color: var(--color-danger);
+  color: var(--danger);
   margin-bottom: 2rem;
 }
 
@@ -146,17 +146,17 @@
 }
 
 .copyBtn {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
 }
 
 .copyBtn:hover {
-  background: var(--color-border);
+  background: var(--border);
 }
 
 .whatsappBtn {
-  background: var(--color-success);
+  background: var(--success);
   border: none;
   color: white;
 }

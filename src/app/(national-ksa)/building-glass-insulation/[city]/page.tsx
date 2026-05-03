@@ -47,8 +47,8 @@ export default function BuildingInsulationCityPage({ params }: { params: { city:
   return (
     <>
       <section className={styles.hero} style={{ minHeight: '50vh', paddingTop: '100px', paddingBottom: '60px' }}>
-        <div className={styles.heroBg} style={{ background: 'var(--color-bg)' }}>
-          <div className={styles.heroOverlay} style={{ background: 'linear-gradient(to bottom, var(--color-bg) 0%, transparent 100%)' }} />
+        <div className={styles.heroBg} style={{ background: 'var(--bg)' }}>
+          <div className={styles.heroOverlay} style={{ background: 'linear-gradient(to bottom, var(--bg) 0%, transparent 100%)' }} />
         </div>
         <div className={styles.heroContent}>
           <nav className={styles.breadcrumb} aria-label="مسار التنقل">
@@ -80,23 +80,23 @@ export default function BuildingInsulationCityPage({ params }: { params: { city:
 
           {/* Sentiment U-Curve Matrix */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '800px', margin: '0 auto' }}>
-            <div style={{ background: 'rgba(255,100,100,0.05)', padding: '1.5rem', borderRadius: '12px', borderLeft: '4px solid var(--color-danger)' }}>
-              <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, fontSize: '1.05rem' }}>
-                <strong style={{ color: 'var(--color-danger)' }}>التحدي: </strong>
+            <div style={{ background: 'rgba(255,100,100,0.05)', padding: '1.5rem', borderRadius: '12px', borderLeft: '4px solid var(--danger)' }}>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, fontSize: '1.05rem' }}>
+                <strong style={{ color: 'var(--danger)' }}>التحدي: </strong>
                 {content.paragraph}
               </p>
             </div>
             
-            <div style={{ background: 'rgba(100,255,100,0.05)', padding: '1.5rem', borderRadius: '12px', borderLeft: '4px solid var(--color-success)' }}>
-              <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, fontSize: '1.05rem' }}>
-                <strong style={{ color: 'var(--color-success)' }}>العائد المتوقع: </strong>
+            <div style={{ background: 'rgba(100,255,100,0.05)', padding: '1.5rem', borderRadius: '12px', borderLeft: '4px solid var(--success)' }}>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, fontSize: '1.05rem' }}>
+                <strong style={{ color: 'var(--success)' }}>العائد المتوقع: </strong>
                 {content.savingsEstimate}
               </p>
             </div>
 
-            <div style={{ background: 'var(--color-surface)', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--color-border)' }}>
-              <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, fontSize: '1.05rem' }}>
-                <strong style={{ color: 'var(--color-primary)' }}>التوصية الهندسية: </strong>
+            <div style={{ background: 'var(--surface)', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border)' }}>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, fontSize: '1.05rem' }}>
+                <strong style={{ color: 'var(--primary)' }}>التوصية الهندسية: </strong>
                 نوصي بـ <strong>{content.recommendedFilm}</strong> لتحقيق أعلى كفاءة وتوافق مع كود البناء السعودي في {cityObj.nameAr}.
               </p>
             </div>
@@ -118,9 +118,9 @@ export default function BuildingInsulationCityPage({ params }: { params: { city:
           </div>
           <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {content.faqs.map((faq, i) => (
-              <details key={i} style={{ background: 'var(--color-surface)', padding: '1.25rem', borderRadius: '12px', border: '1px solid var(--color-border)', cursor: 'pointer' }}>
-                <summary style={{ fontWeight: 600, color: 'var(--color-text)', listStyle: 'none' }}>{faq.question}</summary>
-                <p style={{ marginTop: '1rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>{faq.answer}</p>
+              <details key={i} style={{ background: 'var(--surface)', padding: '1.25rem', borderRadius: '12px', border: '1px solid var(--border)', cursor: 'pointer' }}>
+                <summary style={{ fontWeight: 600, color: 'var(--text)', listStyle: 'none' }}>{faq.question}</summary>
+                <p style={{ marginTop: '1rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>{faq.answer}</p>
               </details>
             ))}
           </div>
