@@ -91,7 +91,7 @@ export default function HeroSection() {
         <div className={styles.badges}>
           <span className={styles.badge}>
             <span className={styles.badgeDot} />
-            وكيل جونسون المعتمد 🇺🇸
+            وكيل جونسون و 3M المعتمد 🇺🇸
           </span>
           <span className={styles.badgeSecondary}>منشأة سعودية موثقة ✅</span>
         </div>

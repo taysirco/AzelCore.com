@@ -89,7 +89,7 @@ const graphSchema = {
       telephone: PHONE,
       image: `${SITE_URL}/images/hero-car-tinting-process.webp`,
       logo: `${SITE_URL}/images/azelcore-logo.webp`,
-      description: 'ورشة تظليل سيارات احترافية في جدة — وكيل جونسون المعتمد الوحيد. أفلام نانو سيراميك أمريكية تحجب 97% حرارة مع ضمان 10 سنوات.',
+      description: 'ورشة تظليل سيارات احترافية في جدة — وكيل جونسون و 3M المعتمد. أفلام نانو سيراميك أمريكية تحجب 97% حرارة مع ضمان 10 سنوات.',
       priceRange: '200-3200 SAR',
       currenciesAccepted: 'SAR',
       paymentAccepted: 'نقدي, تحويل بنكي, مدى, Apple Pay',
@@ -314,7 +314,7 @@ export default function CarTintingPage() {
           <h1 className={styles.heroTitle}>تظليل سيارات في <span className={styles.blueGradient}>جدة</span></h1>
           <p className={styles.heroSubtitle}>
             أفلام نانو سيراميك أمريكية تحجب <strong>97% من الأشعة تحت الحمراء</strong> — ضمان حتى عمر السيارة.
-            وكيل جونسون المعتمد الوحيد في جدة.
+            وكيل جونسون و 3M المعتمد في جدة.
           </p>
           <div className={styles.heroActions}>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>احجز موعد تظليل</a>
@@ -478,7 +478,7 @@ export default function CarTintingPage() {
           <AuthorProfile
             expertName={OWNER_NAME}
             expertTitle={OWNER_TITLE}
-            organization="عزل كور (وكيل جونسون)"
+            organization="عزل كور (وكيل جونسون و 3M)"
             quote="تظليل النانو سيراميك الأصلي هو استثمار حقيقي لحماية سيارتك وصحتك من أشعة UV الضارة. احرص دائماً على الالتزام بنسبة 30% المقررة من المرور وتأكد من شهادة الضمان المعتمدة."
             reviewDate={new Date().toISOString().split('T')[0]}
           />
@@ -526,7 +526,7 @@ export default function CarTintingPage() {
       <section className={styles.ctaSection} data-nosnippet>
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>جاهز تحمي سيارتك من <span className={styles.blueGradient}>حرارة جدة</span>؟</h2>
-          <p className={styles.ctaSubtitle}>استشارة مجانية + عرض سعر فوري — وكيل جونسون المعتمد في جدة</p>
+          <p className={styles.ctaSubtitle}>استشارة مجانية + عرض سعر فوري — وكيل جونسون و 3M المعتمد في جدة</p>
           <div className={styles.ctaActions}>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>تواصل عبر واتساب</a>
             <a href={`tel:${PHONE}`} className={styles.secondaryBtn}>📞 {PHONE}</a>
@@ -535,7 +535,7 @@ export default function CarTintingPage() {
       </section>
       {/* ═══ Voice Search Speakable Answers — TTS/CarPlay/Siri Targets ═══ */}
       <div id="voice-answer-1" style={{ display: 'none' }} aria-hidden="true">
-        أفضل تظليل سيارات في جدة عند عزل كور. أفلام نانو سيراميك أمريكية تحجب 97% من الحرارة مع ضمان 10 سنوات. وكيل جونسون المعتمد.
+        أفضل تظليل سيارات في جدة عند عزل كور. أفلام نانو سيراميك أمريكية تحجب 97% من الحرارة مع ضمان 10 سنوات. وكيل جونسون و 3M المعتمد.
       </div>
       <div id="voice-answer-2" style={{ display: 'none' }} aria-hidden="true">
         سعر تظليل السيارة في جدة يبدأ من 200 ريال للزجاج الأمامي ويوصل 3200 ريال تظليل كامل نانو سيراميك. ضمان 10 سنوات.

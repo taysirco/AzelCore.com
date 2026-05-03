@@ -26,7 +26,7 @@ export default function Footer() {
         <div className={styles.col}>
           <h3 className={styles.brand}>{SITE_NAME}</h3>
           <p className={styles.desc}>
-            تظليل وعزل حراري احترافي في جدة — وكيل جونسون المعتمد.
+            تظليل وعزل حراري احترافي في جدة — وكيل جونسون و 3M المعتمد.
             نحمي سيارتك ومبناك من حرارة السعودية بأفضل الأفلام الأمريكية.
           </p>
           <div className={styles.socials}>
@@ -76,7 +76,7 @@ export default function Footer() {
       <div className={styles.bottomBar}>
         <div className={styles.bottomInner}>
           <p>© 2026 {SITE_NAME} — {OWNER_NAME}. جميع الحقوق محفوظة.</p>
-          <p className={styles.badge}>وكيل جونسون المعتمد 🇺🇸</p>
+          <p className={styles.badge}>وكيل جونسون و 3M المعتمد 🇺🇸</p>
         </div>
       </div>
     </footer>

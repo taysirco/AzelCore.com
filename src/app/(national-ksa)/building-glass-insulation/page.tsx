@@ -338,7 +338,7 @@ export default function BuildingInsulationPage() {
       <section className={styles.ctaSection} data-nosnippet>
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>جاهز توفّر في <span className={styles.greenGradient}>فاتورة الكهرباء</span>؟</h2>
-          <p className={styles.ctaSubtitle}>معاينة مجانية + عرض سعر فوري — وكيل جونسون المعتمد في جدة</p>
+          <p className={styles.ctaSubtitle}>معاينة مجانية + عرض سعر فوري — وكيل جونسون و 3M المعتمد في جدة</p>
           <div className={styles.ctaActions}>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>طلب معاينة مجانية</a>
             <a href={`tel:${PHONE}`} className={styles.secondaryBtn}>📞 {PHONE}</a>

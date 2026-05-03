@@ -30,6 +30,8 @@ const aboutSchema = {
             'تظليل سيارات نانو سيراميك',
             'عزل زجاج مباني',
             'Johnson Window Films',
+            '3M Window Films',
+            '3M Crystalline Series',
             'Nano-ceramic window film technology',
             'FLIR thermal imaging testing',
             'Saudi Building Code SBC 601',
@@ -47,6 +49,12 @@ const aboutSchema = {
               credentialCategory: 'Authorized Dealer',
               name: 'Johnson Window Films Authorized Dealer',
               recognizedBy: { '@type': 'Organization', name: 'Johnson Window Films', url: 'https://www.johnsonwindowfilms.com' },
+            },
+            {
+              '@type': 'EducationalOccupationalCredential',
+              credentialCategory: 'Authorized Dealer',
+              name: '3M Window Films Authorized Dealer',
+              recognizedBy: { '@type': 'Organization', name: '3M Company', url: 'https://www.3m.com' },
             },
           ],
           memberOf: { '@type': 'Organization', name: 'International Window Film Association (IWFA)', url: 'https://iwfa.com' },
@@ -102,6 +110,7 @@ const milestones = [
   { year: '2020', title: 'وكيل جونسون', desc: 'حصلنا على وكالة جونسون الرسمية كأول وكيل معتمد في جدة.' },
   { year: '2022', title: 'عزل المباني', desc: 'توسعنا لعزل واجهات المباني والفلل — أكثر من 50 مشروع.' },
   { year: '2024', title: 'عزل كور', desc: 'إطلاق علامة عزل كور كمنصة متكاملة لخدمات العزل والتظليل.' },
+  { year: '2025', title: 'وكيل 3M', desc: 'حصلنا على وكالة 3M الرسمية — الآن وكيل معتمد لأقوى علامتين أمريكيتين: Johnson + 3M.' },
   { year: '2026', title: 'التحول الرقمي', desc: 'إطلاق المنصة الرقمية الاحترافية لخدمة العملاء أونلاين.' },
 ];
 
@@ -114,7 +123,7 @@ const values = [
 
 const certifications = [
   { name: 'Johnson Window Films', type: 'وكيل رسمي معتمد', icon: '🏆' },
-  { name: '3M Authorized Applicator', type: 'فني معتمد للتركيب', icon: '🎖️' },
+  { name: '3M Window Films', type: 'وكيل رسمي معتمد', icon: '🔴' },
   { name: 'IWFA Member', type: 'عضو الاتحاد الدولي لأفلام النوافذ', icon: '🌐' },
   { name: 'وزارة التجارة', type: 'منشأة سعودية مسجلة', icon: '📋' },
 ];
@@ -155,8 +164,8 @@ export default function AboutPage() {
               </p>
               <p className={styles.storyPara}>
                 قررنا نكون مختلفين — نستورد من المصنع مباشرة، نعرض الداتاشيت الرسمي لكل فيلم،
-                ونثبت الفرق بالكاميرا الحرارية قدام العميل. هذا النهج خلانا نحصل على وكالة جونسون الرسمية
-                كأول وكيل معتمد في جدة.
+                ونثبت الفرق بالكاميرا الحرارية قدام العميل. هذا النهج خلانا نحصل على وكالة جونسون و 3M الرسمية
+                كوكيل معتمد في جدة.
               </p>
               <p className={styles.storyPara}>
                 اليوم <strong>عزل كور</strong> يخدم أكثر من 780 سيارة و 50 مبنى — بضمان حقيقي مكتوب وفاتورة ضريبية رسمية.

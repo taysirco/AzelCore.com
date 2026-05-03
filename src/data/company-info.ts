@@ -41,7 +41,7 @@ export const eeatSignals = {
     certifications: [
       { name: "IWFA Certified Installer", nameAr: "فني معتمد من الرابطة الدولية لأفلام النوافذ", required: true },
       { name: "Johnson Authorized Dealer", nameAr: "وكيل جونسون المعتمد", required: true },
-      { name: "3M Authorized Dealer", nameAr: "وكيل 3M معتمد", required: false },
+      { name: "3M Authorized Dealer", nameAr: "وكيل 3M المعتمد", required: true },
       { name: "XPEL Certified Installer", nameAr: "مركب XPEL معتمد", required: false },
       { name: "LLumar SelectPro", nameAr: "شريك LLumar المختار", required: false },
     ],
@@ -55,8 +55,8 @@ export const eeatSignals = {
       required: true,
       format: {
         name: "محمد الهادي",
-        title: "فني عزل وتظليل معتمد — وكيل جونسون الرسمي",
-        certification: "Johnson Authorized Dealer + IWFA",
+        title: "فني عزل وتظليل معتمد — وكيل جونسون و 3M الرسمي",
+        certification: "Johnson Authorized Dealer + 3M Authorized Dealer + IWFA",
         photo: "about-owner-portrait.webp",
       },
     },

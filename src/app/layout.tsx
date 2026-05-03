@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: `${SITE_NAME} — تظليل سيارات جدة`,
-    description: 'وكيل جونسون المعتمد — حجب 97% من الأشعة تحت الحمراء',
+    description: 'وكيل جونسون و 3M المعتمد — حجب 97% من الأشعة تحت الحمراء',
   },
   alternates: {
     canonical: SITE_URL,

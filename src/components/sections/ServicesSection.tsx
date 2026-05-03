@@ -23,7 +23,7 @@ const services = [
   {
     icon: '⭐',
     title: 'عازل جونسون',
-    desc: 'وكيل جونسون المعتمد الوحيد — 5 خطوط إنتاج أمريكية من Supreme IR الفلاجشيب إلى Marathon الاقتصادي.',
+    desc: 'وكيل جونسون المعتمد — 5 خطوط إنتاج أمريكية. وكيل 3M المعتمد — Crystalline بـ 200+ طبقة نانو.',
     href: '/johnson-authorized-dealer',
     gradient: 'linear-gradient(135deg, hsla(35, 95%, 55%, 0.12), hsla(25, 90%, 50%, 0.08))',
     borderColor: 'hsla(35, 95%, 55%, 0.3)',

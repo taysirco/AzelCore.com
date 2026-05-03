@@ -11,7 +11,7 @@ export const runtime = 'edge';
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const title = searchParams.get('title') || 'عزل كور — تظليل وعزل حراري';
-  const subtitle = searchParams.get('subtitle') || 'وكيل جونسون المعتمد في جدة';
+  const subtitle = searchParams.get('subtitle') || 'وكيل جونسون و 3M المعتمد في جدة';
   const type = searchParams.get('type') || 'default';
 
   // Color scheme based on service type
@@ -149,7 +149,7 @@ export async function GET(req: NextRequest) {
             gap: '6px',
           }}
         >
-          وكيل جونسون المعتمد ✓
+          وكيل جونسون و 3M المعتمد ✓
         </div>
       </div>
     ),

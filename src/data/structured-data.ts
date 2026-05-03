@@ -80,7 +80,7 @@ export const schemaConfigs = {
   reviewedBy: {
     "@type": "Person",
     name: "محمد الهادي",
-    jobTitle: "فني عزل وتظليل معتمد",
+    jobTitle: "فني عزل وتظليل معتمد — وكيل جونسون و 3M الرسمي",
     url: "https://azelcore.com/johnson-authorized-dealer"
   }
 };

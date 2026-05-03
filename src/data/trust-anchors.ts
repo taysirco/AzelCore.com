@@ -158,7 +158,7 @@ export const EXPERTS: Expert[] = [
 
 export const OFFICIAL_SOURCES: OfficialSource[] = [
   { name: 'Johnson Window Films', nameAr: 'جونسون وندو فيلم', url: 'https://www.johnsonwindowfilms.com', role: 'الوكيل المعتمد — المصدر الأساسي' },
-  { name: '3M Window Films', nameAr: 'ثري ام', url: 'https://www.3m.com/3M/en_US/window-films/', role: 'بيانات TSER/UV/IR — Crystalline Series' },
+  { name: '3M Window Films', nameAr: 'ثري ام', url: 'https://www.3m.com/3M/en_US/window-films/', role: 'وكيل معتمد — Crystalline + Ceramic IR + Color Stable + FX' },
   { name: 'LLumar', nameAr: 'لومار', url: 'https://www.llumar.com', role: 'مقارنة الأداء — CTX Series' },
   { name: 'XPEL', nameAr: 'إكسبل', url: 'https://www.xpel.com', role: 'بيانات PPF وأفلام PRIME XR' },
   { name: 'IWFA', nameAr: 'الرابطة الدولية لأفلام النوافذ', url: 'https://www.iwfa.com', role: 'شهادة التركيب المعتمدة' },
@@ -208,6 +208,7 @@ export const REGULATIONS: Regulation[] = [
 
 export const VERIFICATION_BADGES: VerificationBadge[] = [
   { sector: 'تظليل سيارات', badge: 'وكيل جونسون المعتمد', grantedBy: 'Johnson Window Films', url: 'https://www.johnsonwindowfilms.com', icon: '🏆' },
+  { sector: 'تظليل سيارات', badge: 'وكيل 3M المعتمد', grantedBy: '3M Company', url: 'https://www.3m.com/3M/en_US/window-films/', icon: '🔴' },
   { sector: 'تظليل سيارات', badge: 'فني معتمد IWFA', grantedBy: 'الرابطة الدولية لأفلام النوافذ', url: 'https://www.iwfa.com', icon: '🛡️' },
   { sector: 'عزل مباني', badge: 'مطابق لكود البناء السعودي SBC 601', grantedBy: 'كود البناء السعودي', url: 'https://www.sbc.gov.sa', icon: '✔️' },
   { sector: 'عزل مباني', badge: 'مطابق لمواصفات SASO', grantedBy: 'الهيئة السعودية للمواصفات', url: 'https://www.saso.gov.sa', icon: '✔️' },
