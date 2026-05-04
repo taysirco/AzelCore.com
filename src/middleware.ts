@@ -49,8 +49,10 @@ export function middleware(request: NextRequest) {
     path: '/',
   });
 
-  // Security headers
+  // Security headers (edge-level defense-in-depth)
   response.headers.set('X-Content-Type-Options', 'nosniff');
+  response.headers.set('X-Frame-Options', 'DENY');
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
 
   return response;
 }
@@ -61,6 +63,7 @@ export const config = {
     '/car-insulation-jeddah',
     '/car-insulation-jeddah/:district*',
     '/building-glass-insulation',
+    '/building-glass-insulation/:city*',
     '/johnson-authorized-dealer',
     '/3m-authorized-dealer',
     '/calculator',

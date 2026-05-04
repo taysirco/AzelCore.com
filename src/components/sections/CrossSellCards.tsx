@@ -21,7 +21,7 @@ const serviceMap: Record<string, CrossSellItem[]> = {
     {
       icon: '🇺🇸',
       title: 'عازل جونسون الأمريكي',
-      description: 'الخيار الأول للسيارات الفارهة — تقنية Supreme IR بضمان 10 سنوات من الوكيل المعتمد.',
+      description: 'الخيار الأول للسيارات الفارهة — تقنية Supreme IR بضمان يمتد لعمر السيارة من الوكيل المعتمد.',
       href: '/johnson-authorized-dealer',
       linkText: 'اكتشف جونسون',
     },

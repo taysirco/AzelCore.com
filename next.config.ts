@@ -21,7 +21,9 @@ const nextConfig: NextConfig = {
           { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
           { key: 'X-DNS-Prefetch-Control', value: 'on' },
           { key: 'X-Permitted-Cross-Domain-Policies', value: 'none' },
-          { key: 'Content-Security-Policy', value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://maps.google.com https://www.google.com https://maps.googleapis.com; connect-src 'self' https://api.open-meteo.com; object-src 'none'; base-uri 'self'; form-action 'self'" },
+          { key: 'Cross-Origin-Resource-Policy', value: 'same-site' },
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+          { key: 'Content-Security-Policy', value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; frame-src https://maps.google.com https://www.google.com https://maps.googleapis.com; connect-src 'self' https://api.open-meteo.com; object-src 'none'; base-uri 'self'; form-action 'self'" },
           // ═══ Module 4: Bot Hypnosis — Server-Timing ═══
           // Signals optimal edge-cache performance to crawl bots
           { key: 'Server-Timing', value: 'edge;desc="Firebase CDN";dur=0.8, cache;desc="HIT";dur=0, render;desc="SSG";dur=1.2' },

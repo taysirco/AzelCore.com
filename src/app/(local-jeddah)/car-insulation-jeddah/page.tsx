@@ -22,13 +22,13 @@ import styles from './page.module.css';
 // ════════════════════════════════════════════
 
 export const metadata: Metadata = {
-  title: 'تظليل سيارات جدة — نانو سيراميك + ضمان 10 سنوات',
-  description: 'أفضل تظليل سيارات في جدة بأفلام نانو سيراميك أمريكية من جونسون و 3M. حجب 97% حرارة، ضمان 10 سنوات، لا يحجب الإشارات. وكيل جونسون و 3M المعتمد.',
+  title: 'تظليل سيارات جدة — نانو سيراميك + ضمان عمر السيارة',
+  description: 'أفضل تظليل سيارات في جدة بأفلام نانو سيراميك أمريكية من جونسون و 3M. حجب 97% حرارة، ضمان عمر السيارة، لا يحجب الإشارات. وكيل جونسون و 3M المعتمد.',
   keywords: ['تظليل سيارات جدة', 'تظليل نانو سيراميك', 'عزل حراري سيارات', 'تظليل 3M جدة', 'تظليل جونسون', 'أفضل محل تظليل جدة'],
   alternates: { canonical: `${SITE_URL}/car-insulation-jeddah` },
   openGraph: {
     title: 'تظليل سيارات جدة — نانو سيراميك أمريكي',
-    description: 'أفلام نانو سيراميك تحجب 97% IR — ضمان 10 سنوات — وكيل جونسون المعتمد',
+    description: 'أفلام نانو سيراميك تحجب 97% IR — ضمان عمر السيارة — وكيل جونسون و 3M المعتمد',
     url: `${SITE_URL}/car-insulation-jeddah`,
     images: [{ url: '/images/hero-car-tinting-process.webp', width: 1200, height: 630 }],
   },
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 // ════════════════════════════════════════════
 
 const tintTypes = [
-  { name: 'نانو سيراميك', ir: '95-97%', uv: '99%', warranty: '10 سنوات', price: '1,200 - 3,200', signal: '✅ لا يحجب', best: true },
+  { name: 'نانو سيراميك', ir: '95-97%', uv: '99%', warranty: 'عمر السيارة', price: '1,200 - 3,200', signal: '✅ لا يحجب', best: true },
   { name: 'كربوني متقدم', ir: '70-85%', uv: '99%', warranty: '7 سنوات', price: '800 - 1,500', signal: '✅ لا يحجب', best: false },
   { name: 'هايبرد', ir: '80-86%', uv: '99%', warranty: '5 سنوات', price: '600 - 1,200', signal: '⚠️ قد يحجب', best: false },
   { name: 'مصبوغ (عادي)', ir: '25-40%', uv: '70%', warranty: '1 سنة', price: '200 - 500', signal: '✅ لا يحجب', best: false },
@@ -89,7 +89,7 @@ const graphSchema = {
       telephone: PHONE,
       image: `${SITE_URL}/images/hero-car-tinting-process.webp`,
       logo: `${SITE_URL}/images/azelcore-logo.webp`,
-      description: 'ورشة تظليل سيارات احترافية في جدة — وكيل جونسون و 3M المعتمد. أفلام نانو سيراميك أمريكية تحجب 97% حرارة مع ضمان 10 سنوات.',
+      description: 'ورشة تظليل سيارات احترافية في جدة — وكيل جونسون و 3M المعتمد. أفلام نانو سيراميك أمريكية تحجب 97% حرارة مع ضمان عمر السيارة.',
       priceRange: '200-3200 SAR',
       currenciesAccepted: 'SAR',
       paymentAccepted: 'نقدي, تحويل بنكي, مدى, Apple Pay',
@@ -173,7 +173,7 @@ const graphSchema = {
       '@type': 'Service',
       '@id': `${SITE_URL}/car-insulation-jeddah#service`,
       name: 'تظليل سيارات جدة — نانو سيراميك أمريكي',
-      description: 'تظليل سيارات احترافي بأفلام نانو سيراميك أمريكية من جونسون و 3M مع ضمان 10 سنوات وقص كمبيوتر دقيق',
+      description: 'تظليل سيارات احترافي بأفلام نانو سيراميك أمريكية من جونسون و 3M مع ضمان عمر السيارة وقص كمبيوتر دقيق',
       provider: { '@id': `${SITE_URL}/#autobodyshop` },
       areaServed: {
         '@type': 'City',
@@ -212,7 +212,7 @@ const graphSchema = {
         },
         durationOfWarranty: {
           '@type': 'QuantitativeValue',
-          value: 10,
+          value: 15,
           unitCode: 'ANN',
         },
       },
@@ -535,10 +535,10 @@ export default function CarTintingPage() {
       </section>
       {/* ═══ Voice Search Speakable Answers — TTS/CarPlay/Siri Targets ═══ */}
       <div id="voice-answer-1" style={{ display: 'none' }} aria-hidden="true">
-        أفضل تظليل سيارات في جدة عند عزل كور. أفلام نانو سيراميك أمريكية تحجب 97% من الحرارة مع ضمان 10 سنوات. وكيل جونسون و 3M المعتمد.
+        أفضل تظليل سيارات في جدة عند عزل كور. أفلام نانو سيراميك أمريكية تحجب 97% من الحرارة مع ضمان يمتد لعمر السيارة. وكيل جونسون و 3M المعتمد.
       </div>
       <div id="voice-answer-2" style={{ display: 'none' }} aria-hidden="true">
-        سعر تظليل السيارة في جدة يبدأ من 200 ريال للزجاج الأمامي ويوصل 3200 ريال تظليل كامل نانو سيراميك. ضمان 10 سنوات.
+        سعر تظليل السيارة في جدة يبدأ من 200 ريال للزجاج الأمامي ويوصل 3200 ريال تظليل كامل نانو سيراميك. ضمان مكتوب يمتد لعمر السيارة.
       </div>
       <div id="voice-answer-3" style={{ display: 'none' }} aria-hidden="true">
         تظليل نانو سيراميك ما يحجب إشارة الجوال ولا الرادار لأنه خالي من المعادن. آمن على كل الأجهزة الإلكترونية.

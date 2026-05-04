@@ -9,7 +9,7 @@ const services = [
     href: '/car-insulation-jeddah',
     gradient: 'linear-gradient(135deg, hsla(210, 100%, 45%, 0.12), hsla(185, 80%, 45%, 0.08))',
     borderColor: 'hsla(210, 100%, 55%, 0.2)',
-    features: ['حجب IR 97%', 'لا يحجب إشارات', 'ضمان 10 سنوات'],
+    features: ['حجب IR 97%', 'لا يحجب إشارات', 'ضمان عمر السيارة'],
   },
   {
     icon: '🏢',

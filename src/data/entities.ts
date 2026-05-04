@@ -31,7 +31,7 @@ export const serviceEntities = [
     areaServed: "جدة",
     description: "تظليل وعزل حراري احترافي لزجاج السيارات بأفلام نانو سيراميك و 3M و LLumar",
     priceRange: { min: 300, max: 3000, currency: "SAR" },
-    warranty: "10 سنوات",
+    warranty: "عمر السيارة",
     keywords: [
       "تظليل سيارات جدة", "تظليل سيارات", "تظليل عازل حراري للسيارات",
       "أفضل محل تظليل سيارات في جدة", "عزل سيارات جدة",
@@ -63,7 +63,7 @@ export const serviceEntities = [
     areaServed: "جدة",
     description: "حلول العزل الحراري المتقدمة للسيارات لحماية المقصورة وتوفير الوقود",
     priceRange: { min: 500, max: 3000, currency: "SAR" },
-    warranty: "10 سنوات",
+    warranty: "عمر السيارة",
     keywords: [
       "عزل حراري سيارات", "تظليل عازل حراري جدة", "تركيب عازل حراري سيارات جدة",
       "أفضل عازل حراري للسيارات في السعودية",
@@ -79,7 +79,7 @@ export const serviceEntities = [
     areaServed: "المملكة العربية السعودية",
     description: "عزل حراري لنوافذ المنازل والمباني لتقليل استهلاك الكهرباء وحماية الأثاث",
     priceRange: { min: 40, max: 150, currency: "SAR", unit: "متر مربع" },
-    warranty: "10 سنوات",
+    warranty: "15 سنة",
     keywords: [
       "عزل حراري شبابيك", "عزل حراري نوافذ", "تظليل نوافذ المنازل",
     ],

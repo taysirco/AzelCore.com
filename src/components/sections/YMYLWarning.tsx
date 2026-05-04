@@ -43,7 +43,7 @@ export default function YMYLWarning() {
                 الحل التقني المعتمد (عزل كور)
               </h3>
               <p className={styles.solutionText}>
-                نحن وكيل معتمد لـ <strong>Johnson Window Films</strong> الأمريكية. نستخدم أجهزة فحص حراري (FLIR) لإثبات نسبة عزل تصل إلى 97% للأشعة تحت الحمراء، مع ضمان موثق يصل لـ 10 سنوات يشمل تغيير اللون والتقشير.
+                نحن وكيل معتمد لـ <strong>Johnson Window Films</strong> و <strong>3M</strong> الأمريكية. نستخدم أجهزة فحص حراري (FLIR) لإثبات نسبة عزل تصل إلى 97% للأشعة تحت الحمراء، مع ضمان موثق يمتد لعمر السيارة يشمل تغيير اللون والتقشير.
               </p>
             </div>
             

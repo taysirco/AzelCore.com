@@ -124,7 +124,7 @@ export default function HeroSection() {
         <div className={styles.trust} data-nosnippet>
           <div className={styles.trustItem}>
             <span className={styles.trustIcon}>🛡️</span>
-            <span>ضمان 10 سنوات</span>
+            <span>ضمان عمر السيارة</span>
           </div>
           <div className={styles.trustDivider} />
           <div className={styles.trustItem}>
