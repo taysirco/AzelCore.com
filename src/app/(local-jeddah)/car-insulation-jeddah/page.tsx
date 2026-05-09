@@ -195,7 +195,7 @@ const graphSchema = {
         itemListElement: tintTypes.map((t, i) => ({
           '@type': 'Offer',
           itemOffered: {
-            '@type': 'Product',
+            '@type': 'Service',
             name: t.name,
             description: `حجب IR: ${t.ir} | UV: ${t.uv} | ضمان: ${t.warranty}`,
           },
