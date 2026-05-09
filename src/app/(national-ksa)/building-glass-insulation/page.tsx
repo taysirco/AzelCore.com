@@ -58,10 +58,12 @@ const graphSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': ['Service', 'B2BService' as string],
+      '@type': ['Product', 'Service', 'B2BService' as string],
       '@id': `${SITE_URL}/building-glass-insulation#service`,
       name: 'عزل واجهات زجاج المباني — جدة والمملكة',
+      image: `${SITE_URL}/images/hero-building-glass-insulation.webp`,
       description: 'عزل حراري احترافي لواجهات المباني التجارية والفلل — توفير 40% كهرباء. متوافق مع كود البناء السعودي SBC 601 ومعايير ASHRAE 90.1.',
+      brand: { '@type': 'Brand', name: 'عزل كور' },
       provider: { '@id': `${SITE_URL}/#organization` },
       areaServed: [
         { '@type': 'City', name: 'جدة', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
