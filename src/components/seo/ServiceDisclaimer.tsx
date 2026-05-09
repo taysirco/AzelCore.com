@@ -15,7 +15,7 @@ export default function ServiceDisclaimer({ title, text }: ServiceDisclaimerProp
       <div className={styles.warningBox}>
         <span className={styles.warningIcon}>⚠️</span>
         <div className={styles.warningContent}>
-          <h4 className={styles.warningTitle}>{title}</h4>
+          <h3 className={styles.warningTitle}>{title}</h3>
           <p className={styles.warningText}>{text}</p>
         </div>
       </div>

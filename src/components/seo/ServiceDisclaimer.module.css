@@ -37,7 +37,7 @@
 .warningText {
   font-size: var(--text-sm, 0.875rem);
   line-height: 1.7;
-  color: var(--text-muted, hsl(220, 10%, 55%));
+  color: hsl(220, 10%, 65%);
   margin: 0;
 }
 

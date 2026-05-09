@@ -63,7 +63,7 @@
 .resultLabel {
   display: block;
   font-size: var(--text-xs);
-  color: var(--text-muted);
+  color: hsl(220, 10%, 65%);
   margin-bottom: var(--space-2);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -83,7 +83,7 @@
 .disclaimer {
   margin-top: var(--space-5);
   font-size: var(--text-xs);
-  color: var(--text-muted);
+  color: hsl(220, 10%, 65%);
   text-align: center;
   line-height: 1.6;
 }

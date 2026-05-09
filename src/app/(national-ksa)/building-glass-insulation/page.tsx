@@ -302,17 +302,17 @@ export default function BuildingInsulationPage() {
               return (
                 <details key={city.id} style={{ background: 'var(--surface)', borderRadius: '14px', padding: '1.25rem', border: '1px solid var(--border)', cursor: 'pointer' }}>
                   <summary style={{ fontWeight: 700, fontSize: '1.1rem', color: 'var(--text)', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span>🏙️ {city.nameAr} <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 400 }}>({city.avgTemp} | {city.humidity} رطوبة)</span></span>
-                    <span style={{ fontSize: '1.2rem', color: 'var(--primary)' }}>+</span>
+                    <span>🏙️ {city.nameAr} <span style={{ fontSize: '0.8rem', color: 'hsl(220, 10%, 65%)', fontWeight: 400 }}>({city.avgTemp} | {city.humidity} رطوبة)</span></span>
+                    <span style={{ fontSize: '1.2rem', color: 'hsl(210, 100%, 72%)' }}>+</span>
                   </summary>
                   {content && (
                     <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                      <p style={{ lineHeight: '1.8', color: 'var(--text-muted)', fontSize: '0.95rem' }}>{content.paragraph}</p>
+                      <p style={{ lineHeight: '1.8', color: 'hsl(220, 10%, 65%)', fontSize: '0.95rem' }}>{content.paragraph}</p>
                       <div style={{ background: 'var(--surface-elevated, #0f1923)', borderRadius: '10px', padding: '0.75rem 1rem' }}>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--primary)', fontWeight: 600 }}>💰 تقدير التوفير</p>
+                        <p style={{ fontSize: '0.85rem', color: 'hsl(210, 100%, 72%)', fontWeight: 600 }}>💰 تقدير التوفير</p>
                         <p style={{ fontSize: '0.9rem', color: 'var(--text)', marginTop: '0.25rem' }}>{content.savingsEstimate}</p>
                       </div>
-                      <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}><strong>الفيلم الموصى:</strong> {content.recommendedFilm}</p>
+                      <p style={{ fontSize: '0.9rem', color: 'hsl(220, 10%, 65%)' }}><strong>الفيلم الموصى:</strong> {content.recommendedFilm}</p>
                     </div>
                   )}
                 </details>
