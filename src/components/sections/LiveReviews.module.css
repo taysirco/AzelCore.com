@@ -10,7 +10,7 @@
 .overline {
   display: block;
   font-size: var(--text-sm);
-  color: var(--primary-light);
+  color: hsl(210, 100%, 72%);
   font-weight: 500;
   letter-spacing: 0.05em;
   margin-bottom: var(--space-2);
