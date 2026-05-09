@@ -8,15 +8,14 @@ import LiveReviews from '@/components/sections/LiveReviews';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import { SITE_URL, GEO, ADDRESS_STRUCTURED, CRN, VAT_ID, PHONE, WHATSAPP_LINK } from '@/lib/constants';
 
-// ─── Below-fold: dynamic imports — code-split from initial bundle ───
-const YMYLWarning = dynamic(() => import('@/components/sections/YMYLWarning'));
-const ComparisonSection = dynamic(() => import('@/components/sections/ComparisonSection'));
-const ProcessSection = dynamic(() => import('@/components/sections/ProcessSection'));
-const TestimonialsSection = dynamic(() => import('@/components/sections/TestimonialsSection'));
-const PricingSection = dynamic(() => import('@/components/sections/PricingSection'));
-const TrustSection = dynamic(() => import('@/components/sections/TrustSection'));
-const FAQSection = dynamic(() => import('@/components/sections/FAQSection'));
-const CTASection = dynamic(() => import('@/components/sections/CTASection'));
+import YMYLWarning from '@/components/sections/YMYLWarning';
+import ComparisonSection from '@/components/sections/ComparisonSection';
+import ProcessSection from '@/components/sections/ProcessSection';
+import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import PricingSection from '@/components/sections/PricingSection';
+import TrustSection from '@/components/sections/TrustSection';
+import FAQSection from '@/components/sections/FAQSection';
+import CTASection from '@/components/sections/CTASection';
 
 export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
