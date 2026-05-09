@@ -156,7 +156,7 @@ export default function BlogPage() {
               <Link key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <article className={styles.postCard}>
                   <div className={styles.postImage}>
-                    <Image src={`/images/${post.image}`} alt={post.title} width={400} height={240} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                    <Image src={`/images/${post.image}`} alt={post.title} width={400} height={240} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
                     <span className={styles.postCategory}>{post.category}</span>
                   </div>
                   <div className={styles.postContent}>

@@ -107,3 +107,7 @@
   .separator { display: none; }
   .textBlock { flex-direction: column; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .icon { animation: none; }
+}

@@ -9,7 +9,8 @@ import ServiceSummary from '@/components/seo/ServiceSummary';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import ServiceDisclaimer from '@/components/seo/ServiceDisclaimer';
 import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBanner';
-import ThermalSliderBeforeAfter from '@/components/sections/ThermalSliderBeforeAfter';
+import dynamic from 'next/dynamic';
+const ThermalSliderBeforeAfter = dynamic(() => import('@/components/sections/ThermalSliderBeforeAfter'));
 import VoiceSearchFAQ from '@/components/sections/VoiceSearchFAQ';
 import { datasetMeta } from '@/data/jeddah-thermal-research';
 import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
@@ -301,7 +302,7 @@ export default function CarTintingPage() {
             fill
             priority={true}
             fetchPriority="high"
-            quality={80}
+            quality={75}
             sizes="100vw"
             style={{ objectFit: 'cover' }}
           />
@@ -449,7 +450,7 @@ export default function CarTintingPage() {
           <div className={styles.galleryGrid}>
             {['gallery-car-after-01', 'gallery-car-after-02', 'gallery-car-after-03', 'car-tint-heat-comparison', 'thermal-camera-car-test', 'nano-ceramic-tint-applied'].map((img, i) => (
               <div key={i} className={styles.galleryItem}>
-                <Image src={`/images/${img}.webp`} alt={`تظليل سيارات جدة — عمل ${i + 1}`} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <Image src={`/images/${img}.webp`} alt={`تظليل سيارات جدة — عمل ${i + 1}`} width={400} height={300} sizes="(max-width: 768px) 50vw, 33vw" loading="lazy" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
               </div>
             ))}
           </div>

@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { NAV_LINKS, WHATSAPP_LINK, SITE_NAME } from '@/lib/constants';
@@ -10,10 +10,22 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+      }
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const toggleMenu = useCallback(() => setMenuOpen(prev => !prev), []);
 
   useEffect(() => {
     if (menuOpen) document.body.style.overflow = 'hidden';
@@ -30,8 +42,10 @@ export default function Header() {
               src="/images/azelcore-logo.webp"
               alt="عزل كور — تظليل وعزل حراري احترافي"
               width={170}
-              height={48}
+              height={106}
               priority
+              quality={60}
+              sizes="170px"
             />
           </Link>
 
@@ -51,7 +65,7 @@ export default function Header() {
 
             <button
               className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ''}`}
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={toggleMenu}
               aria-label={menuOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
               aria-expanded={menuOpen}
             >
@@ -62,14 +76,14 @@ export default function Header() {
       </header>
 
       {/* Mobile Menu */}
-      <div className={`${styles.overlay} ${menuOpen ? styles.overlayVisible : ''}`} onClick={() => setMenuOpen(false)} />
+      <div className={`${styles.overlay} ${menuOpen ? styles.overlayVisible : ''}`} onClick={closeMenu} />
       <nav className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`} aria-label="القائمة الجوال">
         {NAV_LINKS.map((link) => (
           <Link
             key={link.href}
             href={link.href}
             className={styles.mobileLink}
-            onClick={() => setMenuOpen(false)}
+            onClick={closeMenu}
           >
             {link.label}
           </Link>

@@ -9,6 +9,9 @@ import { NextRequest, NextResponse } from 'next/server';
  * 
  * ⚠️ CRITICAL: We do NOT use headers() in server components.
  *    Using headers() forces SSR de-opt and kills our SSG performance.
+ * 
+ * Performance: Redundant security headers REMOVED (already set in next.config.ts headers()).
+ *    Duplicate header sets add ~0.5ms per request × thousands of requests = wasted compute.
  */
 
 const JEDDAH_REGIONS = ['SA-02', 'SA-MK', 'makkah', 'jeddah'];
@@ -34,10 +37,11 @@ function isJeddahUser(request: NextRequest): boolean {
 }
 
 export function middleware(request: NextRequest) {
+  const response = NextResponse.next();
+
+  // Only compute geo for pages that actually use the GeoBanner
   const isJeddah = isJeddahUser(request);
   const geoValue = isJeddah ? 'jeddah' : 'other';
-
-  const response = NextResponse.next();
 
   // Set lightweight cookie — readable by client components via document.cookie
   // httpOnly: false so JS can read it. SameSite: Lax for security.
@@ -49,29 +53,20 @@ export function middleware(request: NextRequest) {
     path: '/',
   });
 
-  // Security headers (edge-level defense-in-depth)
-  response.headers.set('X-Content-Type-Options', 'nosniff');
-  response.headers.set('X-Frame-Options', 'DENY');
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-
   return response;
 }
 
 export const config = {
+  // Only run middleware on user-facing pages that use GeoBanner
+  // Exclude static assets, API routes, and _next to minimize edge invocations
   matcher: [
     '/',
     '/car-insulation-jeddah',
-    '/car-insulation-jeddah/:district*',
     '/building-glass-insulation',
-    '/building-glass-insulation/:city*',
     '/johnson-authorized-dealer',
     '/3m-authorized-dealer',
     '/calculator',
     '/contact',
-    '/about',
-    '/faq',
     '/gallery',
-    '/blog',
-    '/blog/:slug*',
   ],
 };

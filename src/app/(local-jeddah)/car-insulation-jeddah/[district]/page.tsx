@@ -121,7 +121,7 @@ export default async function DistrictPage({ params }: { params: Promise<{ distr
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image src="/images/hero-car-tinting-process.webp" alt={`تظليل سيارات في ${d.nameAr} جدة`} fill priority fetchPriority="high" quality={80} sizes="100vw" style={{ objectFit: 'cover' }} />
+          <Image src="/images/hero-car-tinting-process.webp" alt={`تظليل سيارات في ${d.nameAr} جدة`} fill priority fetchPriority="high" quality={75} sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>

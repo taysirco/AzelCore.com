@@ -85,3 +85,8 @@
   .icon { width: 24px; height: 24px; }
   .tooltip { display: none; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse::before { animation: none; }
+  .float { animation: none; }
+}

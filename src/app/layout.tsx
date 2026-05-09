@@ -125,6 +125,9 @@ const websiteSchema = {
   },
 };
 
+// FOUC prevention — apply theme before paint
+const themeScript = `(function(){try{var t=localStorage.getItem('azelcore-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else{var h=new Date().getHours();document.documentElement.setAttribute('data-theme',h>=6&&h<18?'light':'dark');}}catch(e){}})()`;
+
 export default function RootLayout({
   children,
 }: {
@@ -133,12 +136,13 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className={`${ibmPlexArabic.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
+        {/* FOUC prevention — runs before paint, zero layout shift */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        {/* Preconnect for external resources */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* DNS Prefetch for WhatsApp API */}
+        <link rel="dns-prefetch" href="https://api.whatsapp.com" />
         {/* Agentic Discovery — AI tool protocol */}
         <link rel="service-desc" href="/openapi.json" type="application/openapi+json" />
         <link rel="alternate" href="/.well-known/ai-plugin.json" type="application/json" title="AI Plugin Manifest" />
@@ -150,7 +154,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-        {/* Speculation Rules API — site-wide instant navigation */}
+        {/* Speculation Rules API — conservative prefetch for key pages */}
         <script
           type="speculationrules"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -163,11 +167,6 @@ export default function RootLayout({
                   '/johnson-authorized-dealer',
                   '/3m-authorized-dealer',
                   '/calculator',
-                  '/blog',
-                  '/gallery',
-                  '/contact',
-                  '/faq',
-                  '/about',
                 ],
               },
             ],
@@ -179,9 +178,10 @@ export default function RootLayout({
                     { href_matches: '/*' },
                     { not: { href_matches: '/api/*' } },
                     { not: { href_matches: '/_next/*' } },
+                    { not: { href_matches: '/blog/*' } },
                   ],
                 },
-                eagerness: 'moderate',
+                eagerness: 'conservative',
               },
             ],
           }) }}

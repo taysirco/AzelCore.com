@@ -5,12 +5,11 @@ import styles from './WhatsAppFloat.module.css';
 
 export default function WhatsAppFloat() {
   const [visible, setVisible] = useState(false);
-  const [pulse, setPulse] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 2000);
-    const pulseTimer = setTimeout(() => setPulse(false), 8000);
-    return () => { clearTimeout(timer); clearTimeout(pulseTimer); };
+    // Delay appearance until after LCP and initial interactivity
+    const timer = setTimeout(() => setVisible(true), 3000);
+    return () => clearTimeout(timer);
   }, []);
 
   if (!visible) return null;
@@ -20,7 +19,7 @@ export default function WhatsAppFloat() {
       href={WHATSAPP_LINK}
       target="_blank"
       rel="noopener noreferrer"
-      className={`${styles.float} ${pulse ? styles.pulse : ''}`}
+      className={styles.float}
       aria-label="تواصل عبر واتساب"
     >
       <svg className={styles.icon} viewBox="0 0 24 24" fill="currentColor">

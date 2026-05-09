@@ -80,3 +80,7 @@
   .actions { flex-direction: column; align-items: center; }
   .whatsappBtn, .callBtn { width: 100%; justify-content: center; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsappBtn { animation: none; }
+}

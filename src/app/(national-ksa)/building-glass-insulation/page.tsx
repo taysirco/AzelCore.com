@@ -6,8 +6,9 @@ import { faqs } from '@/data/faqs';
 import { quickAnswers } from '@/data/quick-answers';
 import ServiceSummary from '@/components/seo/ServiceSummary';
 import CrossSellCards from '@/components/sections/CrossSellCards';
+import dynamic from 'next/dynamic';
 import ServiceDisclaimer from '@/components/seo/ServiceDisclaimer';
-import CorporateRoiCalculator from '@/components/sections/CorporateRoiCalculator';
+const CorporateRoiCalculator = dynamic(() => import('@/components/sections/CorporateRoiCalculator'));
 import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBanner';
 import { ksaCities } from '@/data/local-jeddah';
 import { citiesContent as citiesContentData } from '@/data/cities-content';
@@ -133,7 +134,7 @@ export default function BuildingInsulationPage() {
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image src="/images/hero-building-glass-insulation.webp" alt="عزل واجهات زجاج مبنى تجاري في جدة" fill priority fetchPriority="high" quality={80} sizes="100vw" style={{ objectFit: 'cover' }} />
+          <Image src="/images/hero-building-glass-insulation.webp" alt="عزل واجهات زجاج مبنى تجاري في جدة" fill priority fetchPriority="high" quality={75} sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>
@@ -272,7 +273,7 @@ export default function BuildingInsulationPage() {
           <div className={styles.galleryGrid}>
             {['building-tint-before-after', 'commercial-facade-tinting', 'villa-window-insulation-jeddah', 'office-window-tinting', 'reflective-film-building', 'gallery-building-after-01'].map((img, i) => (
               <div key={i} className={styles.galleryItem}>
-                <Image src={`/images/${img}.webp`} alt={`عزل واجهات مباني جدة — مشروع ${i + 1}`} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <Image src={`/images/${img}.webp`} alt={`عزل واجهات مباني جدة — مشروع ${i + 1}`} width={400} height={300} sizes="(max-width: 768px) 50vw, 33vw" loading="lazy" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
               </div>
             ))}
           </div>

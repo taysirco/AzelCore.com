@@ -269,3 +269,9 @@
   .title { font-size: var(--text-3xl); }
   .tempBar { flex-direction: column; gap: var(--space-3); text-align: center; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .beforeSide::after { animation: none; }
+  .handleGrip::before { animation: none; }
+  .hint { animation: none; opacity: 0.7; }
+}

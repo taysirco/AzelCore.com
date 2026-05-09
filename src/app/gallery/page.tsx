@@ -95,7 +95,7 @@ export default function GalleryPage() {
           <div className={styles.galleryGrid}>
             {carPhotos.map((p, i) => (
               <figure key={i} className={styles.galleryItem}>
-                <Image src={`/images/${p.src}`} alt={`${p.caption} — ${p.detail}`} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <Image src={`/images/${p.src}`} alt={`${p.caption} — ${p.detail}`} width={400} height={300} sizes="(max-width: 768px) 50vw, 33vw" loading="lazy" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
                 <figcaption className={styles.caption}>
                   <strong>{p.caption}</strong>
                   <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px', lineHeight: '1.5' }}>{p.detail}</span>
@@ -116,7 +116,7 @@ export default function GalleryPage() {
           <div className={styles.galleryGrid}>
             {buildingPhotos.map((p, i) => (
               <figure key={i} className={styles.galleryItem}>
-                <Image src={`/images/${p.src}`} alt={`${p.caption} — ${p.detail}`} width={400} height={300} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <Image src={`/images/${p.src}`} alt={`${p.caption} — ${p.detail}`} width={400} height={300} sizes="(max-width: 768px) 50vw, 33vw" loading="lazy" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
                 <figcaption className={styles.caption}>
                   <strong>{p.caption}</strong>
                   <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px', lineHeight: '1.5' }}>{p.detail}</span>

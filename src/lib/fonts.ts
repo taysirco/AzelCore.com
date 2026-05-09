@@ -1,15 +1,17 @@
 import { IBM_Plex_Sans_Arabic, Inter } from 'next/font/google';
 
 export const ibmPlexArabic = IBM_Plex_Sans_Arabic({
-  subsets: ['arabic', 'latin'],
-  weight: ['400', '500', '600', '700'],
+  subsets: ['arabic'],
+  weight: ['400', '600', '700'],
   variable: '--font-ar',
   display: 'swap',
+  preload: true,
 });
 
 export const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '600'],
   variable: '--font-en',
   display: 'swap',
+  preload: true,
 });

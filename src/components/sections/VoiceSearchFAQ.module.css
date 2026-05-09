@@ -137,3 +137,8 @@
   .question { font-size: var(--text-sm); padding: var(--space-4); }
   .answer { padding: 0 var(--space-4) var(--space-4); }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .faqItem[open] .voiceBadge { animation: none; }
+  .answer { animation: none; }
+}

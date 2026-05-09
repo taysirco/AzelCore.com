@@ -15,6 +15,7 @@ function AnimatedCounter({ end, suffix, duration = 2000 }: { end: number; suffix
       ([entry]) => {
         if (entry.isIntersecting && !started.current) {
           started.current = true;
+          observer.unobserve(el); // ← Unobserve immediately after starting
           const startTime = performance.now();
           const animate = (now: number) => {
             const elapsed = now - startTime;

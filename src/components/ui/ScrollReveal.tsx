@@ -25,13 +25,15 @@ export default function ScrollReveal({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
+          if (delay > 0) {
+            setTimeout(() => el.classList.add('sr-visible'), delay);
+          } else {
             el.classList.add('sr-visible');
-          }, delay);
+          }
           observer.unobserve(el);
         }
       },
-      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
 
     observer.observe(el);
@@ -45,7 +47,7 @@ export default function ScrollReveal({
     'sr-fade';
 
   return (
-    <div ref={ref} className={`sr-hidden ${directionClass} ${className}`}>
+    <div ref={ref} className={`sr-hidden ${directionClass} cv-auto ${className}`}>
       {children}
     </div>
   );

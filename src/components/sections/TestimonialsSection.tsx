@@ -22,7 +22,7 @@ export default function TestimonialsSection() {
           <div className={styles.activeCard}>
             <div className={styles.cardHeader}>
               <div className={styles.avatar}>
-                <Image src={`/images/${t.image}`} alt={t.name} width={56} height={56} style={{ objectFit: 'cover', borderRadius: '50%' }} />
+                <Image src={`/images/${t.image}`} alt={t.name} width={56} height={56} sizes="56px" style={{ objectFit: 'cover', borderRadius: '50%' }} />
               </div>
               <div className={styles.cardInfo}>
                 <h3 className={styles.cardName}>{t.name}</h3>
@@ -48,7 +48,7 @@ export default function TestimonialsSection() {
                 onClick={() => setActive(i)}
                 aria-label={`تقييم ${item.name}`}
               >
-                <Image src={`/images/${item.image}`} alt={item.name} width={48} height={48} style={{ objectFit: 'cover', borderRadius: '50%' }} />
+                <Image src={`/images/${item.image}`} alt={item.name} width={48} height={48} sizes="48px" loading="lazy" style={{ objectFit: 'cover', borderRadius: '50%' }} />
                 <div className={styles.thumbInfo}>
                   <span className={styles.thumbName}>{item.name}</span>
                   <span className={styles.thumbCar}>{item.carOrBuilding}</span>

@@ -1,5 +1,3 @@
-'use client';
-
 import styles from './OfficialPartnerBar.module.css';
 import { GOVERNMENT_ENTITIES } from '@/data/trust-anchors';
 

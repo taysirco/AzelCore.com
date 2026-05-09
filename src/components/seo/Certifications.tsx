@@ -1,5 +1,3 @@
-'use client';
-
 import styles from './Certifications.module.css';
 import { getBadgesBySector } from '@/data/trust-anchors';
 

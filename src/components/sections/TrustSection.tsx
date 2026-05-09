@@ -41,7 +41,7 @@ export default function TrustSection() {
             expertTitle={OWNER_TITLE}
             organization="Johnson Window Films + 3M (وكيل معتمد)"
             quote="نستخدم فقط الأفلام الأصلية من المصنع مباشرة — لا نقبل بأي منتج مقلد أو مجهول المصدر. كل رول فيلم يحمل رقم تسلسلي يمكن تتبعه."
-            reviewDate={new Date().toISOString().split('T')[0]} // Static for today as we just launched
+            reviewDate="2026-05-01"
           />
         </div>
 

@@ -203,7 +203,7 @@ export default function JohnsonDealerPage() {
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image src="/images/hero-car-tinting-jeddah.webp" alt="تظليل جونسون Supreme IR على سيارة في جدة" fill priority fetchPriority="high" quality={80} sizes="100vw" style={{ objectFit: 'cover' }} />
+          <Image src="/images/hero-car-tinting-jeddah.webp" alt="تظليل جونسون Supreme IR على سيارة في جدة" fill priority fetchPriority="high" quality={75} sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>

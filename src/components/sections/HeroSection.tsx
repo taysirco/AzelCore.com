@@ -1,30 +1,46 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import { WHATSAPP_LINK } from '@/lib/constants';
 import styles from './HeroSection.module.css';
 
 export default function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animFrameRef = useRef<number>(0);
 
-  // Animated gradient mesh background
-  useEffect(() => {
+  // Animated gradient mesh — pauses when tab not visible or hero off-screen
+  const startAnimation = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
-    let animFrame: number;
-    const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+    // Use devicePixelRatio-aware sizing but cap at 1 for perf
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    };
     resize();
-    window.addEventListener('resize', resize);
+
+    // Use ResizeObserver instead of window resize for less overhead
+    const ro = new ResizeObserver(resize);
+    ro.observe(canvas);
 
     let t = 0;
-    const animate = () => {
+    let lastFrame = 0;
+    const FPS_CAP = 30; // Cap at 30fps — smooth enough for ambient animation, halves GPU work
+    const FRAME_MIN = 1000 / FPS_CAP;
+
+    const animate = (now: number) => {
+      if (now - lastFrame < FRAME_MIN) {
+        animFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      lastFrame = now;
       t += 0.003;
       const w = canvas.width, h = canvas.height;
 
-      // Dark gradient mesh
       ctx.clearRect(0, 0, w, h);
 
       // Orb 1 — Blue
@@ -57,19 +73,33 @@ export default function HeroSection() {
       ctx.fillStyle = g3;
       ctx.fillRect(0, 0, w, h);
 
-      animFrame = requestAnimationFrame(animate);
+      animFrameRef.current = requestAnimationFrame(animate);
     };
-    animate();
+
+    // Use IntersectionObserver — pause when hero scrolls offscreen
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        animFrameRef.current = requestAnimationFrame(animate);
+      } else {
+        cancelAnimationFrame(animFrameRef.current);
+      }
+    }, { threshold: 0 });
+    io.observe(canvas);
 
     return () => {
-      cancelAnimationFrame(animFrame);
-      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animFrameRef.current);
+      ro.disconnect();
+      io.disconnect();
     };
   }, []);
 
+  useEffect(() => {
+    return startAnimation();
+  }, [startAnimation]);
+
   return (
     <section className={styles.hero} id="hero">
-      {/* Background Image */}
+      {/* Background Image — LCP candidate */}
       <div className={styles.heroBg}>
         <Image
           src="/images/hero-car-tinting-workshop.webp"
@@ -77,7 +107,7 @@ export default function HeroSection() {
           fill
           priority
           fetchPriority="high"
-          quality={80}
+          quality={60}
           sizes="100vw"
           style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
         />
