@@ -72,7 +72,7 @@
 .colTitle {
   font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--text-muted);
+  color: hsl(220, 10%, 65%);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: var(--space-5);
@@ -92,7 +92,7 @@
   color: var(--text-secondary);
   line-height: 1.6;
 }
-.infoLabel { color: var(--text-muted); margin-left: var(--space-1); }
+.infoLabel { color: hsl(220, 10%, 60%); margin-left: var(--space-1); }
 
 .bottomBar {
   border-top: 1px solid var(--border);
@@ -107,12 +107,12 @@
   justify-content: space-between;
   align-items: center;
   font-size: var(--text-xs);
-  color: hsl(220, 10%, 72%);
+  color: hsl(220, 10%, 80%);
 }
 
 .badge {
   font-weight: 600;
-  color: hsl(35, 95%, 68%);
+  color: hsl(35, 95%, 72%);
 }
 
 @media (max-width: 768px) {
