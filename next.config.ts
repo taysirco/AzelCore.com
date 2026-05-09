@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'], // Prefer AVIF first (30% smaller than WebP)
     deviceSizes: [640, 828, 1080, 1280, 1536],
-    imageSizes: [48, 96, 128, 256], // For fixed-size images (avatars, logos)
+    imageSizes: [48, 96, 128, 170, 256, 340], // Precise logo sizes included
     minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year — images are content-hashed
   },
 
