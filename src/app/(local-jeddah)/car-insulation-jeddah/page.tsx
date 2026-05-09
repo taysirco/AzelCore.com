@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_URL, SITE_NAME, SITE_NAME_EN, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
 import { faqs } from '@/data/faqs';
+import { localVoiceFaqs } from '@/data/frequently-asked-questions';
 import { quickAnswers } from '@/data/quick-answers';
 import { jeddahDistricts } from '@/data/local-jeddah';
 import ServiceSummary from '@/components/seo/ServiceSummary';
@@ -223,7 +224,7 @@ const graphSchema = {
     {
       '@type': 'FAQPage',
       '@id': `${SITE_URL}/car-insulation-jeddah#faq`,
-      mainEntity: carFaqs.map(f => ({
+      mainEntity: [...carFaqs, ...localVoiceFaqs].map(f => ({
         '@type': 'Question',
         name: f.question,
         acceptedAnswer: { '@type': 'Answer', text: f.answer },

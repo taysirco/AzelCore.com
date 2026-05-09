@@ -1,29 +1,13 @@
 // ═══ VoiceSearchFAQ — Local FAQ Section ═══
-// Hijazi dialect FAQ block with FAQPage schema
+// Hijazi dialect FAQ block
 // Targets voice search intents in ar-SA locale
 
-import { SITE_URL } from '@/lib/constants';
 import { localVoiceFaqs } from '@/data/frequently-asked-questions';
 import styles from './VoiceSearchFAQ.module.css';
-
-const voiceFaqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  '@id': `${SITE_URL}/car-insulation-jeddah#voice-faq`,
-  mainEntity: localVoiceFaqs.map(f => ({
-    '@type': 'Question',
-    name: f.question,
-    acceptedAnswer: { '@type': 'Answer', text: f.answer },
-  })),
-};
 
 export default function VoiceSearchFAQ() {
   return (
     <section className={styles.wrapper}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(voiceFaqSchema) }}
-      />
       <div className={styles.container}>
         <div className={styles.header}>
           <span className={styles.overline}>🎤 أسئلة بلهجتك</span>
