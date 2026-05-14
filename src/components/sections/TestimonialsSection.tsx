@@ -2,19 +2,22 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { testimonialTemplate } from '@/data/testimonials';
+import { getDictionary } from '@/lib/dictionaries';
+import type { Locale } from '@/lib/i18n';
 import styles from './TestimonialsSection.module.css';
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({ locale = 'ar' }: { locale?: string }) {
   const [active, setActive] = useState(0);
   const t = testimonialTemplate[active];
+  const dict = getDictionary(locale as Locale);
 
   return (
-    <section className={styles.section} id="testimonials" aria-label="آراء العملاء">
+    <section className={styles.section} id="testimonials" aria-label={dict.testimonials.ariaLabel}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <span className={styles.overline}>عملاؤنا يتكلمون</span>
-          <h2 className={styles.title}>ثقة حقيقية من أهل جدة</h2>
-          <p className={styles.subtitle}>تقييمات حقيقية من عملاء تم خدمتهم — الأرقام ما تكذب.</p>
+          <span className={styles.overline}>{dict.testimonials.overline}</span>
+          <h2 className={styles.title}>{dict.testimonials.title}</h2>
+          <p className={styles.subtitle}>{dict.testimonials.subtitle}</p>
         </div>
 
         <div className={styles.grid}>
@@ -46,7 +49,7 @@ export default function TestimonialsSection() {
                 key={item.id}
                 className={`${styles.thumb} ${i === active ? styles.thumbActive : ''}`}
                 onClick={() => setActive(i)}
-                aria-label={`تقييم ${item.name}`}
+                aria-label={`${dict.testimonials.reviewOf} ${item.name}`}
               >
                 <Image src={`/images/${item.image}`} alt={item.name} width={48} height={48} sizes="48px" loading="lazy" style={{ objectFit: 'cover', borderRadius: '50%' }} />
                 <div className={styles.thumbInfo}>
@@ -61,10 +64,10 @@ export default function TestimonialsSection() {
 
         {/* Stats bar */}
         <div className={styles.statsBar}>
-          <div className={styles.statItem}><span className={styles.statValue}>4.9</span><span className={styles.statLabel}>متوسط التقييم</span></div>
-          <div className={styles.statItem}><span className={styles.statValue}>127+</span><span className={styles.statLabel}>تقييم حقيقي</span></div>
-          <div className={styles.statItem}><span className={styles.statValue}>98%</span><span className={styles.statLabel}>نسبة الرضا</span></div>
-          <div className={styles.statItem}><span className={styles.statValue}>780+</span><span className={styles.statLabel}>عميل تمت خدمته</span></div>
+          <div className={styles.statItem}><span className={styles.statValue}>4.9</span><span className={styles.statLabel}>{dict.testimonials.avgRating}</span></div>
+          <div className={styles.statItem}><span className={styles.statValue}>127+</span><span className={styles.statLabel}>{dict.testimonials.realReviews}</span></div>
+          <div className={styles.statItem}><span className={styles.statValue}>98%</span><span className={styles.statLabel}>{dict.testimonials.satisfaction}</span></div>
+          <div className={styles.statItem}><span className={styles.statValue}>780+</span><span className={styles.statLabel}>{dict.testimonials.clientsServed}</span></div>
         </div>
       </div>
     </section>

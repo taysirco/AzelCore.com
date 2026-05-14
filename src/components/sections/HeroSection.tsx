@@ -1,12 +1,17 @@
 'use client';
 import { useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
-import { WHATSAPP_LINK } from '@/lib/constants';
+import { getWhatsAppLink } from '@/lib/constants';
+import { getDictionary } from '@/lib/dictionaries';
+import { localePath, type Locale } from '@/lib/i18n';
 import styles from './HeroSection.module.css';
 
-export default function HeroSection() {
+export default function HeroSection({ locale = 'ar' }: { locale?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animFrameRef = useRef<number>(0);
+  const dict = getDictionary(locale as Locale);
+  const whatsappLink = getWhatsAppLink(locale as Locale);
+  const isAr = locale === 'ar';
 
   // Animated gradient mesh — pauses when tab not visible or hero off-screen
   const startAnimation = useCallback(() => {
@@ -103,7 +108,7 @@ export default function HeroSection() {
       <div className={styles.heroBg}>
         <Image
           src="/images/hero-car-tinting-workshop.webp"
-          alt="ورشة تظليل سيارات احترافية — عزل كور جدة"
+          alt={isAr ? 'ورشة تظليل سيارات احترافية — عزل كور جدة' : 'Professional car tinting workshop — AzelCore Jeddah'}
           fill
           priority
           fetchPriority="high"
@@ -121,55 +126,58 @@ export default function HeroSection() {
         <div className={styles.badges}>
           <span className={styles.badge}>
             <span className={styles.badgeDot} />
-            وكيل جونسون و 3M المعتمد 🇺🇸
+            {dict.hero.badge} 🇺🇸
           </span>
-          <span className={styles.badgeSecondary}>منشأة سعودية موثقة ✅</span>
+          <span className={styles.badgeSecondary}>{isAr ? 'منشأة سعودية موثقة ✅' : 'Registered Saudi Business ✅'}</span>
         </div>
 
         <h1 className={styles.title}>
-          <span className={styles.titleLine}>تظليل وعزل حراري</span>
-          <span className={`${styles.titleLine} ${styles.titleGradient}`}>بمعايير أمريكية</span>
-          <span className={styles.titleLine}>في <span className={styles.highlight}>جدة</span></span>
+          <span className={styles.titleLine}>{dict.hero.title}</span>
+          <span className={`${styles.titleLine} ${styles.titleGradient}`}>{dict.hero.titleHighlight}</span>
+          <span className={styles.titleLine}>
+            {isAr ? 'في ' : 'in '}
+            <span className={styles.highlight}>{isAr ? 'جدة' : 'Jeddah'}</span>
+          </span>
         </h1>
 
         <p className={styles.subtitle}>
-          نحمي سيارتك ومبناك من حرارة السعودية بأفلام <strong>نانو سيراميك</strong> تحجب
+          {dict.hero.subtitle.split('97%')[0]}
           <span className={styles.statInline}> 97% </span>
-          من الأشعة تحت الحمراء — مع ضمان يصل لعمر السيارة.
+          {dict.hero.subtitle.split('97%')[1]}
         </p>
 
         <div className={styles.actions} data-nosnippet>
-          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.121.553 4.16 1.6 5.972L.052 23.65a.5.5 0 00.606.606l5.678-1.548A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-            احجز موعدك الآن
+            {dict.hero.ctaPrimary}
           </a>
-          <a href="/johnson-authorized-dealer" className={styles.secondaryBtn}>
-            عازل جونسون ←
+          <a href={localePath(locale as Locale, '/johnson-authorized-dealer')} className={styles.secondaryBtn}>
+            {isAr ? 'عازل جونسون ←' : '← Johnson Films'}
           </a>
-          <a href="/3m-authorized-dealer" className={styles.secondaryBtn}>
-            عازل 3M ←
+          <a href={localePath(locale as Locale, '/3m-authorized-dealer')} className={styles.secondaryBtn}>
+            {isAr ? 'عازل 3M ←' : '← 3M Films'}
           </a>
         </div>
 
         <div className={styles.trust} data-nosnippet>
           <div className={styles.trustItem}>
             <span className={styles.trustIcon}>🛡️</span>
-            <span>ضمان عمر السيارة</span>
+            <span>{isAr ? 'ضمان عمر السيارة' : 'Lifetime Warranty'}</span>
           </div>
           <div className={styles.trustDivider} />
           <div className={styles.trustItem}>
             <span className={styles.trustIcon}>🌡️</span>
-            <span>حجب IR 97%</span>
+            <span>{isAr ? 'حجب IR 97%' : '97% IR Block'}</span>
           </div>
           <div className={styles.trustDivider} />
           <div className={styles.trustItem}>
             <span className={styles.trustIcon}>📡</span>
-            <span>لا يحجب الإشارات</span>
+            <span>{isAr ? 'لا يحجب الإشارات' : 'Signal-Friendly'}</span>
           </div>
           <div className={styles.trustDivider} />
           <div className={styles.trustItem}>
             <span className={styles.trustIcon}>⭐</span>
-            <span>تقييم 4.9</span>
+            <span>{isAr ? 'تقييم 4.9' : '4.9 Rating'}</span>
           </div>
         </div>
       </div>

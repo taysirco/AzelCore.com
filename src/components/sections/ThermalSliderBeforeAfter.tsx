@@ -5,22 +5,26 @@
 // Maximizes touch interactions → CrUX dwell-time signals
 
 import { useRef, useState, useCallback } from 'react';
+import { getDictionary } from '@/lib/dictionaries';
+import type { Locale } from '@/lib/i18n';
 import styles from './ThermalSliderBeforeAfter.module.css';
 
-export default function ThermalSliderBeforeAfter() {
+export default function ThermalSliderBeforeAfter({ locale = 'ar' }: { locale?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState(50); // percentage 0-100
   const isDragging = useRef(false);
+  const dict = getDictionary(locale as Locale);
+  const isAr = locale === 'ar';
 
   const updatePosition = useCallback((clientX: number) => {
     const container = containerRef.current;
     if (!container) return;
     const rect = container.getBoundingClientRect();
-    // RTL-aware: flip direction
-    const x = rect.right - clientX;
+    // RTL-aware: flip direction for Arabic
+    const x = isAr ? rect.right - clientX : clientX - rect.left;
     const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
     setPosition(pct);
-  }, []);
+  }, [isAr]);
 
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
     isDragging.current = true;
@@ -37,7 +41,7 @@ export default function ThermalSliderBeforeAfter() {
     isDragging.current = false;
   }, []);
 
-  // Calculate dynamic temperature based on slider position (RTL: right = before)
+  // Calculate dynamic temperature based on slider position
   const currentTemp = Math.round(75 - (position * 40) / 100);
   const tempClass = currentTemp > 55 ? styles.hot : currentTemp > 45 ? styles.warm : styles.cool;
   const reductionPct = Math.round(((75 - currentTemp) / 75) * 100);
@@ -46,11 +50,9 @@ export default function ThermalSliderBeforeAfter() {
     <section className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <span className={styles.overline}>اختبار حراري تفاعلي</span>
-          <h2 className={styles.title}>شوف الفرق بعينك — قبل وبعد التظليل</h2>
-          <p className={styles.subtitle}>
-            اسحب المؤشر لمشاهدة فرق درجة الحرارة داخل المقصورة قبل وبعد تركيب فيلم نانو سيراميك.
-          </p>
+          <span className={styles.overline}>{dict.thermalSlider.overline}</span>
+          <h2 className={styles.title}>{dict.thermalSlider.title}</h2>
+          <p className={styles.subtitle}>{dict.thermalSlider.subtitle}</p>
         </div>
 
         {/* Slider */}
@@ -62,31 +64,31 @@ export default function ThermalSliderBeforeAfter() {
           onPointerUp={handlePointerUp}
           onPointerLeave={handlePointerUp}
           role="slider"
-          aria-label="مقارنة حرارية قبل وبعد التظليل"
+          aria-label={dict.thermalSlider.ariaLabel}
           aria-valuemin={35}
           aria-valuemax={75}
           aria-valuenow={currentTemp}
-          aria-valuetext={`درجة الحرارة: ${currentTemp}°C`}
+          aria-valuetext={`${dict.thermalSlider.ariaValueText} ${currentTemp}°C`}
           tabIndex={0}
         >
-          {/* Before (Hot — Right in RTL) */}
+          {/* Before (Hot) */}
           <div className={styles.beforeSide}>
             <div className={styles.label}>
-              <span className={styles.labelTitle}>🔥 قبل التظليل</span>
+              <span className={styles.labelTitle}>{dict.thermalSlider.before}</span>
               <span className={styles.temp}>75<span className={styles.tempUnit}>°C</span></span>
-              <span className={styles.labelDesc}>حرارة خانقة — المقصورة فرن</span>
+              <span className={styles.labelDesc}>{dict.thermalSlider.beforeDesc}</span>
             </div>
           </div>
 
-          {/* After (Cool — Left in RTL) */}
+          {/* After (Cool) */}
           <div
             className={styles.afterSide}
             style={{ clipPath: `inset(0 ${position}% 0 0)` }}
           >
             <div className={styles.label}>
-              <span className={styles.labelTitle}>❄️ بعد التظليل</span>
+              <span className={styles.labelTitle}>{dict.thermalSlider.after}</span>
               <span className={styles.temp}>35<span className={styles.tempUnit}>°C</span></span>
-              <span className={styles.labelDesc}>مقصورة باردة ومريحة</span>
+              <span className={styles.labelDesc}>{dict.thermalSlider.afterDesc}</span>
             </div>
           </div>
 
@@ -103,18 +105,18 @@ export default function ThermalSliderBeforeAfter() {
 
         {/* Dynamic Temperature Bar */}
         <div className={styles.tempBar}>
-          <span className={styles.tempBarLabel}>🌡️ درجة الحرارة الحالية:</span>
+          <span className={styles.tempBarLabel}>{dict.thermalSlider.currentTemp}</span>
           <span className={`${styles.tempBarValue} ${tempClass}`}>
             {currentTemp}°C
           </span>
           {reductionPct > 0 && (
             <span className={styles.reduction}>
-              ↓ انخفاض {reductionPct}%
+              {dict.thermalSlider.reduction} {reductionPct}%
             </span>
           )}
         </div>
 
-        <p className={styles.hint}>👆 اسحب المؤشر يمين ويسار لمشاهدة الفرق</p>
+        <p className={styles.hint}>{dict.thermalSlider.hint}</p>
       </div>
     </section>
   );

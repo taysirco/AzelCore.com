@@ -1,14 +1,19 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Locale, localePath } from '@/lib/i18n';
 import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_HOURS, CRN, VAT_ID, ADDRESS_STRUCTURED } from '@/lib/constants';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'من نحن — خبراء التظليل والعزل في جدة',
-  description: 'تعرف على فريق عزل كور المتخصص في تظليل السيارات والعزل الحراري في جدة. وكيل جونسون و 3M المعتمد — فنيون معتمدون + ضمان حقيقي.',
-  alternates: { canonical: `${SITE_URL}/about` },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
+  return {
+    title: isAr ? 'من نحن — خبراء التظليل والعزل في جدة' : 'من نحن — خبراء التظليل والعزل في جدة | AzelCore',
+    description: isAr ? 'تعرف على فريق عزل كور المتخصص في تظليل السيارات والعزل الحراري في جدة. وكيل جونسون و 3M المعتمد — فنيون معتمدون + ضمان حقيقي.' : 'تعرف على فريق عزل كور المتخصص في تظليل السيارات والعزل الحراري في جدة. وكيل جونسون و 3M المعتمد — فنيون معتمدون + ضمان حقيقي.',
+    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/about')}` },
+  };
+}
 
 const aboutSchema = {
   '@context': 'https://schema.org',
@@ -105,30 +110,32 @@ const aboutSchema = {
   ],
 };
 
-const milestones = [
-  { year: '2018', title: 'البداية', desc: 'بدأنا كورشة صغيرة متخصصة في تظليل السيارات في جدة.' },
-  { year: '2020', title: 'وكيل جونسون', desc: 'حصلنا على وكالة جونسون الرسمية كأول وكيل معتمد في جدة.' },
-  { year: '2022', title: 'عزل المباني', desc: 'توسعنا لعزل واجهات المباني والفلل — أكثر من 50 مشروع.' },
-  { year: '2024', title: 'عزل كور', desc: 'إطلاق علامة عزل كور كمنصة متكاملة لخدمات العزل والتظليل.' },
-  { year: '2025', title: 'وكيل 3M', desc: 'حصلنا على وكالة 3M الرسمية — الآن وكيل معتمد لأقوى علامتين أمريكيتين: Johnson + 3M.' },
-  { year: '2026', title: 'التحول الرقمي', desc: 'إطلاق المنصة الرقمية الاحترافية لخدمة العملاء أونلاين.' },
-];
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
 
-const values = [
-  { icon: '🔍', title: 'الشفافية', desc: 'نعرض الأرقام الحقيقية من الداتاشيت — لا مبالغات ولا وعود كاذبة.' },
-  { icon: '🏅', title: 'الجودة', desc: 'نستخدم فقط الأفلام الأصلية من المصنع مباشرة — كل رول بسيريال نمبر.' },
-  { icon: '🤝', title: 'الأمانة', desc: 'ننصح العميل بالمنتج المناسب لاحتياجه — حتى لو أرخص.' },
-  { icon: '📈', title: 'التطور', desc: 'نتابع أحدث التقنيات والمنتجات العالمية ونوفرها لعملائنا.' },
-];
+  const milestones = [
+    { year: '2018', title: isAr ? 'البداية' : 'The Beginning', desc: isAr ? 'بدأنا كورشة صغيرة متخصصة في تظليل السيارات في جدة.' : 'Started as a small workshop specializing in car tinting in Jeddah.' },
+    { year: '2020', title: isAr ? 'وكيل جونسون' : 'Johnson Dealer', desc: isAr ? 'حصلنا على وكالة جونسون الرسمية كأول وكيل معتمد في جدة.' : 'Secured the official Johnson dealership as the first authorized dealer in Jeddah.' },
+    { year: '2022', title: isAr ? 'عزل المباني' : 'Building Insulation', desc: isAr ? 'توسعنا لعزل واجهات المباني والفلل — أكثر من 50 مشروع.' : 'Expanded to building and villa facade insulation — completed over 50 projects.' },
+    { year: '2024', title: isAr ? 'عزل كور' : 'AzelCore', desc: isAr ? 'إطلاق علامة عزل كور كمنصة متكاملة لخدمات العزل والتظليل.' : 'Launched the AzelCore brand as an integrated platform for tinting and insulation services.' },
+    { year: '2025', title: isAr ? 'وكيل 3M' : '3M Dealer', desc: isAr ? 'حصلنا على وكالة 3M الرسمية — الآن وكيل معتمد لأقوى علامتين أمريكيتين: Johnson + 3M.' : 'Secured the official 3M dealership — now authorized for the top two American brands: Johnson + 3M.' },
+    { year: '2026', title: isAr ? 'التحول الرقمي' : 'Digital Shift', desc: isAr ? 'إطلاق المنصة الرقمية الاحترافية لخدمة العملاء أونلاين.' : 'Launched a professional digital platform for online customer service.' },
+  ];
 
-const certifications = [
-  { name: 'Johnson Window Films', type: 'وكيل رسمي معتمد', icon: '🏆' },
-  { name: '3M Window Films', type: 'وكيل رسمي معتمد', icon: '🔴' },
-  { name: 'IWFA Member', type: 'عضو الاتحاد الدولي لأفلام النوافذ', icon: '🌐' },
-  { name: 'وزارة التجارة', type: 'منشأة سعودية مسجلة', icon: '📋' },
-];
+  const values = [
+    { icon: '🔍', title: isAr ? 'الشفافية' : 'Transparency', desc: isAr ? 'نعرض الأرقام الحقيقية من الداتاشيت — لا مبالغات ولا وعود كاذبة.' : 'We show real datasheet numbers — no exaggerations or false promises.' },
+    { icon: '🏅', title: isAr ? 'الجودة' : 'Quality', desc: isAr ? 'نستخدم فقط الأفلام الأصلية من المصنع مباشرة — كل رول بسيريال نمبر.' : 'We only use authentic factory-direct films — every roll has a serial number.' },
+    { icon: '🤝', title: isAr ? 'الأمانة' : 'Integrity', desc: isAr ? 'ننصح العميل بالمنتج المناسب لاحتياجه — حتى لو أرخص.' : 'We advise clients on what fits their needs — even if it costs less.' },
+    { icon: '📈', title: isAr ? 'التطور' : 'Innovation', desc: isAr ? 'نتابع أحدث التقنيات والمنتجات العالمية ونوفرها لعملائنا.' : 'We track and provide the latest global technologies and products.' },
+  ];
 
-export default function AboutPage() {
+  const certifications = [
+    { name: 'Johnson Window Films', type: isAr ? 'وكيل رسمي معتمد' : 'Official Authorized Dealer', icon: '🏆' },
+    { name: '3M Window Films', type: isAr ? 'وكيل رسمي معتمد' : 'Official Authorized Dealer', icon: '🔴' },
+    { name: 'IWFA Member', type: isAr ? 'عضو الاتحاد الدولي لأفلام النوافذ' : 'International Window Film Association Member', icon: '🌐' },
+    { name: isAr ? 'وزارة التجارة' : 'Ministry of Commerce', type: isAr ? 'منشأة سعودية مسجلة' : 'Registered Saudi Entity', icon: '📋' },
+  ];
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }} />

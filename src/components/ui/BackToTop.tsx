@@ -1,8 +1,15 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
+import { getDictionary } from '@/lib/dictionaries';
+import type { Locale } from '@/lib/i18n';
 import styles from './BackToTop.module.css';
 
-export default function BackToTop() {
+interface BackToTopProps {
+  locale?: Locale;
+}
+
+export default function BackToTop({ locale = 'ar' }: BackToTopProps) {
+  const dict = getDictionary(locale);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -30,7 +37,7 @@ export default function BackToTop() {
     <button
       className={styles.btn}
       onClick={scrollToTop}
-      aria-label="العودة للأعلى"
+      aria-label={dict.backToTop.ariaLabel}
     >
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="18 15 12 9 6 15" />

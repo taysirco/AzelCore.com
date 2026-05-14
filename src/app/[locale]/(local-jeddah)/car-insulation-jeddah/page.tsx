@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Locale, localePath } from '@/lib/i18n';
 import { SITE_URL, SITE_NAME, SITE_NAME_EN, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
 import { faqs } from '@/data/faqs';
 import { localVoiceFaqs } from '@/data/frequently-asked-questions';
@@ -23,18 +24,15 @@ import styles from './page.module.css';
 // Metadata — generateMetadata (static export)
 // ════════════════════════════════════════════
 
-export const metadata: Metadata = {
-  title: 'تظليل سيارات جدة — نانو سيراميك + ضمان عمر السيارة',
-  description: 'أفضل تظليل سيارات في جدة بأفلام نانو سيراميك أمريكية من جونسون و 3M. حجب 97% حرارة، ضمان عمر السيارة، لا يحجب الإشارات. وكيل جونسون و 3M المعتمد.',
-  keywords: ['تظليل سيارات جدة', 'تظليل نانو سيراميك', 'عزل حراري سيارات', 'تظليل 3M جدة', 'تظليل جونسون', 'أفضل محل تظليل جدة'],
-  alternates: { canonical: `${SITE_URL}/car-insulation-jeddah` },
-  openGraph: {
-    title: 'تظليل سيارات جدة — نانو سيراميك أمريكي',
-    description: 'أفلام نانو سيراميك تحجب 97% IR — ضمان عمر السيارة — وكيل جونسون و 3M المعتمد',
-    url: `${SITE_URL}/car-insulation-jeddah`,
-    images: [{ url: '/images/hero-car-tinting-process.webp', width: 1200, height: 630 }],
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
+  return {
+    title: isAr ? 'تظليل سيارات جدة — نانو سيراميك + ضمان عمر السيارة' : 'تظليل سيارات جدة — نانو سيراميك + ضمان عمر السيارة | AzelCore',
+    description: isAr ? 'أفضل تظليل سيارات في جدة بأفلام نانو سيراميك أمريكية من جونسون و 3M. حجب 97% حرارة، ضمان عمر السيارة، لا يحجب الإشارات. وكيل جونسون و 3M المعتمد.' : 'أفضل تظليل سيارات في جدة بأفلام نانو سيراميك أمريكية من جونسون و 3M. حجب 97% حرارة، ضمان عمر السيارة، لا يحجب الإشارات. وكيل جونسون و 3M المعتمد.',
+    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/(local-jeddah)/car-insulation-jeddah')}` },
+  };
+}
 
 // ════════════════════════════════════════════
 // Data Constants
@@ -280,7 +278,9 @@ const graphSchema = {
 // Page Component — RSC (Server Component)
 // ════════════════════════════════════════════
 
-export default function CarTintingPage() {
+export default async function CarTintingPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
   return (
     <>
       {/* Single @graph — unified Knowledge Graph */}

@@ -1,15 +1,20 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Locale, localePath } from '@/lib/i18n';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK } from '@/lib/constants';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'معرض أعمالنا — تظليل سيارات وعزل مباني في جدة',
-  description: 'شاهد أعمالنا في تظليل السيارات وعزل واجهات المباني في جدة. صور حقيقية قبل وبعد — أفلام جونسون و 3M الأمريكية.',
-  alternates: { canonical: `${SITE_URL}/gallery` },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
+  return {
+    title: isAr ? 'معرض أعمالنا — تظليل سيارات وعزل مباني في جدة' : 'معرض أعمالنا — تظليل سيارات وعزل مباني في جدة | AzelCore',
+    description: isAr ? 'شاهد أعمالنا في تظليل السيارات وعزل واجهات المباني في جدة. صور حقيقية قبل وبعد — أفلام جونسون و 3M الأمريكية.' : 'شاهد أعمالنا في تظليل السيارات وعزل واجهات المباني في جدة. صور حقيقية قبل وبعد — أفلام جونسون و 3M الأمريكية.',
+    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/gallery')}` },
+  };
+}
 
 const carPhotos = [
   { src: 'gallery-car-before-01.webp', caption: 'سيارة قبل التظليل', detail: 'لكزس ES 350 — حي الروضة | الفيلم: جونسون Supreme IR | حجب: 97% IR' },
@@ -64,7 +69,9 @@ const imageListSchema = {
   ],
 };
 
-export default function GalleryPage() {
+export default async function GalleryPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(imageListSchema) }} />

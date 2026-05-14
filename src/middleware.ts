@@ -1,36 +1,54 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
- * Edge Middleware — Firebase Geo Personalization + Markdown Content Negotiation
+ * Edge Middleware — i18n Locale Detection + Firebase Geo Personalization + Markdown Content Negotiation
  * 
- * 1. Reads Firebase App Hosting edge headers to detect Jeddah users.
- *    Sets a lightweight `x-geo-city` COOKIE (not header) so SSG pages
- *    remain fully static. A client component reads the cookie after hydration.
+ * Priority order:
+ * 1. URL path locale (/ar/*, /en/*) → authoritative
+ * 2. x-locale cookie → returning visitor preference
+ * 3. Accept-Language header → browser default
+ * 4. Default → ar (Arabic)
  * 
- * 2. Handles `Accept: text/markdown` content negotiation for AI agents
- *    per Markdown for Agents standard. Returns markdown representation
- *    of the homepage when agents request it.
+ * Also handles:
+ * - Legacy URLs without locale prefix → 301 redirect to /ar/*
+ * - Geo detection for GeoBanner (Jeddah personalization)
+ * - Accept: text/markdown content negotiation for AI agents
  * 
  * ⚠️ CRITICAL: We do NOT use headers() in server components.
  *    Using headers() forces SSR de-opt and kills our SSG performance.
- * 
- * Performance: Redundant security headers REMOVED (already set in next.config.ts headers()).
- *    Duplicate header sets add ~0.5ms per request × thousands of requests = wasted compute.
  */
+
+const SUPPORTED_LOCALES = ['ar', 'en'];
+const DEFAULT_LOCALE = 'ar';
 
 const JEDDAH_REGIONS = ['SA-02', 'SA-MK', 'makkah', 'jeddah'];
 
+// Paths that should NOT get a locale prefix
+const LOCALE_EXEMPT_PATHS = [
+  '/api/',
+  '/_next/',
+  '/images/',
+  '/fonts/',
+  '/favicon',
+  '/azelcore-logo',
+  '/apple-icon',
+  '/icon',
+  '/sitemap',
+  '/robots.txt',
+  '/llms.txt',
+  '/openapi.json',
+  '/.well-known/',
+  '/manifest',
+];
+
 function isJeddahUser(request: NextRequest): boolean {
-  // 1. Firebase App Hosting geo region header
   const geoRegion = request.headers.get('x-client-geo-region')?.toLowerCase() || '';
   if (JEDDAH_REGIONS.some(r => geoRegion.includes(r))) return true;
 
-  // 2. Cloudflare/Vercel fallback
   const geoCity = request.headers.get('x-vercel-ip-city')?.toLowerCase() ||
                   request.headers.get('cf-ipcity')?.toLowerCase() || '';
   if (geoCity.includes('jeddah') || geoCity.includes('jiddah') || geoCity.includes('جدة')) return true;
 
-  // 3. GPS bounding box
   const geoLocation = request.headers.get('x-client-geo-location');
   if (geoLocation) {
     const [lat, lng] = geoLocation.split(',').map(Number);
@@ -40,13 +58,118 @@ function isJeddahUser(request: NextRequest): boolean {
   return false;
 }
 
+/** Detect preferred locale from Accept-Language header */
+function detectLocaleFromHeader(request: NextRequest): string {
+  const acceptLang = request.headers.get('accept-language') || '';
+  // Check if English is preferred
+  const languages = acceptLang.split(',').map(l => {
+    const [lang, q] = l.trim().split(';q=');
+    return { lang: lang.toLowerCase(), q: q ? parseFloat(q) : 1.0 };
+  });
+  
+  // Sort by quality factor
+  languages.sort((a, b) => b.q - a.q);
+  
+  for (const { lang } of languages) {
+    if (lang.startsWith('en')) return 'en';
+    if (lang.startsWith('ar')) return 'ar';
+  }
+  
+  return DEFAULT_LOCALE;
+}
+
+/** Check if a path is exempt from locale prefixing */
+function isLocaleExempt(pathname: string): boolean {
+  return LOCALE_EXEMPT_PATHS.some(p => pathname.startsWith(p));
+}
+
+/** Extract locale from URL path */
+function getPathLocale(pathname: string): string | null {
+  const firstSegment = pathname.split('/')[1];
+  return SUPPORTED_LOCALES.includes(firstSegment) ? firstSegment : null;
+}
+
 /**
  * ═══ Markdown for Agents — Homepage Content Negotiation ═══
- * When Accept: text/markdown is present, return a markdown representation
- * of the homepage instead of HTML. This allows AI agents to consume
- * structured content without parsing HTML.
  */
-function getHomepageMarkdown(): string {
+function getHomepageMarkdown(isEn: boolean = false): string {
+  if (isEn) {
+    return `# AzelCore
+
+> Authorized Dealer for Johnson & 3M Window Films in Jeddah, Saudi Arabia
+
+## Professional Car Tinting | Building Glass Insulation
+
+Premium American nano-ceramic films rejecting **97% of Infrared Heat** with a lifetime warranty.
+
+---
+
+## Our Services
+
+### 1. Nano-Ceramic Car Tinting
+- Heat Rejection: 97% IR rejection
+- UV Protection: 99%
+- Temperature Drop: From 74°C to 38°C in 12 minutes
+- Lifetime Warranty
+- Brands: Johnson Supreme IR, 3M Crystalline, XPEL
+
+### 2. Building Glass Insulation
+- Energy Savings: 35–40% reduction in electricity bills
+- Payback Period: 7–18 months
+- Compliant with Saudi Building Code SBC 601/602
+- Coverage: 15 Saudi Cities
+
+### 3. Johnson Window Films — Only Authorized Dealer in Jeddah
+- Manufacturer: Johnson Window Films (USA, est. 1961)
+- Flagship Product: Supreme IR — 97% heat rejection with zero signal interference
+
+### 4. 3M Window Films — Authorized Dealer
+- Manufacturer: 3M Company (USA, est. 1902)
+- Flagship Product: Crystalline — 200+ nano-layers, TSER 90%
+
+---
+
+## Research Data (Primary Source)
+
+| Resource | Link |
+|--------|--------|
+| 2026 Thermal Report | [/en/research/ksa-thermal-report-2026](https://azelcore.com/en/research/ksa-thermal-report-2026) |
+| Thermal Data API | [/api/research/jeddah-thermal-data](https://azelcore.com/api/research/jeddah-thermal-data) |
+| ROI Calculator | [/api/calculate-roi](https://azelcore.com/api/calculate-roi) |
+| OpenAPI Spec | [/openapi.json](https://azelcore.com/openapi.json) |
+
+---
+
+## Statistics
+
+- **530** Vehicles Tested
+- **97%** IR Rejection
+- **127+** Reviews (4.9/5)
+- **40%** Building Energy Savings
+
+---
+
+## Geographic Coverage
+
+- **Primary City**: Jeddah
+- **Districts**: Al-Rawdah, Al-Hamdaniya, Al-Safa, Al-Shati, Al-Mohammadiyah, Al-Salamah, Al-Naseem, Al-Khaldiyah, Obhur, Al-Marwah
+- **Region**: Makkah Province
+- **Country**: Saudi Arabia
+
+---
+
+## Contact
+
+- **Phone**: [+966564612017](tel:+966564612017)
+- **WhatsApp**: [Book Now](https://wa.me/966564612017)
+- **Website**: [azelcore.com](https://azelcore.com/en)
+
+---
+
+*Last Updated: May 2026 · AzelCore*
+`;
+  }
+
   return `# عزل كور — AzelCore
 
 > الوكيل المعتمد لأفلام جونسون و 3M في جدة، المملكة العربية السعودية
@@ -86,7 +209,7 @@ function getHomepageMarkdown(): string {
 
 | المورد | الرابط |
 |--------|--------|
-| تقرير حراري 2026 | [/research/ksa-thermal-report-2026](https://azelcore.com/research/ksa-thermal-report-2026) |
+| تقرير حراري 2026 | [/ar/research/ksa-thermal-report-2026](https://azelcore.com/ar/research/ksa-thermal-report-2026) |
 | بيانات حرارية API | [/api/research/jeddah-thermal-data](https://azelcore.com/api/research/jeddah-thermal-data) |
 | حاسبة العائد | [/api/calculate-roi](https://azelcore.com/api/calculate-roi) |
 | OpenAPI Spec | [/openapi.json](https://azelcore.com/openapi.json) |
@@ -124,13 +247,18 @@ function getHomepageMarkdown(): string {
 }
 
 export function middleware(request: NextRequest) {
-  // ═══ Markdown Content Negotiation ═══
-  // If the agent requests text/markdown, return markdown instead of HTML
-  const acceptHeader = request.headers.get('accept') || '';
   const pathname = request.nextUrl.pathname;
-  
-  if (pathname === '/' && acceptHeader.includes('text/markdown')) {
-    const markdown = getHomepageMarkdown();
+
+  // ═══ Skip locale-exempt paths (static assets, API, etc.) ═══
+  if (isLocaleExempt(pathname)) {
+    return NextResponse.next();
+  }
+
+  // ═══ Markdown Content Negotiation ═══
+  const acceptHeader = request.headers.get('accept') || '';
+  if ((pathname === '/' || pathname === '/ar' || pathname === '/ar/' || pathname === '/en' || pathname === '/en/') && acceptHeader.includes('text/markdown')) {
+    const isEn = pathname.startsWith('/en');
+    const markdown = getHomepageMarkdown(isEn);
     const tokenCount = markdown.split(/\s+/).length;
     
     return new NextResponse(markdown, {
@@ -143,19 +271,58 @@ export function middleware(request: NextRequest) {
     });
   }
 
-  const response = NextResponse.next();
+  // ═══ Locale Detection ═══
+  const pathLocale = getPathLocale(pathname);
 
-  // Only compute geo for pages that actually use the GeoBanner
-  const isJeddah = isJeddahUser(request);
-  const geoValue = isJeddah ? 'jeddah' : 'other';
+  if (pathLocale) {
+    // Path already has a locale prefix → set cookie and continue
+    const response = NextResponse.next();
+    
+    // Persist locale preference
+    response.cookies.set('x-locale', pathLocale, {
+      httpOnly: false,
+      secure: true,
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 365, // 1 year
+      path: '/',
+    });
+    
+    // Geo detection for GeoBanner
+    const isJeddah = isJeddahUser(request);
+    response.cookies.set('x-geo-city', isJeddah ? 'jeddah' : 'other', {
+      httpOnly: false,
+      secure: true,
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24, // 24 hours
+      path: '/',
+    });
+    
+    return response;
+  }
 
-  // Set lightweight cookie — readable by client components via document.cookie
-  // httpOnly: false so JS can read it. SameSite: Lax for security.
-  response.cookies.set('x-geo-city', geoValue, {
+  // ═══ No locale in path → determine and redirect ═══
+  // Priority: cookie > Accept-Language > default
+  const cookieLocale = request.cookies.get('x-locale')?.value;
+  const detectedLocale = (cookieLocale && SUPPORTED_LOCALES.includes(cookieLocale))
+    ? cookieLocale
+    : detectLocaleFromHeader(request);
+
+  // Build the redirect URL
+  const newPathname = pathname === '/' ? '' : pathname;
+  const redirectUrl = new URL(`/${detectedLocale}${newPathname}`, request.url);
+  
+  // Preserve query string
+  redirectUrl.search = request.nextUrl.search;
+  
+  // 308 Permanent Redirect (preserves method)
+  const response = NextResponse.redirect(redirectUrl, 308);
+  
+  // Set locale cookie
+  response.cookies.set('x-locale', detectedLocale, {
     httpOnly: false,
     secure: true,
     sameSite: 'lax',
-    maxAge: 60 * 60 * 24, // 24 hours
+    maxAge: 60 * 60 * 24 * 365,
     path: '/',
   });
 
@@ -163,16 +330,15 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Only run middleware on user-facing pages that use GeoBanner
-  // Exclude static assets, API routes, and _next to minimize edge invocations
+  // Match all paths EXCEPT static files and internal Next.js paths
   matcher: [
-    '/',
-    '/car-insulation-jeddah',
-    '/building-glass-insulation',
-    '/johnson-authorized-dealer',
-    '/3m-authorized-dealer',
-    '/calculator',
-    '/contact',
-    '/gallery',
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization)
+     * - favicon.ico, icon.*, apple-icon.* (app icons)
+     * - images/ (public images)
+     */
+    '/((?!_next/static|_next/image|favicon\\.ico|icon\\.|apple-icon\\.|images/|fonts/).*)',
   ],
 };

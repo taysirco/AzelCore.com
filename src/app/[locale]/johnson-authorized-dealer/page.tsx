@@ -1,23 +1,21 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Locale, localePath } from '@/lib/i18n';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN } from '@/lib/constants';
 import ServiceSummary from '@/components/seo/ServiceSummary';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'وكيل جونسون المعتمد في جدة — Johnson Window Films',
-  description: 'عزل كور الوكيل الرسمي لأفلام جونسون الأمريكية في جدة. Supreme IR يحجب 97% من الأشعة تحت الحمراء. 5 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.',
-  keywords: ['عازل جونسون', 'Johnson Window Films', 'وكيل جونسون جدة', 'Supreme IR', 'تظليل جونسون', 'نانو سيراميك جونسون'],
-  alternates: { canonical: `${SITE_URL}/johnson-authorized-dealer` },
-  openGraph: {
-    title: 'وكيل جونسون المعتمد — Johnson Window Films | جدة',
-    description: '5 خطوط إنتاج أمريكية — Supreme IR بحجب 97% IR — ضمان عمر السيارة',
-    url: `${SITE_URL}/johnson-authorized-dealer`,
-    images: [{ url: '/images/hero-car-tinting-jeddah.webp', width: 1200, height: 630 }],
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
+  return {
+    title: isAr ? 'وكيل جونسون المعتمد في جدة — Johnson Window Films' : 'وكيل جونسون المعتمد في جدة — Johnson Window Films | AzelCore',
+    description: isAr ? 'عزل كور الوكيل الرسمي لأفلام جونسون الأمريكية في جدة. Supreme IR يحجب 97% من الأشعة تحت الحمراء. 5 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.' : 'عزل كور الوكيل الرسمي لأفلام جونسون الأمريكية في جدة. Supreme IR يحجب 97% من الأشعة تحت الحمراء. 5 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.',
+    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/johnson-authorized-dealer')}` },
+  };
+}
 
 const productLines = [
   {
@@ -189,7 +187,9 @@ const graphSchema = {
   ],
 };
 
-export default function JohnsonDealerPage() {
+export default async function JohnsonDealerPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
   return (
     <>
       {/* Unified @graph — Product + FAQ + Breadcrumb + Speakable */}

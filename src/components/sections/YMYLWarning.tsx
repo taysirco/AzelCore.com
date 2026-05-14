@@ -1,3 +1,5 @@
+import { getDictionary } from '@/lib/dictionaries';
+import type { Locale } from '@/lib/i18n';
 import styles from './YMYLWarning.module.css';
 
 /**
@@ -5,9 +7,11 @@ import styles from './YMYLWarning.module.css';
  * Implements the U-Curve Sentiment Analysis (Behavioral Engineering) from the Master Plan.
  * Agitates the pain point (fake cheap tint) before providing the AzelCore solution.
  */
-export default function YMYLWarning() {
+export default function YMYLWarning({ locale = 'ar' }: { locale?: string }) {
+  const dict = getDictionary(locale as Locale);
+
   return (
-    <section className={styles.section} aria-label="تحذير هام للمستهلك">
+    <section className={styles.section} aria-label={dict.ymyl.ariaLabel}>
       <div className={styles.container}>
         <div className={styles.warningBox}>
           
@@ -21,18 +25,18 @@ export default function YMYLWarning() {
 
           <div className={styles.content}>
             <h2 className={styles.title}>
-              احذر فخ <span className={styles.highlight}>"تظليل كامل بـ 200 ريال"</span>
+              {dict.ymyl.title} <span className={styles.highlight}>{dict.ymyl.titleHighlight}</span>
             </h2>
             
             <p className={styles.text}>
-              في السوق السعودي المليء بالخيارات، تنتشر عروض لـ "أفلام نانو" رخيصة. هذه الأفلام التجارية المقلدة ليست فقط خسارة لمالك، بل <strong style={{color: 'var(--text)'}}>خطراً حقيقياً</strong> على صحتك ومقصورة سيارتك.
+              {dict.ymyl.intro} <strong style={{color: 'var(--text)'}}>{dict.ymyl.introStrong}</strong> {dict.ymyl.introEnd}
             </p>
 
             <ul className={styles.bulletList}>
-              <li className={styles.bulletItem}>تتحول للون البنفسجي أو تتلاشى خلال 3 أشهر فقط.</li>
-              <li className={styles.bulletItem}>عزل وهمي: تسمح بمرور 80% من الأشعة تحت الحمراء (الحرارة الحقيقية).</li>
-              <li className={styles.bulletItem}>ضرر صحي: لا تمنع الأشعة فوق البنفسجية (UV) المسببة لحروق الجلد.</li>
-              <li className={styles.bulletItem}>تتسبب في تشقق ديكور وطبلون السيارة بسبب احتباس الحرارة.</li>
+              <li className={styles.bulletItem}>{dict.ymyl.bullet1}</li>
+              <li className={styles.bulletItem}>{dict.ymyl.bullet2}</li>
+              <li className={styles.bulletItem}>{dict.ymyl.bullet3}</li>
+              <li className={styles.bulletItem}>{dict.ymyl.bullet4}</li>
             </ul>
 
             <div className={styles.solutionBox}>
@@ -40,11 +44,9 @@ export default function YMYLWarning() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
-                الحل التقني المعتمد (عزل كور)
+                {dict.ymyl.solutionTitle}
               </h3>
-              <p className={styles.solutionText}>
-                نحن وكيل معتمد لـ <strong>Johnson Window Films</strong> و <strong>3M</strong> الأمريكية. نستخدم أجهزة فحص حراري (FLIR) لإثبات نسبة عزل تصل إلى 97% للأشعة تحت الحمراء، مع ضمان موثق يمتد لعمر السيارة يشمل تغيير اللون والتقشير.
-              </p>
+              <p className={styles.solutionText}>{dict.ymyl.solutionText}</p>
             </div>
             
           </div>

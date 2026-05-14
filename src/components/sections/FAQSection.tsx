@@ -1,16 +1,20 @@
 import Link from 'next/link';
 import { faqs } from '@/data/faqs';
+import { getDictionary } from '@/lib/dictionaries';
+import { localePath, type Locale } from '@/lib/i18n';
 import styles from './FAQSection.module.css';
 
 const topFAQs = faqs.slice(0, 6);
 
-export default function FAQSection() {
+export default function FAQSection({ locale = 'ar' }: { locale?: string }) {
+  const dict = getDictionary(locale as Locale);
+
   return (
-    <section className={styles.section} id="faq" aria-label="أسئلة شائعة">
+    <section className={styles.section} id="faq" aria-label={dict.faqSection.ariaLabel}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <span className={styles.overline}>أسئلة شائعة</span>
-          <h2 className={styles.title}>كل ما تحتاج تعرفه</h2>
+          <span className={styles.overline}>{dict.faqSection.overline}</span>
+          <h2 className={styles.title}>{dict.faqSection.title}</h2>
         </div>
 
         <div className={styles.faqGrid}>
@@ -28,7 +32,9 @@ export default function FAQSection() {
         </div>
 
         <div className={styles.seeAll}>
-          <Link href="/faq" className={styles.seeAllLink}>عرض جميع الأسئلة ({faqs.length}) ←</Link>
+          <Link href={localePath(locale as Locale, '/faq')} className={styles.seeAllLink}>
+            {dict.faqSection.seeAll} ({faqs.length}) ←
+          </Link>
         </div>
       </div>
     </section>

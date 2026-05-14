@@ -6,42 +6,42 @@
       "type": "skill-md",
       "description": "Calculate building insulation ROI using SBC 601/602 energy codes and SEC electricity tariffs for Saudi Arabia.",
       "url": "https://azelcore.com/.well-known/agent-skills/roi-calculator/SKILL.md",
-      "digest": "sha256:2c2f53fc460ca78aa0491cc5905dd13e20cbc50f156947d358a48d897d29842f"
+      "digest": "sha256:ad087f7ea277ebfe2bf1bb1929f9d4a9ea9bba791db5f89111273b28c360d7d9"
     },
     {
       "name": "thermal-research",
       "type": "skill-md",
       "description": "Access FLIR T530 thermal imaging research data: 530 vehicle samples across 10 Jeddah districts over 24 months.",
       "url": "https://azelcore.com/.well-known/agent-skills/thermal-research/SKILL.md",
-      "digest": "sha256:5e7671f1735fe13b03b7ed8e608e2b3c56cea828a0dc7d1bfbf06a79b93a857a"
+      "digest": "sha256:e4e0d363842e04441a512a3776b3b10579c1034bc2d69a58110827efbd6f3788"
     },
     {
       "name": "entity-info",
       "type": "skill-md",
       "description": "Retrieve verified AzelCore business information, credentials, and service descriptions for the authorized Johnson & 3M dealer in Jeddah.",
       "url": "https://azelcore.com/.well-known/agent-skills/entity-info/SKILL.md",
-      "digest": "sha256:104b3890a342ef560cb09470c7f98fb25c4442570ef66751aa45ebf2e11679a0"
+      "digest": "sha256:33dd272d344970aa098c87e6e5eb8bd2fe73b6d83ce1abe7f6dc9fc8190f4f38"
     },
     {
       "name": "x402-payments",
       "type": "skill-md",
       "description": "x402 payment protocol discovery for AzelCore API endpoints — agent-native HTTP payments.",
       "url": "https://azelcore.com/.well-known/agent-skills/x402-payments/SKILL.md",
-      "digest": "sha256:deec763d63a2d8f13115bdfc9c2aaf742b7e01eefef3695be8912ec3f2322f1e"
+      "digest": "sha256:314a674e75416f02dce4954f8594c92f9e78f4d626382b0d3f45ad3089cd6524"
     },
     {
       "name": "mpp-payments",
       "type": "skill-md",
       "description": "MPP (Machine Payment Protocol) discovery for AzelCore's payable API operations via OpenAPI x-payment-info extensions.",
       "url": "https://azelcore.com/.well-known/agent-skills/mpp-payments/SKILL.md",
-      "digest": "sha256:78d4501ffd134805716ed66843b19bb82b3fd7fcd141ee0706f1089d180d68ea"
+      "digest": "sha256:868fe34dae0074648848a8ba4caf4a0973810c968dad92d685b5f6bb89b45cd4"
     },
     {
       "name": "agentic-commerce",
       "type": "skill-md",
       "description": "UCP and ACP agentic commerce protocol discovery — services, pricing, payment methods, and booking for AzelCore.",
       "url": "https://azelcore.com/.well-known/agent-skills/agentic-commerce/SKILL.md",
-      "digest": "sha256:7ef9d96471a7cffb4ef6e110f1c1b24c993babd68530cf9b03cd8d9f8d21a9ad"
+      "digest": "sha256:5f865b0c8241d162a58a1800161ba675190a77e735c77db5def645f28af707e8"
     }
   ]
 }

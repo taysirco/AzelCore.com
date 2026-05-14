@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Locale, localePath } from '@/lib/i18n';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
 import { faqs } from '@/data/faqs';
 import { quickAnswers } from '@/data/quick-answers';
@@ -17,18 +18,15 @@ import AuthorProfile from '@/components/seo/AuthorProfile';
 import Certifications from '@/components/seo/Certifications';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'عزل واجهات زجاج المباني في جدة — وفّر 40% من فاتورة الكهرباء',
-  description: 'عزل حراري احترافي لواجهات المباني والفلل في جدة. أفلام نانو سيراميك تحجب 97% حرارة وتوفر 40% من تكاليف التكييف. ضمان 15 سنة.',
-  keywords: ['عزل مباني جدة', 'عزل واجهات زجاج', 'فيلم حراري مباني', 'عزل فلل جدة', 'توفير كهرباء'],
-  alternates: { canonical: `${SITE_URL}/building-glass-insulation` },
-  openGraph: {
-    title: 'عزل واجهات زجاج المباني — توفير 40% كهرباء | جدة',
-    description: 'أفلام نانو سيراميك للمباني تحجب 97% حرارة — ضمان 15 سنة',
-    url: `${SITE_URL}/building-glass-insulation`,
-    images: [{ url: '/images/hero-building-glass-insulation.webp', width: 1200, height: 630 }],
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
+  return {
+    title: isAr ? 'عزل واجهات زجاج المباني في جدة — وفّر 40% من فاتورة الكهرباء' : 'عزل واجهات زجاج المباني في جدة — وفّر 40% من فاتورة الكهرباء | AzelCore',
+    description: isAr ? 'عزل حراري احترافي لواجهات المباني والفلل في جدة. أفلام نانو سيراميك تحجب 97% حرارة وتوفر 40% من تكاليف التكييف. ضمان 15 سنة.' : 'عزل حراري احترافي لواجهات المباني والفلل في جدة. أفلام نانو سيراميك تحجب 97% حرارة وتوفر 40% من تكاليف التكييف. ضمان 15 سنة.',
+    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/(national-ksa)/building-glass-insulation')}` },
+  };
+}
 
 const buildingTypes = [
   { icon: '🏠', name: 'فلل وقصور', desc: 'عزل نوافذ الفلل والقصور لتقليل الحرارة وحماية الأثاث من الأشعة فوق البنفسجية مع الحفاظ على المنظر الخارجي.' },
@@ -119,7 +117,9 @@ const graphSchema = {
   ],
 };
 
-export default function BuildingInsulationPage() {
+export default async function BuildingInsulationPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
   return (
     <>
       {/* Unified @graph — B2BService + FAQ + Breadcrumb + Speakable */}

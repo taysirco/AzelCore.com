@@ -1,36 +1,40 @@
 import Link from 'next/link';
 import { carTintingPrices } from '@/data/pricing-tiers';
-import { WHATSAPP_LINK } from '@/lib/constants';
+import { getWhatsAppLink } from '@/lib/constants';
+import { getDictionary } from '@/lib/dictionaries';
+import { localePath, type Locale } from '@/lib/i18n';
 import PriceReveal from '@/components/ui/PriceReveal';
 import styles from './PricingSection.module.css';
 
-export default function PricingSection() {
+export default function PricingSection({ locale = 'ar' }: { locale?: string }) {
   const tiers = carTintingPrices.tiers.slice(0, 4); // top 4
+  const dict = getDictionary(locale as Locale);
+  const whatsappLink = getWhatsAppLink(locale as Locale);
 
   return (
-    <section className={styles.section} id="pricing" aria-label="أسعار التظليل">
+    <section className={styles.section} id="pricing" aria-label={dict.pricing.ariaLabel}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <span className={styles.overline}>أسعار شفافة</span>
-          <h2 className={styles.title}>أسعار تظليل السيارات في جدة</h2>
-          <p className={styles.subtitle}>لا رسوم مخفية — السعر يشمل التركيب + الضمان + الفاتورة الضريبية.</p>
+          <span className={styles.overline}>{dict.pricing.overline}</span>
+          <h2 className={styles.title}>{dict.pricing.title}</h2>
+          <p className={styles.subtitle}>{dict.pricing.subtitle}</p>
         </div>
 
         <div className={styles.grid}>
           {tiers.map((tier, i) => (
             <div key={i} className={`${styles.card} ${i === 0 ? styles.featured : ''}`}>
-              {i === 0 && <span className={styles.badge}>⭐ الأكثر طلباً</span>}
+              {i === 0 && <span className={styles.badge}>{dict.pricing.mostPopular}</span>}
               <h3 className={styles.cardTitle}>{tier.filmType}</h3>
               <div className={styles.priceRow}>
-                <span className={styles.priceLabel}>سيدان</span>
-                <PriceReveal price={tier.sedan.price} label="السعر" />
+                <span className={styles.priceLabel}>{dict.pricing.sedan}</span>
+                <PriceReveal price={tier.sedan.price} label={dict.common.price} />
               </div>
               <div className={styles.priceRow}>
-                <span className={styles.priceLabel}>SUV / دبل</span>
-                <PriceReveal price={tier.suv.price} label="السعر" />
+                <span className={styles.priceLabel}>{dict.pricing.suv}</span>
+                <PriceReveal price={tier.suv.price} label={dict.common.price} />
               </div>
               <div className={styles.warrantyRow}>
-                <span>🛡️ ضمان</span>
+                <span>{dict.pricing.warranty}</span>
                 <strong>{tier.warranty}</strong>
               </div>
               <ul className={styles.includes}>
@@ -38,15 +42,15 @@ export default function PricingSection() {
                   <li key={j}>✓ {item}</li>
                 ))}
               </ul>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={`${styles.cardBtn} ${i === 0 ? styles.cardBtnPrimary : ''}`} data-nosnippet>
-                احجز الآن
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className={`${styles.cardBtn} ${i === 0 ? styles.cardBtnPrimary : ''}`} data-nosnippet>
+                {dict.pricing.bookNow}
               </a>
             </div>
           ))}
         </div>
 
         <div className={styles.addons}>
-          <h3 className={styles.addonsTitle}>خدمات إضافية</h3>
+          <h3 className={styles.addonsTitle}>{dict.pricing.addonsTitle}</h3>
           <div className={styles.addonsList}>
             {carTintingPrices.addons.map((addon, i) => (
               <div key={i} className={styles.addonItem}>
@@ -58,8 +62,8 @@ export default function PricingSection() {
         </div>
 
         <p className={styles.note}>
-          * الأسعار تقريبية وتختلف حسب حجم السيارة ونوع الفيلم.{' '}
-          <Link href="/contact" className={styles.noteLink}>تواصل معنا لعرض سعر دقيق →</Link>
+          {dict.pricing.note}{' '}
+          <Link href={localePath(locale as Locale, '/contact')} className={styles.noteLink}>{dict.pricing.noteLink}</Link>
         </p>
       </div>
     </section>

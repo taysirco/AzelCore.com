@@ -3,7 +3,7 @@ import { jeddahDistricts, ksaCities } from '@/data/local-jeddah';
 import { SITE_URL } from '@/lib/constants';
 
 // Static last-modified date — update manually after significant content changes
-const LAST_MODIFIED = '2026-05-04';
+const LAST_MODIFIED = '2026-05-15';
 
 // Blog article slugs (must match blog/[slug]/page.tsx generateStaticParams)
 const blogSlugs = [
@@ -19,50 +19,63 @@ const blogSlugs = [
   'car-tint-maintenance-guide',
 ];
 
+/**
+ * Helper function to generate deep, bidirectional hreflang entries
+ * This eliminates 301 redirects and search cannibalization for the 2026 Saudi market.
+ */
+function createI18nEntries(path: string, options: Omit<MetadataRoute.Sitemap[0], 'url' | 'alternates'>): MetadataRoute.Sitemap {
+  const normalizedPath = path === '/' ? '' : path;
+  const arUrl = `${SITE_URL}/ar${normalizedPath}`;
+  const enUrl = `${SITE_URL}/en${normalizedPath}`;
+
+  const alternates = {
+    languages: {
+      'ar': arUrl,
+      'en': enUrl,
+      'x-default': arUrl, // Saudi Arabia is primary market
+    },
+  };
+
+  return [
+    { url: arUrl, alternates, ...options },
+    { url: enUrl, alternates, ...options },
+  ];
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
-    { url: SITE_URL, lastModified: LAST_MODIFIED, changeFrequency: 'weekly', priority: 1.0 },
-    { url: `${SITE_URL}/car-insulation-jeddah`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${SITE_URL}/building-glass-insulation`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${SITE_URL}/johnson-authorized-dealer`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${SITE_URL}/3m-authorized-dealer`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${SITE_URL}/faq`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${SITE_URL}/blog`, lastModified: LAST_MODIFIED, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${SITE_URL}/gallery`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${SITE_URL}/about`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.7 },
-    { url: `${SITE_URL}/contact`, lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.6 },
-    { url: `${SITE_URL}/calculator`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 },
-    // Research Dataset — Primary source citation endpoint (valuable for SGE)
+    ...createI18nEntries('/', { lastModified: LAST_MODIFIED, changeFrequency: 'weekly', priority: 1.0 }),
+    ...createI18nEntries('/car-insulation-jeddah', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 }),
+    ...createI18nEntries('/building-glass-insulation', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 }),
+    ...createI18nEntries('/johnson-authorized-dealer', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 }),
+    ...createI18nEntries('/3m-authorized-dealer', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 }),
+    ...createI18nEntries('/faq', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.8 }),
+    ...createI18nEntries('/blog', { lastModified: LAST_MODIFIED, changeFrequency: 'weekly', priority: 0.8 }),
+    ...createI18nEntries('/gallery', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 }),
+    ...createI18nEntries('/about', { lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.7 }),
+    ...createI18nEntries('/contact', { lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.6 }),
+    ...createI18nEntries('/calculator', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 }),
+    
+    // API and AI discovery endpoints (Locale Exempt)
     { url: `${SITE_URL}/api/research/jeddah-thermal-data`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.5 },
-    // Research Report — Perplexity Citation Feature
     { url: `${SITE_URL}/research/ksa-thermal-report-2026`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.6 },
-    // LLM System Directive — AI Bot Discovery (noindex for Google, but AI bots use sitemap for crawl)
     { url: `${SITE_URL}/llms.txt`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.3 },
   ];
 
   // dynamic-pages district pages — hyper-local Jeddah coverage
-  const districtPages: MetadataRoute.Sitemap = jeddahDistricts.map(d => ({
-    url: `${SITE_URL}/car-insulation-jeddah/${d.id}`,
-    lastModified: LAST_MODIFIED,
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }));
+  const districtPages: MetadataRoute.Sitemap = jeddahDistricts.flatMap(d => 
+    createI18nEntries(`/car-insulation-jeddah/${d.id}`, { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.8 })
+  );
 
   // dynamic-pages city pages — National KSA coverage
-  const cityPages: MetadataRoute.Sitemap = ksaCities.map(c => ({
-    url: `${SITE_URL}/building-glass-insulation/${c.id}`,
-    lastModified: LAST_MODIFIED,
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }));
+  const cityPages: MetadataRoute.Sitemap = ksaCities.flatMap(c => 
+    createI18nEntries(`/building-glass-insulation/${c.id}`, { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.8 })
+  );
 
   // Blog article pages
-  const blogPages: MetadataRoute.Sitemap = blogSlugs.map(slug => ({
-    url: `${SITE_URL}/blog/${slug}`,
-    lastModified: LAST_MODIFIED,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
+  const blogPages: MetadataRoute.Sitemap = blogSlugs.flatMap(slug => 
+    createI18nEntries(`/blog/${slug}`, { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 })
+  );
 
   return [...staticPages, ...districtPages, ...cityPages, ...blogPages];
 }

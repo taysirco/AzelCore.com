@@ -4,11 +4,18 @@ import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_H
 import CopyButton from '@/components/ui/CopyButton';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'تواصل معنا — واتساب واتصال مباشر | جدة',
-  description: 'تواصل مع عزل كور لحجز موعد تظليل سيارات أو عزل مباني في جدة. واتساب، اتصال مباشر، أو زيارة ورشتنا.',
-  alternates: { canonical: `${SITE_URL}/contact` },
-};
+import { getDictionary } from '@/lib/dictionaries';
+import { Locale, localePath } from '@/lib/i18n';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
+  return {
+    title: isAr ? 'تواصل معنا — واتساب واتصال مباشر | جدة' : 'Contact Us — WhatsApp & Direct Call | Jeddah',
+    description: isAr ? 'تواصل مع عزل كور لحجز موعد تظليل سيارات أو عزل مباني في جدة.' : 'Contact AzelCore to book your car tinting or building insulation appointment in Jeddah.',
+    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/contact')}` },
+  };
+}
 
 const contactSchema = {
   '@context': 'https://schema.org',
@@ -77,23 +84,26 @@ const contactSchema = {
   ],
 };
 
-export default function ContactPage() {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }} />
 
-      {/* ── Voice Structure — Contact ── */}
       <div id="voice-answer-contact-1" className="sr-only" aria-hidden="true">
-        يمكنكم التواصل مع خدمة عملاء عزل كور في جدة على الرقم {PHONE} أو زيارة الفرع. مواعيد العمل من السبت للخميس.
+        {isAr 
+          ? `يمكنكم التواصل مع خدمة عملاء عزل كور في جدة على الرقم ${PHONE} أو زيارة الفرع. مواعيد العمل من السبت للخميس.`
+          : `You can contact AzelCore customer service in Jeddah at ${PHONE} or visit our branch. Working hours are Saturday to Thursday.`}
       </div>
 
       <section className={styles.pageHeader}>
         <div className={styles.container}>
-          <nav className={styles.breadcrumb} aria-label="مسار التنقل">
-            <Link href="/">الرئيسية</Link> / <span>تواصل معنا</span>
+          <nav className={styles.breadcrumb} aria-label={isAr ? "مسار التنقل" : "Breadcrumbs"}>
+            <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'تواصل معنا' : 'Contact Us'}</span>
           </nav>
-          <h1 className={styles.pageTitle}>تواصل <span className={styles.highlight}>معنا</span></h1>
-          <p className={styles.pageSubtitle}>جاهزين نخدمك — اختر الطريقة اللي تناسبك.</p>
+          <h1 className={styles.pageTitle}>{isAr ? 'تواصل ' : 'Contact '}<span className={styles.highlight}>{isAr ? 'معنا' : 'Us'}</span></h1>
+          <p className={styles.pageSubtitle}>{isAr ? 'جاهزين نخدمك — اختر الطريقة اللي تناسبك.' : 'We are ready to serve you — choose your preferred method.'}</p>
         </div>
       </section>
 
@@ -105,30 +115,30 @@ export default function ContactPage() {
             <div className={styles.cardsCol} data-nosnippet>
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={`${styles.contactCard} ${styles.whatsappCard}`}>
                 <span className={styles.cardIcon}>💬</span>
-                <h2 className={styles.cardTitle}>واتساب</h2>
-                <p className={styles.cardDesc}>أسرع طريقة للتواصل — رد فوري</p>
+                <h2 className={styles.cardTitle}>{isAr ? 'واتساب' : 'WhatsApp'}</h2>
+                <p className={styles.cardDesc}>{isAr ? 'أسرع طريقة للتواصل — رد فوري' : 'Fastest way to connect — Instant reply'}</p>
                 <span className={styles.cardAction}>{PHONE}</span>
               </a>
 
               <a href={`tel:${PHONE}`} className={styles.contactCard}>
                 <span className={styles.cardIcon}>📞</span>
-                <h2 className={styles.cardTitle}>اتصال مباشر</h2>
-                <p className={styles.cardDesc}>تكلم معنا مباشرة لأي استفسار</p>
+                <h2 className={styles.cardTitle}>{isAr ? 'اتصال مباشر' : 'Direct Call'}</h2>
+                <p className={styles.cardDesc}>{isAr ? 'تكلم معنا مباشرة لأي استفسار' : 'Speak with us directly for any inquiry'}</p>
                 <span className={styles.cardAction}>{PHONE}</span>
               </a>
 
               <div className={styles.contactCard}>
                 <span className={styles.cardIcon}>🕐</span>
-                <h2 className={styles.cardTitle}>ساعات العمل</h2>
+                <h2 className={styles.cardTitle}>{isAr ? 'ساعات العمل' : 'Working Hours'}</h2>
                 <p className={styles.cardDesc}>{WORKING_HOURS}</p>
-                <span className={styles.cardMeta}>الجمعة: إجازة</span>
+                <span className={styles.cardMeta}>{isAr ? 'الجمعة: إجازة' : 'Friday: Closed'}</span>
               </div>
 
               <div className={styles.contactCard}>
                 <span className={styles.cardIcon}>📍</span>
-                <h2 className={styles.cardTitle}>الموقع</h2>
-                <p className={styles.cardDesc}>جدة، المملكة العربية السعودية</p>
-                <span className={styles.cardMeta}>خدمة متنقلة متاحة</span>
+                <h2 className={styles.cardTitle}>{isAr ? 'الموقع' : 'Location'}</h2>
+                <p className={styles.cardDesc}>{isAr ? 'جدة، المملكة العربية السعودية' : 'Jeddah, Saudi Arabia'}</p>
+                <span className={styles.cardMeta}>{isAr ? 'خدمة متنقلة متاحة' : 'Mobile Service Available'}</span>
               </div>
             </div>
 

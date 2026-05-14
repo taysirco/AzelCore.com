@@ -3,7 +3,9 @@
 // ISR: revalidates every 1 hour (3600s)
 // Only renders if temperature > 33°C
 
-import { WHATSAPP_LINK } from '@/lib/constants';
+import { getWhatsAppLink } from '@/lib/constants';
+import { getDictionary } from '@/lib/dictionaries';
+import type { Locale } from '@/lib/i18n';
 import styles from './LiveJeddahWeatherBanner.module.css';
 
 interface WeatherData {
@@ -35,25 +37,7 @@ function getAlertLevel(temp: number): AlertLevel | null {
   return null;
 }
 
-const alertConfig: Record<AlertLevel, { icon: string; prefix: string; message: string }> = {
-  extreme: {
-    icon: '🔴',
-    prefix: 'تنبيه خطر شديد',
-    message: 'حرارة قاتلة للتظليل الرخيص. سيارتك تحتاج نانو سيراميك الآن.',
-  },
-  high: {
-    icon: '🟠',
-    prefix: 'تنبيه حرارة مرتفعة',
-    message: 'الحرارة تتجاوز الحد — التظليل العادي لن يحميك.',
-  },
-  moderate: {
-    icon: '🟡',
-    prefix: 'حرارة معتدلة-مرتفعة',
-    message: 'ننصح بحماية سيارتك قبل موسم الذروة.',
-  },
-};
-
-export default async function LiveJeddahWeatherBanner() {
+export default async function LiveJeddahWeatherBanner({ locale = 'ar' }: { locale?: string }) {
   const weather = await getJeddahWeather();
   if (!weather) return null;
 
@@ -63,27 +47,31 @@ export default async function LiveJeddahWeatherBanner() {
 
   if (!level) return null;
 
-  const config = alertConfig[level];
+  const dict = getDictionary(locale as Locale);
+  const alertConfig = dict.weatherBanner[level] as { prefix: string; message: string };
+  const whatsappLink = getWhatsAppLink(locale as Locale);
+
+  const alertIcons: Record<AlertLevel, string> = { extreme: '🔴', high: '🟠', moderate: '🟡' };
 
   return (
     <div className={`${styles.banner} ${styles[level]}`} role="alert" aria-live="polite" data-nosnippet>
       <div className={styles.container}>
         <div className={styles.content}>
-          <span className={styles.icon}>{config.icon}</span>
+          <span className={styles.icon}>{alertIcons[level]}</span>
           <div className={styles.textBlock}>
-            <strong className={styles.prefix}>{config.prefix}: جدة الآن {temp}°C</strong>
+            <strong className={styles.prefix}>{alertConfig.prefix}: {dict.weatherBanner.jeddahNow} {temp}°C</strong>
             <span className={styles.separator}>|</span>
             <span className={styles.uvBadge}>UV: {uv.toFixed(1)}</span>
             <span className={styles.separator}>|</span>
-            <span className={styles.message}>{config.message}</span>
+            <span className={styles.message}>{alertConfig.message}</span>
           </div>
           <a
-            href={WHATSAPP_LINK}
+            href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.cta}
           >
-            احمِ سيارتك الآن ←
+            {dict.weatherBanner.cta}
           </a>
         </div>
       </div>

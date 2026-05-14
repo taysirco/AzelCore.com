@@ -1,14 +1,19 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Locale, localePath } from '@/lib/i18n';
 import { SITE_URL, SITE_NAME } from '@/lib/constants';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'مدونة — نصائح تظليل وعزل حراري من خبراء',
-  description: 'مقالات متخصصة في تظليل السيارات وعزل المباني — نصائح فنية، مقارنات أفلام، قوانين التظليل السعودية، وأكثر.',
-  alternates: { canonical: `${SITE_URL}/blog` },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
+  return {
+    title: isAr ? 'مدونة — نصائح تظليل وعزل حراري من خبراء' : 'مدونة — نصائح تظليل وعزل حراري من خبراء | AzelCore',
+    description: isAr ? 'مقالات متخصصة في تظليل السيارات وعزل المباني — نصائح فنية، مقارنات أفلام، قوانين التظليل السعودية، وأكثر.' : 'مقالات متخصصة في تظليل السيارات وعزل المباني — نصائح فنية، مقارنات أفلام، قوانين التظليل السعودية، وأكثر.',
+    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/blog')}` },
+  };
+}
 
 const blogPosts = [
   {
@@ -131,7 +136,9 @@ const itemListSchema = {
   ],
 };
 
-export default function BlogPage() {
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />

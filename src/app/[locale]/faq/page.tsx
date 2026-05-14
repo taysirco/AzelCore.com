@@ -1,14 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Locale, localePath } from '@/lib/i18n';
 import { SITE_URL, WHATSAPP_LINK } from '@/lib/constants';
 import { faqs } from '@/data/faqs';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'الأسئلة الشائعة — تظليل سيارات وعزل مباني في جدة',
-  description: 'إجابات شاملة عن تظليل السيارات وعزل المباني في جدة — قوانين التظليل، الأسعار، الفرق بين الأفلام، الضمان، والمزيد.',
-  alternates: { canonical: `${SITE_URL}/faq` },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
+  return {
+    title: isAr ? 'الأسئلة الشائعة — تظليل سيارات وعزل مباني في جدة' : 'الأسئلة الشائعة — تظليل سيارات وعزل مباني في جدة | AzelCore',
+    description: isAr ? 'إجابات شاملة عن تظليل السيارات وعزل المباني في جدة — قوانين التظليل، الأسعار، الفرق بين الأفلام، الضمان، والمزيد.' : 'إجابات شاملة عن تظليل السيارات وعزل المباني في جدة — قوانين التظليل، الأسعار، الفرق بين الأفلام، الضمان، والمزيد.',
+    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/faq')}` },
+  };
+}
 
 const faqGraphSchema = {
   '@context': 'https://schema.org',
@@ -47,7 +52,9 @@ const categories = [
   { key: 'warranty', label: 'الضمان', icon: '📜' },
 ] as const;
 
-export default function FAQPage() {
+export default async function FAQPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqGraphSchema) }} />

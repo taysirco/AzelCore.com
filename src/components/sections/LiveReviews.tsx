@@ -1,5 +1,7 @@
 import { fetchGoogleReviews } from '@/lib/fetchGoogleReviews';
 import { SITE_URL } from '@/lib/constants';
+import { getDictionary } from '@/lib/dictionaries';
+import type { Locale } from '@/lib/i18n';
 import styles from './LiveReviews.module.css';
 
 /**
@@ -9,14 +11,16 @@ import styles from './LiveReviews.module.css';
  * Renders visible reviews + dynamic AggregateRating JSON-LD.
  * No 'use client' = zero JS shipped to browser.
  */
-export default async function LiveReviews() {
+export default async function LiveReviews({ locale = 'ar' }: { locale?: string }) {
   const { reviews, averageRating, totalReviews, source } = await fetchGoogleReviews();
+  const dict = getDictionary(locale as Locale);
+  const isAr = locale === 'ar';
 
   const aggregateSchema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': `${SITE_URL}/#reviews`,
-    name: 'عزل كور',
+    name: isAr ? 'عزل كور' : 'AzelCore',
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: averageRating.toString(),
@@ -34,21 +38,21 @@ export default async function LiveReviews() {
   };
 
   return (
-    <section className={styles.reviews} aria-label="تقييمات العملاء">
+    <section className={styles.reviews} aria-label={dict.liveReviews.ariaLabel}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateSchema) }} />
       
       <div className={styles.container}>
         <div className={styles.header}>
           <span className={styles.overline}>
-            {source === 'google-api' ? '📍 تقييمات خرائط جوجل' : '⭐ تقييمات العملاء'}
+            {source === 'google-api' ? dict.liveReviews.overlineGoogle : dict.liveReviews.overlineFallback}
           </span>
-          <h2 className={styles.title}>ماذا يقول عملاؤنا؟</h2>
+          <h2 className={styles.title}>{dict.liveReviews.title}</h2>
           <div className={styles.aggregate}>
             <span className={styles.rating}>{averageRating}</span>
             <div className={styles.stars}>
               {'★'.repeat(Math.round(averageRating))}{'☆'.repeat(5 - Math.round(averageRating))}
             </div>
-            <span className={styles.count}>بناءً على {totalReviews} تقييم</span>
+            <span className={styles.count}>{dict.liveReviews.basedOn} {totalReviews} {dict.liveReviews.reviewUnit}</span>
           </div>
         </div>
 

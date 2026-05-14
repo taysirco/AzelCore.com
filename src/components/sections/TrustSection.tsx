@@ -1,30 +1,25 @@
-import styles from './TrustSection.module.css';
 import { OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
+import { getDictionary } from '@/lib/dictionaries';
+import type { Locale } from '@/lib/i18n';
 import AuthorProfile from '../seo/AuthorProfile';
 import OfficialPartnerBar from '../seo/OfficialPartnerBar';
+import styles from './TrustSection.module.css';
 
-const credentials = [
-  { icon: '📋', title: 'منشأة مسجلة', value: 'وزارة التجارة', desc: 'منشأة سعودية مسجلة رسمياً لدى وزارة التجارة' },
-  { icon: '🧾', title: 'مسجل ضريبياً', value: 'هيئة الزكاة والضريبة', desc: 'ملتزمون بالأنظمة الضريبية في المملكة' },
-  { icon: '🏆', title: 'وكيل جونسون المعتمد', value: 'Johnson Authorized Dealer', desc: 'الوكيل الرسمي لأفلام جونسون الأمريكية في جدة' },
-  { icon: '🔴', title: 'وكيل 3M المعتمد', value: '3M Authorized Dealer', desc: 'الوكيل الرسمي لأفلام 3M — Crystalline + Ceramic IR' },
-  { icon: '🛡️', title: 'ضمان مكتوب', value: 'حتى عمر السيارة', desc: 'شهادة ضمان رسمية مع كل عملية تركيب' },
-];
+export default function TrustSection({ locale = 'ar' }: { locale?: string }) {
+  const dict = getDictionary(locale as Locale);
+  const isAr = locale === 'ar';
 
-export default function TrustSection() {
   return (
-    <section className={styles.section} id="trust" aria-label="لماذا تثق بنا">
+    <section className={styles.section} id="trust" aria-label={dict.trust.ariaLabel}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <span className={styles.overline}>لماذا عزل كور</span>
-          <h2 className={styles.title}>ثقة موثقة — مش مجرد كلام</h2>
-          <p className={styles.subtitle}>
-            منشأة سعودية مسجلة ومرخصة — وكالة رسمية من جونسون و 3M الأمريكية.
-          </p>
+          <span className={styles.overline}>{dict.trust.overline}</span>
+          <h2 className={styles.title}>{dict.trust.title}</h2>
+          <p className={styles.subtitle}>{dict.trust.subtitle}</p>
         </div>
 
         <div className={styles.grid}>
-          {credentials.map((cred, i) => (
+          {dict.trust.credentials.map((cred: { icon: string; title: string; value: string; desc: string }, i: number) => (
             <div key={i} className={styles.card}>
               <span className={styles.cardIcon}>{cred.icon}</span>
               <h3 className={styles.cardTitle}>{cred.title}</h3>
@@ -38,9 +33,9 @@ export default function TrustSection() {
         <div style={{ marginTop: '2rem' }}>
           <AuthorProfile 
             expertName={OWNER_NAME}
-            expertTitle={OWNER_TITLE}
-            organization="Johnson Window Films + 3M (وكيل معتمد)"
-            quote="نستخدم فقط الأفلام الأصلية من المصنع مباشرة — لا نقبل بأي منتج مقلد أو مجهول المصدر. كل رول فيلم يحمل رقم تسلسلي يمكن تتبعه."
+            expertTitle={isAr ? OWNER_TITLE : 'Certified Insulation & Tinting Technician — Official Johnson & 3M Dealer'}
+            organization={isAr ? "Johnson Window Films + 3M (وكيل معتمد)" : "Johnson Window Films + 3M (Authorized Dealer)"}
+            quote={dict.trust.expertQuote}
             reviewDate="2026-05-01"
           />
         </div>

@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { TRUST_STATS } from '@/lib/constants';
+import { getTrustStats } from '@/lib/constants';
+import type { Locale } from '@/lib/i18n';
 import styles from './StatsSection.module.css';
 
 function AnimatedCounter({ end, suffix, duration = 2000 }: { end: number; suffix: string; duration?: number }) {
@@ -42,11 +43,14 @@ function AnimatedCounter({ end, suffix, duration = 2000 }: { end: number; suffix
   );
 }
 
-export default function StatsSection() {
+export default function StatsSection({ locale = 'ar' }: { locale?: string }) {
+  const stats = getTrustStats(locale as Locale);
+  const ariaLabel = locale === 'ar' ? 'إحصائيات عزل كور' : 'AzelCore Statistics';
+
   return (
-    <section className={styles.section} aria-label="إحصائيات عزل كور">
+    <section className={styles.section} aria-label={ariaLabel}>
       <div className={styles.inner}>
-        {TRUST_STATS.map((stat, i) => (
+        {stats.map((stat, i) => (
           <div key={i} className={styles.card}>
             <span className={styles.icon}>{stat.icon}</span>
             <AnimatedCounter end={stat.value} suffix={stat.suffix} />

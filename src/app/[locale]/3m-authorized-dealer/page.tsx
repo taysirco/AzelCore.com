@@ -1,24 +1,22 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Locale, localePath } from '@/lib/i18n';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN } from '@/lib/constants';
 import ServiceSummary from '@/components/seo/ServiceSummary';
 import AuthorProfile from '@/components/seo/AuthorProfile';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'وكيل 3M المعتمد في جدة — 3M Window Films',
-  description: 'عزل كور الوكيل الرسمي لأفلام 3M الأمريكية في جدة. Crystalline يحجب 97% من الأشعة تحت الحمراء مع 99.9% حجب UV. 4 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.',
-  keywords: ['عازل 3M', '3M Window Films', 'وكيل 3M جدة', '3M Crystalline', 'تظليل 3M', '3M Ceramic IR', 'نانو سيراميك 3M'],
-  alternates: { canonical: `${SITE_URL}/3m-authorized-dealer` },
-  openGraph: {
-    title: 'وكيل 3M المعتمد — 3M Window Films | جدة',
-    description: '4 خطوط إنتاج أمريكية — Crystalline بحجب 97% IR + 99.9% UV — ضمان عمر السيارة',
-    url: `${SITE_URL}/3m-authorized-dealer`,
-    images: [{ url: '/images/hero-car-tinting-jeddah.webp', width: 1200, height: 630 }],
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
+  return {
+    title: isAr ? 'وكيل 3M المعتمد في جدة — 3M Window Films' : 'وكيل 3M المعتمد في جدة — 3M Window Films | AzelCore',
+    description: isAr ? 'عزل كور الوكيل الرسمي لأفلام 3M الأمريكية في جدة. Crystalline يحجب 97% من الأشعة تحت الحمراء مع 99.9% حجب UV. 4 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.' : 'عزل كور الوكيل الرسمي لأفلام 3M الأمريكية في جدة. Crystalline يحجب 97% من الأشعة تحت الحمراء مع 99.9% حجب UV. 4 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.',
+    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/3m-authorized-dealer')}` },
+  };
+}
 
 const productLines = [
   {
@@ -171,7 +169,9 @@ const graphSchema = {
   ],
 };
 
-export default function ThreeMDealerPage() {
+export default async function ThreeMDealerPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }} />

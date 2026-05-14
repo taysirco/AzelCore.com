@@ -74,6 +74,39 @@
 /* Actions */
 .actions { display: flex; align-items: center; gap: var(--space-3); }
 
+/* Language Switcher */
+.langSwitch {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  transition: all var(--duration-fast) var(--ease-out);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.langSwitch:hover {
+  color: var(--text);
+  border-color: var(--primary);
+  background: var(--surface-hover);
+}
+
+/* LTR support for mobile menu */
+:global([dir="ltr"]) .mobileMenu {
+  right: auto;
+  left: -100%;
+  border-left: none;
+  border-right: 1px solid var(--border);
+}
+:global([dir="ltr"]) .mobileMenuOpen {
+  left: 0;
+  right: auto;
+}
+
 .ctaBtn {
   display: inline-flex;
   align-items: center;

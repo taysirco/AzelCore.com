@@ -12,7 +12,12 @@ import { useEffect } from 'react';
  * 2. get_thermal_data — Jeddah thermal research dataset
  * 3. navigate_to — Navigate to key site pages
  */
-export default function WebMCPProvider() {
+
+interface WebMCPProviderProps {
+  locale?: string;
+}
+
+export default function WebMCPProvider({ locale = 'ar' }: WebMCPProviderProps) {
   useEffect(() => {
     // Check if the WebMCP API is available
     if (typeof navigator === 'undefined') return;
