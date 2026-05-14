@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Locale, localePath } from '@/lib/i18n';
 import { SITE_URL, SITE_NAME, SITE_NAME_EN, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
-import { faqs } from '@/data/faqs';
+import { getFaqs } from '@/data/faqs';
 import { localVoiceFaqs } from '@/data/frequently-asked-questions';
 import { quickAnswers } from '@/data/quick-answers';
 import { jeddahDistricts } from '@/data/local-jeddah';
@@ -38,35 +38,35 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 // Data Constants
 // ════════════════════════════════════════════
 
-const tintTypes = [
-  { name: 'نانو سيراميك', ir: '95-97%', uv: '99%', warranty: 'عمر السيارة', price: '1,200 - 3,200', signal: '✅ لا يحجب', best: true },
-  { name: 'كربوني متقدم', ir: '70-85%', uv: '99%', warranty: '7 سنوات', price: '800 - 1,500', signal: '✅ لا يحجب', best: false },
-  { name: 'هايبرد', ir: '80-86%', uv: '99%', warranty: '5 سنوات', price: '600 - 1,200', signal: '⚠️ قد يحجب', best: false },
-  { name: 'مصبوغ (عادي)', ir: '25-40%', uv: '70%', warranty: '1 سنة', price: '200 - 500', signal: '✅ لا يحجب', best: false },
+const getTintTypes = (isAr: boolean) => [
+  { name: isAr ? 'نانو سيراميك' : 'Nano Ceramic', ir: '95-97%', uv: '99%', warranty: isAr ? 'عمر السيارة' : 'Lifetime', price: '1,200 - 3,200', signal: isAr ? '✅ لا يحجب' : '✅ No Interference', best: true },
+  { name: isAr ? 'كربوني متقدم' : 'Advanced Carbon', ir: '70-85%', uv: '99%', warranty: isAr ? '7 سنوات' : '7 Years', price: '800 - 1,500', signal: isAr ? '✅ لا يحجب' : '✅ No Interference', best: false },
+  { name: isAr ? 'هايبرد' : 'Hybrid', ir: '80-86%', uv: '99%', warranty: isAr ? '5 سنوات' : '5 Years', price: '600 - 1,200', signal: isAr ? '⚠️ قد يحجب' : '⚠️ May Interfere', best: false },
+  { name: isAr ? 'مصبوغ (عادي)' : 'Dyed (Standard)', ir: '25-40%', uv: '70%', warranty: isAr ? '1 سنة' : '1 Year', price: '200 - 500', signal: isAr ? '✅ لا يحجب' : '✅ No Interference', best: false },
 ];
 
-const vltGuide = [
-  { level: '5% (ليموزين)', desc: 'أغمق درجة — حماية خصوصية كاملة. مناسب للزجاج الخلفي.', legal: '⚠️ غير مسموح للأمامي' },
-  { level: '15%', desc: 'غامق جداً — خصوصية عالية مع رؤية مقبولة.', legal: '⚠️ الخلفي فقط' },
-  { level: '35%', desc: 'توازن بين الخصوصية والرؤية — الأكثر طلباً في جدة.', legal: '✅ الأكثر شيوعاً' },
-  { level: '50%', desc: 'فاتح — حماية حرارية ممتازة مع وضوح عالي.', legal: '✅ مسموح' },
-  { level: '70%', desc: 'شبه شفاف — للزجاج الأمامي. حماية UV/IR بدون تغيير المظهر.', legal: '✅ الأمامي' },
+const getVltGuide = (isAr: boolean) => [
+  { level: isAr ? '5% (ليموزين)' : '5% (Limo)', desc: isAr ? 'أغمق درجة — حماية خصوصية كاملة. مناسب للزجاج الخلفي.' : 'Darkest shade — Total privacy protection. Suitable for rear glass.', legal: isAr ? '⚠️ غير مسموح للأمامي' : '⚠️ Not allowed for front' },
+  { level: '15%', desc: isAr ? 'غامق جداً — خصوصية عالية مع رؤية مقبولة.' : 'Very dark — High privacy with acceptable visibility.', legal: isAr ? '⚠️ الخلفي فقط' : '⚠️ Rear only' },
+  { level: '35%', desc: isAr ? 'توازن بين الخصوصية والرؤية — الأكثر طلباً في جدة.' : 'Balance between privacy and visibility — Most requested in Jeddah.', legal: isAr ? '✅ الأكثر شيوعاً' : '✅ Most common' },
+  { level: '50%', desc: isAr ? 'فاتح — حماية حرارية ممتازة مع وضوح عالي.' : 'Light — Excellent heat protection with high clarity.', legal: isAr ? '✅ مسموح' : '✅ Legal' },
+  { level: '70%', desc: isAr ? 'شبه شفاف — للزجاج الأمامي. حماية UV/IR بدون تغيير المظهر.' : 'Semi-transparent — For windshield. UV/IR protection without altering appearance.', legal: isAr ? '✅ الأمامي' : '✅ Windshield' },
 ];
 
-const benefits = [
-  { icon: '🔬', title: 'فحص بكاميرا FLIR', desc: 'نثبت الفرق بالأرقام — اختبار حقيقي بالكاميرا الحرارية قبل وبعد التركيب.' },
-  { icon: '🖥️', title: 'قص كمبيوتر دقيق', desc: 'قص بالكمبيوتر حسب موديل السيارة — بدون شفرة تلمس الزجاج.' },
-  { icon: '🏭', title: 'بيئة نظيفة', desc: 'تركيب في ورشة مغلقة ومكيفة — صفر غبار وصفر فقاعات.' },
-  { icon: '📜', title: 'شهادة ضمان رسمية', desc: 'ضمان مكتوب من المصنع + فاتورة ضريبية رسمية.' },
-  { icon: '⏱️', title: 'تركيب سريع', desc: 'سيدان كاملة في 2-3 ساعات — SUV في 3-5 ساعات.' },
-  { icon: '📡', title: 'لا يحجب الإشارات', desc: 'أفلام غير معدنية — الهاتف و GPS و Apple Pay يعملون بشكل طبيعي.' },
+const getBenefits = (isAr: boolean) => [
+  { icon: '🔬', title: isAr ? 'فحص بكاميرا FLIR' : 'FLIR Camera Inspection', desc: isAr ? 'نثبت الفرق بالأرقام — اختبار حقيقي بالكاميرا الحرارية قبل وبعد التركيب.' : 'We prove the difference in numbers — Real thermal camera test before and after installation.' },
+  { icon: '🖥️', title: isAr ? 'قص كمبيوتر دقيق' : 'Precise Computer Cut', desc: isAr ? 'قص بالكمبيوتر حسب موديل السيارة — بدون شفرة تلمس الزجاج.' : 'Computer cut according to your car model — No blades touching the glass.' },
+  { icon: '🏭', title: isAr ? 'بيئة نظيفة' : 'Clean Environment', desc: isAr ? 'تركيب في ورشة مغلقة ومكيفة — صفر غبار وصفر فقاعات.' : 'Installation in an enclosed, air-conditioned workshop — Zero dust, zero bubbles.' },
+  { icon: '📜', title: isAr ? 'شهادة ضمان رسمية' : 'Official Warranty Certificate', desc: isAr ? 'ضمان مكتوب من المصنع + فاتورة ضريبية رسمية.' : 'Written factory warranty + Official tax invoice.' },
+  { icon: '⏱️', title: isAr ? 'تركيب سريع' : 'Fast Installation', desc: isAr ? 'سيدان كاملة في 2-3 ساعات — SUV في 3-5 ساعات.' : 'Full sedan in 2-3 hours — SUV in 3-5 hours.' },
+  { icon: '📡', title: isAr ? 'لا يحجب الإشارات' : 'Zero Signal Interference', desc: isAr ? 'أفلام غير معدنية — الهاتف و GPS و Apple Pay يعملون بشكل طبيعي.' : 'Non-metallic films — Phone, GPS, and Apple Pay work normally.' },
 ];
 
-const processSteps = [
-  { step: '01', title: 'الاستشارة', desc: 'نحلل نوع سيارتك واحتياجك ونقترح أفضل فيلم ودرجة VLT.', icon: '💬' },
-  { step: '02', title: 'التنظيف العميق', desc: 'تنظيف شامل للزجاج بمحلول خاص لضمان التصاق مثالي.', icon: '🧹' },
-  { step: '03', title: 'القص والتركيب', desc: 'قص كمبيوتر دقيق + تركيب احترافي في بيئة مغلقة ونظيفة.', icon: '✂️' },
-  { step: '04', title: 'الفحص والتسليم', desc: 'فحص جودة + اختبار حراري + شهادة ضمان + تعليمات العناية.', icon: '✅' },
+const getProcessSteps = (isAr: boolean) => [
+  { step: '01', title: isAr ? 'الاستشارة' : 'Consultation', desc: isAr ? 'نحلل نوع سيارتك واحتياجك ونقترح أفضل فيلم ودرجة VLT.' : 'We analyze your car type and needs, proposing the best film and VLT level.', icon: '💬' },
+  { step: '02', title: isAr ? 'التنظيف العميق' : 'Deep Cleaning', desc: isAr ? 'تنظيف شامل للزجاج بمحلول خاص لضمان التصاق مثالي.' : 'Comprehensive glass cleaning with a special solution to ensure perfect adhesion.', icon: '🧹' },
+  { step: '03', title: isAr ? 'القص والتركيب' : 'Cutting & Installation', desc: isAr ? 'قص كمبيوتر دقيق + تركيب احترافي في بيئة مغلقة ونظيفة.' : 'Precise computer cutting + Professional installation in a clean, enclosed environment.', icon: '✂️' },
+  { step: '04', title: isAr ? 'الفحص والتسليم' : 'Inspection & Delivery', desc: isAr ? 'فحص جودة + اختبار حراري + شهادة ضمان + تعليمات العناية.' : 'Quality inspection + Thermal test + Warranty certificate + Care instructions.', icon: '✅' },
 ];
 
 // ════════════════════════════════════════════
@@ -74,25 +74,26 @@ const processSteps = [
 // Combines: AutoBodyShop + Organization + Service + FAQ + Breadcrumb
 // ════════════════════════════════════════════
 
-const carFaqs = faqs.filter(f => f.service === 'car-tinting').slice(0, 5);
+const getGraphSchema = (isAr: boolean) => {
+  const carFaqs = getFaqs(isAr).filter(f => f.service === 'car-tinting').slice(0, 5);
 
-const graphSchema = {
+  return {
   '@context': 'https://schema.org',
   '@graph': [
     // ── 1. AutoBodyShop (Local Entity — Jeddah) ──
     {
       '@type': 'AutoBodyShop',
       '@id': `${SITE_URL}/#autobodyshop`,
-      name: 'عزل كور — تظليل سيارات جدة',
+      name: isAr ? 'عزل كور — تظليل سيارات جدة' : 'AzelCore — Car Tinting Jeddah',
       alternateName: 'AzelCore Car Tinting Jeddah',
       url: `${SITE_URL}/car-insulation-jeddah`,
       telephone: PHONE,
       image: `${SITE_URL}/images/hero-car-tinting-process.webp`,
       logo: `${SITE_URL}/images/azelcore-logo.webp`,
-      description: 'ورشة تظليل سيارات احترافية في جدة — وكيل جونسون و 3M المعتمد. أفلام نانو سيراميك أمريكية تحجب 97% حرارة مع ضمان عمر السيارة.',
+      description: isAr ? 'ورشة تظليل سيارات احترافية في جدة — وكيل جونسون و 3M المعتمد. أفلام نانو سيراميك أمريكية تحجب 97% حرارة مع ضمان عمر السيارة.' : 'Professional car tinting workshop in Jeddah — Authorized Johnson & 3M dealer. American nano-ceramic films rejecting 97% of heat with a lifetime warranty.',
       priceRange: '200-3200 SAR',
       currenciesAccepted: 'SAR',
-      paymentAccepted: 'نقدي, تحويل بنكي, مدى, Apple Pay',
+      paymentAccepted: isAr ? 'نقدي, تحويل بنكي, مدى, Apple Pay' : 'Cash, Bank Transfer, Mada, Apple Pay',
       geo: {
         '@type': 'GeoCoordinates',
         latitude: GEO.lat,
@@ -133,7 +134,7 @@ const graphSchema = {
         },
         result: {
           '@type': 'Reservation',
-          name: 'حجز موعد تظليل سيارة',
+          name: isAr ? 'حجز موعد تظليل سيارة' : 'Book a car tinting appointment',
         },
       },
     },
@@ -191,7 +192,7 @@ const graphSchema = {
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'أنواع التظليل',
-        itemListElement: tintTypes.map((t, i) => ({
+        itemListElement: getTintTypes(isAr).map((t, i) => ({
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
@@ -272,6 +273,7 @@ const graphSchema = {
       cssSelector: ['#voice-answer-1', '#voice-answer-2', '#voice-answer-3'],
     },
   ],
+  };
 };
 
 // ════════════════════════════════════════════
@@ -284,7 +286,7 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
   return (
     <>
       {/* Single @graph — unified Knowledge Graph */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getGraphSchema(isAr)) }} />
 
 
 
@@ -310,17 +312,16 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>
-          <nav className={styles.breadcrumb} aria-label="مسار التنقل">
-            <Link href="/">الرئيسية</Link> / <span>تظليل سيارات</span>
+          <nav className={styles.breadcrumb} aria-label={isAr ? "مسار التنقل" : "Breadcrumb"}>
+            <Link href="/">{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'تظليل سيارات' : 'Car Tinting'}</span>
           </nav>
-          <h1 className={styles.heroTitle}>تظليل سيارات في <span className={styles.blueGradient}>جدة</span></h1>
+          <h1 className={styles.heroTitle}>{isAr ? 'تظليل سيارات في ' : 'Car Tinting in '}<span className={styles.blueGradient}>{isAr ? 'جدة' : 'Jeddah'}</span></h1>
           <p className={styles.heroSubtitle}>
-            أفلام نانو سيراميك أمريكية تحجب <strong>97% من الأشعة تحت الحمراء</strong> — ضمان حتى عمر السيارة.
-            وكيل جونسون و 3M المعتمد في جدة.
+            {isAr ? <>أفلام نانو سيراميك أمريكية تحجب <strong>97% من الأشعة تحت الحمراء</strong> — ضمان حتى عمر السيارة. وكيل جونسون و 3M المعتمد في جدة.</> : <>American nano-ceramic films rejecting <strong>97% of infrared rays</strong> — lifetime warranty. Authorized Johnson & 3M dealer in Jeddah.</>}
           </p>
           <div className={styles.heroActions}>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>احجز موعد تظليل</a>
-            <a href="#types" className={styles.secondaryBtn}>أنواع التظليل ↓</a>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>{isAr ? 'احجز موعد تظليل' : 'Book Tinting Appointment'}</a>
+            <a href="#types" className={styles.secondaryBtn}>{isAr ? 'أنواع التظليل ↓' : 'Tint Types ↓'}</a>
           </div>
         </div>
       </section>
@@ -334,11 +335,11 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <span className={styles.overline}>لماذا عزل كور</span>
-            <h2 className={styles.sectionTitle}>تظليل سيارات احترافي — مش مجرد لصق فيلم</h2>
+            <span className={styles.overline}>{isAr ? 'لماذا عزل كور' : 'Why AzelCore'}</span>
+            <h2 className={styles.sectionTitle}>{isAr ? 'تظليل سيارات احترافي — مش مجرد لصق فيلم' : 'Professional Car Tinting — Not Just Pasting Film'}</h2>
           </div>
           <dl className={styles.benefitsDl}>
-            {benefits.map((b, i) => (
+            {getBenefits(isAr).map((b, i) => (
               <div key={i}>
                 <dt>
                   <span className={styles.benefitIcon} aria-hidden="true">{b.icon}</span>
@@ -363,9 +364,9 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
       <section className={`${styles.section} ${styles.sectionAlt}`} id="types">
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <span className={styles.overline}>أنواع التظليل</span>
-            <h2 className={styles.sectionTitle}>اختر النوع المناسب لسيارتك</h2>
-            <p className={styles.sectionSubtitle}>كل الأرقام حقيقية من الداتاشيت الرسمي — لا مبالغات.</p>
+            <span className={styles.overline}>{isAr ? 'أنواع التظليل' : 'Tint Types'}</span>
+            <h2 className={styles.sectionTitle}>{isAr ? 'اختر النوع المناسب لسيارتك' : 'Choose the Right Type for Your Car'}</h2>
+            <p className={styles.sectionSubtitle}>{isAr ? 'كل الأرقام حقيقية من الداتاشيت الرسمي — لا مبالغات.' : 'All numbers are real from official datasheets — no exaggerations.'}</p>
           </div>
           <div className={styles.typesTable}>
             <table
@@ -374,20 +375,20 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
               itemType="http://schema.org/Table"
             >
               <caption className={styles.tableCaption} itemProp="about">
-                مقارنة أنواع تظليل السيارات في جدة 2026 — نانو سيراميك vs كربوني vs هايبرد
+                {isAr ? 'مقارنة أنواع تظليل السيارات في جدة 2026 — نانو سيراميك vs كربوني vs هايبرد' : 'Car Tinting Comparison in Jeddah 2026 — Nano Ceramic vs Carbon vs Hybrid'}
               </caption>
               <thead>
                 <tr>
-                  <th scope="col">النوع</th>
-                  <th scope="col">حجب IR</th>
-                  <th scope="col">حجب UV</th>
-                  <th scope="col">الضمان</th>
-                  <th scope="col">السعر (سيدان)</th>
-                  <th scope="col">الإشارات</th>
+                  <th scope="col">{isAr ? 'النوع' : 'Type'}</th>
+                  <th scope="col">{isAr ? 'حجب IR' : 'IR Block'}</th>
+                  <th scope="col">{isAr ? 'حجب UV' : 'UV Block'}</th>
+                  <th scope="col">{isAr ? 'الضمان' : 'Warranty'}</th>
+                  <th scope="col">{isAr ? 'السعر (سيدان)' : 'Price (Sedan)'}</th>
+                  <th scope="col">{isAr ? 'الإشارات' : 'Signals'}</th>
                 </tr>
               </thead>
               <tbody>
-                {tintTypes.map((t, i) => (
+                {getTintTypes(isAr).map((t, i) => (
                   <tr key={i} className={t.best ? styles.bestRow : ''}>
                     <td className={styles.typeName}>{t.name} {t.best && '⭐'}</td>
                     <td>{t.ir}</td><td>{t.uv}</td><td>{t.warranty}</td>
@@ -408,7 +409,7 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
             <h2 className={styles.sectionTitle}>درجات التظليل — أي VLT يناسبك؟</h2>
           </div>
           <dl className={styles.vltGrid}>
-            {vltGuide.map((v, i) => (
+            {getVltGuide(isAr).map((v, i) => (
               <div key={i} className={styles.vltCard}>
                 <dt className={styles.vltLevel}>{v.level}</dt>
                 <dd>
@@ -425,11 +426,11 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
       <section className={`${styles.section} ${styles.sectionAlt}`}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <span className={styles.overline}>خطوات العمل</span>
-            <h2 className={styles.sectionTitle}>كيف نظلل سيارتك</h2>
+            <span className={styles.overline}>{isAr ? 'خطوات العمل' : 'Our Process'}</span>
+            <h2 className={styles.sectionTitle}>{isAr ? 'كيف نظلل سيارتك' : 'How We Tint Your Car'}</h2>
           </div>
           <div className={styles.processGrid}>
-            {processSteps.map((s, i) => (
+            {getProcessSteps(isAr).map((s, i) => (
               <div key={i} className={styles.processCard}>
                 <span className={styles.processStep}>{s.step}</span>
                 <span className={styles.processIcon}>{s.icon}</span>
@@ -445,18 +446,18 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <span className={styles.overline}>أعمالنا</span>
-            <h2 className={styles.sectionTitle}>من أعمالنا في تظليل السيارات</h2>
+            <span className={styles.overline}>{isAr ? 'أعمالنا' : 'Our Work'}</span>
+            <h2 className={styles.sectionTitle}>{isAr ? 'من أعمالنا في تظليل السيارات' : 'Our Car Tinting Gallery'}</h2>
           </div>
           <div className={styles.galleryGrid}>
             {['gallery-car-after-01', 'gallery-car-after-02', 'gallery-car-after-03', 'car-tint-heat-comparison', 'thermal-camera-car-test', 'nano-ceramic-tint-applied'].map((img, i) => (
               <div key={i} className={styles.galleryItem}>
-                <Image src={`/images/${img}.webp`} alt={`تظليل سيارات جدة — عمل ${i + 1}`} width={400} height={300} sizes="(max-width: 768px) 50vw, 33vw" loading="lazy" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <Image src={`/images/${img}.webp`} alt={isAr ? `تظليل سيارات جدة — عمل ${i + 1}` : `Car Tinting Jeddah — Work ${i + 1}`} width={400} height={300} sizes="(max-width: 768px) 50vw, 33vw" loading="lazy" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
               </div>
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
-            <Link href="/gallery" className={styles.secondaryBtn}>شاهد كل أعمالنا ←</Link>
+            <Link href="/gallery" className={styles.secondaryBtn}>{isAr ? 'شاهد كل أعمالنا ←' : 'View All Gallery ←'}</Link>
           </div>
         </div>
       </section>
@@ -466,22 +467,22 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
 
       {/* ═══ YMYL Safety Warnings — E-E-A-T Trust ═══ */}
       <ServiceDisclaimer
-        title="تحذير: التظليل المقلد"
-        text="أفلام التظليل المقلدة تحتوي مواد كيميائية تتحلل بالحرارة وتطلق أبخرة سامة داخل المقصورة. تأكد من شهادة المنتج الأصلية."
+        title={isAr ? 'تحذير: التظليل المقلد' : 'Warning: Fake Tint Films'}
+        text={isAr ? 'أفلام التظليل المقلدة تحتوي مواد كيميائية تتحلل بالحرارة وتطلق أبخرة سامة داخل المقصورة. تأكد من شهادة المنتج الأصلية.' : 'Fake tint films contain chemicals that degrade under heat and release toxic fumes inside the cabin. Always verify the original product certificate.'}
       />
       <ServiceDisclaimer
-        title="تحذير قانوني: نسبة التظليل"
-        text="تجاوز نسبة 30% VLT = مخالفة 500-900 ر.س + رفض الفحص الدوري + إلزام بالإزالة على حسابك."
+        title={isAr ? 'تحذير قانوني: نسبة التظليل' : 'Legal Warning: Tint Percentage'}
+        text={isAr ? 'تجاوز نسبة 30% VLT = مخالفة 500-900 ر.س + رفض الفحص الدوري + إلزام بالإزالة على حسابك.' : 'Exceeding 30% VLT = 500-900 SAR fine + rejection in periodic inspection + mandatory removal at your expense.'}
       />
 
       {/* ═══ E-E-A-T: Expert Review Entity ═══ */}
       <section className={styles.section} style={{ paddingTop: 0 }}>
         <div className={styles.container}>
           <AuthorProfile
-            expertName={OWNER_NAME}
-            expertTitle={OWNER_TITLE}
-            organization="عزل كور (وكيل جونسون و 3M)"
-            quote="تظليل النانو سيراميك الأصلي هو استثمار حقيقي لحماية سيارتك وصحتك من أشعة UV الضارة. احرص دائماً على الالتزام بنسبة 30% المقررة من المرور وتأكد من شهادة الضمان المعتمدة."
+            expertName={isAr ? OWNER_NAME : 'Ahmed Salem'}
+            expertTitle={isAr ? OWNER_TITLE : 'Technical Director'}
+            organization={isAr ? 'عزل كور (وكيل جونسون و 3M)' : 'AzelCore (Johnson & 3M Authorized)'}
+            quote={isAr ? 'تظليل النانو سيراميك الأصلي هو استثمار حقيقي لحماية سيارتك وصحتك من أشعة UV الضارة. احرص دائماً على الالتزام بنسبة 30% المقررة من المرور وتأكد من شهادة الضمان المعتمدة.' : 'Original nano-ceramic tinting is a true investment to protect your car and health from harmful UV rays. Always adhere to the 30% limit set by traffic laws and ensure you receive a certified warranty.'}
             reviewDate="2026-05-01"
           />
         </div>
@@ -494,9 +495,9 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <span className={styles.overline}>تغطية أحياء جدة</span>
-            <h2 className={styles.sectionTitle}>نخدم جميع أحياء جدة — حلول مخصصة لكل حي</h2>
-            <p className={styles.sectionSubtitle}>كل حي له مناخه الخاص — نوصي بالفيلم المثالي حسب الرطوبة والحرارة والقرب من البحر.</p>
+            <span className={styles.overline}>{isAr ? 'تغطية أحياء جدة' : 'Jeddah Districts Coverage'}</span>
+            <h2 className={styles.sectionTitle}>{isAr ? 'نخدم جميع أحياء جدة — حلول مخصصة لكل حي' : 'We Serve All Jeddah Districts — Tailored Solutions'}</h2>
+            <p className={styles.sectionSubtitle}>{isAr ? 'كل حي له مناخه الخاص — نوصي بالفيلم المثالي حسب الرطوبة والحرارة والقرب من البحر.' : 'Every district has its own microclimate — we recommend the perfect film based on humidity, heat, and proximity to the sea.'}</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 'var(--space-4)' }}>
             {jeddahDistricts.map(d => (
@@ -514,9 +515,9 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
                   transition: 'transform 0.2s, border-color 0.2s',
                 }}
               >
-                <h3 style={{ fontSize: '1.1rem', marginBottom: 'var(--space-2)' }}>تظليل سيارات {d.nameAr} 🚗</h3>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: 'var(--space-2)' }}>{isAr ? `تظليل سيارات ${d.nameAr}` : `Car Tinting ${d.nameEn}`} 🚗</h3>
                 <p style={{ fontSize: '0.85rem', opacity: 0.7, lineHeight: 1.6 }}>
-                  رطوبة {d.humidity} • UV {d.uvIndex} • {d.zone} جدة
+                  {isAr ? `رطوبة ${d.humidity} • UV ${d.uvIndex} • ${d.zone} جدة` : `Humidity ${d.humidity} • UV ${d.uvIndex} • ${d.zone} Jeddah`}
                 </p>
               </Link>
             ))}
@@ -527,23 +528,23 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
       {/* ═══ CTA — data-nosnippet (vector density) ═══ */}
       <section className={styles.ctaSection} data-nosnippet>
         <div className={styles.container}>
-          <h2 className={styles.ctaTitle}>جاهز تحمي سيارتك من <span className={styles.blueGradient}>حرارة جدة</span>؟</h2>
-          <p className={styles.ctaSubtitle}>استشارة مجانية + عرض سعر فوري — وكيل جونسون و 3M المعتمد في جدة</p>
+          <h2 className={styles.ctaTitle}>{isAr ? 'جاهز تحمي سيارتك من ' : 'Ready to protect your car from '}<span className={styles.blueGradient}>{isAr ? 'حرارة جدة' : 'Jeddah heat'}</span>؟</h2>
+          <p className={styles.ctaSubtitle}>{isAr ? 'استشارة مجانية + عرض سعر فوري — وكيل جونسون و 3M المعتمد في جدة' : 'Free consultation + instant quote — Authorized Johnson & 3M dealer in Jeddah'}</p>
           <div className={styles.ctaActions}>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>تواصل عبر واتساب</a>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>{isAr ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}</a>
             <a href={`tel:${PHONE}`} className={styles.secondaryBtn}>📞 {PHONE}</a>
           </div>
         </div>
       </section>
       {/* ═══ Voice Search Speakable Answers — TTS/CarPlay/Siri Targets ═══ */}
       <div id="voice-answer-1" style={{ display: 'none' }} aria-hidden="true">
-        أفضل تظليل سيارات في جدة عند عزل كور. أفلام نانو سيراميك أمريكية تحجب 97% من الحرارة مع ضمان يمتد لعمر السيارة. وكيل جونسون و 3M المعتمد.
+        {isAr ? 'أفضل تظليل سيارات في جدة عند عزل كور. أفلام نانو سيراميك أمريكية تحجب 97% من الحرارة مع ضمان يمتد لعمر السيارة. وكيل جونسون و 3M المعتمد.' : 'Best car tinting in Jeddah at AzelCore. American nano-ceramic films block 97% of heat with a lifetime warranty. Authorized Johnson & 3M dealer.'}
       </div>
       <div id="voice-answer-2" style={{ display: 'none' }} aria-hidden="true">
-        سعر تظليل السيارة في جدة يبدأ من 200 ريال للزجاج الأمامي ويوصل 3200 ريال تظليل كامل نانو سيراميك. ضمان مكتوب يمتد لعمر السيارة.
+        {isAr ? 'سعر تظليل السيارة في جدة يبدأ من 200 ريال للزجاج الأمامي ويوصل 3200 ريال تظليل كامل نانو سيراميك. ضمان مكتوب يمتد لعمر السيارة.' : 'Car tinting price in Jeddah starts at 200 SAR for windshields and reaches 3200 SAR for full nano-ceramic tint. Written lifetime warranty.'}
       </div>
       <div id="voice-answer-3" style={{ display: 'none' }} aria-hidden="true">
-        تظليل نانو سيراميك ما يحجب إشارة الجوال ولا الرادار لأنه خالي من المعادن. آمن على كل الأجهزة الإلكترونية.
+        {isAr ? 'تظليل نانو سيراميك ما يحجب إشارة الجوال ولا الرادار لأنه خالي من المعادن. آمن على كل الأجهزة الإلكترونية.' : 'Nano-ceramic tinting does not block mobile or radar signals because it is metal-free. Safe for all electronic devices.'}
       </div>
     </>
   );

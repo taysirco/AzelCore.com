@@ -1,13 +1,14 @@
 import Link from 'next/link';
-import { faqs } from '@/data/faqs';
+import { getFaqs } from '@/data/faqs';
 import { getDictionary } from '@/lib/dictionaries';
 import { localePath, type Locale } from '@/lib/i18n';
 import styles from './FAQSection.module.css';
 
-const topFAQs = faqs.slice(0, 6);
-
 export default function FAQSection({ locale = 'ar' }: { locale?: string }) {
   const dict = getDictionary(locale as Locale);
+  const isAr = locale === 'ar';
+  const allFaqs = getFaqs(isAr);
+  const topFAQs = allFaqs.slice(0, 6);
 
   return (
     <section className={styles.section} id="faq" aria-label={dict.faqSection.ariaLabel}>
@@ -33,7 +34,7 @@ export default function FAQSection({ locale = 'ar' }: { locale?: string }) {
 
         <div className={styles.seeAll}>
           <Link href={localePath(locale as Locale, '/faq')} className={styles.seeAllLink}>
-            {dict.faqSection.seeAll} ({faqs.length}) ←
+            {dict.faqSection.seeAll} ({allFaqs.length}) ←
           </Link>
         </div>
       </div>

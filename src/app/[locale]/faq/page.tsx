@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Locale, localePath } from '@/lib/i18n';
 import { SITE_URL, WHATSAPP_LINK } from '@/lib/constants';
-import { faqs } from '@/data/faqs';
+import { getFaqs } from '@/data/faqs';
 import styles from './page.module.css';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -15,13 +15,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-const faqGraphSchema = {
+const getFaqGraphSchema = (isAr: boolean) => ({
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'FAQPage',
       '@id': `${SITE_URL}/faq#faqpage`,
-      mainEntity: faqs.map(f => ({
+      mainEntity: getFaqs(isAr).map(f => ({
         '@type': 'Question',
         name: f.question,
         acceptedAnswer: { '@type': 'Answer', text: f.answer },
@@ -30,8 +30,8 @@ const faqGraphSchema = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
-        { '@type': 'ListItem', position: 2, name: 'الأسئلة الشائعة', item: `${SITE_URL}/faq` },
+        { '@type': 'ListItem', position: 1, name: isAr ? 'الرئيسية' : 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: isAr ? 'الأسئلة الشائعة' : 'FAQ', item: `${SITE_URL}/faq` },
       ],
     },
     // ── SpeakableSpecification — FAQ Voice Search Monopoly ──
@@ -40,16 +40,16 @@ const faqGraphSchema = {
       cssSelector: ['#voice-answer-faq-1', '#voice-answer-faq-2', '#voice-answer-faq-3'],
     },
   ],
-};
+});
 
-const categories = [
-  { key: 'all', label: 'الكل', icon: '📋' },
-  { key: 'legal', label: 'القوانين', icon: '⚖️' },
-  { key: 'price', label: 'الأسعار', icon: '💰' },
-  { key: 'comparison', label: 'المقارنات', icon: '⚡' },
-  { key: 'safety', label: 'السلامة', icon: '🛡️' },
-  { key: 'process', label: 'آلية العمل', icon: '🔧' },
-  { key: 'warranty', label: 'الضمان', icon: '📜' },
+const getCategories = (isAr: boolean) => [
+  { key: 'all', label: isAr ? 'الكل' : 'All', icon: '📋' },
+  { key: 'legal', label: isAr ? 'القوانين' : 'Legal', icon: '⚖️' },
+  { key: 'price', label: isAr ? 'الأسعار' : 'Pricing', icon: '💰' },
+  { key: 'comparison', label: isAr ? 'المقارنات' : 'Comparisons', icon: '⚡' },
+  { key: 'safety', label: isAr ? 'السلامة' : 'Safety', icon: '🛡️' },
+  { key: 'process', label: isAr ? 'آلية العمل' : 'Process', icon: '🔧' },
+  { key: 'warranty', label: isAr ? 'الضمان' : 'Warranty', icon: '📜' },
 ] as const;
 
 export default async function FAQPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -57,15 +57,15 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
   const isAr = locale === 'ar';
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqGraphSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getFaqGraphSchema(isAr)) }} />
 
       <section className={styles.pageHeader}>
         <div className={styles.container}>
-          <nav className={styles.breadcrumb} aria-label="مسار التنقل">
-            <Link href="/">الرئيسية</Link> / <span>الأسئلة الشائعة</span>
+          <nav className={styles.breadcrumb} aria-label={isAr ? "مسار التنقل" : "Breadcrumbs"}>
+            <Link href="/">{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'الأسئلة الشائعة' : 'FAQ'}</span>
           </nav>
-          <h1 className={styles.pageTitle}>الأسئلة <span className={styles.highlight}>الشائعة</span></h1>
-          <p className={styles.pageSubtitle}>كل ما تحتاج تعرفه عن التظليل والعزل الحراري — إجابات واضحة ومباشرة.</p>
+          <h1 className={styles.pageTitle}>{isAr ? 'الأسئلة ' : 'Frequently Asked '}<span className={styles.highlight}>{isAr ? 'الشائعة' : 'Questions'}</span></h1>
+          <p className={styles.pageSubtitle}>{isAr ? 'كل ما تحتاج تعرفه عن التظليل والعزل الحراري — إجابات واضحة ومباشرة.' : 'Everything you need to know about tinting and thermal insulation — clear and direct answers.'}</p>
         </div>
       </section>
 
@@ -73,7 +73,7 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
       <section className={styles.filtersSection}>
         <div className={styles.container}>
           <div className={styles.filters}>
-            {categories.map(c => (
+            {getCategories(isAr).map(c => (
               <span key={c.key} className={`${styles.filterPill} ${c.key === 'all' ? styles.filterActive : ''}`}>
                 {c.icon} {c.label}
               </span>
@@ -86,7 +86,7 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.faqGrid}>
-            {faqs.map((faq) => (
+            {getFaqs(isAr).map((faq) => (
               <details key={faq.id} className={styles.faqItem}>
                 <summary className={styles.faqQuestion}>
                   <span className={styles.questionText}>{faq.question}</span>
@@ -100,9 +100,9 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
                   <p>{faq.answer}</p>
                   <div className={styles.faqMeta}>
                     <span className={styles.faqTag}>
-                      {faq.service === 'car-tinting' ? '🚗 سيارات' :
-                       faq.service === 'building-glass' ? '🏢 مباني' :
-                       faq.service === 'thermal' ? '🌡️ حراري' : '📋 عام'}
+                      {faq.service === 'car-tinting' ? (isAr ? '🚗 سيارات' : '🚗 Cars') :
+                       faq.service === 'building-glass' ? (isAr ? '🏢 مباني' : '🏢 Buildings') :
+                       faq.service === 'thermal' ? (isAr ? '🌡️ حراري' : '🌡️ Thermal') : (isAr ? '📋 عام' : '📋 General')}
                     </span>
                   </div>
                 </div>
@@ -115,22 +115,22 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
       {/* Still Have Questions — data-nosnippet (vector density) */}
       <section className={styles.ctaSection} data-nosnippet>
         <div className={styles.container}>
-          <h2 className={styles.ctaTitle}>ما لقيت إجابة سؤالك؟</h2>
-          <p className={styles.ctaSubtitle}>تواصل معنا مباشرة — نرد في أقل من 5 دقائق.</p>
+          <h2 className={styles.ctaTitle}>{isAr ? 'ما لقيت إجابة سؤالك؟' : 'Didn\'t find your answer?'}</h2>
+          <p className={styles.ctaSubtitle}>{isAr ? 'تواصل معنا مباشرة — نرد في أقل من 5 دقائق.' : 'Contact us directly — we reply in under 5 minutes.'}</p>
           <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>
-            💬 اسأل عبر واتساب
+            💬 {isAr ? 'اسأل عبر واتساب' : 'Ask via WhatsApp'}
           </a>
         </div>
       </section>
       {/* ═══ Voice Search Speakable Answers — FAQ TTS Targets ═══ */}
       <div id="voice-answer-faq-1" style={{ display: 'none' }} aria-hidden="true">
-        نعم التظليل مسموح في السعودية بشروط. الزجاج الأمامي يجب يكون 70% شفافية والخلفي مفتوح. عزل كور ينصحك بالدرجة المناسبة.
+        {isAr ? 'نعم التظليل مسموح في السعودية بشروط. الزجاج الأمامي يجب يكون 70% شفافية والخلفي مفتوح. عزل كور ينصحك بالدرجة المناسبة.' : 'Yes, tinting is allowed in Saudi Arabia under certain conditions. The front windshield must be 70% clear. AzelCore advises you on the right grade.'}
       </div>
       <div id="voice-answer-faq-2" style={{ display: 'none' }} aria-hidden="true">
-        الفرق بين نانو سيراميك وكربوني إن النانو سيراميك يحجب 97% حرارة والكربوني 70% بس. النانو سيراميك أغلى لكن أفضل بكثير في حرارة جدة.
+        {isAr ? 'الفرق بين نانو سيراميك وكربوني إن النانو سيراميك يحجب 97% حرارة والكربوني 70% بس. النانو سيراميك أغلى لكن أفضل بكثير في حرارة جدة.' : 'The difference between nano-ceramic and carbon is that nano-ceramic blocks 97% heat while carbon blocks only 70%. Nano-ceramic is more expensive but far better for Jeddah\'s heat.'}
       </div>
       <div id="voice-answer-faq-3" style={{ display: 'none' }} aria-hidden="true">
-        تظليل نانو سيراميك ما يحجب إشارة الجوال أبداً. لأنه خالي من المعادن. الجوال وGPS وأبل باي كلها تشتغل عادي.
+        {isAr ? 'تظليل نانو سيراميك ما يحجب إشارة الجوال أبداً. لأنه خالي من المعادن. الجوال وGPS وأبل باي كلها تشتغل عادي.' : 'Nano-ceramic tint never blocks mobile signals because it is metal-free. Mobile, GPS, and Apple Pay will all work normally.'}
       </div>
     </>
   );

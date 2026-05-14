@@ -274,12 +274,18 @@ export function middleware(request: NextRequest) {
   // ═══ Locale Detection ═══
   const pathLocale = getPathLocale(pathname);
 
-  if (pathLocale) {
-    // Path already has a locale prefix → set cookie and continue
+  // If path starts with /ar, we MUST redirect it to the root to avoid duplicate content
+  if (pathLocale === 'ar') {
+    const newPath = pathname.replace(/^\/ar(\/|$)/, '/');
+    const redirectUrl = new URL(newPath, request.url);
+    redirectUrl.search = request.nextUrl.search;
+    return NextResponse.redirect(redirectUrl, 308);
+  }
+
+  // If path starts with /en, allow it to pass normally
+  if (pathLocale === 'en') {
     const response = NextResponse.next();
-    
-    // Persist locale preference
-    response.cookies.set('x-locale', pathLocale, {
+    response.cookies.set('x-locale', 'en', {
       httpOnly: false,
       secure: true,
       sameSite: 'lax',
@@ -296,33 +302,52 @@ export function middleware(request: NextRequest) {
       maxAge: 60 * 60 * 24, // 24 hours
       path: '/',
     });
-    
     return response;
   }
 
-  // ═══ No locale in path → determine and redirect ═══
+  // ═══ No locale in path → Process as Default (Arabic) or Redirect to English ═══
   // Priority: cookie > Accept-Language > default
   const cookieLocale = request.cookies.get('x-locale')?.value;
   const detectedLocale = (cookieLocale && SUPPORTED_LOCALES.includes(cookieLocale))
     ? cookieLocale
     : detectLocaleFromHeader(request);
 
-  // Build the redirect URL
-  const newPathname = pathname === '/' ? '' : pathname;
-  const redirectUrl = new URL(`/${detectedLocale}${newPathname}`, request.url);
+  if (detectedLocale === 'en') {
+    // Redirect to explicit English path
+    const newPathname = pathname === '/' ? '' : pathname;
+    const redirectUrl = new URL(`/en${newPathname}`, request.url);
+    redirectUrl.search = request.nextUrl.search;
+    const response = NextResponse.redirect(redirectUrl, 308);
+    response.cookies.set('x-locale', 'en', {
+      httpOnly: false,
+      secure: true,
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 365,
+      path: '/',
+    });
+    return response;
+  }
+
+  // Rewrite to Arabic internal route for default paths without modifying the browser URL
+  const rewriteUrl = new URL(`/ar${pathname === '/' ? '' : pathname}`, request.url);
+  rewriteUrl.search = request.nextUrl.search;
+  const response = NextResponse.rewrite(rewriteUrl);
   
-  // Preserve query string
-  redirectUrl.search = request.nextUrl.search;
-  
-  // 308 Permanent Redirect (preserves method)
-  const response = NextResponse.redirect(redirectUrl, 308);
-  
-  // Set locale cookie
-  response.cookies.set('x-locale', detectedLocale, {
+  response.cookies.set('x-locale', 'ar', {
     httpOnly: false,
     secure: true,
     sameSite: 'lax',
     maxAge: 60 * 60 * 24 * 365,
+    path: '/',
+  });
+  
+  // Geo detection for GeoBanner
+  const isJeddah = isJeddahUser(request);
+  response.cookies.set('x-geo-city', isJeddah ? 'jeddah' : 'other', {
+    httpOnly: false,
+    secure: true,
+    sameSite: 'lax',
+    maxAge: 60 * 60 * 24,
     path: '/',
   });
 

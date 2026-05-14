@@ -9,27 +9,27 @@ interface Option {
   priceModifier: number;
 }
 
-const CAR_SIZES: Option[] = [
-  { id: 'sedan', label: 'سيدان (صغيرة/متوسطة)', priceModifier: 1 },
-  { id: 'suv', label: 'جيب SUV (صفين)', priceModifier: 1.2 },
-  { id: 'suv-large', label: 'جيب عائلي (3 صفوف)', priceModifier: 1.4 },
+const getCarSizes = (isAr: boolean): Option[] => [
+  { id: 'sedan', label: isAr ? 'سيدان (صغيرة/متوسطة)' : 'Sedan (Small/Mid-size)', priceModifier: 1 },
+  { id: 'suv', label: isAr ? 'جيب SUV (صفين)' : 'SUV (2 Rows)', priceModifier: 1.2 },
+  { id: 'suv-large', label: isAr ? 'جيب عائلي (3 صفوف)' : 'Family SUV (3 Rows)', priceModifier: 1.4 },
 ];
 
-const FILM_TYPES: Option[] = [
-  { id: 'carbon', label: 'فيلم كربوني (اقتصادي)', priceModifier: 600 },
-  { id: 'renegade', label: 'جونسون Renegade (كلاسيكي)', priceModifier: 800 },
-  { id: 'ceramic-basic', label: 'نانو سيراميك جونسون Marathon', priceModifier: 1100 },
-  { id: 'ceramic-johnson', label: 'جونسون Supreme IR ⭐', priceModifier: 1800 },
-  { id: 'ceramic-3m', label: '3M Crystalline ⭐ (200+ طبقة نانو)', priceModifier: 2400 },
+const getFilmTypes = (isAr: boolean): Option[] => [
+  { id: 'carbon', label: isAr ? 'فيلم كربوني (اقتصادي)' : 'Carbon Film (Economy)', priceModifier: 600 },
+  { id: 'renegade', label: isAr ? 'جونسون Renegade (كلاسيكي)' : 'Johnson Renegade (Classic)', priceModifier: 800 },
+  { id: 'ceramic-basic', label: isAr ? 'نانو سيراميك جونسون Marathon' : 'Johnson Marathon Nano-Ceramic', priceModifier: 1100 },
+  { id: 'ceramic-johnson', label: isAr ? 'جونسون Supreme IR ⭐' : 'Johnson Supreme IR ⭐', priceModifier: 1800 },
+  { id: 'ceramic-3m', label: isAr ? '3M Crystalline ⭐ (200+ طبقة نانو)' : '3M Crystalline ⭐ (200+ Nano layers)', priceModifier: 2400 },
 ];
 
-const ADDONS: Option[] = [
-  { id: 'sunroof', label: 'فتحة سقف عادية', priceModifier: 150 },
-  { id: 'panorama', label: 'سقف بانوراما', priceModifier: 350 },
-  { id: 'salt-protect', label: 'طبقة حماية ضد الملوحة (لأحياء البحر)', priceModifier: 200 },
+const getAddons = (isAr: boolean): Option[] => [
+  { id: 'sunroof', label: isAr ? 'فتحة سقف عادية' : 'Standard Sunroof', priceModifier: 150 },
+  { id: 'panorama', label: isAr ? 'سقف بانوراما' : 'Panoramic Roof', priceModifier: 350 },
+  { id: 'salt-protect', label: isAr ? 'طبقة حماية ضد الملوحة (لأحياء البحر)' : 'Anti-Salt Protection (Coastal Areas)', priceModifier: 200 },
 ];
 
-export default function CostCalculator() {
+export default function CostCalculator({ isAr = true }: { isAr?: boolean }) {
   const [carSize, setCarSize] = useState<string>('sedan');
   const [filmType, setFilmType] = useState<string>('ceramic-basic');
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
@@ -44,12 +44,12 @@ export default function CostCalculator() {
     
     // Simulate complex calculation for behavioral metrics (Time on Page)
     setTimeout(() => {
-      const sizeMod = CAR_SIZES.find(s => s.id === carSize)?.priceModifier || 1;
-      const basePrice = FILM_TYPES.find(f => f.id === filmType)?.priceModifier || 0;
+      const sizeMod = getCarSizes(isAr).find(s => s.id === carSize)?.priceModifier || 1;
+      const basePrice = getFilmTypes(isAr).find(f => f.id === filmType)?.priceModifier || 0;
       
       let addonsPrice = 0;
       selectedAddons.forEach(id => {
-        addonsPrice += ADDONS.find(a => a.id === id)?.priceModifier || 0;
+        addonsPrice += getAddons(isAr).find(a => a.id === id)?.priceModifier || 0;
       });
 
       const totalBase = (basePrice * sizeMod) + addonsPrice;
@@ -72,7 +72,9 @@ export default function CostCalculator() {
   };
 
   const copyResult = () => {
-    const text = `عزل كور - التسعيرة المبدئية: من ${estimatedPrice.min} إلى ${estimatedPrice.max} ر.س`;
+    const text = isAr 
+      ? `عزل كور - التسعيرة المبدئية: من ${estimatedPrice.min} إلى ${estimatedPrice.max} ر.س`
+      : `AzelCore - Estimated Quote: from ${estimatedPrice.min} to ${estimatedPrice.max} SAR`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -81,8 +83,8 @@ export default function CostCalculator() {
   const getWhatsAppMessage = () => {
     return encodeURIComponent(
       `مرحباً عزل كور، استعملت الحاسبة في موقعكم وهذه تسعيرتي المبدئية:\n` +
-      `- حجم السيارة: ${CAR_SIZES.find(s => s.id === carSize)?.label}\n` +
-      `- نوع الفيلم: ${FILM_TYPES.find(f => f.id === filmType)?.label}\n` +
+      `- حجم السيارة: ${getCarSizes(isAr).find(s => s.id === carSize)?.label}\n` +
+      `- نوع الفيلم: ${getFilmTypes(isAr).find(f => f.id === filmType)?.label}\n` +
       `- السعر التقريبي: ${estimatedPrice.min} - ${estimatedPrice.max} ر.س\n\n` +
       `أريد حجز موعد لتأكيد السعر.`
     );
@@ -91,9 +93,9 @@ export default function CostCalculator() {
   return (
     <div className={styles.calculatorCard}>
       <div className={styles.section}>
-        <h3>1. حجم السيارة</h3>
+        <h3>1. {isAr ? 'حجم السيارة' : 'Car Size'}</h3>
         <div className={styles.optionsGrid}>
-          {CAR_SIZES.map(size => (
+          {getCarSizes(isAr).map(size => (
             <button 
               key={size.id} 
               className={`${styles.optionBtn} ${carSize === size.id ? styles.active : ''}`}
@@ -106,9 +108,9 @@ export default function CostCalculator() {
       </div>
 
       <div className={styles.section}>
-        <h3>2. نوع العزل الحراري</h3>
+        <h3>2. {isAr ? 'نوع العزل الحراري' : 'Insulation Type'}</h3>
         <div className={styles.optionsGrid}>
-          {FILM_TYPES.map(film => (
+          {getFilmTypes(isAr).map(film => (
             <button 
               key={film.id} 
               className={`${styles.optionBtn} ${filmType === film.id ? styles.active : ''}`}
@@ -121,9 +123,9 @@ export default function CostCalculator() {
       </div>
 
       <div className={styles.section}>
-        <h3>3. إضافات (اختياري)</h3>
+        <h3>3. {isAr ? 'إضافات (اختياري)' : 'Add-ons (Optional)'}</h3>
         <div className={styles.optionsGrid}>
-          {ADDONS.map(addon => (
+          {getAddons(isAr).map(addon => (
             <button 
               key={addon.id} 
               className={`${styles.optionBtn} ${selectedAddons.includes(addon.id) ? styles.active : ''}`}
@@ -141,22 +143,22 @@ export default function CostCalculator() {
           onClick={calculatePrice} 
           disabled={isCalculating}
         >
-          {isCalculating ? 'جاري المعالجة وعرض السعر...' : 'احسب التكلفة التقديرية'}
+          {isCalculating ? (isAr ? 'جاري المعالجة وعرض السعر...' : 'Processing and fetching price...') : (isAr ? 'احسب التكلفة التقديرية' : 'Calculate Estimated Cost')}
         </button>
       </div>
 
       {showResult && (
         <div className={styles.resultBox}>
-          <h4>التكلفة التقديرية</h4>
+          <h4>{isAr ? 'التكلفة التقديرية' : 'Estimated Cost'}</h4>
           <div className={styles.priceRange}>
-            <span className={styles.currency}>ر.س</span>
+            <span className={styles.currency}>{isAr ? 'ر.س' : 'SAR'}</span>
             <span className={styles.price}>{estimatedPrice.min} - {estimatedPrice.max}</span>
           </div>
-          <p className={styles.disclaimer}>* هذا السعر مبدئي. قد يختلف حسب الموديل الفعلي وحالة الزجاج.</p>
+          <p className={styles.disclaimer}>{isAr ? '* هذا السعر مبدئي. قد يختلف حسب الموديل الفعلي وحالة الزجاج.' : '* This price is an estimate. It may vary based on the actual car model and glass condition.'}</p>
           
           <div className={styles.resultActions}>
             <button className={styles.copyBtn} onClick={copyResult}>
-              {copied ? '✅ تم نسخ السعر' : '📋 نسخ التسعيرة'}
+              {copied ? (isAr ? '✅ تم نسخ السعر' : '✅ Price Copied') : (isAr ? '📋 نسخ التسعيرة' : '📋 Copy Quote')}
             </button>
             <a 
               href={`https://api.whatsapp.com/send/?phone=966564612017&text=${getWhatsAppMessage()}`} 
@@ -164,7 +166,7 @@ export default function CostCalculator() {
               rel="noopener noreferrer" 
               className={styles.whatsappBtn}
             >
-              📱 حجز موعد بالواتساب
+              📱 {isAr ? 'حجز موعد بالواتساب' : 'Book Appointment via WhatsApp'}
             </a>
           </div>
         </div>

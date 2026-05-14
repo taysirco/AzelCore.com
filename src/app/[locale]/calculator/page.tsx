@@ -15,12 +15,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-const calculatorSchema = {
+const getCalculatorSchema = (isAr: boolean) => ({
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
-  name: 'حاسبة تكلفة العزل وتظليل السيارات — عزل كور',
+  name: isAr ? 'حاسبة تكلفة العزل وتظليل السيارات — عزل كور' : 'Car Tinting Cost Calculator — AzelCore',
   url: `${SITE_URL}/calculator`,
-  description: 'أداة ذكية لحساب التكلفة التقديرية لتظليل وعزل سيارتك بأفلام النانو سيراميك وجونسون في جدة.',
+  description: isAr ? 'أداة ذكية لحساب التكلفة التقديرية لتظليل وعزل سيارتك بأفلام النانو سيراميك وجونسون في جدة.' : 'A smart tool to calculate the estimated cost of car tinting and insulation with nano-ceramic and Johnson films in Jeddah.',
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'All',
   offers: {
@@ -32,29 +32,29 @@ const calculatorSchema = {
     '@type': 'Organization',
     '@id': `${SITE_URL}/#organization`
   }
-};
+});
 
 export default async function CalculatorPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const isAr = locale === 'ar';
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(calculatorSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getCalculatorSchema(isAr)) }} />
       <section className={styles.hero}>
         <div className={styles.container}>
-          <h1 className={styles.title}>حاسبة تكلفة العزل</h1>
+          <h1 className={styles.title}>{isAr ? 'حاسبة تكلفة العزل' : 'Insulation Cost Calculator'}</h1>
           <p className={styles.subtitle}>
-            احسب التكلفة التقديرية لتظليل وعزل سيارتك في ثوانٍ.
+            {isAr ? 'احسب التكلفة التقديرية لتظليل وعزل سيارتك في ثوانٍ.' : 'Calculate the estimated cost to tint and insulate your car in seconds.'}
           </p>
         </div>
       </section>
 
       <section className={styles.calculatorSection}>
         <div className={styles.container}>
-          <ServiceSummary summary="استخدم حاسبة عزل كور الذكية لمعرفة التكلفة التقريبية لتظليل سيارتك بأفلام النانو سيراميك والكربون. الأسعار تعتمد على حجم السيارة ونوع الفيلم المختار." />
+          <ServiceSummary summary={isAr ? "استخدم حاسبة عزل كور الذكية لمعرفة التكلفة التقريبية لتظليل سيارتك بأفلام النانو سيراميك والكربون. الأسعار تعتمد على حجم السيارة ونوع الفيلم المختار." : "Use the smart AzelCore calculator to get an estimated cost for tinting your car with nano-ceramic and carbon films. Prices depend on the car size and chosen film type."} />
           
           <div className={styles.calculatorWrapper}>
-            <CostCalculator />
+            <CostCalculator isAr={isAr} />
           </div>
         </div>
       </section>

@@ -1,8 +1,8 @@
 import { permanentRedirect } from 'next/navigation';
+import { Locale, localePath } from '@/lib/i18n';
 
 // 301 Permanent Redirect — preserves PageRank equity
 export default async function ThermalWindowsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const isAr = locale === 'ar';
-  permanentRedirect('/building-glass-insulation');
+  permanentRedirect(localePath(locale as Locale, '/building-glass-insulation'));
 }

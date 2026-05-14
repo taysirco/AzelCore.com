@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Locale, localePath } from '@/lib/i18n';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
-import { faqs } from '@/data/faqs';
+import { getFaqs } from '@/data/faqs';
 import { quickAnswers } from '@/data/quick-answers';
 import ServiceSummary from '@/components/seo/ServiceSummary';
 import CrossSellCards from '@/components/sections/CrossSellCards';
@@ -50,9 +50,11 @@ const savings = [
 ];
 
 // ═══ Unified @graph — B2BService + FAQ + Breadcrumb ═══
-const buildingFaqs = faqs.filter(f => f.service === 'building-glass').slice(0, 5);
 
-const graphSchema = {
+const getGraphSchema = (isAr: boolean) => {
+  const buildingFaqs = getFaqs(isAr).filter(f => f.service === 'building-glass').slice(0, 5);
+
+  return {
   '@context': 'https://schema.org',
   '@graph': [
     {
@@ -115,6 +117,7 @@ const graphSchema = {
       cssSelector: ['#voice-answer-b2b-1', '#voice-answer-b2b-2', '#voice-answer-b2b-3'],
     },
   ],
+  };
 };
 
 export default async function BuildingInsulationPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -123,7 +126,7 @@ export default async function BuildingInsulationPage({ params }: { params: Promi
   return (
     <>
       {/* Unified @graph — B2BService + FAQ + Breadcrumb + Speakable */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getGraphSchema(isAr)) }} />
 
 
 

@@ -25,7 +25,9 @@ const blogSlugs = [
  */
 function createI18nEntries(path: string, options: Omit<MetadataRoute.Sitemap[0], 'url' | 'alternates'>): MetadataRoute.Sitemap {
   const normalizedPath = path === '/' ? '' : path;
-  const arUrl = `${SITE_URL}/ar${normalizedPath}`;
+  
+  // Arabic is default (no prefix), English uses /en prefix
+  const arUrl = `${SITE_URL}${normalizedPath || '/'}`;
   const enUrl = `${SITE_URL}/en${normalizedPath}`;
 
   const alternates = {

@@ -9,7 +9,7 @@ import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
 import BackToTop from '@/components/ui/BackToTop';
 import GeoBanner from '@/components/ui/GeoBanner';
 import WebMCPProvider from '@/components/agents/WebMCPProvider';
-import { locales, isValidLocale, getDirection, getOgLocale, type Locale } from '@/lib/i18n';
+import { locales, isValidLocale, getDirection, getOgLocale, localePath, type Locale } from '@/lib/i18n';
 import { getDictionary } from '@/lib/dictionaries';
 
 // Generate static params for both locales at build time
@@ -80,11 +80,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         : 'Authorized Johnson & 3M dealer — 97% infrared heat rejection',
     },
     alternates: {
-      canonical: `${SITE_URL}/${locale}`,
+      canonical: `${SITE_URL}${localePath(locale, '/')}`,
       languages: {
-        'ar': `${SITE_URL}/ar`,
+        'ar': `${SITE_URL}/`,
         'en': `${SITE_URL}/en`,
-        'x-default': `${SITE_URL}/ar`,
+        'x-default': `${SITE_URL}/`,
       },
     },
   };

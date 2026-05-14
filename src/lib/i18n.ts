@@ -44,7 +44,10 @@ export function getFontPriority(locale: Locale): string {
 /** Build a locale-prefixed path */
 export function localePath(locale: Locale, path: string): string {
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  return `/${locale}${cleanPath}`;
+  if (locale === 'ar') {
+    return cleanPath === '/' ? '/' : cleanPath;
+  }
+  return `/${locale}${cleanPath === '/' ? '' : cleanPath}`;
 }
 
 /** Extract locale from a pathname */

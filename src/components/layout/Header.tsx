@@ -2,6 +2,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { getNavLinks, getWhatsAppLink, SITE_NAME, SITE_NAME_EN } from '@/lib/constants';
 import { getDictionary } from '@/lib/dictionaries';
 import { getAlternateLocale, localePath, type Locale } from '@/lib/i18n';
@@ -12,6 +13,7 @@ interface HeaderProps {
 }
 
 export default function Header({ locale = 'ar' }: HeaderProps) {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const dict = getDictionary(locale);
@@ -19,6 +21,11 @@ export default function Header({ locale = 'ar' }: HeaderProps) {
   const whatsappLink = getWhatsAppLink(locale);
   const altLocale = getAlternateLocale(locale);
   const siteName = locale === 'ar' ? SITE_NAME : SITE_NAME_EN;
+
+  const currentPath = pathname ? pathname.replace(/^\/(ar|en)(\/|$)/, '/') : '/';
+  const switchLangUrl = altLocale === 'ar' 
+    ? (currentPath === '/' ? '/' : currentPath)
+    : `/en${currentPath === '/' ? '' : currentPath}`;
 
   useEffect(() => {
     let ticking = false;
@@ -71,7 +78,7 @@ export default function Header({ locale = 'ar' }: HeaderProps) {
           <div className={styles.actions}>
             {/* Language Switcher */}
             <Link
-              href={`/${altLocale}`}
+              href={switchLangUrl}
               className={styles.langSwitch}
               aria-label={dict.langSwitcher.label}
             >
@@ -110,7 +117,7 @@ export default function Header({ locale = 'ar' }: HeaderProps) {
         ))}
         {/* Mobile Language Switch */}
         <Link
-          href={`/${altLocale}`}
+          href={switchLangUrl}
           className={styles.mobileLink}
           onClick={closeMenu}
         >
