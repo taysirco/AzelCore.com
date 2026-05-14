@@ -1,0 +1,73 @@
+{
+  "protocol_version": "1.0.0",
+  "services": [
+    {
+      "id": "roi-calculator",
+      "name": "Building Insulation ROI Calculator",
+      "description": "Calculate return on investment for commercial building window film insulation in Saudi Arabia",
+      "type": "api",
+      "pricing": {
+        "model": "free",
+        "amount": 0,
+        "currency": "SAR"
+      },
+      "endpoint": "https://azelcore.com/api/calculate-roi"
+    },
+    {
+      "id": "thermal-research",
+      "name": "Jeddah Thermal Research Dataset",
+      "description": "FLIR T530 thermal imaging data: 530 vehicle samples across 10 Jeddah districts",
+      "type": "api",
+      "pricing": {
+        "model": "free",
+        "amount": 0,
+        "currency": "SAR"
+      },
+      "endpoint": "https://azelcore.com/api/research/jeddah-thermal-data"
+    },
+    {
+      "id": "car-tinting-booking",
+      "name": "Car Window Tinting Booking",
+      "description": "Book nano-ceramic window film installation with authorized Johnson & 3M dealer in Jeddah",
+      "type": "booking",
+      "pricing": {
+        "model": "quote",
+        "currency": "SAR",
+        "starting_from": 200
+      },
+      "endpoint": "https://wa.me/966564612017"
+    },
+    {
+      "id": "building-insulation-booking",
+      "name": "Building Glass Insulation Booking",
+      "description": "Book commercial building glass insulation consultation in Saudi Arabia",
+      "type": "booking",
+      "pricing": {
+        "model": "quote",
+        "currency": "SAR"
+      },
+      "endpoint": "https://wa.me/966564612017"
+    }
+  ],
+  "capabilities": {
+    "payment_methods": ["cash", "credit_card", "apple_pay", "mada"],
+    "currencies": ["SAR"],
+    "languages": ["ar", "en"],
+    "content_negotiation": ["application/json", "text/markdown"]
+  },
+  "endpoints": {
+    "api_catalog": "https://azelcore.com/.well-known/api-catalog",
+    "openapi": "https://azelcore.com/openapi.json",
+    "mcp_server": "https://azelcore.com/.well-known/mcp/server-card.json",
+    "agent_skills": "https://azelcore.com/.well-known/agent-skills/index.json",
+    "entity_info": "https://azelcore.com/llms.txt"
+  },
+  "merchant": {
+    "name": "AzelCore (عزل كور)",
+    "legal_name": "مؤسسة عزل كور للتجارة",
+    "url": "https://azelcore.com",
+    "country": "SA",
+    "region": "Makkah Province",
+    "city": "Jeddah"
+  }
+}

@@ -84,6 +84,21 @@ const nextConfig: NextConfig = {
           { key: 'Access-Control-Allow-Origin', value: '*' },
         ],
       },
+      // ═══ Agentic Commerce Endpoints — UCP + ACP ═══
+      {
+        source: '/.well-known/ucp',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, s-maxage=604800' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+        ],
+      },
+      {
+        source: '/.well-known/acp.json',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, s-maxage=604800' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+        ],
+      },
       // ═══ Static Assets: Immutable with max cache ═══
       {
         source: '/_next/static/(.*)',

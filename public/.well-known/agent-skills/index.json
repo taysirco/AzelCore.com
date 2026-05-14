@@ -21,6 +21,27 @@
       "description": "Retrieve verified AzelCore business information, credentials, and service descriptions for the authorized Johnson & 3M dealer in Jeddah.",
       "url": "https://azelcore.com/.well-known/agent-skills/entity-info/SKILL.md",
       "digest": "sha256:104b3890a342ef560cb09470c7f98fb25c4442570ef66751aa45ebf2e11679a0"
+    },
+    {
+      "name": "x402-payments",
+      "type": "skill-md",
+      "description": "x402 payment protocol discovery for AzelCore API endpoints — agent-native HTTP payments.",
+      "url": "https://azelcore.com/.well-known/agent-skills/x402-payments/SKILL.md",
+      "digest": "sha256:deec763d63a2d8f13115bdfc9c2aaf742b7e01eefef3695be8912ec3f2322f1e"
+    },
+    {
+      "name": "mpp-payments",
+      "type": "skill-md",
+      "description": "MPP (Machine Payment Protocol) discovery for AzelCore's payable API operations via OpenAPI x-payment-info extensions.",
+      "url": "https://azelcore.com/.well-known/agent-skills/mpp-payments/SKILL.md",
+      "digest": "sha256:78d4501ffd134805716ed66843b19bb82b3fd7fcd141ee0706f1089d180d68ea"
+    },
+    {
+      "name": "agentic-commerce",
+      "type": "skill-md",
+      "description": "UCP and ACP agentic commerce protocol discovery — services, pricing, payment methods, and booking for AzelCore.",
+      "url": "https://azelcore.com/.well-known/agent-skills/agentic-commerce/SKILL.md",
+      "digest": "sha256:7ef9d96471a7cffb4ef6e110f1c1b24c993babd68530cf9b03cd8d9f8d21a9ad"
     }
   ]
 }

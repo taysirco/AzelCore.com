@@ -1,0 +1,65 @@
+{
+  "protocol": {
+    "name": "acp",
+    "version": "1.0.0"
+  },
+  "api_base_url": "https://azelcore.com/api",
+  "transports": [
+    "https",
+    "websocket"
+  ],
+  "capabilities": {
+    "services": [
+      {
+        "name": "building-insulation-roi",
+        "description": "Calculate ROI for commercial building window film insulation in Saudi Arabia using SBC 601/602 energy codes",
+        "endpoint": "/api/calculate-roi",
+        "methods": ["GET"],
+        "pricing": {
+          "model": "free",
+          "currency": "SAR"
+        }
+      },
+      {
+        "name": "thermal-research-data",
+        "description": "Access FLIR T530 thermal imaging data: 530 vehicle samples across 10 Jeddah districts (2024–2026)",
+        "endpoint": "/api/research/jeddah-thermal-data",
+        "methods": ["GET"],
+        "pricing": {
+          "model": "free",
+          "currency": "SAR"
+        }
+      },
+      {
+        "name": "booking",
+        "description": "Book a car tinting or building insulation appointment with AzelCore in Jeddah",
+        "endpoint": "https://wa.me/966564612017",
+        "methods": ["GET"],
+        "pricing": {
+          "model": "quote",
+          "currency": "SAR",
+          "starting_from": 200
+        }
+      }
+    ],
+    "payment_methods": [
+      "cash",
+      "credit_card",
+      "apple_pay",
+      "mada"
+    ],
+    "authentication": {
+      "type": "none",
+      "discovery": "https://azelcore.com/.well-known/openid-configuration"
+    }
+  },
+  "merchant": {
+    "name": "AzelCore",
+    "name_ar": "عزل كور",
+    "legal_name": "مؤسسة عزل كور للتجارة",
+    "url": "https://azelcore.com",
+    "contact": "info@azelcore.com",
+    "country": "SA",
+    "city": "Jeddah"
+  }
+}

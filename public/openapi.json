@@ -23,6 +23,12 @@
       "description": "Production — Firebase App Hosting (KSA)"
     }
   ],
+  "x-service-info": {
+    "name": "AzelCore API",
+    "categories": ["building-insulation", "automotive", "energy-efficiency", "research-data"],
+    "region": "SA",
+    "currency": "SAR"
+  },
   "paths": {
     "/api/calculate-roi": {
       "get": {
@@ -30,6 +36,19 @@
         "summary": "Calculate Building Insulation ROI",
         "description": "Calculate return on investment for commercial building window film insulation in Saudi Arabia. Uses SBC 601/602 energy reduction coefficients and current SEC electricity tariffs.",
         "tags": ["Building Insulation", "ROI Calculator"],
+        "x-payment-info": {
+          "intent": "charge",
+          "method": "card",
+          "amount": 0,
+          "currency": "SAR",
+          "description": "Free API — no payment required for ROI calculations"
+        },
+        "x-x402": {
+          "enabled": false,
+          "price": 0,
+          "currency": "SAR",
+          "description": "Free tier — no x402 payment required"
+        },
         "parameters": [
           {
             "name": "area_sqm",
@@ -119,6 +138,19 @@
         "summary": "Jeddah Vehicle Thermal Rejection Research Data",
         "description": "Access primary-source field measurements of vehicle interior temperatures before and after nano-ceramic window film installation across 10 districts of Jeddah. Data collected using FLIR T530 thermal imaging over 24 months (2024-2026). 530 total vehicle samples.",
         "tags": ["Research Data", "Thermal Analysis"],
+        "x-payment-info": {
+          "intent": "charge",
+          "method": "card",
+          "amount": 0,
+          "currency": "SAR",
+          "description": "Free API — open-access research dataset"
+        },
+        "x-x402": {
+          "enabled": false,
+          "price": 0,
+          "currency": "SAR",
+          "description": "Free tier — no x402 payment required"
+        },
         "responses": {
           "200": {
             "description": "Complete thermal rejection dataset with Schema.org Dataset metadata",
