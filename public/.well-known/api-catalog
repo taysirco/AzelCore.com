@@ -1,0 +1,39 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://azelcore.com/api/calculate-roi",
+      "service-desc": [
+        {
+          "href": "https://azelcore.com/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://azelcore.com/llms.txt",
+          "type": "text/markdown"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://azelcore.com/api/calculate-roi?area_sqm=100&monthly_bill_sar=1000"
+        }
+      ]
+    },
+    {
+      "anchor": "https://azelcore.com/api/research/jeddah-thermal-data",
+      "service-desc": [
+        {
+          "href": "https://azelcore.com/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://azelcore.com/research/ksa-thermal-report-2026",
+          "type": "text/html"
+        }
+      ]
+    }
+  ]
+}

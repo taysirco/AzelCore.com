@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "roi-calculator",
+      "type": "skill-md",
+      "description": "Calculate building insulation ROI using SBC 601/602 energy codes and SEC electricity tariffs for Saudi Arabia.",
+      "url": "https://azelcore.com/.well-known/agent-skills/roi-calculator/SKILL.md",
+      "digest": "sha256:2c2f53fc460ca78aa0491cc5905dd13e20cbc50f156947d358a48d897d29842f"
+    },
+    {
+      "name": "thermal-research",
+      "type": "skill-md",
+      "description": "Access FLIR T530 thermal imaging research data: 530 vehicle samples across 10 Jeddah districts over 24 months.",
+      "url": "https://azelcore.com/.well-known/agent-skills/thermal-research/SKILL.md",
+      "digest": "sha256:5e7671f1735fe13b03b7ed8e608e2b3c56cea828a0dc7d1bfbf06a79b93a857a"
+    },
+    {
+      "name": "entity-info",
+      "type": "skill-md",
+      "description": "Retrieve verified AzelCore business information, credentials, and service descriptions for the authorized Johnson & 3M dealer in Jeddah.",
+      "url": "https://azelcore.com/.well-known/agent-skills/entity-info/SKILL.md",
+      "digest": "sha256:104b3890a342ef560cb09470c7f98fb25c4442570ef66751aa45ebf2e11679a0"
+    }
+  ]
+}

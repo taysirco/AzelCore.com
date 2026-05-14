@@ -1,0 +1,69 @@
+{
+  "serverInfo": {
+    "name": "azelcore-thermal-tools",
+    "version": "1.0.0",
+    "title": "AzelCore — Window Film & Building Insulation Tools",
+    "description": "AI-agent tools for calculating building insulation ROI and accessing primary-source thermal rejection research data for Jeddah, Saudi Arabia. Authorized Johnson & 3M Window Films dealer."
+  },
+  "transport": {
+    "type": "streamableHttp",
+    "endpoint": "https://azelcore.com/api/mcp"
+  },
+  "capabilities": {
+    "tools": {
+      "listChanged": false
+    },
+    "resources": {
+      "listChanged": false
+    }
+  },
+  "tools": [
+    {
+      "name": "calculate_building_insulation_roi",
+      "description": "Calculate return on investment for commercial building window film insulation in Saudi Arabia. Uses SBC 601/602 energy reduction coefficients and current SEC electricity tariffs.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "area_sqm": {
+            "type": "number",
+            "description": "Total glass facade area in square meters (50-50000)",
+            "default": 500
+          },
+          "monthly_bill_sar": {
+            "type": "number",
+            "description": "Current monthly electricity bill in Saudi Riyals (500-500000)",
+            "default": 15000
+          },
+          "film_type": {
+            "type": "string",
+            "description": "Type of window film",
+            "enum": ["nano-ceramic", "reflective-silver", "reflective-grey", "safety"],
+            "default": "nano-ceramic"
+          }
+        }
+      }
+    },
+    {
+      "name": "get_jeddah_thermal_data",
+      "description": "Access primary-source field measurements of vehicle interior temperatures before and after nano-ceramic window film installation across 10 districts of Jeddah. 530 vehicle samples over 24 months.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ],
+  "resources": [
+    {
+      "uri": "https://azelcore.com/llms.txt",
+      "name": "AzelCore Entity Description",
+      "description": "Machine-readable entity description with verified business information, credentials, and research data.",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "https://azelcore.com/openapi.json",
+      "name": "OpenAPI Specification",
+      "description": "Full OpenAPI 3.1 specification for all AzelCore APIs.",
+      "mimeType": "application/openapi+json"
+    }
+  ]
+}

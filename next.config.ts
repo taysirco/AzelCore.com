@@ -40,6 +40,50 @@ const nextConfig: NextConfig = {
           { key: 'X-Served-By', value: 'Firebase App Hosting - KSA Edge' },
         ],
       },
+      // ═══ RFC 8288 — Link Response Headers for Agent Discovery (Homepage) ═══
+      {
+        source: '/',
+        headers: [
+          { key: 'Link', value: '</.well-known/api-catalog>; rel="api-catalog", </openapi.json>; rel="service-desc"; type="application/openapi+json", </llms.txt>; rel="describedby"; type="text/markdown", </.well-known/mcp/server-card.json>; rel="describedby"; type="application/json", </.well-known/agent-skills/index.json>; rel="describedby"; type="application/json"' },
+        ],
+      },
+      // ═══ .well-known Agent Endpoints — CORS + Cache ═══
+      {
+        source: '/.well-known/api-catalog',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, s-maxage=604800' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Content-Type', value: 'application/linkset+json' },
+        ],
+      },
+      {
+        source: '/.well-known/mcp/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, s-maxage=604800' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+        ],
+      },
+      {
+        source: '/.well-known/agent-skills/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, s-maxage=604800' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+        ],
+      },
+      {
+        source: '/.well-known/openid-configuration',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, s-maxage=604800' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+        ],
+      },
+      {
+        source: '/.well-known/oauth-protected-resource',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, s-maxage=604800' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+        ],
+      },
       // ═══ Static Assets: Immutable with max cache ═══
       {
         source: '/_next/static/(.*)',

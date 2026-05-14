@@ -7,6 +7,7 @@ import { SITE_NAME, SITE_NAME_EN, SITE_URL, VAT_ID, CRN, PHONE, OWNER_NAME, OWNE
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
 import BackToTop from '@/components/ui/BackToTop';
 import GeoBanner from '@/components/ui/GeoBanner';
+import WebMCPProvider from '@/components/agents/WebMCPProvider';
 import './globals.css';
 
 export const viewport: Viewport = {
@@ -146,6 +147,11 @@ export default function RootLayout({
         {/* Agentic Discovery — AI tool protocol */}
         <link rel="service-desc" href="/openapi.json" type="application/openapi+json" />
         <link rel="alternate" href="/.well-known/ai-plugin.json" type="application/json" title="AI Plugin Manifest" />
+        {/* ═══ Agent-Readiness — RFC 9727 + MCP + Agent Skills ═══ */}
+        <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json" />
+        <link rel="describedby" href="/.well-known/mcp/server-card.json" type="application/json" title="MCP Server Card" />
+        <link rel="describedby" href="/.well-known/agent-skills/index.json" type="application/json" title="Agent Skills Index" />
+        <link rel="describedby" href="/.well-known/openid-configuration" type="application/json" title="OpenID Connect Discovery" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -206,6 +212,8 @@ export default function RootLayout({
             <BackToTop />
             <GeoBanner />
           </div>
+          {/* ═══ WebMCP — Expose tools to in-browser AI agents ═══ */}
+          <WebMCPProvider />
         </ThemeProvider>
       </body>
     </html>
