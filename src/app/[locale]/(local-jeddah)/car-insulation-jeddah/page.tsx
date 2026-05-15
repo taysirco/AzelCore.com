@@ -150,11 +150,11 @@ const getGraphSchema = (isAr: boolean) => {
       logo: `${SITE_URL}/images/azelcore-logo.webp`,
       foundingDate: '2024',
       taxID: VAT_ID,
-      legalName: `مؤسسة ${OWNER_NAME} للتجارة`,
+      legalName: isAr ? `مؤسسة ${OWNER_NAME} للتجارة` : `${OWNER_NAME} Trading Est.`,
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'جدة',
-        addressRegion: 'منطقة مكة المكرمة',
+        addressLocality: isAr ? 'جدة' : 'Jeddah',
+        addressRegion: isAr ? 'منطقة مكة المكرمة' : 'Makkah Province',
         addressCountry: 'SA',
       },
       founder: {
@@ -174,15 +174,15 @@ const getGraphSchema = (isAr: boolean) => {
     {
       '@type': 'Service',
       '@id': `${SITE_URL}/car-insulation-jeddah#service`,
-      name: 'تظليل سيارات جدة — نانو سيراميك أمريكي',
-      description: 'تظليل سيارات احترافي بأفلام نانو سيراميك أمريكية من جونسون و 3M مع ضمان عمر السيارة وقص كمبيوتر دقيق',
+      name: isAr ? 'تظليل سيارات جدة — نانو سيراميك أمريكي' : 'Car Tinting Jeddah — American Nano Ceramic',
+      description: isAr ? 'تظليل سيارات احترافي بأفلام نانو سيراميك أمريكية من جونسون و 3M مع ضمان عمر السيارة وقص كمبيوتر دقيق' : 'Professional car tinting with American nano ceramic films from Johnson and 3M, featuring a lifetime warranty and precise computer cutting',
       provider: { '@id': `${SITE_URL}/#autobodyshop` },
       areaServed: {
         '@type': 'City',
-        name: 'جدة',
+        name: isAr ? 'جدة' : 'Jeddah',
         sameAs: 'https://www.wikidata.org/wiki/Q5880',
       },
-      serviceType: 'تظليل سيارات',
+      serviceType: isAr ? 'تظليل سيارات' : 'Car Tinting',
       offers: {
         '@type': 'AggregateOffer',
         priceCurrency: 'SAR',
@@ -192,13 +192,13 @@ const getGraphSchema = (isAr: boolean) => {
       },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'أنواع التظليل',
+        name: isAr ? 'أنواع التظليل' : 'Tinting Types',
         itemListElement: getTintTypes(isAr).map((t, i) => ({
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
             name: t.name,
-            description: `حجب IR: ${t.ir} | UV: ${t.uv} | ضمان: ${t.warranty}`,
+            description: isAr ? `حجب IR: ${t.ir} | UV: ${t.uv} | ضمان: ${t.warranty}` : `IR Block: ${t.ir} | UV: ${t.uv} | Warranty: ${t.warranty}`,
           },
           price: t.price.split(' - ')[0].replace(',', ''),
           priceCurrency: 'SAR',
@@ -210,7 +210,7 @@ const getGraphSchema = (isAr: boolean) => {
         '@type': 'WarrantyPromise',
         warrantyScope: {
           '@type': 'WarrantyScope',
-          name: 'ضمان شامل ضد التغير اللوني والفقاعات',
+          name: isAr ? 'ضمان شامل ضد التغير اللوني والفقاعات' : 'Comprehensive warranty against color fading and bubbles',
         },
         durationOfWarranty: {
           '@type': 'QuantitativeValue',
@@ -226,8 +226,8 @@ const getGraphSchema = (isAr: boolean) => {
       '@id': `${SITE_URL}/car-insulation-jeddah#faq`,
       mainEntity: [...carFaqs, ...localVoiceFaqs].map(f => ({
         '@type': 'Question',
-        name: f.question,
-        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        name: isAr ? f.question : (f.questionEn || f.question),
+        acceptedAnswer: { '@type': 'Answer', text: isAr ? f.answer : (f.answerEn || f.answer) },
       })),
     },
 
@@ -236,8 +236,8 @@ const getGraphSchema = (isAr: boolean) => {
       '@type': 'BreadcrumbList',
       '@id': `${SITE_URL}/car-insulation-jeddah#breadcrumb`,
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
-        { '@type': 'ListItem', position: 2, name: 'تظليل سيارات جدة', item: `${SITE_URL}/car-insulation-jeddah` },
+        { '@type': 'ListItem', position: 1, name: isAr ? 'الرئيسية' : 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: isAr ? 'تظليل سيارات جدة' : 'Car Tinting Jeddah', item: `${SITE_URL}/car-insulation-jeddah` },
       ],
     },
 
@@ -314,7 +314,7 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
         </div>
         <div className={styles.heroContent}>
           <nav className={styles.breadcrumb} aria-label={isAr ? "مسار التنقل" : "Breadcrumb"}>
-            <Link href="/">{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'تظليل سيارات' : 'Car Tinting'}</span>
+            <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'تظليل سيارات' : 'Car Tinting'}</span>
           </nav>
           <h1 className={styles.heroTitle}>{isAr ? 'تظليل سيارات في ' : 'Car Tinting in '}<span className={styles.blueGradient}>{isAr ? 'جدة' : 'Jeddah'}</span></h1>
           <p className={styles.heroSubtitle}>
@@ -359,7 +359,7 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
       </section>
 
       {/* ═══ Interaction Engagement Feature — Interactive Thermal Slider ═══ */}
-      <ThermalSliderBeforeAfter />
+      <ThermalSliderBeforeAfter locale={locale} />
 
       {/* ═══ Tint Comparison — schema.org/Table for SGE ═══ */}
       <section className={`${styles.section} ${styles.sectionAlt}`} id="types">
@@ -458,7 +458,7 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
-            <Link href="/gallery" className={styles.secondaryBtn}>{isAr ? 'شاهد كل أعمالنا ←' : 'View All Gallery ←'}</Link>
+            <Link href={localePath(locale as Locale, '/gallery')} className={styles.secondaryBtn}>{isAr ? 'شاهد كل أعمالنا ←' : 'View All Gallery ←'}</Link>
           </div>
         </div>
       </section>
@@ -491,7 +491,7 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
       </section>
 
       {/* ═══ Cross-sell — Causal Internal Linking ═══ */}
-      <CrossSellCards currentPage="car-insulation-jeddah" />
+      <CrossSellCards currentPage="car-insulation-jeddah" locale={locale} />
 
       {/* ═══ District Hub → Spoke Links — dynamic-pages Internal Linking ═══ */}
       <section className={styles.section}>

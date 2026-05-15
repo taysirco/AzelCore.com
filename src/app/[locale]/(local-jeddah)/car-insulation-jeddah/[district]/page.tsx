@@ -11,7 +11,7 @@ import { districtsContent } from '@/data/districts-content';
 import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
 import AuthorProfile from '@/components/seo/AuthorProfile';
 import Certifications from '@/components/seo/Certifications';
-import { Locale } from '@/lib/i18n';
+import { Locale, localePath } from '@/lib/i18n';
 import { getAlternates } from '@/lib/seo';
 import styles from '../page.module.css';
 
@@ -104,6 +104,13 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
   const schema = buildDistrictSchema(d, isAr);
   const localContent = districtsContent[district];
 
+  // Helper translations for data that is only stored in Arabic
+  const zoneEn = { 'شمال': 'North', 'جنوب': 'South', 'وسط': 'Central', 'شرق': 'East', 'غرب': 'West' }[d.zone] || d.zone;
+  const saltCorrosionEn = { 'عالي': 'High', 'متوسط': 'Medium', 'منخفض': 'Low' }[d.saltCorrosion] || d.saltCorrosion;
+  const economicLevelEn = { 'فاخر': 'Luxury', 'متوسط-عالي': 'Upper-Medium', 'متوسط': 'Medium', 'شعبي': 'Economy' }[d.economicLevel] || d.economicLevel;
+  const avgTempEn = d.avgTemp.replace('°م', '°C');
+  const distanceFromSeaEn = d.distanceFromSea.replace(' كم', ' km');
+
   // FAQPage Schema for district-specific FAQs
   const faqSchema = localContent ? {
     '@context': 'https://schema.org',
@@ -129,8 +136,8 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>
-          <nav className={styles.breadcrumb} aria-label="مسار التنقل">
-            <Link href="/">{isAr ? 'الرئيسية' : 'Home'}</Link> / <Link href="/car-insulation-jeddah">{isAr ? 'تظليل سيارات' : 'Car Tinting'}</Link> / <span>{isAr ? d.nameAr : d.nameEn}</span>
+          <nav className={styles.breadcrumb} aria-label={isAr ? "مسار التنقل" : "Breadcrumbs"}>
+            <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <Link href={localePath(locale as Locale, '/car-insulation-jeddah')}>{isAr ? 'تظليل سيارات' : 'Car Tinting'}</Link> / <span>{isAr ? d.nameAr : d.nameEn}</span>
           </nav>
           <h1 className={styles.heroTitle}>{isAr ? 'تظليل سيارات في ' : 'Car Tinting in '}<span className={styles.blueGradient}>{isAr ? d.nameAr : d.nameEn}</span></h1>
           <p className={styles.heroSubtitle}>
@@ -169,7 +176,7 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
           <dl className={styles.benefitsDl}>
             <div>
               <dt><span className={styles.benefitIcon} aria-hidden="true">🌡️</span>{isAr ? 'درجة الحرارة' : 'Temperature'}</dt>
-              <dd>{isAr ? `متوسط ${d.avgTemp} — ${d.zone} جدة. حرارة المقصورة تتجاوز 72°م بدون تظليل.` : `Average ${d.avgTemp} — ${d.zone} Jeddah. Cabin heat exceeds 72°C without tint.`}</dd>
+              <dd>{isAr ? `متوسط ${d.avgTemp} — ${d.zone} جدة. حرارة المقصورة تتجاوز 72°م بدون تظليل.` : `Average ${avgTempEn} — ${zoneEn} Jeddah. Cabin heat exceeds 72°C without tint.`}</dd>
             </div>
             <div>
               <dt><span className={styles.benefitIcon} aria-hidden="true">💧</span>{isAr ? 'الرطوبة' : 'Humidity'}</dt>
@@ -181,11 +188,11 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
             </div>
             <div>
               <dt><span className={styles.benefitIcon} aria-hidden="true">🧂</span>{isAr ? 'التآكل الملحي' : 'Salt Corrosion'}</dt>
-              <dd>{isAr ? `مستوى ${d.saltCorrosion} — المسافة من البحر: ${d.distanceFromSea}. ${d.saltCorrosion === 'عالي' ? 'يجب استخدام فيلم مقاوم للملوحة.' : 'تآكل محدود — خيارات أوسع.'}` : `Level ${d.saltCorrosion} — Distance from sea: ${d.distanceFromSea}. ${d.saltCorrosion === 'عالي' ? 'Must use salt-resistant film.' : 'Limited corrosion — wider options.'}`}</dd>
+              <dd>{isAr ? `مستوى ${d.saltCorrosion} — المسافة من البحر: ${d.distanceFromSea}. ${d.saltCorrosion === 'عالي' ? 'يجب استخدام فيلم مقاوم للملوحة.' : 'تآكل محدود — خيارات أوسع.'}` : `Level ${saltCorrosionEn} — Distance from sea: ${distanceFromSeaEn}. ${d.saltCorrosion === 'عالي' ? 'Must use salt-resistant film.' : 'Limited corrosion — wider options.'}`}</dd>
             </div>
             <div>
               <dt><span className={styles.benefitIcon} aria-hidden="true">💎</span>{isAr ? 'المستوى الاقتصادي' : 'Economic Level'}</dt>
-              <dd>{isAr ? `${d.economicLevel} — السيارات الشائعة: ${d.popularCars.join('، ')}.` : `${d.economicLevel} — Popular cars: ${d.popularCarsEn.join(', ')}.`}</dd>
+              <dd>{isAr ? `${d.economicLevel} — السيارات الشائعة: ${d.popularCars.join('، ')}.` : `${economicLevelEn} — Popular cars: ${d.popularCarsEn.join(', ')}.`}</dd>
             </div>
             <div>
               <dt><span className={styles.benefitIcon} aria-hidden="true">✅</span>{isAr ? 'التوصية' : 'Recommendation'}</dt>
@@ -252,8 +259,8 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
             isAr={isAr}
             expertName={OWNER_NAME}
             expertTitle={OWNER_TITLE}
-            organization="isAr ? 'خبراء العزل وتظليل السيارات بجدة' : 'Car Tinting & Insulation Experts in Jeddah'"
-            quote={`نضمن لك في ${d.nameAr} تركيب تظليل نانو سيراميك أصلي يتناسب مع {isAr ? 'الرطوبة' : 'Humidity'} والحرارة العالية، مع التزامنا التام بنظام المرور السعودي ونسبة 30%.`}
+            organization={isAr ? 'خبراء العزل وتظليل السيارات بجدة' : 'Car Tinting & Insulation Experts in Jeddah'}
+            quote={isAr ? `نضمن لك في ${d.nameAr} تركيب تظليل نانو سيراميك أصلي يتناسب مع الرطوبة والحرارة العالية، مع التزامنا التام بنظام المرور السعودي ونسبة 30%.` : `We guarantee the installation of original nano-ceramic tinting in ${d.nameEn} that withstands high humidity and heat, with our full commitment to the Saudi traffic system and the 30% limit.`}
             reviewDate="2026-05-01"
           />
         </div>
@@ -263,10 +270,10 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
         items={jeddahDistricts.map(x => ({ id: x.id, nameAr: isAr ? x.nameAr : x.nameEn }))}
         currentId={district}
         basePath="/car-insulation-jeddah"
-        label="isAr ? 'أحياء جدة الأخرى' : 'Other Jeddah Neighborhoods'"
+        label={isAr ? 'أحياء جدة الأخرى' : 'Other Jeddah Neighborhoods'}
       />
 
-      <CrossSellCards currentPage="car-insulation-jeddah" />
+      <CrossSellCards currentPage="car-insulation-jeddah" locale={locale} />
     </>
   );
 }

@@ -101,8 +101,8 @@ const getGraphSchema = (isAr: boolean) => {
       '@type': 'FAQPage',
       '@id': `${SITE_URL}/building-glass-insulation#faq`,
       mainEntity: buildingFaqs.map(f => ({
-        '@type': 'Question', name: f.question,
-        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        '@type': 'Question', name: isAr ? f.question : (f.questionEn || f.question),
+        acceptedAnswer: { '@type': 'Answer', text: isAr ? f.answer : (f.answerEn || f.answer) },
       })),
     },
     {
@@ -140,7 +140,7 @@ export default async function BuildingInsulationPage({ params }: { params: Promi
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image src="/images/hero-building-glass-insulation.webp" alt="عزل واجهات زجاج مبنى تجاري في جدة" fill priority fetchPriority="high" quality={75} sizes="100vw" style={{ objectFit: 'cover' }} />
+          <Image src="/images/hero-building-glass-insulation.webp" alt={isAr ? "عزل واجهات زجاج مبنى تجاري في جدة" : "Commercial Building Glass Insulation in Jeddah"} fill priority fetchPriority="high" quality={75} sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>
@@ -278,7 +278,7 @@ export default async function BuildingInsulationPage({ params }: { params: Promi
           <div className={styles.galleryGrid}>
             {['building-tint-before-after', 'commercial-facade-tinting', 'villa-window-insulation-jeddah', 'office-window-tinting', 'reflective-film-building', 'gallery-building-after-01'].map((img, i) => (
               <div key={i} className={styles.galleryItem}>
-                <Image src={`/images/${img}.webp`} alt={`عزل واجهات مباني جدة — مشروع ${i + 1}`} width={400} height={300} sizes="(max-width: 768px) 50vw, 33vw" loading="lazy" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <Image src={`/images/${img}.webp`} alt={isAr ? `عزل واجهات مباني جدة — مشروع ${i + 1}` : `Jeddah Building Facade Insulation — Project ${i + 1}`} width={400} height={300} sizes="(max-width: 768px) 50vw, 33vw" loading="lazy" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
               </div>
             ))}
           </div>
@@ -354,13 +354,19 @@ export default async function BuildingInsulationPage({ params }: { params: Promi
       </section>
       {/* ═══ Voice Search Speakable Answers — B2B TTS Targets ═══ */}
       <div id="voice-answer-b2b-1" style={{ display: 'none' }} aria-hidden="true">
-        عزل واجهات المباني يوفر 40% من فاتورة الكهرباء. أفلام نانو سيراميك أمريكية متوافقة مع كود البناء السعودي. ضمان 15 سنة.
+        {isAr 
+          ? 'عزل واجهات المباني يوفر 40% من فاتورة الكهرباء. أفلام نانو سيراميك أمريكية متوافقة مع كود البناء السعودي. ضمان 15 سنة.'
+          : 'Building facade insulation saves 40% on electricity bills. American nano-ceramic films compliant with Saudi Building Code. 15-year warranty.'}
       </div>
       <div id="voice-answer-b2b-2" style={{ display: 'none' }} aria-hidden="true">
-        تكلفة عزل زجاج المباني تبدأ من 50 ريال للمتر المربع. العائد على الاستثمار خلال 7 إلى 18 شهر حسب مساحة الواجهة.
+        {isAr
+          ? 'تكلفة عزل زجاج المباني تبدأ من 50 ريال للمتر المربع. العائد على الاستثمار خلال 7 إلى 18 شهر حسب مساحة الواجهة.'
+          : 'Building glass insulation costs start at 50 SAR per square meter. Return on investment within 7 to 18 months depending on the facade area.'}
       </div>
       <div id="voice-answer-b2b-3" style={{ display: 'none' }} aria-hidden="true">
-        عزل كور يخدم المباني التجارية والفلل والمدارس في 15 مدينة سعودية. فريق متخصص وعقود شركات ومناقصات حكومية.
+        {isAr
+          ? 'عزل كور يخدم المباني التجارية والفلل والمدارس في 15 مدينة سعودية. فريق متخصص وعقود شركات ومناقصات حكومية.'
+          : 'AzelCore serves commercial buildings, villas, and schools in 15 Saudi cities. Specialized team, corporate contracts, and government tenders.'}
       </div>
     </>
   );

@@ -288,7 +288,7 @@ export default async function JohnsonDealerPage({ params }: { params: Promise<{ 
                 <div className={styles.productHeader}>
                   <span className={styles.productTier}>{product.tier}</span>
                   <h3 className={styles.productName}>{product.name}</h3>
-                  <span className={styles.productNameAr}>{product.nameAr}</span>
+                  {isAr && <span className={styles.productNameAr}>{product.nameAr}</span>}
                 </div>
 
                 <div className={styles.productMetrics}>
@@ -387,7 +387,7 @@ export default async function JohnsonDealerPage({ params }: { params: Promise<{ 
       </section>
 
       {/* Cross-sell — Causal Internal Linking */}
-      <CrossSellCards currentPage="johnson-authorized-dealer" />
+      <CrossSellCards currentPage="johnson-authorized-dealer" locale={locale} />
 
       {/* CTA — data-nosnippet (vector density) */}
       <section className={styles.ctaSection} data-nosnippet>

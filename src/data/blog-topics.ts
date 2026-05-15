@@ -8,6 +8,7 @@ export interface BlogTopic {
   intent: "informational" | "comparison" | "how-to" | "legal";
   linksToServices: string[];
   outline: string[];
+  outlineEn?: string[];
   priority: 1 | 2 | 3;
 }
 
@@ -20,6 +21,7 @@ export const blogTopics: BlogTopic[] = [
     intent: "legal",
     linksToServices: ["car-tinting"],
     outline: ["النسب المسموحة حسب نوع الزجاج", "الغرامات والمخالفات", "الفحص الدوري", "كيف تتأكد من نسبة تظليلك", "أنواع مسموحة بدون مخالفة"],
+    outlineEn: ["Allowed Percentages by Glass Type", "Fines and Violations", "Periodic Inspection", "How to Verify Your Tint Percentage", "Allowed Types Without Violations"],
     priority: 1,
   },
   {
@@ -30,6 +32,7 @@ export const blogTopics: BlogTopic[] = [
     intent: "comparison",
     linksToServices: ["car-tinting"],
     outline: ["جدول مقارنة TSER/IR/UV", "اختبار الحرارة بالكاميرا", "العمر الافتراضي", "متى تختار كل نوع", "السعر مقابل القيمة"],
+    outlineEn: ["TSER/IR/UV Comparison Table", "Camera Heat Test", "Lifespan", "When to Choose Each Type", "Price vs Value"],
     priority: 1,
   },
   {
@@ -40,6 +43,7 @@ export const blogTopics: BlogTopic[] = [
     intent: "informational",
     linksToServices: ["car-tinting"],
     outline: ["معايير اختيار محل التظليل", "علامات المحل الموثوق", "أسئلة اسألها قبل التظليل", "أسعار السوق 2026", "تحذيرات من المحلات المقلدة"],
+    outlineEn: ["Criteria for Choosing a Tint Shop", "Signs of a Reliable Shop", "Questions to Ask Before Tinting", "Market Prices in 2026", "Warnings Against Fake Shops"],
     priority: 1,
   },
   {
@@ -50,6 +54,7 @@ export const blogTopics: BlogTopic[] = [
     intent: "informational",
     linksToServices: ["building-glass"],
     outline: ["حسابات الطاقة الشمسية المنقولة", "أمثلة حقيقية (فيلا/شقة/مكتب)", "مدة استرداد التكلفة", "أفضل أنواع الأفلام للتوفير"],
+    outlineEn: ["Transmitted Solar Energy Calculations", "Real Examples (Villa/Apartment/Office)", "ROI Duration", "Best Film Types for Savings"],
     priority: 1,
   },
   {
@@ -60,6 +65,7 @@ export const blogTopics: BlogTopic[] = [
     intent: "how-to",
     linksToServices: ["car-tinting"],
     outline: ["اختبار اللون بالضوء", "شهادة الضمان الأصلية", "اختبار الحرارة", "رائحة الفيلم", "سعر أقل من السوق = تقليد"],
+    outlineEn: ["Light Color Test", "Original Warranty Certificate", "Heat Test", "Film Smell", "Price Below Market = Fake"],
     priority: 1,
   },
   {
@@ -70,6 +76,7 @@ export const blogTopics: BlogTopic[] = [
     intent: "comparison",
     linksToServices: ["car-tinting"],
     outline: ["ما هو PPF", "ما هو النانو سيراميك للطلاء", "جدول مقارنة", "متى تحتاج كل واحد", "هل يمكن الجمع بينهما"],
+    outlineEn: ["What is PPF", "What is Paint Nano Ceramic", "Comparison Table", "When You Need Each", "Can They Be Combined"],
     priority: 2,
   },
   {
@@ -80,6 +87,7 @@ export const blogTopics: BlogTopic[] = [
     intent: "informational",
     linksToServices: ["car-tinting", "thermal-cars"],
     outline: ["تشقق الفرش الجلد", "بهتان الطبلون", "تلف الشاشات", "ضعف المكيف", "تآكل المطاط", "ضرر العيون والبشرة", "الحل: العزل الحراري"],
+    outlineEn: ["Cracked Leather Seats", "Faded Dashboard", "Screen Damage", "Weak AC", "Rubber Degradation", "Eye and Skin Damage", "The Solution: Thermal Insulation"],
     priority: 2,
   },
   {
@@ -90,6 +98,7 @@ export const blogTopics: BlogTopic[] = [
     intent: "informational",
     linksToServices: ["car-tinting"],
     outline: ["أنواع الأفلام وتأثيرها", "لماذا المعدني يحجب", "لماذا النانو لا يحجب", "كيف تختبر بنفسك"],
+    outlineEn: ["Film Types and Their Impact", "Why Metallized Films Block Signals", "Why Nano Films Don't Block", "How to Test It Yourself"],
     priority: 2,
   },
   {
@@ -100,6 +109,7 @@ export const blogTopics: BlogTopic[] = [
     intent: "informational",
     linksToServices: ["building-glass"],
     outline: ["أهداف رؤية 2030 للطاقة", "كود البناء السعودي", "دور العزل في التوفير", "حوافز حكومية"],
+    outlineEn: ["Vision 2030 Energy Goals", "Saudi Building Code", "Role of Insulation in Savings", "Government Incentives"],
     priority: 3,
   },
   {
@@ -110,6 +120,7 @@ export const blogTopics: BlogTopic[] = [
     intent: "how-to",
     linksToServices: ["car-tinting"],
     outline: ["التنظيف الصحيح", "منتجات ممنوعة", "متى تبدل التظليل", "علامات التلف المبكر"],
+    outlineEn: ["Proper Cleaning", "Prohibited Products", "When to Replace Tint", "Signs of Early Damage"],
     priority: 3,
   },
 ];

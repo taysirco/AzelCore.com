@@ -86,7 +86,7 @@ export default async function GalleryPage({ params }: { params: Promise<{ locale
       <section className={styles.pageHeader}>
         <div className={styles.container}>
           <nav className={styles.breadcrumb} aria-label={isAr ? "مسار التنقل" : "Breadcrumbs"}>
-            <Link href="/">{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'أعمالنا' : 'Gallery'}</span>
+            <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'أعمالنا' : 'Gallery'}</span>
           </nav>
           <h1 className={styles.pageTitle}>{isAr ? 'معرض ' : 'Our '}<span className={styles.highlight}>{isAr ? 'أعمالنا' : 'Gallery'}</span></h1>
           <p className={styles.pageSubtitle}>{isAr ? 'صور حقيقية قبل وبعد — كل مشروع بأيدي فريقنا في جدة.' : 'Real Before & After photos — every project done by our team in Jeddah.'}</p>
@@ -144,7 +144,7 @@ export default async function GalleryPage({ params }: { params: Promise<{ locale
         </div>
       </section>
 
-      <CrossSellCards currentPage="gallery" />
+      <CrossSellCards currentPage="gallery" locale={locale} />
     </>
   );
 }

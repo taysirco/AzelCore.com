@@ -81,6 +81,9 @@ export default function Header({ locale = 'ar' }: HeaderProps) {
               href={switchLangUrl}
               className={styles.langSwitch}
               aria-label={dict.langSwitcher.label}
+              onClick={() => {
+                document.cookie = `x-locale=${altLocale}; path=/; max-age=${60 * 60 * 24 * 365}; Secure; SameSite=Lax`;
+              }}
             >
               {dict.langSwitcher.switchTo}
             </Link>
@@ -119,7 +122,10 @@ export default function Header({ locale = 'ar' }: HeaderProps) {
         <Link
           href={switchLangUrl}
           className={styles.mobileLink}
-          onClick={closeMenu}
+          onClick={() => {
+            document.cookie = `x-locale=${altLocale}; path=/; max-age=${60 * 60 * 24 * 365}; Secure; SameSite=Lax`;
+            closeMenu();
+          }}
         >
           🌐 {dict.langSwitcher.switchTo}
         </Link>

@@ -155,7 +155,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
 
       <section className={styles.pageHeader}>
         <div className={styles.container}>
-          <nav className={styles.breadcrumb}><Link href="/">{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'المدونة' : 'Blog'}</span></nav>
+          <nav className={styles.breadcrumb}><Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'المدونة' : 'Blog'}</span></nav>
           <h1 className={styles.pageTitle}>{isAr ? 'مدونة ' : 'AzelCore '}<span className={styles.highlight}>{isAr ? 'عزل كور' : 'Blog'}</span></h1>
           <p className={styles.pageSubtitle}>{isAr ? 'مقالات متخصصة من فريقنا — نصائح فنية، مقارنات، وأخبار.' : 'Specialized articles from our team — technical tips, comparisons, and news.'}</p>
         </div>

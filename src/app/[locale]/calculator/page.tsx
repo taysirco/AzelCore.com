@@ -10,8 +10,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'حاسبة تكلفة عزل وتظليل السيارات' : 'حاسبة تكلفة عزل وتظليل السيارات | AzelCore',
-    description: isAr ? 'احسب التكلفة التقديرية لعزل وتظليل سيارتك في جدة (نانو سيراميك، 3M، لومار). أداة ذكية لمعرفة الأسعار التقريبية قبل الحجز.' : 'احسب التكلفة التقديرية لعزل وتظليل سيارتك في جدة (نانو سيراميك، 3M، لومار). أداة ذكية لمعرفة الأسعار التقريبية قبل الحجز.',
+    title: isAr ? 'حاسبة تكلفة عزل وتظليل السيارات' : 'Car Insulation & Tinting Cost Calculator | AzelCore',
+    description: isAr ? 'احسب التكلفة التقديرية لعزل وتظليل سيارتك في جدة (نانو سيراميك، 3M، لومار). أداة ذكية لمعرفة الأسعار التقريبية قبل الحجز.' : 'Calculate the estimated cost for insulating and tinting your car in Jeddah (Nano Ceramic, 3M, Johnson). A smart tool to get approximate prices before booking.',
     alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/calculator')}` },
   };
 }

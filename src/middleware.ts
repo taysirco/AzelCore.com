@@ -310,7 +310,7 @@ export function middleware(request: NextRequest) {
   const cookieLocale = request.cookies.get('x-locale')?.value;
   const detectedLocale = (cookieLocale && SUPPORTED_LOCALES.includes(cookieLocale))
     ? cookieLocale
-    : detectLocaleFromHeader(request);
+    : DEFAULT_LOCALE;
 
   if (detectedLocale === 'en') {
     // Redirect to explicit English path

@@ -1,6 +1,7 @@
 // ═══ AzelCore.com — FAQ Database ═══
 export interface FAQ {
   id: string; question: string; answer: string;
+  questionEn?: string; answerEn?: string;
   service: "car-tinting" | "building-glass" | "thermal" | "general";
   intent: "legal" | "price" | "comparison" | "safety" | "warranty" | "process";
 }

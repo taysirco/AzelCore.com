@@ -11,7 +11,7 @@ import CorporateRoiCalculator from '@/components/sections/CorporateRoiCalculator
 import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
 import AuthorProfile from '@/components/seo/AuthorProfile';
 import Certifications from '@/components/seo/Certifications';
-import { Locale } from '@/lib/i18n';
+import { Locale, localePath } from '@/lib/i18n';
 import { getAlternates } from '@/lib/seo';
 import styles from '../page.module.css';
 
@@ -106,8 +106,8 @@ export default async function BuildingInsulationCityPage({ params }: { params: P
           <div className={styles.heroOverlay} style={{ background: 'linear-gradient(to bottom, var(--bg) 0%, transparent 100%)' }} />
         </div>
         <div className={styles.heroContent}>
-          <nav className={styles.breadcrumb} aria-label="مسار التنقل">
-            <Link href="/">{isAr ? 'الرئيسية' : 'Home'}</Link> / <Link href="/building-glass-insulation">{isAr ? 'عزل المباني' : 'Building Insulation'}</Link> / <span>{isAr ? cityObj.nameAr : cityObj.nameEn}</span>
+          <nav className={styles.breadcrumb} aria-label={isAr ? "مسار التنقل" : "Breadcrumbs"}>
+            <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <Link href={localePath(locale as Locale, '/building-glass-insulation')}>{isAr ? 'عزل المباني' : 'Building Insulation'}</Link> / <span>{isAr ? cityObj.nameAr : cityObj.nameEn}</span>
           </nav>
           <h1 className={styles.heroTitle}>
             {isAr ? 'عزل زجاج المباني في ' : 'Building Glass Insulation in '}<span className={styles.greenGradient}>{isAr ? cityObj.nameAr : cityObj.nameEn}</span>
@@ -151,8 +151,8 @@ export default async function BuildingInsulationCityPage({ params }: { params: P
 
             <div style={{ background: 'var(--surface)', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border)' }}>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, fontSize: '1.05rem' }}>
-                <strong style={{ color: 'var(--primary)' }}>التوصية الهندسية: </strong>
-                نوصي بـ <strong>{isAr ? content.recommendedFilm : content.recommendedFilmEn}</strong> لتحقيق أعلى كفاءة وتوافق مع كود البناء السعودي في {cityObj.nameAr}.
+                <strong style={{ color: 'var(--primary)' }}>{isAr ? 'التوصية الهندسية: ' : 'Engineering Recommendation: '}</strong>
+                {isAr ? 'نوصي بـ ' : 'We recommend '}<strong>{isAr ? content.recommendedFilm : content.recommendedFilmEn}</strong>{isAr ? ' لتحقيق أعلى كفاءة وتوافق مع كود البناء السعودي في ' : ' to achieve the highest efficiency and compliance with the Saudi Building Code in '}{isAr ? cityObj.nameAr : cityObj.nameEn}.
               </p>
             </div>
           </div>
@@ -168,8 +168,8 @@ export default async function BuildingInsulationCityPage({ params }: { params: P
       <section className={`${styles.section} ${styles.sectionAlt}`}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <span className={styles.overline}>أسئلة شائعة</span>
-            <h2 className={styles.sectionTitle}>استفسارات مشاريع {cityObj.nameAr}</h2>
+            <span className={styles.overline}>{isAr ? 'أسئلة شائعة' : 'Frequently Asked Questions'}</span>
+            <h2 className={styles.sectionTitle}>{isAr ? `استفسارات مشاريع ${cityObj.nameAr}` : `Queries for ${cityObj.nameEn} Projects`}</h2>
           </div>
           <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {content.faqs.map((faq, i) => (
@@ -185,8 +185,8 @@ export default async function BuildingInsulationCityPage({ params }: { params: P
       <CorporateRoiCalculator />
 
       <ServiceDisclaimer
-        title="أمان الزجاج وكود البناء SBC"
-        text={`المشاريع التجارية في ${cityObj.nameAr} مُلزمة بتطبيق كود البناء السعودي (SBC 601) لترشيد الطاقة. العزل التجاري الغير معتمد يعرضك لمخالفات بلدية وعدم اجتياز فحص الدفاع المدني.`}
+        title={isAr ? 'أمان الزجاج وكود البناء SBC' : 'Glass Safety and SBC Building Code'}
+        text={isAr ? `المشاريع التجارية في ${cityObj.nameAr} مُلزمة بتطبيق كود البناء السعودي (SBC 601) لترشيد الطاقة. العزل التجاري الغير معتمد يعرضك لمخالفات بلدية وعدم اجتياز فحص الدفاع المدني.` : `Commercial projects in ${cityObj.nameEn} are required to apply the Saudi Building Code (SBC 601) for energy conservation. Unapproved commercial insulation exposes you to municipal violations and failure to pass civil defense inspections.`}
       />
 
       {/* ═══ E-E-A-T: Expert Review Entity ═══ */}
@@ -196,21 +196,21 @@ export default async function BuildingInsulationCityPage({ params }: { params: P
             isAr={isAr}
             expertName={OWNER_NAME}
             expertTitle={OWNER_TITLE}
-            organization="عزل كور لخدمات مشاريع المباني"
-            quote={`أشرفنا على العديد من مشاريع العزل في ${cityObj.nameAr}. التعامل مع مناخ المنطقة (حرارة تصل ${cityObj.avgTemp} ورطوبة ${cityObj.humidity}) يتطلب اختيار فيلم نانو سيراميك بمواصفات دقيقة جداً لتجنب الكسر الحراري للزجاج.`}
+            organization={isAr ? 'عزل كور لخدمات مشاريع المباني' : 'AzelCore for Building Projects Services'}
+            quote={isAr ? `أشرفنا على العديد من مشاريع العزل في ${cityObj.nameAr}. التعامل مع مناخ المنطقة (حرارة تصل ${cityObj.avgTemp} ورطوبة ${cityObj.humidity}) يتطلب اختيار فيلم نانو سيراميك بمواصفات دقيقة جداً لتجنب الكسر الحراري للزجاج.` : `We have supervised many insulation projects in ${cityObj.nameEn}. Dealing with the region's climate (heat reaching ${cityObj.avgTemp} and humidity ${cityObj.humidity}) requires choosing a nano-ceramic film with very precise specifications to avoid thermal breakage of the glass.`}
             reviewDate="2026-05-01"
           />
         </div>
       </section>
 
       <SiloNav
-        items={ksaCities.map(c => ({ id: c.id, nameAr: c.nameAr }))}
+        items={ksaCities.map(c => ({ id: c.id, nameAr: isAr ? c.nameAr : c.nameEn }))}
         currentId={city}
         basePath="/building-glass-insulation"
-        label="عزل مباني في مدن أخرى"
+        label={isAr ? 'عزل مباني في مدن أخرى' : 'Building Insulation in Other Cities'}
       />
 
-      <CrossSellCards currentPage={`building-glass-insulation-${cityObj.id}`} />
+      <CrossSellCards currentPage={`building-glass-insulation-${cityObj.id}`} locale={locale} />
     </>
   );
 }

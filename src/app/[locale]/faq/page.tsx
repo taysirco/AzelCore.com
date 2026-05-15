@@ -63,7 +63,7 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
       <section className={styles.pageHeader}>
         <div className={styles.container}>
           <nav className={styles.breadcrumb} aria-label={isAr ? "مسار التنقل" : "Breadcrumbs"}>
-            <Link href="/">{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'الأسئلة الشائعة' : 'FAQ'}</span>
+            <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'الأسئلة الشائعة' : 'FAQ'}</span>
           </nav>
           <h1 className={styles.pageTitle}>{isAr ? 'الأسئلة ' : 'Frequently Asked '}<span className={styles.highlight}>{isAr ? 'الشائعة' : 'Questions'}</span></h1>
           <p className={styles.pageSubtitle}>{isAr ? 'كل ما تحتاج تعرفه عن التظليل والعزل الحراري — إجابات واضحة ومباشرة.' : 'Everything you need to know about tinting and thermal insulation — clear and direct answers.'}</p>

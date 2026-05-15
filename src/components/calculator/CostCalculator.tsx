@@ -83,8 +83,8 @@ export default function CostCalculator({ isAr = true }: { isAr?: boolean }) {
   const getWhatsAppMessage = () => {
     return encodeURIComponent(
       (isAr ? `مرحباً عزل كور، استعملت الحاسبة في موقعكم وهذه تسعيرتي المبدئية:\n` : `Hello AzelCore, I used the calculator and this is my estimate:\n`) +
-      `- حجم السيارة: ${getCarSizes(isAr).find(s => s.id === carSize)?.label}\n` +
-      `- نوع الفيلم: ${getFilmTypes(isAr).find(f => f.id === filmType)?.label}\n` +
+      `- ${isAr ? 'حجم السيارة' : 'Car Size'}: ${getCarSizes(isAr).find(s => s.id === carSize)?.label}\n` +
+      `- ${isAr ? 'نوع الفيلم' : 'Film Type'}: ${getFilmTypes(isAr).find(f => f.id === filmType)?.label}\n` +
       `- ${isAr ? 'السعر التقريبي' : 'Approximate price'}: ${estimatedPrice.min} - ${estimatedPrice.max} ${isAr ? 'ر.س' : 'SAR'}\n\n` +
       (isAr ? `أريد حجز موعد لتأكيد السعر.` : `I want to book an appointment to confirm the price.`)
     );

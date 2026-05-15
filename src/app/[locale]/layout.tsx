@@ -93,7 +93,7 @@ function getOrganizationSchema(locale: Locale) {
     '@id': `${SITE_URL}/#organization`,
     name: locale === 'ar' ? SITE_NAME : SITE_NAME_EN,
     alternateName: locale === 'ar' ? SITE_NAME_EN : SITE_NAME,
-    legalName: 'مؤسسة عزل كور للتجارة',
+    legalName: locale === 'ar' ? 'مؤسسة عزل كور للتجارة' : 'AzelCore Trading Est.',
     url: SITE_URL,
     logo: `${SITE_URL}/images/azelcore-logo.webp`,
     foundingDate: '2024',

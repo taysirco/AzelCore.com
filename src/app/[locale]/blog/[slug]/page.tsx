@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
 import { blogTopics, type BlogTopic } from '@/data/blog-topics';
 import { articles, articleSlugs } from '@/data/blog-content';
-import { Locale } from '@/lib/i18n';
+import { Locale, localePath } from '@/lib/i18n';
 import { getAlternates } from '@/lib/seo';
 import AuthorProfile from '@/components/seo/AuthorProfile';
 import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
@@ -212,7 +212,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
 
       <article className={styles.article}>
         <nav className={styles.breadcrumb} aria-label={isAr ? "مسار التنقل" : "Breadcrumbs"}>
-          <Link href="/">{isAr ? 'الرئيسية' : 'Home'}</Link> / <Link href={`/${locale}/blog`}>{isAr ? 'المدونة' : 'Blog'}</Link> / <span>{title}</span>
+          <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <Link href={localePath(locale as Locale, '/blog')}>{isAr ? 'المدونة' : 'Blog'}</Link> / <span>{title}</span>
         </nav>
 
         <div className={styles.meta}>
@@ -229,7 +229,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
         </div>
 
         <div style={{ margin: '2rem 0' }}>
-          <OfficialPartnerBar entityKeys={['GOV.SASO', 'GOV.SBC', 'GOV.BALADI']} />
+          <OfficialPartnerBar entityKeys={['GOV.SASO', 'GOV.SBC', 'GOV.BALADI']} isAr={isAr} />
         </div>
 
         <div className={styles.content}>
@@ -247,7 +247,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
             <div className={styles.tocBox} data-nosnippet>
               <h3>{isAr ? 'جدول المحتويات:' : 'Table of Contents:'}</h3>
               <ul>
-                {topic.outline.map((item, i) => (
+                {(!isAr && topic.outlineEn ? topic.outlineEn : topic.outline).map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
               </ul>

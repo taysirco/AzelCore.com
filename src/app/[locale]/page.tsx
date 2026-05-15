@@ -38,7 +38,7 @@ function getHomeGraphSchema(locale: Locale) {
         '@id': `${SITE_URL}/#localbusiness`,
         name: isAr ? 'عزل كور — تظليل سيارات جدة' : 'AzelCore — Car Tinting Jeddah',
         alternateName: isAr ? 'AzelCore' : 'عزل كور',
-        legalName: 'مؤسسة عزل كور للتجارة',
+        legalName: isAr ? 'مؤسسة عزل كور للتجارة' : 'AzelCore Trading Est.',
         url: `${SITE_URL}/${locale}`,
         telephone: PHONE,
         image: `${SITE_URL}/images/og-cover.webp`,

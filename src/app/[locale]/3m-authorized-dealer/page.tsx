@@ -267,7 +267,7 @@ export default async function ThreeMDealerPage({ params }: { params: Promise<{ l
                 <div className={styles.productHeader}>
                   <span className={styles.productTier}>{product.tier}</span>
                   <h3 className={styles.productName}>{product.name}</h3>
-                  <span className={styles.productNameAr}>{product.nameAr}</span>
+                  {isAr && <span className={styles.productNameAr}>{product.nameAr}</span>}
                 </div>
 
                 <div className={styles.productMetrics}>
@@ -376,7 +376,7 @@ export default async function ThreeMDealerPage({ params }: { params: Promise<{ l
       />
 
       {/* Cross-sell */}
-      <CrossSellCards currentPage="3m-authorized-dealer" />
+      <CrossSellCards currentPage="3m-authorized-dealer" locale={locale} />
 
       {/* CTA */}
       <section className={styles.ctaSection} data-nosnippet>
