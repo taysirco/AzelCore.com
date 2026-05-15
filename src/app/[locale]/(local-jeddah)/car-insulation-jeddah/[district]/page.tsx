@@ -120,7 +120,7 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
-      <ServiceSummary summary={`في ${d.nameAr} بجدة، {isAr ? 'الرطوبة' : 'Humidity'} تصل ${d.humidity} مع أشعة UV بمستوى ${d.uvIndex} وتآكل ملحي ${d.saltCorrosion}. نوصي بـ ${isAr ? d.recommendation : d.recommendationEn}. وكيل جونسون و 3M المعتمد — ضمان عمر السيارة.`} />
+      <ServiceSummary summary={isAr ? `في ${d.nameAr} بجدة، الرطوبة تصل ${d.humidity} مع أشعة UV بمستوى ${d.uvIndex} وتآكل ملحي ${d.saltCorrosion}. نوصي بـ ${d.recommendation}. وكيل جونسون و 3M المعتمد — ضمان عمر السيارة.` : `In ${d.nameEn} Jeddah, Humidity reaches ${d.humidity} with UV index ${d.uvIndex} and salt corrosion ${d.saltCorrosion}. We recommend ${d.recommendationEn}. Authorized Johnson & 3M dealer — Lifetime warranty.`} isAr={isAr} />
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -249,6 +249,7 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
       <section className={styles.section} style={{ paddingTop: 0 }}>
         <div className={styles.container}>
           <AuthorProfile
+            isAr={isAr}
             expertName={OWNER_NAME}
             expertTitle={OWNER_TITLE}
             organization="isAr ? 'خبراء العزل وتظليل السيارات بجدة' : 'Car Tinting & Insulation Experts in Jeddah'"

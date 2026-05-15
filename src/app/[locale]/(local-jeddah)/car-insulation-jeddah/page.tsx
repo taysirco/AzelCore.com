@@ -295,7 +295,7 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
       <LiveJeddahWeatherBanner />
 
       {/* TL;DR Highlights — Page Summary */}
-      <ServiceSummary summary={quickAnswers.carTinting.text} />
+      <ServiceSummary summary={isAr ? quickAnswers.carTinting.text : quickAnswers.carTinting.textEn!} isAr={isAr} />
 
       {/* ═══ Hero — RSC above the fold, priority LCP image ═══ */}
       <section className={styles.hero}>
@@ -464,7 +464,7 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
       </section>
 
       {/* ═══ Local FAQ Section — Hijazi FAQ ═══ */}
-      <VoiceSearchFAQ />
+      <VoiceSearchFAQ isAr={isAr} />
 
       {/* ═══ YMYL Safety Warnings — E-E-A-T Trust ═══ */}
       <ServiceDisclaimer
@@ -480,6 +480,7 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
       <section className={styles.section} style={{ paddingTop: 0 }}>
         <div className={styles.container}>
           <AuthorProfile
+            isAr={isAr}
             expertName={isAr ? OWNER_NAME : 'Ahmed Salem'}
             expertTitle={isAr ? OWNER_TITLE : 'Technical Director'}
             organization={isAr ? 'عزل كور (وكيل جونسون و 3M)' : 'AzelCore (Johnson & 3M Authorized)'}

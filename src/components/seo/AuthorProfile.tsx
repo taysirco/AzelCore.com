@@ -15,6 +15,7 @@ interface AuthorProfileProps {
   reviewDate?: string;
   /** Variant: 'full' shows quote, 'compact' is just the badge */
   variant?: 'full' | 'compact';
+  isAr?: boolean;
 }
 
 /**

@@ -198,7 +198,7 @@ export default async function ThreeMDealerPage({ params }: { params: Promise<{ l
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getGraphSchema(isAr)) }} />
 
-      <ServiceSummary summary={isAr ? "على عكس الأفلام التجارية التي تتحول بنفسجياً خلال أشهر وتفقد كفاءتها، تعتمد أفلام 3M على تقنية Multilayer Optical Film بـ 200+ طبقة نانو سيراميك. Crystalline يحجب 97% IR مع نفاذية 70-90% ضوء مرئي — يعني حماية قصوى من حرارة جدة بدون تغيير شكل الزجاج وبدون مخالفة مرور. عزل كور وكيل 3M المعتمد في جدة." : "Unlike commercial films that turn purple within months and lose efficiency, 3M films rely on Multilayer Optical Film technology with 200+ nano-ceramic layers. Crystalline blocks 97% IR with 70-90% VLT — meaning maximum KSA heat protection without altering glass appearance and zero traffic violations. AzelCore is your authorized 3M dealer in Jeddah."} />
+      <ServiceSummary summary={isAr ? "على عكس الأفلام التجارية التي تتحول بنفسجياً خلال أشهر وتفقد كفاءتها، تعتمد أفلام 3M على تقنية Multilayer Optical Film بـ 200+ طبقة نانو سيراميك. Crystalline يحجب 97% IR مع نفاذية 70-90% ضوء مرئي — يعني حماية قصوى من حرارة جدة بدون تغيير شكل الزجاج وبدون مخالفة مرور. عزل كور وكيل 3M المعتمد في جدة." : "Unlike commercial films that turn purple within months and lose efficiency, 3M films rely on Multilayer Optical Film technology with 200+ nano-ceramic layers. Crystalline blocks 97% IR with 70-90% VLT — meaning maximum KSA heat protection without altering glass appearance and zero traffic violations. AzelCore is your authorized 3M dealer in Jeddah."} isAr={isAr} />
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -367,6 +367,7 @@ export default async function ThreeMDealerPage({ params }: { params: Promise<{ l
 
       {/* Author E-E-A-T */}
       <AuthorProfile
+        isAr={isAr}
         expertName={isAr ? OWNER_NAME : "Ahmed Salem"}
         expertTitle={isAr ? OWNER_TITLE : "Tinting Expert"}
         organization={isAr ? "عزل كور (وكيل جونسون و 3M)" : "AzelCore (Johnson & 3M Dealer)"}

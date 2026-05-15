@@ -15,7 +15,7 @@ export default function ServiceSummary({ summary, label, isAr = true }: ServiceS
   return (
     <div className={styles.serviceSummary} role="complementary" aria-label={isAr ? "ملخص الخدمة" : "Service Summary"}>
       <div className={styles.summaryBox}>
-        <span className={styles.summaryLabel}>{label}</span>
+        <span className={styles.summaryLabel}>{finalLabel}</span>
         <p className={styles.summaryText}>{summary}</p>
       </div>
     </div>

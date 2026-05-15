@@ -7,7 +7,7 @@ import styles from './VoiceSearchFAQ.module.css';
 
 export default function VoiceSearchFAQ({ isAr = true }: { isAr?: boolean }) {
   const title = isAr ? 'أسئلة الناس في جدة عن التظليل' : 'People\'s Questions about Tinting in Jeddah';
-  const subtitle = isAr ? '{subtitle}' : 'Candid answers — the exact questions our clients ask every day.';
+  const subtitle = isAr ? 'إجابات صريحة — نفس الأسئلة اللي نسمعها كل يوم في المركز.' : 'Candid answers — the exact questions our clients ask every day.';
   const overline = isAr ? '🎤 أسئلة بلهجتك' : '🎤 Local Questions';
   return (
     <section className={styles.wrapper}>

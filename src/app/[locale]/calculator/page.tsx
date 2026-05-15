@@ -52,7 +52,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
 
       <section className={styles.calculatorSection}>
         <div className={styles.container}>
-          <ServiceSummary summary={isAr ? "استخدم حاسبة عزل كور الذكية لمعرفة التكلفة التقريبية لتظليل سيارتك بأفلام النانو سيراميك والكربون. الأسعار تعتمد على حجم السيارة ونوع الفيلم المختار." : "Use the smart AzelCore calculator to get an estimated cost for tinting your car with nano-ceramic and carbon films. Prices depend on the car size and chosen film type."} />
+          <ServiceSummary summary={isAr ? "استخدم حاسبة عزل كور الذكية لمعرفة التكلفة التقريبية لتظليل سيارتك بأفلام النانو سيراميك والكربون. الأسعار تعتمد على حجم السيارة ونوع الفيلم المختار." : "Use the smart AzelCore calculator to get an estimated cost for tinting your car with nano-ceramic and carbon films. Prices depend on the car size and chosen film type."} isAr={isAr} />
           
           <div className={styles.calculatorWrapper}>
             <CostCalculator isAr={isAr} />

@@ -193,6 +193,7 @@ export default async function BuildingInsulationCityPage({ params }: { params: P
       <section className={styles.section} style={{ paddingTop: 0 }}>
         <div className={styles.container}>
           <AuthorProfile
+            isAr={isAr}
             expertName={OWNER_NAME}
             expertTitle={OWNER_TITLE}
             organization="عزل كور لخدمات مشاريع المباني"

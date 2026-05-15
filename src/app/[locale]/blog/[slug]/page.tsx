@@ -329,6 +329,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
         <div style={{ marginTop: '3rem', marginBottom: '2rem' }}>
           {content.expertReview ? (
             <AuthorProfile
+              isAr={isAr}
               expertName={!isAr && content.expertReview.authorEn ? content.expertReview.authorEn : content.expertReview.author}
               expertTitle={!isAr && content.expertReview.roleEn ? content.expertReview.roleEn : content.expertReview.role}
               organization={SITE_NAME}
@@ -337,6 +338,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
             />
           ) : (
             <AuthorProfile
+              isAr={isAr}
               expertName={isAr ? OWNER_NAME : 'AzelCore Expert'}
               expertTitle={isAr ? OWNER_TITLE : 'Technical Consultant'}
               organization={SITE_NAME}

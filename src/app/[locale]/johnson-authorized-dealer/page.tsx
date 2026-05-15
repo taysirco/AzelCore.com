@@ -219,7 +219,7 @@ export default async function JohnsonDealerPage({ params }: { params: Promise<{ 
 
 
       {/* TL;DR Highlights — Page Summary */}
-      <ServiceSummary summary={isAr ? "على عكس الأفلام التجارية مجهولة المصدر، أفلام جونسون الأمريكية (منذ 1961) تقدم 5 خطوط إنتاج متخصصة أبرزها Supreme IR بنسبة حجب 97% للأشعة تحت الحمراء. عزل كور وكيل جونسون المعتمد في جدة — مع ضمان يصل لعمر السيارة وشهادة IWFA لكل فني تركيب." : "Unlike unknown commercial films, American Johnson films (since 1961) offer 5 specialized lines, notably Supreme IR with 97% infrared rejection. AzelCore is your authorized Johnson dealer in Jeddah — with a warranty up to the car's lifetime and an IWFA certificate for every installer."} />
+      <ServiceSummary summary={isAr ? "على عكس الأفلام التجارية مجهولة المصدر، أفلام جونسون الأمريكية (منذ 1961) تقدم 5 خطوط إنتاج متخصصة أبرزها Supreme IR بنسبة حجب 97% للأشعة تحت الحمراء. عزل كور وكيل جونسون المعتمد في جدة — مع ضمان يصل لعمر السيارة وشهادة IWFA لكل فني تركيب." : "Unlike unknown commercial films, American Johnson films (since 1961) offer 5 specialized lines, notably Supreme IR with 97% infrared rejection. AzelCore is your authorized Johnson dealer in Jeddah — with a warranty up to the car's lifetime and an IWFA certificate for every installer."} isAr={isAr} />
 
       {/* Hero */}
       <section className={styles.hero}>

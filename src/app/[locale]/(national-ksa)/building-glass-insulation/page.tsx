@@ -135,7 +135,7 @@ export default async function BuildingInsulationPage({ params }: { params: Promi
       <LiveJeddahWeatherBanner />
 
       {/* TL;DR Highlights — Page Summary */}
-      <ServiceSummary summary={quickAnswers.buildingGlass.text} />
+      <ServiceSummary summary={isAr ? quickAnswers.buildingGlass.text : quickAnswers.buildingGlass.textEn!} isAr={isAr} />
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -325,12 +325,13 @@ export default async function BuildingInsulationPage({ params }: { params: Promi
         </div>
       </section>
 
-      <CrossSellCards currentPage="building-glass-insulation" />
+      <CrossSellCards currentPage="building-glass-insulation" locale={locale} />
 
       {/* ═══ E-E-A-T: Expert Review Entity ═══ */}
       <section className={styles.section} style={{ paddingTop: 0 }}>
         <div className={styles.container}>
           <AuthorProfile
+            isAr={isAr}
             expertName={isAr ? OWNER_NAME : "Ahmed Salem"}
             expertTitle={isAr ? OWNER_TITLE : "Tinting Expert"}
             organization={isAr ? "عزل كور لخدمات مشاريع المباني" : "AzelCore Building Projects Services"}

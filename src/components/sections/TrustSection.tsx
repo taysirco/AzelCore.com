@@ -32,6 +32,7 @@ export default function TrustSection({ locale = 'ar' }: { locale?: string }) {
         {/* Expert Box (Centralized E-E-A-T Component) */}
         <div style={{ marginTop: '2rem' }}>
           <AuthorProfile 
+            isAr={isAr}
             expertName={OWNER_NAME}
             expertTitle={isAr ? OWNER_TITLE : 'Certified Insulation & Tinting Technician — Official Johnson & 3M Dealer'}
             organization={isAr ? "Johnson Window Films + 3M (وكيل معتمد)" : "Johnson Window Films + 3M (Authorized Dealer)"}
