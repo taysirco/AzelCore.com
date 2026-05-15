@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SITE_NAME, SITE_NAME_EN, getWhatsAppLink, PHONE, WORKING_HOURS, WORKING_HOURS_EN, OWNER_NAME, CRN, VAT_ID, ADDRESS, ADDRESS_EN } from '@/lib/constants';
+import { SITE_NAME, SITE_NAME_EN, getWhatsAppLink, PHONE, WORKING_HOURS, WORKING_HOURS_EN, OWNER_NAME, OWNER_NAME_EN, CRN, VAT_ID, ADDRESS, ADDRESS_EN } from '@/lib/constants';
 import { getDictionary } from '@/lib/dictionaries';
 import { localePath, type Locale } from '@/lib/i18n';
 import styles from './Footer.module.css';
@@ -33,6 +33,7 @@ export default function Footer({ locale = 'ar' }: FooterProps) {
   const dict = getDictionary(locale);
   const isAr = locale === 'ar';
   const siteName = isAr ? SITE_NAME : SITE_NAME_EN;
+  const ownerName = isAr ? OWNER_NAME : OWNER_NAME_EN;
   const whatsappLink = getWhatsAppLink(locale);
   const serviceLinks = getServiceLinks(locale);
   const infoLinks = getInfoLinks(locale);
@@ -96,7 +97,7 @@ export default function Footer({ locale = 'ar' }: FooterProps) {
       {/* Bottom Bar */}
       <div className={styles.bottomBar}>
         <div className={styles.bottomInner}>
-          <p>© 2026 {siteName} — {OWNER_NAME}. {dict.footer.allRightsReserved}.</p>
+          <p>© 2026 {siteName} — {ownerName}. {dict.footer.allRightsReserved}.</p>
           <p className={styles.badge}>{isAr ? 'وكيل جونسون و 3M المعتمد 🇺🇸' : 'Authorized Johnson & 3M Dealer 🇺🇸'}</p>
         </div>
       </div>

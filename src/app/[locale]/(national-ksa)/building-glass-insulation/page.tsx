@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Locale, localePath } from '@/lib/i18n';
 import { getAlternates } from '@/lib/seo';
-import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_NAME_EN, OWNER_TITLE, VAT_ID, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
 import { getFaqs } from '@/data/faqs';
 import { quickAnswers } from '@/data/quick-answers';
 import ServiceSummary from '@/components/seo/ServiceSummary';
@@ -332,7 +332,7 @@ export default async function BuildingInsulationPage({ params }: { params: Promi
         <div className={styles.container}>
           <AuthorProfile
             isAr={isAr}
-            expertName={isAr ? OWNER_NAME : "Ahmed Salem"}
+            expertName={isAr ? OWNER_NAME : OWNER_NAME_EN}
             expertTitle={isAr ? OWNER_TITLE : "Tinting Expert"}
             organization={isAr ? "عزل كور لخدمات مشاريع المباني" : "AzelCore Building Projects Services"}
             quote={isAr ? "تطبيق معايير كود البناء السعودي (SBC) في العزل الزجاجي ليس خياراً بل ضرورة لتقليل الهدر المالي. نضمن لك أفلام عزل معتمدة توفر حتى 40% من استهلاك التكييف وتطيل عمر الأثاث والمعدات داخل المبنى." : "Applying Saudi Building Code (SBC) standards in glass insulation is not an option but a necessity to reduce financial waste. We guarantee certified insulation films that save up to 40% of AC consumption and prolong the lifespan of furniture and equipment inside the building."}

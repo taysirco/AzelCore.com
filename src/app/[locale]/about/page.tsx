@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Locale, localePath } from '@/lib/i18n';
 import { getAlternates } from '@/lib/seo';
-import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_HOURS, CRN, VAT_ID, ADDRESS_STRUCTURED } from '@/lib/constants';
+import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_NAME_EN, OWNER_TITLE, GEO, WORKING_HOURS, CRN, VAT_ID, ADDRESS_STRUCTURED } from '@/lib/constants';
 import styles from './page.module.css';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -30,7 +30,7 @@ const getAboutSchema = (isAr: boolean) => ({
         legalName: isAr ? `مؤسسة ${OWNER_NAME} للتجارة` : `${OWNER_NAME} Trading Est.`,
         founder: {
           '@type': 'Person',
-          name: OWNER_NAME,
+          name: OWNER_NAME, OWNER_NAME_EN,
           jobTitle: OWNER_TITLE,
           knowsAbout: [
             isAr ? 'تظليل سيارات نانو سيراميك' : 'Nano-ceramic car tinting',
@@ -187,7 +187,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <span className={styles.overline}>{isAr ? 'المؤسس' : 'Founder'}</span>
-            <h2 className={styles.sectionTitle}>👨‍🔧 {isAr ? OWNER_NAME : 'Ahmed Salem'}</h2>
+            <h2 className={styles.sectionTitle}>👨‍🔧 {isAr ? OWNER_NAME : OWNER_NAME_EN}</h2>
             <p className={styles.sectionSubtitle}>{isAr ? OWNER_TITLE : 'Technical Director'}</p>
           </div>
           <div className={styles.expertGrid}>

@@ -7,6 +7,7 @@ import PriceReveal from '@/components/ui/PriceReveal';
 import styles from './PricingSection.module.css';
 
 export default function PricingSection({ locale = 'ar' }: { locale?: string }) {
+  const isAr = locale === 'ar';
   const tiers = carTintingPrices.tiers.slice(0, 4); // top 4
   const dict = getDictionary(locale as Locale);
   const whatsappLink = getWhatsAppLink(locale as Locale);
@@ -16,7 +17,7 @@ export default function PricingSection({ locale = 'ar' }: { locale?: string }) {
       <div className={styles.container}>
         <div className={styles.header}>
           <span className={styles.overline}>{dict.pricing.overline}</span>
-          <h2 className={styles.title}>{dict.pricing.title}</h2>
+          <h2 className={styles.title}>{!isAr && carTintingPrices.titleEn ? carTintingPrices.titleEn : dict.pricing.title}</h2>
           <p className={styles.subtitle}>{dict.pricing.subtitle}</p>
         </div>
 
@@ -24,7 +25,7 @@ export default function PricingSection({ locale = 'ar' }: { locale?: string }) {
           {tiers.map((tier, i) => (
             <div key={i} className={`${styles.card} ${i === 0 ? styles.featured : ''}`}>
               {i === 0 && <span className={styles.badge}>{dict.pricing.mostPopular}</span>}
-              <h3 className={styles.cardTitle}>{tier.filmType}</h3>
+              <h3 className={styles.cardTitle}>{!isAr && tier.filmTypeEn ? tier.filmTypeEn : tier.filmType}</h3>
               <div className={styles.priceRow}>
                 <span className={styles.priceLabel}>{dict.pricing.sedan}</span>
                 <PriceReveal price={tier.sedan.price} label={dict.common.price} />
@@ -35,10 +36,10 @@ export default function PricingSection({ locale = 'ar' }: { locale?: string }) {
               </div>
               <div className={styles.warrantyRow}>
                 <span>{dict.pricing.warranty}</span>
-                <strong>{tier.warranty}</strong>
+                <strong>{!isAr && tier.warrantyEn ? tier.warrantyEn : tier.warranty}</strong>
               </div>
               <ul className={styles.includes}>
-                {tier.includes.map((item, j) => (
+                {(!isAr && tier.includesEn ? tier.includesEn : tier.includes).map((item: string, j: number) => (
                   <li key={j}>✓ {item}</li>
                 ))}
               </ul>
@@ -54,8 +55,8 @@ export default function PricingSection({ locale = 'ar' }: { locale?: string }) {
           <div className={styles.addonsList}>
             {carTintingPrices.addons.map((addon, i) => (
               <div key={i} className={styles.addonItem}>
-                <span>{addon.name}</span>
-                <span className={styles.addonPrice}>{addon.price}</span>
+                <span>{!isAr && addon.nameEn ? addon.nameEn : addon.name}</span>
+                <span className={styles.addonPrice}>{!isAr && addon.priceEn ? addon.priceEn : addon.price}</span>
               </div>
             ))}
           </div>

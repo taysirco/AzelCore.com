@@ -7,6 +7,7 @@ import type { Locale } from '@/lib/i18n';
 import styles from './TestimonialsSection.module.css';
 
 export default function TestimonialsSection({ locale = 'ar' }: { locale?: string }) {
+  const isAr = locale === 'ar';
   const [active, setActive] = useState(0);
   const t = testimonialTemplate[active];
   const dict = getDictionary(locale as Locale);
@@ -25,19 +26,19 @@ export default function TestimonialsSection({ locale = 'ar' }: { locale?: string
           <div className={styles.activeCard}>
             <div className={styles.cardHeader}>
               <div className={styles.avatar}>
-                <Image src={`/images/${t.image}`} alt={t.name} width={56} height={56} sizes="56px" style={{ objectFit: 'cover', borderRadius: '50%' }} />
+                <Image src={`/images/${t.image}`} alt={!isAr && t.nameEn ? t.nameEn : t.name} width={56} height={56} sizes="56px" style={{ objectFit: 'cover', borderRadius: '50%' }} />
               </div>
               <div className={styles.cardInfo}>
-                <h3 className={styles.cardName}>{t.name}</h3>
-                <p className={styles.cardMeta}>{t.district} — {t.carOrBuilding}</p>
+                <h3 className={styles.cardName}>{!isAr && t.nameEn ? t.nameEn : t.name}</h3>
+                <p className={styles.cardMeta}>{!isAr && t.districtEn ? t.districtEn : t.district} — {!isAr && t.carOrBuildingEn ? t.carOrBuildingEn : t.carOrBuilding}</p>
               </div>
               <div className={styles.rating}>
                 {'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}
               </div>
             </div>
-            <blockquote className={styles.quote}>&ldquo;{t.text}&rdquo;</blockquote>
+            <blockquote className={styles.quote}>&ldquo;{!isAr && t.textEn ? t.textEn : t.text}&rdquo;</blockquote>
             <div className={styles.cardFooter}>
-              <span className={styles.filmBadge}>{t.filmType}</span>
+              <span className={styles.filmBadge}>{!isAr && t.filmTypeEn ? t.filmTypeEn : t.filmType}</span>
               <span className={styles.dateBadge}>{t.date}</span>
             </div>
           </div>
@@ -49,12 +50,12 @@ export default function TestimonialsSection({ locale = 'ar' }: { locale?: string
                 key={item.id}
                 className={`${styles.thumb} ${i === active ? styles.thumbActive : ''}`}
                 onClick={() => setActive(i)}
-                aria-label={`${dict.testimonials.reviewOf} ${item.name}`}
+                aria-label={`${dict.testimonials.reviewOf} ${!isAr && item.nameEn ? item.nameEn : item.name}`}
               >
-                <Image src={`/images/${item.image}`} alt={item.name} width={48} height={48} sizes="48px" loading="lazy" style={{ objectFit: 'cover', borderRadius: '50%' }} />
+                <Image src={`/images/${item.image}`} alt={!isAr && item.nameEn ? item.nameEn : item.name} width={48} height={48} sizes="48px" loading="lazy" style={{ objectFit: 'cover', borderRadius: '50%' }} />
                 <div className={styles.thumbInfo}>
-                  <span className={styles.thumbName}>{item.name}</span>
-                  <span className={styles.thumbCar}>{item.carOrBuilding}</span>
+                  <span className={styles.thumbName}>{!isAr && item.nameEn ? item.nameEn : item.name}</span>
+                  <span className={styles.thumbCar}>{!isAr && item.carOrBuildingEn ? item.carOrBuildingEn : item.carOrBuilding}</span>
                 </div>
                 <span className={styles.thumbRating}>{'★'.repeat(item.rating)}</span>
               </button>

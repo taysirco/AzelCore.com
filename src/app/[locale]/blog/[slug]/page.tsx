@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { SITE_URL, SITE_NAME, WHATSAPP_LINK, OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, WHATSAPP_LINK, OWNER_NAME, OWNER_NAME_EN, OWNER_TITLE } from '@/lib/constants';
 import { blogTopics, type BlogTopic } from '@/data/blog-topics';
 import { articles, articleSlugs } from '@/data/blog-content';
 import { Locale, localePath } from '@/lib/i18n';
@@ -137,10 +137,10 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
         '@type': 'Article',
         '@id': `${SITE_URL}${locale === 'ar' ? '' : '/en'}/blog/${slug}#article`,
         headline: title,
-        author: { '@type': 'Person', name: isAr ? OWNER_NAME : 'AzelCore Expert' },
+        author: { '@type': 'Person', name: isAr ? OWNER_NAME : OWNER_NAME_EN },
         reviewedBy: {
           '@type': 'Person',
-          name: isAr ? OWNER_NAME : 'AzelCore Expert',
+          name: isAr ? OWNER_NAME : OWNER_NAME_EN,
           jobTitle: isAr ? OWNER_TITLE : 'Technical Consultant',
           url: `${SITE_URL}${locale === 'ar' ? '' : '/en'}/johnson-authorized-dealer`
         },
@@ -339,7 +339,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
           ) : (
             <AuthorProfile
               isAr={isAr}
-              expertName={isAr ? OWNER_NAME : 'AzelCore Expert'}
+              expertName={isAr ? OWNER_NAME : OWNER_NAME_EN}
               expertTitle={isAr ? OWNER_TITLE : 'Technical Consultant'}
               organization={SITE_NAME}
               quote={isAr 

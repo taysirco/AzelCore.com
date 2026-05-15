@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Locale, localePath } from '@/lib/i18n';
 import { getAlternates } from '@/lib/seo';
-import { SITE_URL, SITE_NAME, SITE_NAME_EN, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, SITE_NAME_EN, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_NAME_EN, OWNER_TITLE, VAT_ID, CRN, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
 import { getFaqs } from '@/data/faqs';
 import { localVoiceFaqs } from '@/data/frequently-asked-questions';
 import { quickAnswers } from '@/data/quick-answers';
@@ -159,7 +159,7 @@ const getGraphSchema = (isAr: boolean) => {
       },
       founder: {
         '@type': 'Person',
-        name: OWNER_NAME,
+        name: OWNER_NAME, OWNER_NAME_EN,
         jobTitle: OWNER_TITLE,
       },
       contactPoint: {
@@ -481,7 +481,7 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
         <div className={styles.container}>
           <AuthorProfile
             isAr={isAr}
-            expertName={isAr ? OWNER_NAME : 'Ahmed Salem'}
+            expertName={isAr ? OWNER_NAME : OWNER_NAME_EN}
             expertTitle={isAr ? OWNER_TITLE : 'Technical Director'}
             organization={isAr ? 'عزل كور (وكيل جونسون و 3M)' : 'AzelCore (Johnson & 3M Authorized)'}
             quote={isAr ? 'تظليل النانو سيراميك الأصلي هو استثمار حقيقي لحماية سيارتك وصحتك من أشعة UV الضارة. احرص دائماً على الالتزام بنسبة 30% المقررة من المرور وتأكد من شهادة الضمان المعتمدة.' : 'Original nano-ceramic tinting is a true investment to protect your car and health from harmful UV rays. Always adhere to the 30% limit set by traffic laws and ensure you receive a certified warranty.'}

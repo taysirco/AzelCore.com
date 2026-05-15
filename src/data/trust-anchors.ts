@@ -6,6 +6,7 @@
 export interface GovernmentEntity {
   key: string;
   name: string;
+  nameEn?: string;
   abbreviation: string;
   url: string;
   role: string;
@@ -58,6 +59,7 @@ export const GOVERNMENT_ENTITIES: GovernmentEntity[] = [
   {
     key: 'GOV.SASO',
     name: 'الهيئة السعودية للمواصفات والمقاييس',
+    nameEn: 'Saudi Standards, Metrology and Quality Org (SASO)',
     abbreviation: 'SASO',
     url: 'https://www.saso.gov.sa',
     role: 'اعتماد مواد التظليل والعزل وأفلام النوافذ',
@@ -66,6 +68,7 @@ export const GOVERNMENT_ENTITIES: GovernmentEntity[] = [
   {
     key: 'GOV.SBC',
     name: 'اللجنة الوطنية لكود البناء السعودي',
+    nameEn: 'Saudi Building Code National Committee (SBC)',
     abbreviation: 'SBC',
     url: 'https://sbc.gov.sa',
     role: 'اشتراطات العزل الحراري والمائي (SBC 601/602)',
@@ -74,6 +77,7 @@ export const GOVERNMENT_ENTITIES: GovernmentEntity[] = [
   {
     key: 'GOV.SEEC',
     name: 'المركز السعودي لكفاءة الطاقة',
+    nameEn: 'Saudi Energy Efficiency Center (SEEC)',
     abbreviation: 'كفاءة',
     url: 'https://seec.gov.sa',
     role: 'كفاءة الطاقة في المباني وتوفير الكهرباء',
@@ -82,6 +86,7 @@ export const GOVERNMENT_ENTITIES: GovernmentEntity[] = [
   {
     key: 'GOV.SCE',
     name: 'الهيئة السعودية للمهندسين',
+    nameEn: 'Saudi Council of Engineers (SCE)',
     abbreviation: 'SCE',
     url: 'https://www.saudieng.sa',
     role: 'اعتماد المهندسين المدنيين وفاحصي المباني',
@@ -90,6 +95,7 @@ export const GOVERNMENT_ENTITIES: GovernmentEntity[] = [
   {
     key: 'GOV.TRAFFIC',
     name: 'المرور السعودي',
+    nameEn: 'Saudi General Traffic Department',
     abbreviation: 'المرور',
     url: 'https://www.moi.gov.sa',
     role: 'نسبة التظليل المسموحة (≤30% VLT) وعقوبات المخالفة',
@@ -98,6 +104,7 @@ export const GOVERNMENT_ENTITIES: GovernmentEntity[] = [
   {
     key: 'GOV.BALADI',
     name: 'وزارة البلديات — منصة بلدي',
+    nameEn: 'Ministry of Municipalities - Balady',
     abbreviation: 'بلدي',
     url: 'https://balady.gov.sa',
     role: 'الرخص التجارية والشهادات الصحية',
@@ -106,6 +113,7 @@ export const GOVERNMENT_ENTITIES: GovernmentEntity[] = [
   {
     key: 'GOV.CIVILDEFENSE',
     name: 'المديرية العامة للدفاع المدني',
+    nameEn: 'General Directorate of Civil Defense',
     abbreviation: '998',
     url: 'https://www.998.gov.sa',
     role: 'سلامة زجاج المباني التجارية ومعايير الحريق',

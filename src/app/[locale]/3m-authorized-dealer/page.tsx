@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Locale, localePath } from '@/lib/i18n';
 import { getAlternates } from '@/lib/seo';
-import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN } from '@/lib/constants';
+import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_NAME_EN, OWNER_TITLE, VAT_ID, CRN } from '@/lib/constants';
 import ServiceSummary from '@/components/seo/ServiceSummary';
 import AuthorProfile from '@/components/seo/AuthorProfile';
 import CrossSellCards from '@/components/sections/CrossSellCards';
@@ -368,7 +368,7 @@ export default async function ThreeMDealerPage({ params }: { params: Promise<{ l
       {/* Author E-E-A-T */}
       <AuthorProfile
         isAr={isAr}
-        expertName={isAr ? OWNER_NAME : "Ahmed Salem"}
+        expertName={isAr ? OWNER_NAME : OWNER_NAME_EN}
         expertTitle={isAr ? OWNER_TITLE : "Tinting Expert"}
         organization={isAr ? "عزل كور (وكيل جونسون و 3M)" : "AzelCore (Johnson & 3M Dealer)"}
         quote={isAr ? "3M Crystalline هو أفضل فيلم شفاف في العالم — 200+ طبقة نانو تحجب 97% حرارة بدون تغيير لون الزجاج. اختيارك للفيلم الصح يعتمد على نوع سيارتك واستخدامك اليومي — تواصل معنا للاستشارة المجانية." : "3M Crystalline is the world's best transparent film — 200+ nano layers blocking 97% heat without altering glass color. Choosing the right film depends on your vehicle and daily use — contact us for a free consultation."}

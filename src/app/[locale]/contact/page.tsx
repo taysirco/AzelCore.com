@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, GEO, WORKING_HOURS, ADDRESS_STRUCTURED, CRN, VAT_ID } from '@/lib/constants';
+import { SITE_URL, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_NAME_EN, OWNER_TITLE, GEO, WORKING_HOURS, ADDRESS_STRUCTURED, CRN, VAT_ID } from '@/lib/constants';
 import CopyButton from '@/components/ui/CopyButton';
 import styles from './page.module.css';
 
@@ -146,7 +146,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             {/* Info Panel */}
             <div className={styles.infoPanel}>
               <div className={styles.expertBox}>
-                <h3 className={styles.expertTitle}>👨‍🔧 {isAr ? OWNER_NAME : 'Ahmed Salem'}</h3>
+                <h3 className={styles.expertTitle}>👨‍🔧 {isAr ? OWNER_NAME : OWNER_NAME_EN}</h3>
                 <p className={styles.expertRole}>{isAr ? OWNER_TITLE : 'Technical Director'}</p>
                 <p className={styles.expertQuote}>
                   {isAr ? '“نقدم استشارة مجانية لكل عميل — نساعدك تختار أفضل نوع فيلم يناسب سيارتك أو مبناك بناءً على احتياجك الحقيقي، مش اللي يحقق أعلى ربح.”' : '“We offer a free consultation for every client — we help you choose the best film type for your car or building based on your real needs, not what yields the highest profit.”'}

@@ -33,7 +33,7 @@ export default function OfficialPartnerBar({
   return (
     <div className={styles.trustBar} aria-label={isAr ? "المرجعيات الحكومية والمعايير" : "Government and standard references"}>
       <div className={styles.trustContainer}>
-        <p className={styles.trustTitle}>{title}</p>
+        <p className={styles.trustTitle}>{finalTitle}</p>
         <div className={styles.entitiesList}>
           {entitiesToDisplay.map((entity) => (
             <a 
@@ -47,7 +47,7 @@ export default function OfficialPartnerBar({
               <div className={styles.entityIcon}>🏛️</div>
               <div className={styles.entityInfo}>
                 <span className={styles.entityAbbr}>{entity.abbreviation}</span>
-                <span className={styles.entityName}>{entity.name}</span>
+                <span className={styles.entityName}>{!isAr && entity.nameEn ? entity.nameEn : entity.name}</span>
               </div>
             </a>
           ))}

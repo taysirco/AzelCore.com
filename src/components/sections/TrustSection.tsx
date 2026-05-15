@@ -1,4 +1,4 @@
-import { OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
+import { OWNER_NAME, OWNER_NAME_EN, OWNER_TITLE, OWNER_TITLE_EN } from '@/lib/constants';
 import { getDictionary } from '@/lib/dictionaries';
 import type { Locale } from '@/lib/i18n';
 import AuthorProfile from '../seo/AuthorProfile';
@@ -33,8 +33,8 @@ export default function TrustSection({ locale = 'ar' }: { locale?: string }) {
         <div style={{ marginTop: '2rem' }}>
           <AuthorProfile 
             isAr={isAr}
-            expertName={OWNER_NAME}
-            expertTitle={isAr ? OWNER_TITLE : 'Certified Insulation & Tinting Technician — Official Johnson & 3M Dealer'}
+            expertName={isAr ? OWNER_NAME : OWNER_NAME_EN}
+            expertTitle={isAr ? OWNER_TITLE : OWNER_TITLE_EN}
             organization={isAr ? "Johnson Window Films + 3M (وكيل معتمد)" : "Johnson Window Films + 3M (Authorized Dealer)"}
             quote={dict.trust.expertQuote}
             reviewDate="2026-05-01"
@@ -43,7 +43,7 @@ export default function TrustSection({ locale = 'ar' }: { locale?: string }) {
 
         {/* Government Trust Anchors */}
         <div style={{ marginTop: '2rem' }}>
-          <OfficialPartnerBar entityKeys={['GOV.SASO', 'GOV.TRAFFIC', 'GOV.SBC', 'GOV.BALADI']} />
+          <OfficialPartnerBar isAr={isAr} entityKeys={['GOV.SASO', 'GOV.TRAFFIC', 'GOV.SBC', 'GOV.BALADI']} />
         </div>
       </div>
     </section>
