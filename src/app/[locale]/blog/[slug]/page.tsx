@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, OWNER_NAME, OWNER_TITLE } from '@/lib/constants';
 import { blogTopics, type BlogTopic } from '@/data/blog-topics';
 import { articles, articleSlugs } from '@/data/blog-content';
+import { Locale } from '@/lib/i18n';
+import { getAlternates } from '@/lib/seo';
 import AuthorProfile from '@/components/seo/AuthorProfile';
 import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
 import styles from './page.module.css';
@@ -71,19 +73,25 @@ export function generateStaticParams() {
 // ═══════════════════════════════════════════
 // Metadata (Next.js 16 — params is Promise)
 // ═══════════════════════════════════════════
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const isAr = locale === 'ar';
   const article = articles[slug];
   if (!article) return {};
   const topic = getTopicBySlug(slug);
-  const title = topic?.titleAr || slug;
+  
+  // Try to grab English version if it exists, otherwise fallback to Arabic
+  const content = (!isAr && (article as any).contentEn) ? (article as any).contentEn : article.content;
+  const rawTitle = isAr ? topic?.titleAr : (topic as any)?.titleEn || topic?.titleAr;
+  const title = rawTitle || slug;
+  
   return {
-    title,
-    description: article.content.intro.slice(0, 155),
-    alternates: { canonical: `${SITE_URL}/blog/${slug}` },
+    title: `${title} | ${isAr ? 'عزل كور' : 'AzelCore'}`,
+    description: content.intro.slice(0, 155),
+    alternates: getAlternates(locale as Locale, `/blog/${slug}`),
     openGraph: {
       title,
-      url: `${SITE_URL}/blog/${slug}`,
+      url: `${SITE_URL}${locale === 'ar' ? '' : '/en'}/blog/${slug}`,
       type: 'article',
       images: [{ url: `/images/${article.ogImage}`, width: 1200, height: 630 }],
     },
@@ -93,19 +101,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 // ═══════════════════════════════════════════
 // Page Component (Next.js 16 — async + await params)
 // ═══════════════════════════════════════════
-export default async function BlogArticlePage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function BlogArticlePage({ params }: { params: Promise<{ locale: string, slug: string }> }) {
+  const { locale, slug } = await params;
+  const isAr = locale === 'ar';
   const article = articles[slug];
   if (!article) notFound();
 
-  const { content, serviceLinks } = article;
+  // If we ever add contentEn to the data structure, it will pick it up automatically here
+  const content = (!isAr && (article as any).contentEn) ? (article as any).contentEn : article.content;
+  const serviceLinks = (!isAr && (article as any).serviceLinksEn) ? (article as any).serviceLinksEn : article.serviceLinks;
+  
   const topic = getTopicBySlug(slug);
-  const title = topic?.titleAr || slug;
+  const rawTitle = isAr ? topic?.titleAr : (topic as any)?.titleEn || topic?.titleAr;
+  const title = rawTitle || slug;
   const date = '2026-05-01';
 
   const approximateWordCount = (
     content.intro + ' ' +
-    content.sections.map(s => s.heading + ' ' + s.body).join(' ') + ' ' +
+    content.sections.map((s: any) => s.heading + ' ' + s.body).join(' ') + ' ' +
     (content.warning || '') + ' ' +
     content.cta
   ).split(/\s+/).length;
@@ -115,27 +128,27 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
     '@graph': [
       {
         '@type': 'Article',
-        '@id': `${SITE_URL}/blog/${slug}#article`,
+        '@id': `${SITE_URL}${locale === 'ar' ? '' : '/en'}/blog/${slug}#article`,
         headline: title,
-        author: { '@type': 'Person', name: OWNER_NAME },
+        author: { '@type': 'Person', name: isAr ? OWNER_NAME : 'AzelCore Expert' },
         reviewedBy: {
           '@type': 'Person',
-          name: OWNER_NAME,
-          jobTitle: OWNER_TITLE,
-          url: `${SITE_URL}/johnson-authorized-dealer`
+          name: isAr ? OWNER_NAME : 'AzelCore Expert',
+          jobTitle: isAr ? OWNER_TITLE : 'Technical Consultant',
+          url: `${SITE_URL}${locale === 'ar' ? '' : '/en'}/johnson-authorized-dealer`
         },
         publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME, logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/azelcore-logo.webp` } },
         datePublished: date,
         dateModified: date,
-        mainEntityOfPage: `${SITE_URL}/blog/${slug}`,
+        mainEntityOfPage: `${SITE_URL}${locale === 'ar' ? '' : '/en'}/blog/${slug}`,
         image: `${SITE_URL}/images/${article.ogImage}`,
-        inLanguage: 'ar',
+        inLanguage: locale,
         isPartOf: { '@type': 'WebSite', '@id': `${SITE_URL}/#website` },
         wordCount: approximateWordCount,
         about: [
-          { '@type': 'Thing', name: 'تظليل سيارات', sameAs: 'https://www.wikidata.org/wiki/Q2647429' },
-          { '@type': 'Thing', name: 'عزل حراري' },
-          { '@type': 'Place', name: 'جدة', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
+          { '@type': 'Thing', name: isAr ? 'تظليل سيارات' : 'Car Tinting', sameAs: 'https://www.wikidata.org/wiki/Q2647429' },
+          { '@type': 'Thing', name: isAr ? 'عزل حراري' : 'Thermal Insulation' },
+          { '@type': 'Place', name: isAr ? 'جدة' : 'Jeddah', sameAs: 'https://www.wikidata.org/wiki/Q5880' },
         ],
         speakable: {
           '@type': 'SpeakableSpecification',
@@ -145,18 +158,19 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
-          { '@type': 'ListItem', position: 2, name: 'المدونة', item: `${SITE_URL}/blog` },
-          { '@type': 'ListItem', position: 3, name: title, item: `${SITE_URL}/blog/${slug}` },
+          { '@type': 'ListItem', position: 1, name: isAr ? 'الرئيسية' : 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: isAr ? 'المدونة' : 'Blog', item: `${SITE_URL}${locale === 'ar' ? '' : '/en'}/blog` },
+          { '@type': 'ListItem', position: 3, name: title, item: `${SITE_URL}${locale === 'ar' ? '' : '/en'}/blog/${slug}` },
         ],
       },
     ],
   };
+  
   if (content.faqs && content.faqs.length > 0) {
     articleGraphSchema['@graph'].push({
       '@type': 'FAQPage',
-      '@id': `${SITE_URL}/blog/${slug}#faq`,
-      mainEntity: content.faqs.map((faq) => ({
+      '@id': `${SITE_URL}${locale === 'ar' ? '' : '/en'}/blog/${slug}#faq`,
+      mainEntity: content.faqs.map((faq: any) => ({
         '@type': 'Question',
         name: faq.q,
         acceptedAnswer: {
@@ -165,6 +179,15 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
         },
       })),
     });
+  }
+
+  // Get topic translated strings
+  let categoryStr = '';
+  if (topic) {
+    if (topic.intent === 'legal') categoryStr = isAr ? 'قانوني' : 'Legal';
+    else if (topic.intent === 'comparison') categoryStr = isAr ? 'مقارنة' : 'Comparison';
+    else if (topic.intent === 'how-to') categoryStr = isAr ? 'دليل' : 'Guide';
+    else categoryStr = isAr ? 'معلوماتي' : 'Information';
   }
 
   return (
@@ -177,21 +200,21 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
       </div>
 
       <article className={styles.article}>
-        <nav className={styles.breadcrumb} aria-label="مسار التنقل">
-          <Link href="/">الرئيسية</Link> / <Link href="/blog">المدونة</Link> / <span>{title}</span>
+        <nav className={styles.breadcrumb} aria-label={isAr ? "مسار التنقل" : "Breadcrumbs"}>
+          <Link href="/">{isAr ? 'الرئيسية' : 'Home'}</Link> / <Link href={`/${locale}/blog`}>{isAr ? 'المدونة' : 'Blog'}</Link> / <span>{title}</span>
         </nav>
 
         <div className={styles.meta}>
-          {topic && <span className={styles.category}>{topic.intent === 'legal' ? 'قانوني' : topic.intent === 'comparison' ? 'مقارنة' : topic.intent === 'how-to' ? 'دليل' : 'معلوماتي'}</span>}
+          {topic && <span className={styles.category}>{categoryStr}</span>}
           <time className={styles.date} dateTime={date}>
-            {new Date(date).toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {new Date(date).toLocaleDateString(isAr ? 'ar-SA' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
         </div>
 
         <h1 id={`article-${slug}-title`} className={styles.title}>{title}</h1>
 
         <div className={styles.readTime} data-nosnippet>
-          🕐 {Math.ceil(approximateWordCount / 200)} دقائق قراءة · {approximateWordCount} كلمة
+          🕐 {Math.ceil(approximateWordCount / 200)} {isAr ? 'دقائق قراءة' : 'min read'} · {approximateWordCount} {isAr ? 'كلمة' : 'words'}
         </div>
 
         <div style={{ margin: '2rem 0' }}>
@@ -201,7 +224,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
         <div className={styles.content}>
           {content.quickAnswer && (
             <div className={styles.quickAnswerBox}>
-              <div className={styles.quickAnswerBadge}>الإجابة السريعة (TL;DR)</div>
+              <div className={styles.quickAnswerBadge}>{isAr ? 'الإجابة السريعة (TL;DR)' : 'Quick Answer (TL;DR)'}</div>
               <p><strong>{content.quickAnswer}</strong></p>
             </div>
           )}
@@ -211,7 +234,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
           {/* ═══ Table of Contents (Outline) ═══ */}
           {topic?.outline && topic.outline.length > 0 && (
             <div className={styles.tocBox} data-nosnippet>
-              <h3>جدول المحتويات:</h3>
+              <h3>{isAr ? 'جدول المحتويات:' : 'Table of Contents:'}</h3>
               <ul>
                 {topic.outline.map((item, i) => (
                   <li key={i}>{item}</li>
@@ -225,15 +248,15 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
               <table className={styles.comparisonTable}>
                 <thead>
                   <tr>
-                    {content.table.headers.map((h, i) => (
+                    {content.table.headers.map((h: string, i: number) => (
                       <th key={i}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {content.table.rows.map((row, i) => (
+                  {content.table.rows.map((row: string[], i: number) => (
                     <tr key={i}>
-                      {row.map((cell, j) => (
+                      {row.map((cell: string, j: number) => (
                         <td key={j} dangerouslySetInnerHTML={{ __html: cell }} />
                       ))}
                     </tr>
@@ -243,7 +266,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
             </div>
           )}
 
-          {content.sections.map((section, i) => (
+          {content.sections.map((section: any, i: number) => (
             <div key={i}>
               <h2>{section.heading}</h2>
               <SmartTextFormatter text={section.body} />
@@ -252,8 +275,8 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
 
           {content.faqs && content.faqs.length > 0 && (
             <div className={styles.faqBox}>
-              <h2>الأسئلة الشائعة</h2>
-              {content.faqs.map((faq, i) => (
+              <h2>{isAr ? 'الأسئلة الشائعة' : 'Frequently Asked Questions'}</h2>
+              {content.faqs.map((faq: any, i: number) => (
                 <details key={i} className={styles.faqItem}>
                   <summary>{faq.q}</summary>
                   <p>{faq.a}</p>
@@ -264,18 +287,18 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
 
           {content.warning && (
             <div className={styles.warningBox}>
-              <p><strong>⚠️ تحذير:</strong> {content.warning}</p>
+              <p><strong>⚠️ {isAr ? 'تحذير:' : 'Warning:'}</strong> {content.warning}</p>
             </div>
           )}
 
           {/* Internal Links → Services (Link Equity Pyramid) */}
           {serviceLinks.length > 0 && (
             <div className={styles.ctaBox} style={{ textAlign: 'start' }} data-nosnippet>
-              <h3>خدمات ذات صلة</h3>
+              <h3>{isAr ? 'خدمات ذات صلة' : 'Related Services'}</h3>
               <ul>
-                {serviceLinks.map((link, i) => (
+                {serviceLinks.map((link: any, i: number) => (
                   <li key={i} style={{ marginBottom: '0.5rem' }}>
-                    <Link href={link.href} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>
+                    <Link href={isAr ? link.href : `/en${link.href}`} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>
                       {link.text} ←
                     </Link>
                   </li>
@@ -287,7 +310,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
           <div className={styles.ctaBox} data-nosnippet>
             <h3>{content.cta}</h3>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.ctaBtn}>
-              تواصل عبر واتساب
+              {isAr ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}
             </a>
           </div>
         </div>
@@ -303,16 +326,20 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
             />
           ) : (
             <AuthorProfile
-              expertName={OWNER_NAME}
-              expertTitle={OWNER_TITLE}
+              expertName={isAr ? OWNER_NAME : 'AzelCore Expert'}
+              expertTitle={isAr ? OWNER_TITLE : 'Technical Consultant'}
               organization={SITE_NAME}
-              quote="المعلومات الواردة في هذا الدليل مبنية على خبرتنا الميدانية وتطبيقنا لمعايير الجودة السعودية (SASO). احرص دائماً على التعامل مع وكيل معتمد لضمان النتيجة."
+              quote={isAr 
+                ? "المعلومات الواردة في هذا الدليل مبنية على خبرتنا الميدانية وتطبيقنا لمعايير الجودة السعودية (SASO). احرص دائماً على التعامل مع وكيل معتمد لضمان النتيجة." 
+                : "The information in this guide is based on our field experience and application of Saudi quality standards (SASO). Always deal with an authorized agent to guarantee results."}
               reviewDate={date}
             />
           )}
         </div>
 
-        <Link href="/blog" className={styles.backLink}>→ العودة للمدونة</Link>
+        <Link href={`/${locale}/blog`} className={styles.backLink}>
+          {isAr ? '→ العودة للمدونة' : '→ Back to Blog'}
+        </Link>
       </article>
     </>
   );

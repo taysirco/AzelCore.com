@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Locale, localePath } from '@/lib/i18n';
+import { getAlternates } from '@/lib/seo';
 import { SITE_URL, SITE_NAME, SITE_NAME_EN, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
 import { getFaqs } from '@/data/faqs';
 import { localVoiceFaqs } from '@/data/frequently-asked-questions';
@@ -405,8 +406,8 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <span className={styles.overline}>دليل الدرجات</span>
-            <h2 className={styles.sectionTitle}>درجات التظليل — أي VLT يناسبك؟</h2>
+            <span className={styles.overline}>{isAr ? 'دليل الدرجات' : 'Shade Guide'}</span>
+            <h2 className={styles.sectionTitle}>{isAr ? 'درجات التظليل — أي VLT يناسبك؟' : 'Tint Shades — Which VLT Fits You?'}</h2>
           </div>
           <dl className={styles.vltGrid}>
             {getVltGuide(isAr).map((v, i) => (

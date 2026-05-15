@@ -6,6 +6,7 @@ import styles from './page.module.css';
 
 import { getDictionary } from '@/lib/dictionaries';
 import { Locale, localePath } from '@/lib/i18n';
+import { getAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;

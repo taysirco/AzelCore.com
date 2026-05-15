@@ -161,21 +161,21 @@ export const jeddahDistricts: JeddahDistrict[] = [
 
 // ─── مدن المملكة (لصومعة المباني) ───
 export const ksaCities = [
-  { id: "riyadh", nameAr: "الرياض", avgTemp: "44°م", humidity: "15%", buildingType: "أبراج تجارية + فلل" },
-  { id: "dammam", nameAr: "الدمام", avgTemp: "40°م", humidity: "70%", buildingType: "واجهات بحرية + مجمعات" },
-  { id: "makkah", nameAr: "مكة المكرمة", avgTemp: "43°م", humidity: "35%", buildingType: "فنادق + أبراج سكنية" },
-  { id: "madinah", nameAr: "المدينة المنورة", avgTemp: "42°م", humidity: "20%", buildingType: "فنادق + مجمعات تجارية" },
-  { id: "taif", nameAr: "الطائف", avgTemp: "32°م", humidity: "30%", buildingType: "فلل + منتجعات" },
-  { id: "tabuk", nameAr: "تبوك", avgTemp: "38°م", humidity: "25%", buildingType: "مباني حكومية + سكنية" },
-  { id: "abha", nameAr: "أبها", avgTemp: "28°م", humidity: "45%", buildingType: "فلل + سياحية" },
-  { id: "khobar", nameAr: "الخبر", avgTemp: "39°م", humidity: "65%", buildingType: "أبراج بحرية + تجارية" },
-  { id: "jubail", nameAr: "الجبيل", avgTemp: "40°م", humidity: "60%", buildingType: "مباني صناعية + سكنية" },
-  { id: "yanbu", nameAr: "ينبع", avgTemp: "38°م", humidity: "70%", buildingType: "صناعية + سكنية" },
-  { id: "najran", nameAr: "نجران", avgTemp: "36°م", humidity: "20%", buildingType: "سكنية" },
-  { id: "jazan", nameAr: "جيزان", avgTemp: "35°م", humidity: "75%", buildingType: "سكنية + تجارية" },
-  { id: "hail", nameAr: "حائل", avgTemp: "37°م", humidity: "18%", buildingType: "سكنية" },
-  { id: "qassim", nameAr: "القصيم", avgTemp: "42°م", humidity: "15%", buildingType: "زراعية + سكنية" },
-  { id: "al-ahsa", nameAr: "الأحساء", avgTemp: "43°م", humidity: "40%", buildingType: "تراثية + سكنية" },
+  { id: "riyadh", nameAr: "الرياض", nameEn: "Riyadh", avgTemp: "44°م", humidity: "15%", buildingType: "أبراج تجارية + فلل" },
+  { id: "dammam", nameAr: "الدمام", nameEn: "Dammam", avgTemp: "40°م", humidity: "70%", buildingType: "واجهات بحرية + مجمعات" },
+  { id: "makkah", nameAr: "مكة المكرمة", nameEn: "Makkah", avgTemp: "43°م", humidity: "35%", buildingType: "فنادق + أبراج سكنية" },
+  { id: "madinah", nameAr: "المدينة المنورة", nameEn: "Madinah", avgTemp: "42°م", humidity: "20%", buildingType: "فنادق + مجمعات تجارية" },
+  { id: "taif", nameAr: "الطائف", nameEn: "Taif", avgTemp: "32°م", humidity: "30%", buildingType: "فلل + منتجعات" },
+  { id: "tabuk", nameAr: "تبوك", nameEn: "Tabuk", avgTemp: "38°م", humidity: "25%", buildingType: "مباني حكومية + سكنية" },
+  { id: "abha", nameAr: "أبها", nameEn: "Abha", avgTemp: "28°م", humidity: "45%", buildingType: "فلل + سياحية" },
+  { id: "khobar", nameAr: "الخبر", nameEn: "Khobar", avgTemp: "39°م", humidity: "65%", buildingType: "أبراج بحرية + تجارية" },
+  { id: "jubail", nameAr: "الجبيل", nameEn: "Jubail", avgTemp: "40°م", humidity: "60%", buildingType: "مباني صناعية + سكنية" },
+  { id: "yanbu", nameAr: "ينبع", nameEn: "Yanbu", avgTemp: "38°م", humidity: "70%", buildingType: "صناعية + سكنية" },
+  { id: "najran", nameAr: "نجران", nameEn: "Najran", avgTemp: "36°م", humidity: "20%", buildingType: "سكنية" },
+  { id: "jazan", nameAr: "جيزان", nameEn: "Jazan", avgTemp: "35°م", humidity: "75%", buildingType: "سكنية + تجارية" },
+  { id: "hail", nameAr: "حائل", nameEn: "Hail", avgTemp: "37°م", humidity: "18%", buildingType: "سكنية" },
+  { id: "qassim", nameAr: "القصيم", nameEn: "Qassim", avgTemp: "42°م", humidity: "15%", buildingType: "زراعية + سكنية" },
+  { id: "al-ahsa", nameAr: "الأحساء", nameEn: "Al Ahsa", avgTemp: "43°م", humidity: "40%", buildingType: "تراثية + سكنية" },
 ];
 
 // ─── معالم جدة (للربط الجغرافي) ───

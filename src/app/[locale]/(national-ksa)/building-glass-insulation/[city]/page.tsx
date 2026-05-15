@@ -11,6 +11,8 @@ import CorporateRoiCalculator from '@/components/sections/CorporateRoiCalculator
 import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
 import AuthorProfile from '@/components/seo/AuthorProfile';
 import Certifications from '@/components/seo/Certifications';
+import { Locale } from '@/lib/i18n';
+import { getAlternates } from '@/lib/seo';
 import styles from '../page.module.css';
 
 // ═══ SSG: Pre-build 15 city routes at build time ═══
@@ -20,15 +22,15 @@ export function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ city: string }> }): Promise<Metadata> {
-  const { city } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; city: string }> }): Promise<Metadata> {
+  const { locale, city } = await params;
   const cityObj = ksaCities.find(c => c.id === city);
   if (!cityObj) return {};
 
   return {
     title: `عزل واجهات زجاج المباني في ${cityObj.nameAr} — وفّر 40% كهرباء`,
     description: `عزل حراري احترافي لواجهات المباني والفلل في ${cityObj.nameAr}. نانو سيراميك يحجب 97% حرارة، متوافق مع كود البناء السعودي. خصم للمشاريع.`,
-    alternates: { canonical: `${SITE_URL}/building-glass-insulation/${cityObj.id}` },
+    alternates: getAlternates(locale as Locale, `/building-glass-insulation/${cityObj.id}`),
     openGraph: {
       title: `عزل مباني في ${cityObj.nameAr} | ضمان 15 سنة`,
       description: `أفضل عزل زجاج مباني في ${cityObj.nameAr}. تقليل التكييف 40%.`,
@@ -83,8 +85,8 @@ function buildCitySchema(cityObj: typeof ksaCities[0], content: any) {
   };
 }
 
-export default async function BuildingInsulationCityPage({ params }: { params: Promise<{ city: string }> }) {
-  const { city } = await params;
+export default async function BuildingInsulationCityPage({ params }: { params: Promise<{ locale: string; city: string }> }) {
+  const { locale, city } = await params;
   const cityObj = ksaCities.find(c => c.id === city);
   const content = citiesContent[city];
 

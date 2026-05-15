@@ -11,6 +11,8 @@ import { districtsContent } from '@/data/districts-content';
 import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
 import AuthorProfile from '@/components/seo/AuthorProfile';
 import Certifications from '@/components/seo/Certifications';
+import { Locale } from '@/lib/i18n';
+import { getAlternates } from '@/lib/seo';
 import styles from '../page.module.css';
 
 // ═══ SSG: Pre-build all 10 district routes at build time ═══
@@ -21,15 +23,15 @@ export function generateStaticParams() {
 }
 
 // ═══ Dynamic Metadata per District (Next.js 16 — params is Promise) ═══
-export async function generateMetadata({ params }: { params: Promise<{ district: string }> }): Promise<Metadata> {
-  const { district } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; district: string }> }): Promise<Metadata> {
+  const { locale, district } = await params;
   const d = jeddahDistricts.find(x => x.id === district);
   if (!d) return {};
 
   return {
     title: `تظليل سيارات ${d.nameAr} جدة — نانو سيراميك`,
     description: `أفضل تظليل سيارات في ${d.nameAr} بجدة. رطوبة ${d.humidity}، أشعة UV ${d.uvIndex}. نوصي بـ ${d.recommendation.split('—')[0].trim()}. وكيل جونسون و 3M المعتمد.`,
-    alternates: { canonical: `${SITE_URL}/car-insulation-jeddah/${district}` },
+    alternates: getAlternates(locale as Locale, `/car-insulation-jeddah/${district}`),
     openGraph: {
       title: `تظليل سيارات ${d.nameAr} — جدة`,
       description: `حلول تظليل مخصصة لـ ${d.nameAr} حسب المناخ المحلي`,
@@ -92,8 +94,8 @@ function buildDistrictSchema(d: typeof jeddahDistricts[0]) {
 }
 
 // ═══ Page Component (SSG — Next.js 16 async params) ═══
-export default async function DistrictPage({ params }: { params: Promise<{ district: string }> }) {
-  const { district } = await params;
+export default async function DistrictPage({ params }: { params: Promise<{ locale: string; district: string }> }) {
+  const { locale, district } = await params;
   const d = jeddahDistricts.find(x => x.id === district);
   if (!d) notFound();
 

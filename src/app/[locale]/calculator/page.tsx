@@ -1,4 +1,5 @@
 import { Locale, localePath } from '@/lib/i18n';
+import { getAlternates } from '@/lib/seo';
 import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/constants';
 import CostCalculator from '@/components/calculator/CostCalculator';

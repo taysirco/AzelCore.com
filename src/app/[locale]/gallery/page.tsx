@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Locale, localePath } from '@/lib/i18n';
+import { getAlternates } from '@/lib/seo';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK } from '@/lib/constants';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import styles from './page.module.css';

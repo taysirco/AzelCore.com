@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Locale, localePath } from '@/lib/i18n';
+import { getAlternates } from '@/lib/seo';
 import { SITE_URL, WHATSAPP_LINK } from '@/lib/constants';
 import { getFaqs } from '@/data/faqs';
 import styles from './page.module.css';

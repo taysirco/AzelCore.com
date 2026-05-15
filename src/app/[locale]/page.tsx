@@ -7,6 +7,7 @@ import LiveReviews from '@/components/sections/LiveReviews';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import { SITE_URL, GEO, ADDRESS_STRUCTURED, ADDRESS_STRUCTURED_EN, CRN, VAT_ID, PHONE, getWhatsAppLink } from '@/lib/constants';
 import { type Locale } from '@/lib/i18n';
+import { getAlternates } from '@/lib/seo';
 
 import YMYLWarning from '@/components/sections/YMYLWarning';
 import ComparisonSection from '@/components/sections/ComparisonSection';
@@ -20,14 +21,7 @@ import CTASection from '@/components/sections/CTASection';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   return {
-    alternates: {
-      canonical: `${SITE_URL}/${locale}`,
-      languages: {
-        'ar': `${SITE_URL}/ar`,
-        'en': `${SITE_URL}/en`,
-        'x-default': `${SITE_URL}/ar`,
-      },
-    },
+    alternates: getAlternates(locale as Locale, '/'),
   };
 }
 
