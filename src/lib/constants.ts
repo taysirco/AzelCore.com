@@ -57,7 +57,7 @@ export function getNavLinks(locale: Locale) {
     '/johnson-authorized-dealer', '/3m-authorized-dealer', '/gallery', '/blog', '/contact',
   ];
   return hrefs.map((href, i) => ({
-    href: `/${locale}${href === '/' ? '' : href}`,
+    href: locale === 'ar' ? href : `/en${href === '/' ? '' : href}`,
     label: labels[locale][i],
   }));
 }

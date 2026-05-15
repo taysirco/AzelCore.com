@@ -97,6 +97,22 @@ const getBlogPosts = (isAr: boolean) => [
     date: '2026-02-20',
     category: isAr ? 'نصائح' : 'Tips',
   },
+  {
+    slug: 'commercial-building-tint-jeddah',
+    title: isAr ? 'الدليل الشامل لاختيار أنواع العزل الحراري للمباني التجارية' : 'Comprehensive Guide to Commercial Building Thermal Insulation',
+    excerpt: isAr ? 'كيف يقوم العزل بتخفيض أحمال التكييف 30% وتوفير آلاف الريالات سنوياً للشركات؟' : 'How does insulation reduce AC loads by 30% and save thousands of Riyals annually for companies?',
+    image: 'commercial-facade-tinting.webp',
+    date: '2026-05-10',
+    category: isAr ? 'عزل تجاري' : 'B2B Insulation',
+  },
+  {
+    slug: 'flir-thermal-camera-tint-test',
+    title: isAr ? 'تقنية الـ FLIR الفحص الحراري: دليلك العلمي لاختبار التظليل' : 'FLIR Thermal Testing: Your Scientific Guide to Testing Tint',
+    excerpt: isAr ? 'خدعة اللمبة الحمراء انتهت. اكتشف كيف تكشف كاميرات التصوير الحراري التظليل المغشوش.' : 'The red lamp trick is over. Discover how thermal imaging cameras expose fake tint.',
+    image: 'thermal-camera-car-test.webp',
+    date: '2026-05-15',
+    category: isAr ? 'تقني' : 'Technical',
+  },
 ];
 
 const getItemListSchema = (isAr: boolean) => ({
