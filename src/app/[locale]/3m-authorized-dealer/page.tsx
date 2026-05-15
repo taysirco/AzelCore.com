@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'وكيل 3M المعتمد في جدة — 3M Window Films' : 'وكيل 3M المعتمد في جدة — 3M Window Films | AzelCore',
-    description: isAr ? 'عزل كور الوكيل الرسمي لأفلام 3M الأمريكية في جدة. Crystalline يحجب 97% من الأشعة تحت الحمراء مع 99.9% حجب UV. 4 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.' : 'عزل كور الوكيل الرسمي لأفلام 3M الأمريكية في جدة. Crystalline يحجب 97% من الأشعة تحت الحمراء مع 99.9% حجب UV. 4 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.',
+    title: isAr ? 'وكيل 3M المعتمد في جدة — 3M Window Films' : 'Authorized 3M Dealer in Jeddah — 3M Window Films | AzelCore',
+    description: isAr ? 'عزل كور الوكيل الرسمي لأفلام 3M الأمريكية في جدة. Crystalline يحجب 97% من الأشعة تحت الحمراء مع 99.9% حجب UV. 4 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.' : 'AzelCore is the official authorized dealer for American 3M Films in Jeddah. Crystalline blocks 97% of IR with 99.9% UV block. 4 product lines with lifetime warranty. Book now.',
     alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/3m-authorized-dealer')}` },
   };
 }

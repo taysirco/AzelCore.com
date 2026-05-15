@@ -107,20 +107,27 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
   const article = articles[slug];
   if (!article) notFound();
 
-  // If we ever add contentEn to the data structure, it will pick it up automatically here
-  const content = (!isAr && (article as any).contentEn) ? (article as any).contentEn : article.content;
-  const serviceLinks = (!isAr && (article as any).serviceLinksEn) ? (article as any).serviceLinksEn : article.serviceLinks;
+  const content = article.content;
+  const serviceLinks = article.serviceLinks;
   
   const topic = getTopicBySlug(slug);
   const rawTitle = isAr ? topic?.titleAr : (topic as any)?.titleEn || topic?.titleAr;
   const title = rawTitle || slug;
   const date = '2026-05-01';
 
+  const introStr = !isAr && content.introEn ? content.introEn : content.intro;
+  const ctaStr = !isAr && content.ctaEn ? content.ctaEn : content.cta;
+  const warningStr = !isAr && content.warningEn ? content.warningEn : content.warning;
+  
   const approximateWordCount = (
-    content.intro + ' ' +
-    content.sections.map((s: any) => s.heading + ' ' + s.body).join(' ') + ' ' +
-    (content.warning || '') + ' ' +
-    content.cta
+    introStr + ' ' +
+    content.sections.map((s: any) => {
+      const h = !isAr && s.headingEn ? s.headingEn : s.heading;
+      const b = !isAr && s.bodyEn ? s.bodyEn : s.body;
+      return h + ' ' + b;
+    }).join(' ') + ' ' +
+    (warningStr || '') + ' ' +
+    ctaStr
   ).split(/\s+/).length;
 
   const articleGraphSchema: any = {
@@ -170,14 +177,18 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
     articleGraphSchema['@graph'].push({
       '@type': 'FAQPage',
       '@id': `${SITE_URL}${locale === 'ar' ? '' : '/en'}/blog/${slug}#faq`,
-      mainEntity: content.faqs.map((faq: any) => ({
-        '@type': 'Question',
-        name: faq.q,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: faq.a,
-        },
-      })),
+      mainEntity: content.faqs.map((faq: any) => {
+        const qStr = !isAr && faq.qEn ? faq.qEn : faq.q;
+        const aStr = !isAr && faq.aEn ? faq.aEn : faq.a;
+        return {
+          '@type': 'Question',
+          name: qStr,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: aStr,
+          },
+        };
+      }),
     });
   }
 
@@ -196,7 +207,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
 
       {/* ── Voice Structure — Article ── */}
       <div id={`article-${slug}-intro`} className="sr-only" aria-hidden="true">
-        {content.intro.slice(0, 200)}
+        {introStr.slice(0, 200)}
       </div>
 
       <article className={styles.article}>
@@ -225,11 +236,11 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
           {content.quickAnswer && (
             <div className={styles.quickAnswerBox}>
               <div className={styles.quickAnswerBadge}>{isAr ? 'الإجابة السريعة (TL;DR)' : 'Quick Answer (TL;DR)'}</div>
-              <p><strong>{content.quickAnswer}</strong></p>
+              <p><strong>{!isAr && content.quickAnswerEn ? content.quickAnswerEn : content.quickAnswer}</strong></p>
             </div>
           )}
 
-          <p>{content.intro}</p>
+          <p>{introStr}</p>
 
           {/* ═══ Table of Contents (Outline) ═══ */}
           {topic?.outline && topic.outline.length > 0 && (
@@ -248,13 +259,13 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
               <table className={styles.comparisonTable}>
                 <thead>
                   <tr>
-                    {content.table.headers.map((h: string, i: number) => (
+                    {(!isAr && content.table.headersEn ? content.table.headersEn : content.table.headers).map((h: string, i: number) => (
                       <th key={i}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {content.table.rows.map((row: string[], i: number) => (
+                  {(!isAr && content.table.rowsEn ? content.table.rowsEn : content.table.rows).map((row: string[], i: number) => (
                     <tr key={i}>
                       {row.map((cell: string, j: number) => (
                         <td key={j} dangerouslySetInnerHTML={{ __html: cell }} />
@@ -268,8 +279,8 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
 
           {content.sections.map((section: any, i: number) => (
             <div key={i}>
-              <h2>{section.heading}</h2>
-              <SmartTextFormatter text={section.body} />
+              <h2>{!isAr && section.headingEn ? section.headingEn : section.heading}</h2>
+              <SmartTextFormatter text={!isAr && section.bodyEn ? section.bodyEn : section.body} />
             </div>
           ))}
 
@@ -278,8 +289,8 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
               <h2>{isAr ? 'الأسئلة الشائعة' : 'Frequently Asked Questions'}</h2>
               {content.faqs.map((faq: any, i: number) => (
                 <details key={i} className={styles.faqItem}>
-                  <summary>{faq.q}</summary>
-                  <p>{faq.a}</p>
+                  <summary>{!isAr && faq.qEn ? faq.qEn : faq.q}</summary>
+                  <p>{!isAr && faq.aEn ? faq.aEn : faq.a}</p>
                 </details>
               ))}
             </div>
@@ -287,7 +298,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
 
           {content.warning && (
             <div className={styles.warningBox}>
-              <p><strong>⚠️ {isAr ? 'تحذير:' : 'Warning:'}</strong> {content.warning}</p>
+              <p><strong>⚠️ {isAr ? 'تحذير:' : 'Warning:'}</strong> {warningStr}</p>
             </div>
           )}
 
@@ -299,7 +310,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
                 {serviceLinks.map((link: any, i: number) => (
                   <li key={i} style={{ marginBottom: '0.5rem' }}>
                     <Link href={isAr ? link.href : `/en${link.href}`} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>
-                      {link.text} ←
+                      {!isAr && link.textEn ? link.textEn : link.text} ←
                     </Link>
                   </li>
                 ))}
@@ -308,7 +319,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
           )}
 
           <div className={styles.ctaBox} data-nosnippet>
-            <h3>{content.cta}</h3>
+            <h3>{ctaStr}</h3>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.ctaBtn}>
               {isAr ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}
             </a>
@@ -318,10 +329,10 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
         <div style={{ marginTop: '3rem', marginBottom: '2rem' }}>
           {content.expertReview ? (
             <AuthorProfile
-              expertName={content.expertReview.author}
-              expertTitle={content.expertReview.role}
+              expertName={!isAr && content.expertReview.authorEn ? content.expertReview.authorEn : content.expertReview.author}
+              expertTitle={!isAr && content.expertReview.roleEn ? content.expertReview.roleEn : content.expertReview.role}
               organization={SITE_NAME}
-              quote={content.expertReview.text}
+              quote={!isAr && content.expertReview.textEn ? content.expertReview.textEn : content.expertReview.text}
               reviewDate={date}
             />
           ) : (

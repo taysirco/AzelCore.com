@@ -25,42 +25,43 @@ export function generateStaticParams() {
 // ═══ Dynamic Metadata per District (Next.js 16 — params is Promise) ═══
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; district: string }> }): Promise<Metadata> {
   const { locale, district } = await params;
+  const isAr = locale === 'ar';
   const d = jeddahDistricts.find(x => x.id === district);
   if (!d) return {};
 
   return {
-    title: `تظليل سيارات ${d.nameAr} جدة — نانو سيراميك`,
-    description: `أفضل تظليل سيارات في ${d.nameAr} بجدة. رطوبة ${d.humidity}، أشعة UV ${d.uvIndex}. نوصي بـ ${d.recommendation.split('—')[0].trim()}. وكيل جونسون و 3M المعتمد.`,
+    title: isAr ? `تظليل سيارات ${d.nameAr} جدة — نانو سيراميك` : `Car Tinting in ${d.nameEn} Jeddah — Nano Ceramic`,
+    description: isAr ? `أفضل تظليل سيارات في ${d.nameAr} بجدة. رطوبة ${d.humidity}، أشعة UV ${d.uvIndex}. نوصي بـ ${d.recommendation.split('—')[0].trim()}. وكيل جونسون و 3M المعتمد.` : `Best car tinting in ${d.nameEn} Jeddah. Humidity ${d.humidity}, UV ${d.uvIndex}. We recommend ${d.recommendationEn.split('—')[0].trim()}. Authorized Johnson & 3M Dealer.`,
     alternates: getAlternates(locale as Locale, `/car-insulation-jeddah/${district}`),
     openGraph: {
-      title: `تظليل سيارات ${d.nameAr} — جدة`,
-      description: `حلول تظليل مخصصة لـ ${d.nameAr} حسب المناخ المحلي`,
+      title: isAr ? `تظليل سيارات ${d.nameAr} — جدة` : `Car Tinting ${d.nameEn} — Jeddah`,
+      description: isAr ? `حلول تظليل مخصصة لـ ${d.nameAr} حسب المناخ المحلي` : `Custom tinting solutions for ${d.nameEn} based on local climate`,
       url: `${SITE_URL}/car-insulation-jeddah/${district}`,
-      images: [{ url: `${SITE_URL}/api/og?title=${encodeURIComponent(`تظليل سيارات ${d.nameAr}`)}&subtitle=${encodeURIComponent(`حماية من رطوبة ${d.humidity} وأشعة UV ${d.uvIndex}`)}&type=car`, width: 1200, height: 630 }],
+      images: [{ url: `${SITE_URL}/api/og?title=${encodeURIComponent(isAr ? `تظليل سيارات ${d.nameAr}` : `Car Tinting ${d.nameEn}`)}&subtitle=${encodeURIComponent(isAr ? `حماية من رطوبة ${d.humidity} وأشعة UV ${d.uvIndex}` : `Protection from ${d.humidity} humidity and UV ${d.uvIndex}`)}&type=car`, width: 1200, height: 630 }],
     },
   };
 }
 
 // ═══ District-Specific @graph Schema ═══
-function buildDistrictSchema(d: typeof jeddahDistricts[0]) {
+function buildDistrictSchema(d: typeof jeddahDistricts[0], isAr: boolean) {
   return {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'AutoBodyShop',
         '@id': `${SITE_URL}/car-insulation-jeddah/${d.id}#shop`,
-        name: `عزل كور — تظليل سيارات ${d.nameAr}`,
+        name: isAr ? `عزل كور — تظليل سيارات ${d.nameAr}` : `AzelCore — Car Tinting in ${d.nameEn}`,
         url: `${SITE_URL}/car-insulation-jeddah/${d.id}`,
         telephone: PHONE,
         image: `${SITE_URL}/images/hero-car-tinting-process.webp`,
-        description: `تظليل سيارات احترافي في ${d.nameAr} بجدة. رطوبة ${d.humidity} و UV ${d.uvIndex} تتطلب ${d.recommendation.split('—')[0].trim()}.`,
+        description: isAr ? `تظليل سيارات احترافي في ${d.nameAr} بجدة. رطوبة ${d.humidity} و UV ${d.uvIndex} تتطلب ${d.recommendation.split('—')[0].trim()}.` : `Professional car tinting in ${d.nameEn} Jeddah. Humidity ${d.humidity} and UV ${d.uvIndex} require ${d.recommendationEn.split('—')[0].trim()}.`,
         areaServed: {
           '@type': 'Place',
-          name: `${d.nameAr}، جدة`,
+          name: isAr ? `${d.nameAr}، جدة` : `${d.nameEn}, Jeddah`,
           geo: { '@type': 'GeoCoordinates', latitude: 21.5424, longitude: 39.1727 },
           containedInPlace: {
             '@type': 'City',
-            name: 'جدة',
+            name: isAr ? 'جدة' : 'Jeddah',
             sameAs: 'https://www.wikidata.org/wiki/Q5880',
           },
         },
@@ -75,18 +76,18 @@ function buildDistrictSchema(d: typeof jeddahDistricts[0]) {
       },
       {
         '@type': 'Service',
-        name: `تظليل نانو سيراميك — ${d.nameAr}`,
+        name: isAr ? `تظليل نانو سيراميك — ${d.nameAr}` : `Nano Ceramic Tinting — ${d.nameEn}`,
         provider: { '@id': `${SITE_URL}/car-insulation-jeddah/${d.id}#shop` },
-        serviceType: 'تظليل سيارات',
-        areaServed: { '@type': 'Place', name: `${d.nameAr}، جدة` },
-        description: d.recommendation,
+        serviceType: isAr ? 'تظليل سيارات' : 'Car Tinting',
+        areaServed: { '@type': 'Place', name: isAr ? `${d.nameAr}، جدة` : `${d.nameEn}, Jeddah` },
+        description: isAr ? d.recommendation : d.recommendationEn,
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
-          { '@type': 'ListItem', position: 2, name: 'تظليل سيارات جدة', item: `${SITE_URL}/car-insulation-jeddah` },
-          { '@type': 'ListItem', position: 3, name: `تظليل ${d.nameAr}`, item: `${SITE_URL}/car-insulation-jeddah/${d.id}` },
+          { '@type': 'ListItem', position: 1, name: isAr ? 'الرئيسية' : 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: isAr ? 'تظليل سيارات جدة' : 'Car Tinting Jeddah', item: `${SITE_URL}/car-insulation-jeddah` },
+          { '@type': 'ListItem', position: 3, name: isAr ? `تظليل ${d.nameAr}` : `Tinting ${d.nameEn}`, item: `${SITE_URL}/car-insulation-jeddah/${d.id}` },
         ],
       },
     ],
@@ -96,10 +97,11 @@ function buildDistrictSchema(d: typeof jeddahDistricts[0]) {
 // ═══ Page Component (SSG — Next.js 16 async params) ═══
 export default async function DistrictPage({ params }: { params: Promise<{ locale: string; district: string }> }) {
   const { locale, district } = await params;
+  const isAr = locale === 'ar';
   const d = jeddahDistricts.find(x => x.id === district);
   if (!d) notFound();
 
-  const schema = buildDistrictSchema(d);
+  const schema = buildDistrictSchema(d, isAr);
   const localContent = districtsContent[district];
 
   // FAQPage Schema for district-specific FAQs
@@ -118,24 +120,24 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
-      <ServiceSummary summary={`في ${d.nameAr} بجدة، الرطوبة تصل ${d.humidity} مع أشعة UV بمستوى ${d.uvIndex} وتآكل ملحي ${d.saltCorrosion}. نوصي بـ ${d.recommendation}. وكيل جونسون و 3M المعتمد — ضمان عمر السيارة.`} />
+      <ServiceSummary summary={`في ${d.nameAr} بجدة، {isAr ? 'الرطوبة' : 'Humidity'} تصل ${d.humidity} مع أشعة UV بمستوى ${d.uvIndex} وتآكل ملحي ${d.saltCorrosion}. نوصي بـ ${isAr ? d.recommendation : d.recommendationEn}. وكيل جونسون و 3M المعتمد — ضمان عمر السيارة.`} />
 
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image src="/images/hero-car-tinting-process.webp" alt={`تظليل سيارات في ${d.nameAr} جدة`} fill priority fetchPriority="high" quality={75} sizes="100vw" style={{ objectFit: 'cover' }} />
+          <Image src="/images/hero-car-tinting-process.webp" alt={isAr ? `تظليل سيارات في ${d.nameAr} جدة` : `Car Tinting in ${d.nameEn} Jeddah`} fill priority fetchPriority="high" quality={75} sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>
           <nav className={styles.breadcrumb} aria-label="مسار التنقل">
-            <Link href="/">الرئيسية</Link> / <Link href="/car-insulation-jeddah">تظليل سيارات</Link> / <span>{d.nameAr}</span>
+            <Link href="/">{isAr ? 'الرئيسية' : 'Home'}</Link> / <Link href="/car-insulation-jeddah">{isAr ? 'تظليل سيارات' : 'Car Tinting'}</Link> / <span>{isAr ? d.nameAr : d.nameEn}</span>
           </nav>
-          <h1 className={styles.heroTitle}>تظليل سيارات في <span className={styles.blueGradient}>{d.nameAr}</span></h1>
+          <h1 className={styles.heroTitle}>{isAr ? 'تظليل سيارات في ' : 'Car Tinting in '}<span className={styles.blueGradient}>{isAr ? d.nameAr : d.nameEn}</span></h1>
           <p className={styles.heroSubtitle}>
-            حلول تظليل مخصصة لمناخ {d.nameAr} — رطوبة {d.humidity}، أشعة UV بمستوى {d.uvIndex}.
+            {isAr ? `حلول تظليل مخصصة لمناخ ${d.nameAr} — رطوبة ${d.humidity}، أشعة UV بمستوى ${d.uvIndex}.` : `Custom tinting solutions for ${d.nameEn} climate — humidity ${d.humidity}, UV level ${d.uvIndex}.`}
           </p>
           <div className={styles.heroActions}>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>احجز موعد تظليل</a>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>{isAr ? 'احجز موعد تظليل' : 'Book a Tinting Appointment'}</a>
           </div>
         </div>
       </section>
@@ -145,7 +147,7 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
         <section className={styles.section}>
           <div className={styles.container}>
             <p style={{ fontSize: '1.1rem', lineHeight: '1.9', color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-              {localContent.localParagraph}
+              {isAr ? localContent.localParagraph : localContent.localParagraphEn}
             </p>
           </div>
         </section>
@@ -160,34 +162,34 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <span className={styles.overline}>بيانات مناخية — {d.nameAr}</span>
-            <h2 className={styles.sectionTitle}>لماذا {d.nameAr} تحتاج تظليل متخصص؟</h2>
-            <p className={styles.sectionSubtitle}>بيانات مناخية حقيقية تحدد نوع الفيلم المثالي لحيّك.</p>
+            <span className={styles.overline}>{isAr ? `بيانات مناخية — ${d.nameAr}` : `Climate Data — ${d.nameEn}`}</span>
+            <h2 className={styles.sectionTitle}>{isAr ? `لماذا ${d.nameAr} تحتاج تظليل متخصص؟` : `Why does ${d.nameEn} need specialized tinting?`}</h2>
+            <p className={styles.sectionSubtitle}>{isAr ? 'بيانات مناخية حقيقية تحدد نوع الفيلم المثالي لحيّك.' : 'Real climate data determines the perfect film for your neighborhood.'}</p>
           </div>
           <dl className={styles.benefitsDl}>
             <div>
-              <dt><span className={styles.benefitIcon} aria-hidden="true">🌡️</span>درجة الحرارة</dt>
-              <dd>متوسط {d.avgTemp} — {d.zone} جدة. حرارة المقصورة تتجاوز 72°م بدون تظليل.</dd>
+              <dt><span className={styles.benefitIcon} aria-hidden="true">🌡️</span>{isAr ? 'درجة الحرارة' : 'Temperature'}</dt>
+              <dd>{isAr ? `متوسط ${d.avgTemp} — ${d.zone} جدة. حرارة المقصورة تتجاوز 72°م بدون تظليل.` : `Average ${d.avgTemp} — ${d.zone} Jeddah. Cabin heat exceeds 72°C without tint.`}</dd>
             </div>
             <div>
-              <dt><span className={styles.benefitIcon} aria-hidden="true">💧</span>الرطوبة</dt>
-              <dd>{d.humidity} — {Number(d.humidity.replace('%', '')) > 70 ? 'رطوبة عالية تتطلب فيلم مقاوم للتآكل والتقشر' : 'رطوبة معتدلة — معظم الأفلام مناسبة'}.</dd>
+              <dt><span className={styles.benefitIcon} aria-hidden="true">💧</span>{isAr ? 'الرطوبة' : 'Humidity'}</dt>
+              <dd>{d.humidity} — {Number(d.humidity.replace('%', '')) > 70 ? (isAr ? 'رطوبة عالية تتطلب فيلم مقاوم للتآكل والتقشر' : 'High humidity requires corrosion-resistant film') : (isAr ? 'رطوبة معتدلة — معظم الأفلام مناسبة' : 'Moderate humidity — most films are suitable')}.</dd>
             </div>
             <div>
-              <dt><span className={styles.benefitIcon} aria-hidden="true">☀️</span>الأشعة فوق البنفسجية</dt>
-              <dd>مستوى UV: {d.uvIndex}. تسبب تشقق الجلد الداخلي وبهتان لون السيارة.</dd>
+              <dt><span className={styles.benefitIcon} aria-hidden="true">☀️</span>{isAr ? 'الأشعة فوق البنفسجية' : 'UV Rays'}</dt>
+              <dd>{isAr ? `مستوى UV: ${d.uvIndex}. تسبب تشقق الجلد الداخلي وبهتان لون السيارة.` : `UV Index: ${d.uvIndex}. Causes interior leather cracking and car paint fading.`}</dd>
             </div>
             <div>
-              <dt><span className={styles.benefitIcon} aria-hidden="true">🧂</span>التآكل الملحي</dt>
-              <dd>مستوى {d.saltCorrosion} — المسافة من البحر: {d.distanceFromSea}. {d.saltCorrosion === 'عالي' ? 'يجب استخدام فيلم مقاوم للملوحة.' : 'تآكل محدود — خيارات أوسع.'}</dd>
+              <dt><span className={styles.benefitIcon} aria-hidden="true">🧂</span>{isAr ? 'التآكل الملحي' : 'Salt Corrosion'}</dt>
+              <dd>{isAr ? `مستوى ${d.saltCorrosion} — المسافة من البحر: ${d.distanceFromSea}. ${d.saltCorrosion === 'عالي' ? 'يجب استخدام فيلم مقاوم للملوحة.' : 'تآكل محدود — خيارات أوسع.'}` : `Level ${d.saltCorrosion} — Distance from sea: ${d.distanceFromSea}. ${d.saltCorrosion === 'عالي' ? 'Must use salt-resistant film.' : 'Limited corrosion — wider options.'}`}</dd>
             </div>
             <div>
-              <dt><span className={styles.benefitIcon} aria-hidden="true">💎</span>المستوى الاقتصادي</dt>
-              <dd>{d.economicLevel} — السيارات الشائعة: {d.popularCars.join('، ')}.</dd>
+              <dt><span className={styles.benefitIcon} aria-hidden="true">💎</span>{isAr ? 'المستوى الاقتصادي' : 'Economic Level'}</dt>
+              <dd>{isAr ? `${d.economicLevel} — السيارات الشائعة: ${d.popularCars.join('، ')}.` : `${d.economicLevel} — Popular cars: ${d.popularCarsEn.join(', ')}.`}</dd>
             </div>
             <div>
-              <dt><span className={styles.benefitIcon} aria-hidden="true">✅</span>التوصية</dt>
-              <dd><strong>{d.recommendation}</strong></dd>
+              <dt><span className={styles.benefitIcon} aria-hidden="true">✅</span>{isAr ? 'التوصية' : 'Recommendation'}</dt>
+              <dd><strong>{isAr ? d.recommendation : d.recommendationEn}</strong></dd>
             </div>
           </dl>
 
@@ -202,8 +204,8 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
       {localContent && (
         <section className={styles.section} style={{ background: 'var(--surface-elevated, #1a1a2e)' }}>
           <div className={styles.container} style={{ maxWidth: '700px', textAlign: 'center' }}>
-            <p style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--primary)', marginBottom: '0.75rem', fontWeight: 600 }}>💡 نصيحة الخبير</p>
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.9', color: 'var(--text)' }}>{localContent.expertTip}</p>
+            <p style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--primary)', marginBottom: '0.75rem', fontWeight: 600 }}>💡 {isAr ? 'نصيحة الخبير' : 'Expert Tip'}</p>
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.9', color: 'var(--text)' }}>{isAr ? localContent.expertTip : localContent.expertTipEn}</p>
           </div>
         </section>
       )}
@@ -213,17 +215,17 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
         <section className={styles.section}>
           <div className={styles.container}>
             <div className={styles.sectionHeader}>
-              <span className={styles.overline}>أسئلة سكان {d.nameAr}</span>
-              <h2 className={styles.sectionTitle}>أسئلة شائعة عن التظليل في {d.nameAr}</h2>
+              <span className={styles.overline}>{isAr ? `أسئلة سكان ${d.nameAr}` : `Questions from ${d.nameEn} Residents`}</span>
+              <h2 className={styles.sectionTitle}>{isAr ? `أسئلة شائعة عن التظليل في ${d.nameAr}` : `Frequently Asked Questions about Tinting in ${d.nameEn}`}</h2>
             </div>
             <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               {localContent.faqs.map((faq, i) => (
                 <details key={i} style={{ background: 'var(--surface)', borderRadius: '12px', padding: '1.25rem 1.5rem', border: '1px solid var(--border)', cursor: 'pointer' }}>
                   <summary style={{ fontWeight: 700, fontSize: '1.05rem', color: 'var(--text)', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    {faq.question}
+                    {isAr ? faq.question : faq.questionEn}
                     <span style={{ fontSize: '1.2rem', color: 'var(--primary)' }}>+</span>
                   </summary>
-                  <p style={{ marginTop: '0.75rem', lineHeight: '1.8', color: 'var(--text-muted)', fontSize: '0.95rem' }}>{faq.answer}</p>
+                  <p style={{ marginTop: '0.75rem', lineHeight: '1.8', color: 'var(--text-muted)', fontSize: '0.95rem' }}>{isAr ? faq.answer : faq.answerEn}</p>
                 </details>
               ))}
             </div>
@@ -234,10 +236,10 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
       {/* CTA — data-nosnippet (vector density) */}
       <section className={styles.ctaSection} data-nosnippet>
         <div className={styles.container}>
-          <h2 className={styles.ctaTitle}>ساكن في <span className={styles.blueGradient}>{d.nameAr}</span>؟</h2>
-          <p className={styles.ctaSubtitle}>احصل على استشارة مجانية + عرض سعر مخصص لمناخ حيّك</p>
+          <h2 className={styles.ctaTitle}>{isAr ? 'ساكن في ' : 'Living in '}<span className={styles.blueGradient}>{isAr ? d.nameAr : d.nameEn}</span>؟</h2>
+          <p className={styles.ctaSubtitle}>{isAr ? 'احصل على استشارة مجانية + عرض سعر مخصص لمناخ حيّك' : 'Get a free consultation + a custom quote for your neighborhood\'s climate'}</p>
           <div className={styles.ctaActions}>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>تواصل عبر واتساب</a>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>{isAr ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}</a>
             <a href={`tel:${PHONE}`} className={styles.secondaryBtn}>📞 {PHONE}</a>
           </div>
         </div>
@@ -249,18 +251,18 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
           <AuthorProfile
             expertName={OWNER_NAME}
             expertTitle={OWNER_TITLE}
-            organization="خبراء العزل وتظليل السيارات بجدة"
-            quote={`نضمن لك في ${d.nameAr} تركيب تظليل نانو سيراميك أصلي يتناسب مع الرطوبة والحرارة العالية، مع التزامنا التام بنظام المرور السعودي ونسبة 30%.`}
+            organization="isAr ? 'خبراء العزل وتظليل السيارات بجدة' : 'Car Tinting & Insulation Experts in Jeddah'"
+            quote={`نضمن لك في ${d.nameAr} تركيب تظليل نانو سيراميك أصلي يتناسب مع {isAr ? 'الرطوبة' : 'Humidity'} والحرارة العالية، مع التزامنا التام بنظام المرور السعودي ونسبة 30%.`}
             reviewDate="2026-05-01"
           />
         </div>
       </section>
 
       <SiloNav
-        items={jeddahDistricts.map(x => ({ id: x.id, nameAr: x.nameAr }))}
+        items={jeddahDistricts.map(x => ({ id: x.id, nameAr: isAr ? x.nameAr : x.nameEn }))}
         currentId={district}
         basePath="/car-insulation-jeddah"
-        label="أحياء جدة الأخرى"
+        label="isAr ? 'أحياء جدة الأخرى' : 'Other Jeddah Neighborhoods'"
       />
 
       <CrossSellCards currentPage="car-insulation-jeddah" />

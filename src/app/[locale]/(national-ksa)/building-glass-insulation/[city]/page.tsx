@@ -24,45 +24,46 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; city: string }> }): Promise<Metadata> {
   const { locale, city } = await params;
+  const isAr = locale === 'ar';
   const cityObj = ksaCities.find(c => c.id === city);
   if (!cityObj) return {};
 
   return {
-    title: `عزل واجهات زجاج المباني في ${cityObj.nameAr} — وفّر 40% كهرباء`,
-    description: `عزل حراري احترافي لواجهات المباني والفلل في ${cityObj.nameAr}. نانو سيراميك يحجب 97% حرارة، متوافق مع كود البناء السعودي. خصم للمشاريع.`,
+    title: isAr ? `عزل واجهات زجاج المباني في ${cityObj.nameAr} — وفّر 40% كهرباء` : `Building Glass Facade Insulation in ${cityObj.nameEn} — Save 40% Electricity`,
+    description: isAr ? `عزل حراري احترافي لواجهات المباني والفلل في ${cityObj.nameAr}. نانو سيراميك يحجب 97% حرارة، متوافق مع كود البناء السعودي. خصم للمشاريع.` : `Professional thermal insulation for building facades and villas in ${cityObj.nameEn}. Nano ceramic blocks 97% of heat, compliant with Saudi Building Code. Project discounts.`,
     alternates: getAlternates(locale as Locale, `/building-glass-insulation/${cityObj.id}`),
     openGraph: {
-      title: `عزل مباني في ${cityObj.nameAr} | ضمان 15 سنة`,
-      description: `أفضل عزل زجاج مباني في ${cityObj.nameAr}. تقليل التكييف 40%.`,
+      title: isAr ? `عزل مباني في ${cityObj.nameAr} | ضمان 15 سنة` : `Building Insulation in ${cityObj.nameEn} | 15 Year Warranty`,
+      description: isAr ? `أفضل عزل زجاج مباني في ${cityObj.nameAr}. تقليل التكييف 40%.` : `Best building glass insulation in ${cityObj.nameEn}. Reduce AC usage by 40%.`,
       url: `${SITE_URL}/building-glass-insulation/${cityObj.id}`,
-      images: [{ url: `${SITE_URL}/api/og?title=${encodeURIComponent(`عزل مباني ${cityObj.nameAr}`)}&subtitle=${encodeURIComponent(`تخفيض فاتورة التكييف 40%`)}&type=building`, width: 1200, height: 630 }],
+      images: [{ url: `${SITE_URL}/api/og?title=${encodeURIComponent(isAr ? `عزل مباني ${cityObj.nameAr}` : `Building Insulation ${cityObj.nameEn}`)}&subtitle=${encodeURIComponent(isAr ? `تخفيض فاتورة التكييف 40%` : `Reduce AC Bill by 40%`)}&type=building`, width: 1200, height: 630 }],
     },
   };
 }
 
 // ═══ City-Specific @graph Schema ═══
-function buildCitySchema(cityObj: typeof ksaCities[0], content: any) {
+function buildCitySchema(cityObj: typeof ksaCities[0], content: any, isAr: boolean) {
   return {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'Service',
         '@id': `${SITE_URL}/building-glass-insulation/${cityObj.id}#service`,
-        name: `عزل واجهات زجاج المباني في ${cityObj.nameAr}`,
-        serviceType: 'عزل حراري للمباني',
+        name: isAr ? `عزل واجهات زجاج المباني في ${cityObj.nameAr}` : `Building Glass Facade Insulation in ${cityObj.nameEn}`,
+        serviceType: isAr ? 'عزل حراري للمباني' : 'Building Thermal Insulation',
         provider: { '@id': `${SITE_URL}/#organization` },
         areaServed: {
           '@type': 'City',
-          name: cityObj.nameAr,
-          containedInPlace: { '@type': 'Country', name: 'المملكة العربية السعودية' },
+          name: isAr ? cityObj.nameAr : cityObj.nameEn,
+          containedInPlace: { '@type': 'Country', name: isAr ? 'المملكة العربية السعودية' : 'Saudi Arabia' },
         },
-        description: `عزل حراري احترافي لواجهات المباني والفلل في ${cityObj.nameAr}. حرارة تصل ${cityObj.avgTemp} ورطوبة ${cityObj.humidity}.`,
+        description: isAr ? `عزل حراري احترافي لواجهات المباني والفلل في ${cityObj.nameAr}. حرارة تصل ${cityObj.avgTemp} ورطوبة ${cityObj.humidity}.` : `Professional thermal insulation for building facades and villas in ${cityObj.nameEn}. Heat up to ${cityObj.avgTemp} and humidity ${cityObj.humidity}.`,
         offers: {
           '@type': 'AggregateOffer',
           priceCurrency: 'SAR',
           lowPrice: '50',
           highPrice: '200',
-          unitText: 'متر مربع',
+          unitText: isAr ? 'متر مربع' : 'Square Meter',
         },
       },
       {
@@ -76,9 +77,9 @@ function buildCitySchema(cityObj: typeof ksaCities[0], content: any) {
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: SITE_URL },
-          { '@type': 'ListItem', position: 2, name: 'عزل المباني', item: `${SITE_URL}/building-glass-insulation` },
-          { '@type': 'ListItem', position: 3, name: `عزل مباني ${cityObj.nameAr}`, item: `${SITE_URL}/building-glass-insulation/${cityObj.id}` },
+          { '@type': 'ListItem', position: 1, name: isAr ? 'الرئيسية' : 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: isAr ? 'عزل المباني' : 'Building Insulation', item: `${SITE_URL}/building-glass-insulation` },
+          { '@type': 'ListItem', position: 3, name: isAr ? `عزل مباني ${cityObj.nameAr}` : `Building Insulation in ${cityObj.nameEn}`, item: `${SITE_URL}/building-glass-insulation/${cityObj.id}` },
         ],
       },
     ],
@@ -87,6 +88,7 @@ function buildCitySchema(cityObj: typeof ksaCities[0], content: any) {
 
 export default async function BuildingInsulationCityPage({ params }: { params: Promise<{ locale: string; city: string }> }) {
   const { locale, city } = await params;
+  const isAr = locale === 'ar';
   const cityObj = ksaCities.find(c => c.id === city);
   const content = citiesContent[city];
 
@@ -94,7 +96,7 @@ export default async function BuildingInsulationCityPage({ params }: { params: P
     notFound();
   }
 
-  const citySchema = buildCitySchema(cityObj, content);
+  const citySchema = buildCitySchema(cityObj, content, isAr);
 
   return (
     <>
@@ -105,16 +107,16 @@ export default async function BuildingInsulationCityPage({ params }: { params: P
         </div>
         <div className={styles.heroContent}>
           <nav className={styles.breadcrumb} aria-label="مسار التنقل">
-            <Link href="/">الرئيسية</Link> / <Link href="/building-glass-insulation">عزل المباني</Link> / <span>{cityObj.nameAr}</span>
+            <Link href="/">{isAr ? 'الرئيسية' : 'Home'}</Link> / <Link href="/building-glass-insulation">{isAr ? 'عزل المباني' : 'Building Insulation'}</Link> / <span>{isAr ? cityObj.nameAr : cityObj.nameEn}</span>
           </nav>
           <h1 className={styles.heroTitle}>
-            عزل زجاج المباني في <span className={styles.greenGradient}>{cityObj.nameAr}</span>
+            {isAr ? 'عزل زجاج المباني في ' : 'Building Glass Insulation in '}<span className={styles.greenGradient}>{isAr ? cityObj.nameAr : cityObj.nameEn}</span>
           </h1>
           <p className={styles.heroSubtitle}>
-            حلول متوافقة مع مناخ {cityObj.nameAr} (رطوبة {cityObj.humidity}، حرارة تصل {cityObj.avgTemp})
+            {isAr ? `حلول متوافقة مع مناخ ${cityObj.nameAr} (رطوبة ${cityObj.humidity}، حرارة تصل ${cityObj.avgTemp})` : `Solutions compatible with ${cityObj.nameEn} climate (Humidity ${cityObj.humidity}, Heat up to ${cityObj.avgTemp})`}
           </p>
           <div className={styles.heroActions}>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>حجز معاينة في {cityObj.nameAr}</a>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>{isAr ? `حجز معاينة في ${cityObj.nameAr}` : `Book an inspection in ${cityObj.nameEn}`}</a>
           </div>
         </div>
       </section>
@@ -127,30 +129,30 @@ export default async function BuildingInsulationCityPage({ params }: { params: P
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <span className={styles.overline}>خبراء العزل في {cityObj.nameAr}</span>
-            <h2 className={styles.sectionTitle}>لماذا العزل الحراري ضروري في {cityObj.nameAr}؟</h2>
+            <span className={styles.overline}>{isAr ? `خبراء العزل في ${cityObj.nameAr}` : `Insulation Experts in ${cityObj.nameEn}`}</span>
+            <h2 className={styles.sectionTitle}>{isAr ? `لماذا العزل الحراري ضروري في ${cityObj.nameAr}؟` : `Why is thermal insulation essential in ${cityObj.nameEn}?`}</h2>
           </div>
 
           {/* Sentiment U-Curve Matrix */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '800px', margin: '0 auto' }}>
             <div style={{ background: 'rgba(255,100,100,0.05)', padding: '1.5rem', borderRadius: '12px', borderLeft: '4px solid var(--danger)' }}>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, fontSize: '1.05rem' }}>
-                <strong style={{ color: 'var(--danger)' }}>التحدي: </strong>
-                {content.paragraph}
+                <strong style={{ color: 'var(--danger)' }}>{isAr ? 'التحدي:' : 'The Challenge:'} </strong>
+                {isAr ? content.paragraph : content.paragraphEn}
               </p>
             </div>
             
             <div style={{ background: 'rgba(100,255,100,0.05)', padding: '1.5rem', borderRadius: '12px', borderLeft: '4px solid var(--success)' }}>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, fontSize: '1.05rem' }}>
-                <strong style={{ color: 'var(--success)' }}>العائد المتوقع: </strong>
-                {content.savingsEstimate}
+                <strong style={{ color: 'var(--success)' }}>{isAr ? 'العائد المتوقع:' : 'Expected Return:'} </strong>
+                {isAr ? content.savingsEstimate : content.savingsEstimateEn}
               </p>
             </div>
 
             <div style={{ background: 'var(--surface)', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border)' }}>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, fontSize: '1.05rem' }}>
                 <strong style={{ color: 'var(--primary)' }}>التوصية الهندسية: </strong>
-                نوصي بـ <strong>{content.recommendedFilm}</strong> لتحقيق أعلى كفاءة وتوافق مع كود البناء السعودي في {cityObj.nameAr}.
+                نوصي بـ <strong>{isAr ? content.recommendedFilm : content.recommendedFilmEn}</strong> لتحقيق أعلى كفاءة وتوافق مع كود البناء السعودي في {cityObj.nameAr}.
               </p>
             </div>
           </div>
@@ -172,8 +174,8 @@ export default async function BuildingInsulationCityPage({ params }: { params: P
           <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {content.faqs.map((faq, i) => (
               <details key={i} style={{ background: 'var(--surface)', padding: '1.25rem', borderRadius: '12px', border: '1px solid var(--border)', cursor: 'pointer' }}>
-                <summary style={{ fontWeight: 600, color: 'var(--text)', listStyle: 'none' }}>{faq.question}</summary>
-                <p style={{ marginTop: '1rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>{faq.answer}</p>
+                <summary style={{ fontWeight: 600, color: 'var(--text)', listStyle: 'none' }}>{isAr ? faq.question : faq.questionEn}</summary>
+                <p style={{ marginTop: '1rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>{isAr ? faq.answer : faq.answerEn}</p>
               </details>
             ))}
           </div>

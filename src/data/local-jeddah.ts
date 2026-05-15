@@ -13,7 +13,9 @@ export interface JeddahDistrict {
   distanceFromSea: string;
   economicLevel: "فاخر" | "متوسط-عالي" | "متوسط" | "شعبي";
   recommendation: string;
+  recommendationEn: string;
   popularCars: string[];
+  popularCarsEn: string[];
 }
 
 export const jeddahDistricts: JeddahDistrict[] = [
@@ -29,7 +31,9 @@ export const jeddahDistricts: JeddahDistrict[] = [
     distanceFromSea: "3 كم",
     economicLevel: "فاخر",
     recommendation: "نانو سيراميك + طبقة حماية ملحية — الرطوبة العالية تتطلب فيلم مقاوم للتآكل",
+    recommendationEn: "Nano-Ceramic + Salt Protection Layer — High humidity requires corrosion-resistant film",
     popularCars: ["لكزس ES", "مرسيدس S-Class", "BMW 7 Series"],
+    popularCarsEn: ["Lexus ES", "Mercedes S-Class", "BMW 7 Series"],
   },
   {
     id: "al-hamdaniya",
@@ -43,7 +47,9 @@ export const jeddahDistricts: JeddahDistrict[] = [
     distanceFromSea: "25 كم",
     economicLevel: "متوسط",
     recommendation: "فيلم 3M CR70 + تظليل 28% — الحرارة أعلى لكن الملوحة أقل",
+    recommendationEn: "3M CR70 Film + 28% Tint — Heat is higher but salinity is lower",
     popularCars: ["تويوتا كامري", "هيونداي أكسنت", "كيا K5"],
+    popularCarsEn: ["Toyota Camry", "Hyundai Accent", "Kia K5"],
   },
   {
     id: "al-safa",
@@ -57,7 +63,9 @@ export const jeddahDistricts: JeddahDistrict[] = [
     distanceFromSea: "5 كم",
     economicLevel: "فاخر",
     recommendation: "XPEL PRIME XR Plus — أعلى حجب IR مع وضوح تام للرؤية",
+    recommendationEn: "XPEL PRIME XR Plus — Highest IR rejection with absolute clarity",
     popularCars: ["رنج روفر", "بورشه كايين", "لكزس LX"],
+    popularCarsEn: ["Range Rover", "Porsche Cayenne", "Lexus LX"],
   },
   {
     id: "al-naeem",
@@ -70,7 +78,9 @@ export const jeddahDistricts: JeddahDistrict[] = [
     saltCorrosion: "عالي",
     distanceFromSea: "4 كم",
     economicLevel: "متوسط-عالي",
+    recommendationEn: 'Nano Ceramic — Blocks 90% Heat',
     recommendation: "LLumar CTX + حماية UV كاملة — توازن بين الجودة والسعر",
+    popularCarsEn: ['Toyota Camry', 'Hyundai Accent', 'Honda Accord'],
     popularCars: ["تويوتا كامري", "هوندا أكورد", "نيسان ألتيما"],
   },
   {
@@ -84,7 +94,9 @@ export const jeddahDistricts: JeddahDistrict[] = [
     saltCorrosion: "متوسط",
     distanceFromSea: "8 كم",
     economicLevel: "متوسط",
+    recommendationEn: 'Nano Ceramic — Blocks 90% Heat',
     recommendation: "فيلم كربوني مع طبقة UV — خيار اقتصادي مع حماية جيدة",
+    popularCarsEn: ['Toyota Camry', 'Hyundai Accent', 'Honda Accord'],
     popularCars: ["تويوتا هايلوكس", "نيسان باترول", "تويوتا كامري"],
   },
   {
@@ -98,7 +110,9 @@ export const jeddahDistricts: JeddahDistrict[] = [
     saltCorrosion: "عالي",
     distanceFromSea: "2 كم",
     economicLevel: "فاخر",
+    recommendationEn: 'Nano Ceramic — Blocks 90% Heat',
     recommendation: "نانو سيراميك من XPEL — مقاومة ملحية عالية + ضمان ممتد",
+    popularCarsEn: ['Toyota Camry', 'Hyundai Accent', 'Honda Accord'],
     popularCars: ["مرسيدس GLE", "BMW X5", "أودي Q7"],
   },
   {
@@ -112,7 +126,9 @@ export const jeddahDistricts: JeddahDistrict[] = [
     saltCorrosion: "عالي",
     distanceFromSea: "1 كم",
     economicLevel: "فاخر",
+    recommendationEn: 'Nano Ceramic — Blocks 90% Heat',
     recommendation: "نانو سيراميك مع طبقة مقاومة ملحية إضافية — أقرب للبحر",
+    popularCarsEn: ['Toyota Camry', 'Hyundai Accent', 'Honda Accord'],
     popularCars: ["لكزس LX 600", "تويوتا لاندكروزر", "مرسيدس G-Class"],
   },
   {
@@ -126,7 +142,9 @@ export const jeddahDistricts: JeddahDistrict[] = [
     saltCorrosion: "متوسط",
     distanceFromSea: "6 كم",
     economicLevel: "متوسط-عالي",
+    recommendationEn: 'Nano Ceramic — Blocks 90% Heat',
     recommendation: "3M Crystalline 70 — أفضل رؤية ليلية مع عزل حراري ممتاز",
+    popularCarsEn: ['Toyota Camry', 'Hyundai Accent', 'Honda Accord'],
     popularCars: ["تويوتا كامري", "هوندا أكورد", "كيا K5"],
   },
   {
@@ -140,7 +158,9 @@ export const jeddahDistricts: JeddahDistrict[] = [
     saltCorrosion: "عالي",
     distanceFromSea: "0.5 كم",
     economicLevel: "فاخر",
+    recommendationEn: 'Nano Ceramic — Blocks 90% Heat',
     recommendation: "XPEL PRIME XR Plus + PPF — أعلى مقاومة للملوحة والرطوبة",
+    popularCarsEn: ['Toyota Camry', 'Hyundai Accent', 'Honda Accord'],
     popularCars: ["رولز رويس", "بنتلي", "مرسيدس S-Class"],
   },
   {
@@ -154,7 +174,9 @@ export const jeddahDistricts: JeddahDistrict[] = [
     saltCorrosion: "منخفض",
     distanceFromSea: "20 كم",
     economicLevel: "متوسط",
+    recommendationEn: 'Nano Ceramic — Blocks 90% Heat',
     recommendation: "فيلم 3M CR70 — حرارة عالية تحتاج عزل قوي بسعر مناسب",
+    popularCarsEn: ['Toyota Camry', 'Hyundai Accent', 'Honda Accord'],
     popularCars: ["تويوتا هايلوكس", "نيسان صني", "هيونداي أكسنت"],
   },
 ];

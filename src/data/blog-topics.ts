@@ -3,6 +3,7 @@
 export interface BlogTopic {
   slug: string;
   titleAr: string;
+  titleEn?: string;
   targetKeyword: string;
   intent: "informational" | "comparison" | "how-to" | "legal";
   linksToServices: string[];
@@ -14,7 +15,8 @@ export const blogTopics: BlogTopic[] = [
   {
     slug: "tint-laws-saudi-2026",
     titleAr: "قوانين تظليل السيارات في السعودية 2026 — الدليل الكامل",
-    targetKeyword: "قوانين تظليل السيارات السعودية",
+    titleEn: "Saudi Car Tinting Laws 2026 — The Complete Guide",
+        targetKeyword: "قوانين تظليل السيارات السعودية",
     intent: "legal",
     linksToServices: ["car-tinting"],
     outline: ["النسب المسموحة حسب نوع الزجاج", "الغرامات والمخالفات", "الفحص الدوري", "كيف تتأكد من نسبة تظليلك", "أنواع مسموحة بدون مخالفة"],
@@ -23,7 +25,8 @@ export const blogTopics: BlogTopic[] = [
   {
     slug: "nano-ceramic-vs-carbon-vs-3m",
     titleAr: "نانو سيراميك مقابل كربوني مقابل 3M — مقارنة شاملة بالأرقام",
-    targetKeyword: "تظليل نانو سيراميك مقابل كربوني",
+    titleEn: "Nano Ceramic vs Carbon vs 3M — Comprehensive Numbers Comparison",
+        targetKeyword: "تظليل نانو سيراميك مقابل كربوني",
     intent: "comparison",
     linksToServices: ["car-tinting"],
     outline: ["جدول مقارنة TSER/IR/UV", "اختبار الحرارة بالكاميرا", "العمر الافتراضي", "متى تختار كل نوع", "السعر مقابل القيمة"],
@@ -32,7 +35,8 @@ export const blogTopics: BlogTopic[] = [
   {
     slug: "best-car-tint-jeddah-2026",
     titleAr: "أفضل محل تظليل سيارات في جدة 2026 — دليل الاختيار",
-    targetKeyword: "أفضل محل تظليل سيارات في جدة",
+    titleEn: "Best Car Tinting Shop in Jeddah 2026 — Selection Guide",
+        targetKeyword: "أفضل محل تظليل سيارات في جدة",
     intent: "informational",
     linksToServices: ["car-tinting"],
     outline: ["معايير اختيار محل التظليل", "علامات المحل الموثوق", "أسئلة اسألها قبل التظليل", "أسعار السوق 2026", "تحذيرات من المحلات المقلدة"],
@@ -41,7 +45,8 @@ export const blogTopics: BlogTopic[] = [
   {
     slug: "building-insulation-electricity-savings",
     titleAr: "كم يوفر عزل زجاج المبنى من فاتورة الكهرباء؟ — حسابات حقيقية",
-    targetKeyword: "توفير فاتورة الكهرباء عزل زجاج",
+    titleEn: "How Much Does Building Glass Insulation Save on Electricity? — Real Calculations",
+        targetKeyword: "توفير فاتورة الكهرباء عزل زجاج",
     intent: "informational",
     linksToServices: ["building-glass"],
     outline: ["حسابات الطاقة الشمسية المنقولة", "أمثلة حقيقية (فيلا/شقة/مكتب)", "مدة استرداد التكلفة", "أفضل أنواع الأفلام للتوفير"],
@@ -50,7 +55,8 @@ export const blogTopics: BlogTopic[] = [
   {
     slug: "how-to-spot-fake-tint",
     titleAr: "5 علامات تعرف بيها التظليل المقلد من الأصلي",
-    targetKeyword: "تظليل أصلي ولا تقليد",
+    titleEn: "5 Signs to Spot Fake Tint from Original",
+        targetKeyword: "تظليل أصلي ولا تقليد",
     intent: "how-to",
     linksToServices: ["car-tinting"],
     outline: ["اختبار اللون بالضوء", "شهادة الضمان الأصلية", "اختبار الحرارة", "رائحة الفيلم", "سعر أقل من السوق = تقليد"],
@@ -59,7 +65,8 @@ export const blogTopics: BlogTopic[] = [
   {
     slug: "ppf-vs-ceramic-coating",
     titleAr: "PPF مقابل النانو سيراميك للطلاء — أيهما تحتاج؟",
-    targetKeyword: "PPF مقابل نانو سيراميك",
+    titleEn: "PPF vs Nano Ceramic Coating — Which Do You Need?",
+        targetKeyword: "PPF مقابل نانو سيراميك",
     intent: "comparison",
     linksToServices: ["car-tinting"],
     outline: ["ما هو PPF", "ما هو النانو سيراميك للطلاء", "جدول مقارنة", "متى تحتاج كل واحد", "هل يمكن الجمع بينهما"],
@@ -68,7 +75,8 @@ export const blogTopics: BlogTopic[] = [
   {
     slug: "jeddah-heat-car-damage",
     titleAr: "ماذا تفعل شمس جدة بسيارتك؟ — 7 أضرار لا تعرفها",
-    targetKeyword: "أضرار الشمس على السيارة",
+    titleEn: "What Does Jeddah Sun Do to Your Car? — 7 Unknown Damages",
+        targetKeyword: "أضرار الشمس على السيارة",
     intent: "informational",
     linksToServices: ["car-tinting", "thermal-cars"],
     outline: ["تشقق الفرش الجلد", "بهتان الطبلون", "تلف الشاشات", "ضعف المكيف", "تآكل المطاط", "ضرر العيون والبشرة", "الحل: العزل الحراري"],
@@ -77,7 +85,8 @@ export const blogTopics: BlogTopic[] = [
   {
     slug: "tint-signal-interference",
     titleAr: "هل التظليل يأثر على إشارة الجوال و GPS؟ — الحقيقة التقنية",
-    targetKeyword: "تظليل لا يؤثر على إشارات GPS",
+    titleEn: "Does Tint Affect Mobile and GPS Signals? — The Technical Truth",
+        targetKeyword: "تظليل لا يؤثر على إشارات GPS",
     intent: "informational",
     linksToServices: ["car-tinting"],
     outline: ["أنواع الأفلام وتأثيرها", "لماذا المعدني يحجب", "لماذا النانو لا يحجب", "كيف تختبر بنفسك"],
@@ -86,7 +95,8 @@ export const blogTopics: BlogTopic[] = [
   {
     slug: "vision-2030-energy-efficiency",
     titleAr: "رؤية 2030 وكفاءة الطاقة — دور عزل المباني في تحقيق الأهداف",
-    targetKeyword: "كفاءة الطاقة رؤية 2030 عزل مباني",
+    titleEn: "Vision 2030 and Energy Efficiency — The Role of Building Insulation",
+        targetKeyword: "كفاءة الطاقة رؤية 2030 عزل مباني",
     intent: "informational",
     linksToServices: ["building-glass"],
     outline: ["أهداف رؤية 2030 للطاقة", "كود البناء السعودي", "دور العزل في التوفير", "حوافز حكومية"],
@@ -95,7 +105,8 @@ export const blogTopics: BlogTopic[] = [
   {
     slug: "car-tint-maintenance-guide",
     titleAr: "دليل العناية بتظليل السيارة — 10 نصائح لإطالة عمر الفيلم",
-    targetKeyword: "العناية بتظليل السيارة",
+    titleEn: "Car Tint Maintenance Guide — 10 Tips to Extend Film Life",
+        targetKeyword: "العناية بتظليل السيارة",
     intent: "how-to",
     linksToServices: ["car-tinting"],
     outline: ["التنظيف الصحيح", "منتجات ممنوعة", "متى تبدل التظليل", "علامات التلف المبكر"],

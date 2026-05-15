@@ -1,0 +1,49 @@
+import os
+import re
+
+files_data = {
+    'src/data/blog-content/nano-ceramic-vs-carbon-vs-3m.ts': {
+        "textEn: 'Book Nano-Ceramic Tint in Jeddah Now'": "text: 'احجز تظليل نانو سيراميك بجدة الآن'",
+        "textEn: 'Johnson Supreme IR — Highest Performance OEM Specs'": "text: 'جونسون Supreme IR — الخيار الأعلى أداءً بمواصفات الوكالة'",
+        "textEn: '3M Crystalline — 200+ Nano Layers with 97% IR Block'": "text: '3M Crystalline — 200+ طبقة نانو بحجب 97% IR'",
+        "quickAnswerEn: 'Nano-ceramic is the best for heat rejection (TSER up to 65% and IR 97%) and is ideal for Jeddah\\'s climate. Carbon tint is excellent economically (IR 80%) but has lower insulation. 3M Crystalline is the best for the windshield thanks to its 200-layer technology (transparent and passes periodic inspection).'": "quickAnswer: 'نانو سيراميك هو الأفضل لحجب الحرارة (TSER يصل لـ 65% و IR 97%) ومثالي لأجواء جدة. التظليل الكربوني ممتاز اقتصادياً (IR 80%) لكنه أقل عزلاً. أما 3M Crystalline فهو الأفضل للزجاج الأمامي بفضل تقنية الـ 200 طبقة (شفاف ويجتاز الفحص الدوري).'",
+        "introEn: 'The daily question at AzelCore center in Jeddah: \"Should I install Nano-Ceramic, Carbon, or 3M?\" The answer does not depend solely on price, but on your vehicle usage and its exposure to Jeddah\\'s scorching sun. In this guide, we provide a precise engineering comparison based on manufacturer Data Sheets, far from misleading marketing slogans.'": "intro: 'السؤال اليومي في مركز عزل كور بجدة: \"أركب نانو سيراميك ولا كربوني ولا 3M؟\" الإجابة لا تعتمد على السعر فقط، بل على طبيعة استخدامك للسيارة ودرجة تعرضها لشمس جدة الحارقة. في هذا الدليل، نضع بين يديك مقارنة هندسية دقيقة تعتمد على بيانات الشركات المصنعة (Data Sheets) بعيداً عن الشعارات التسويقية المضللة.'",
+        "headersEn: ['Technical Spec', 'Nano-Ceramic (Johnson)', 'Advanced Carbon', '3M Crystalline (CR70)']": "headers: ['المواصفة التقنية', 'نانو سيراميك (Johnson Supreme)', 'الكربوني المتقدم', '3M Crystalline (CR70)']",
+        "rowsEn: [\n        ['IR Rejection', '97% (Strongest in market)', '75% - 85%', '97%'],\n        ['Total Solar Energy Rejected (TSER)', 'Up to 65%', '45% - 50%', 'Up to 60%'],\n        ['UV Rejection', '99.9%', '99%', '99.9%'],\n        ['Durability & Lifespan', '10 - 15 years (Fade resistant)', '5 - 7 years', 'Lifetime of Vehicle'],\n        ['Effect on Mobile/GPS Signals', 'None (Non-metal)', 'None', 'None'],\n        ['Approx Cost (Sedan)', '2,000 - 3,500 SAR', '800 - 1,500 SAR', 'Windshield only: 900 - 1,500 SAR']\n      ]": "rows: [\n        ['حجب الأشعة تحت الحمراء (IR)', '97% (الأقوى بالسوق)', '75% - 85%', '97%'],\n        ['عزل الحرارة الإجمالي (TSER)', 'يصل إلى 65%', '45% - 50%', 'يصل إلى 60%'],\n        ['حجب الأشعة البنفسجية (UV)', '99.9%', '99%', '99.9%'],\n        ['المتانة وعمر الافتراضي', '10 - 15 سنة (مقاوم للبهتان)', '5 - 7 سنوات', 'عمر السيارة (ضمان مدى الحياة)'],\n        ['تأثير على إشارات الجوال/GPS', 'لا يوجد (خالي من المعادن)', 'لا يوجد', 'لا يوجد'],\n        ['التكلفة التقريبية (سيدان)', '2,000 - 3,500 ر.س', '800 - 1,500 ر.س', 'أمامي فقط: 900 - 1,500 ر.س']\n      ]",
+        "headingEn: 'Nano-Ceramic Technology: The Longest Lasting Investment'": "heading: 'تقنية النانو سيراميك: الاستثمار الأطول عمراً'",
+        "bodyEn: 'Nano-ceramic relies on non-metallic ceramic particles (Titanium Nitride) embedded in the film. This gives it an exceptional ability to absorb and dissipate heat without becoming reflective like mirrors. According to our field tests in August in Jeddah, original nano-ceramic reduces cabin temperature by about 12-16 degrees Celsius compared to regular tint. The preferred choice for luxury and family cars heavily affected by interior heat.'": "body: 'يعتمد النانو سيراميك على جزيئات سيراميكية غير معدنية (Titanium Nitride) مدمجة بالفيلم. هذا يمنحه قدرة استثنائية على امتصاص وتشتيت الحرارة دون أن يصبح عاكساً كالمرايا. وفقاً لاختباراتنا الميدانية في شهر أغسطس بجدة، يقلل النانو سيراميك الأصلي درجة حرارة المقصورة بنحو 12-16 درجة مئوية مقارنة بالتظليل العادي. الخيار المفضل للسيارات الفارهة والعائلية التي تتأثر بشدة بحرارة المقصورة الداخلي.'",
+        "headingEn: 'Carbon Tint: The Perfect Budget Balance'": "heading: 'التظليل الكربوني: التوازن المثالي للميزانية'",
+        "bodyEn: 'Consists of carbon fiber particles that prevent film discoloration (will not turn purple like cheap types). IR rejection ranges between 75% and 85%, an excellent number compared to dyed tint. It is the top economical choice for rental cars, ride-share vehicles, or those seeking a premium look and good protection without paying exorbitant amounts.'": "body: 'يتكون من جزيئات ألياف الكربون التي تمنع تلاشي لون الفيلم (لن يتحول للون البنفسجي كما يحدث في الأنواع الرخيصة). عزل الـ IR فيه يتراوح بين 75% و 85%، وهو رقم ممتاز مقارنة بالتظليل المصبوغ (Dyed). يعتبر الخيار الاقتصادي الأول للسيارات المؤجرة، سيارات التطبيقات، أو لمن يبحث عن مظهر فخم وحماية جيدة دون دفع مبالغ طائلة.'",
+        "headingEn: '3M Crystalline Technology: Windshield Magic'": "heading: 'تكنولوجيا 3M Crystalline: السحر في الزجاج الأمامي'",
+        "bodyEn: '3M Crystalline is not just tint; it\\'s an engineering marvel composed of over 200 nanometer optical layers, thinner than a Post-it note. The CR70 version features extremely high transparency allowing 70% visible light, making it ideal for windshields and passing periodic inspection, while providing thermal insulation superior to very dark films. Its only drawback is high cost, so we always recommend it for the windshield only, with nano-ceramic for the rest of the car.'": "body: 'فيلم 3M Crystalline ليس مجرد تظليل؛ إنه معجزة هندسية مكونة من أكثر من 200 طبقة بصرية نانومترية، وهو أرق من ورقة الـ Post-it. يتميز إصدار CR70 بشفافية عالية جداً تسمح بمرور 70% من الضوء المرئي، مما يجعله مثالياً للزجاج الأمامي واجتياز الفحص الدوري (الفحص الفني)، بينما يوفر عزلاً حرارياً يتفوق على أفلام داكنة جداً. عيبه الوحيد هو التكلفة العالية، لذا ننصح دائماً بتركيبه على الزجاج الأمامي فقط، وتركيب نانو سيراميك لباقي السيارة.'",
+        "authorEn: 'Eng. Ahmed Salem'": "author: 'م. أحمد سالم'",
+        "roleEn: 'Thermal Insulation Consultant - AzelCore'": "role: 'مستشار العزل الحراري - عزل كور'",
+        "textEn: 'Do not pay a single Riyal for \"nano\" tint without asking the technician to test the film with an IR Meter in front of your eyes. 80% of cheap films claim to be nano-ceramic while barely blocking 40% of heat. Always ask for the box and verify the Johnson or 3M logo engraved on the film.'": "text: 'لا تدفع ريالاً واحداً في تظليل \"نانو\" بدون أن تطلب من الفني فحص الفيلم بجهاز قياس الـ IR Meter أمام عينيك. 80% من الأفلام الرخيصة تدعي أنها نانو سيراميك بينما هي بالكاد تعزل 40% من الحرارة. دائماً اطلب الكرتون وتأكد من شعار جونسون أو 3M محفوراً على الفيلم.'",
+        "qEn: 'Does fake nano-ceramic cause glass problems?'": "q: 'هل النانو سيراميك المقلد يسبب مشاكل للزجاج؟'",
+        "aEn: 'Yes, poor quality films contain bad adhesive that reacts with the high sun heat in Saudi Arabia, leading to cracking (bubbles) and difficult removal later, and may damage rear defroster lines.'": "a: 'نعم، الأفلام الرديئة تحتوي على غراء سيء يتفاعل مع حرارة الشمس العالية في السعودية، مما يؤدي إلى تشققه (فقاعات) وصعوبة إزالته لاحقاً، وقد يؤدي لإتلاف خطوط التسخين الخلفية.'",
+        "qEn: 'How do I ensure 3M tint is original?'": "q: 'كيف أتأكد أن التظليل 3M أصلي؟'",
+        "aEn: 'Through 3 signs: presence of 3M watermark on the film, receiving an electronic warranty card registered to the chassis number, and installing it at an authorized dealer like our center.'": "a: 'من خلال 3 علامات: وجود شعار 3M مائي على الفيلم، الحصول على بطاقة ضمان إلكترونية مسجلة برقم هيكل السيارة، وتركيبه لدى موزع معتمد مثل مركزنا.'",
+        "qEn: 'Does nano-ceramic violate traffic laws?'": "q: 'هل النانو سيراميك يخالف نظام المرور؟'",
+        "aEn: 'The tint technology does not violate traffic laws; the violation is on the \"dimming level\" (VLT). Nano-ceramic is available in transparent shades 00 and 01 which are legally permitted.'": "a: 'تقنية التظليل لا تخالف المرور، المخالفة تكون على \"درجة التعتيم\" (VLT). النانو سيراميك يتوفر بدرجات شفافة 00 و 01 مسموح بها مرورياً.'",
+        "qEn: 'What is TSER and why is it more important than IR?'": "q: 'ما هو TSER ولماذا هو أهم من IR؟'",
+        "aEn: 'TSER stands for \"Total Solar Energy Rejected\" and includes (IR + UV + Visible Light). It is the most accurate global measure of tint efficiency. A TSER number above 55% is considered excellent for Gulf climates.'": "a: 'TSER هو \"إجمالي الطاقة الشمسية المرفوضة\" ويشمل (IR + UV + الضوء المرئي). وهو المقياس الأدق عالمياً لكفاءة التظليل. رقم TSER فوق 55% يعتبر ممتازاً لأجواء الخليج.'",
+        "warningEn: 'Beware of shops offering full-car \"nano-ceramic\" for 300 SAR. The raw material cost of original nano-ceramic from the factory far exceeds this amount. You are paying for a regular dyed tint that will fade in 3 months.'": "warning: 'احذر من المحلات التي تقدم \"نانو سيراميك\" كامل السيارة بـ 300 ريال. تكلفة المادة الخام الأصلية للنانو سيراميك من المصنع تتجاوز هذا المبلغ بكثير. أنت تدفع مقابل تظليل صبغة عادي سيبهت خلال 3 أشهر.'",
+        "ctaEn: 'Don\\'t risk your car\\'s heat. Book a free glass inspection and live IR meter demo at AzelCore center in Jeddah.'": "cta: 'لا تخاطر بحرارة سيارتك. احجز فحصاً مجانياً للزجاج وتجربة حية بجهاز الحرارة في مركز عزل كور بجدة.'",
+    }
+}
+
+for file_path, replacements in files_data.items():
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+            
+        for eng_str, ar_str in replacements.items():
+            if ar_str in content:
+                content = content.replace(ar_str, f"{ar_str}, {eng_str}")
+                
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+            
+        print(f"Updated {file_path}")
+    except Exception as e:
+        print(f"Error on {file_path}: {e}")
