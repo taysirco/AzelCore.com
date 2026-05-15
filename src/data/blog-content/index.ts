@@ -22,6 +22,14 @@ import residentialPrivacy from './residential-privacy-tinting';
 import roiCalculator from './roi-calculator-commercial-tint';
 import flirThermalTest from './flir-thermal-camera-tint-test';
 
+import ppfVsCarPolish from './ppf-vs-car-polish-paint-damage';
+import buildingTintFurniture from './building-tint-furniture-fading-protection';
+import nanoCeramicLongevity from './nano-ceramic-coating-real-longevity-ksa';
+import skinCancerUvTint from './skin-cancer-driving-uv-protection-tint';
+import computerCutVsManual from './computer-cut-vs-manual-ppf-jeddah';
+import retailStoreTint from './retail-store-window-tinting-clear-heat-rejection';
+import dealershipTintVsSpecialized from './dealership-tint-vs-specialized-centers';
+
 export type { ArticleModule, ArticleData, ArticleSection, ArticleServiceLink } from './types';
 
 /** All articles keyed by slug */
@@ -44,6 +52,14 @@ export const articles: Record<string, ArticleModule> = {
   'residential-privacy-tinting': residentialPrivacy,
   'roi-calculator-commercial-tint': roiCalculator,
   'flir-thermal-camera-tint-test': flirThermalTest,
+  // 7 New Pro-Grade SEO Articles:
+  'ppf-vs-car-polish-paint-damage': ppfVsCarPolish,
+  'building-tint-furniture-fading-protection': buildingTintFurniture,
+  'nano-ceramic-coating-real-longevity-ksa': nanoCeramicLongevity,
+  'skin-cancer-driving-uv-protection-tint': skinCancerUvTint,
+  'computer-cut-vs-manual-ppf-jeddah': computerCutVsManual,
+  'retail-store-window-tinting-clear-heat-rejection': retailStoreTint,
+  'dealership-tint-vs-specialized-centers': dealershipTintVsSpecialized,
 };
 
 /** All available slugs (for generateStaticParams) */
