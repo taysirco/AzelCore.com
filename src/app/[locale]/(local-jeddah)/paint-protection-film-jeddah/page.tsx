@@ -7,6 +7,9 @@ import ServiceSummary from '@/components/seo/ServiceSummary';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBanner';
 import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
+import ServiceDisclaimer from '@/components/seo/ServiceDisclaimer';
+import AuthorProfile from '@/components/seo/AuthorProfile';
+import Certifications from '@/components/seo/Certifications';
 import styles from './page.module.css';
 
 // ════════════════════════════════════════════
@@ -71,6 +74,18 @@ const ppfFaqs = [
     questionEn: 'Does PPF film turn yellow over time?',
     answer: 'نحن نستخدم أفلام عالية الجودة (مثل XPEL) المصممة بطبقة مضادة للاصفرار (Non-Yellowing) مع ضمان يمتد لـ 10 سنوات ضد الاصفرار والتشقق.',
     answerEn: 'We use high-quality films (like XPEL) engineered with a non-yellowing topcoat, backed by a 10-year warranty against yellowing and cracking.',
+  },
+  {
+    question: 'هل يغطي الضمان عيوب التركيب؟',
+    questionEn: 'Does the warranty cover installation defects?',
+    answer: 'نعم، ضماننا يغطي جودة الفيلم ضد الاصفرار والتشقق والتقشير، ويغطي أيضاً عيوب التركيب مثل الفقاعات، لضمان راحة بالك التامة.',
+    answerEn: 'Yes, our warranty covers the film quality against yellowing, cracking, and peeling, and also covers installation defects like bubbling, ensuring your complete peace of mind.',
+  },
+  {
+    question: 'متى أقدر أغسل سيارتي بعد تركيب الـ PPF؟',
+    questionEn: 'When can I wash my car after installing PPF?',
+    answer: 'يجب الانتظار 7 أيام بعد التركيب قبل غسيل السيارة بالضغط العالي (البستم) لضمان جفاف المادة اللاصقة تماماً وتثبيت الفيلم على بودي السيارة.',
+    answerEn: 'You must wait 7 days after installation before washing the car with high-pressure water. This ensures the adhesive cures completely and bonds to the car body.',
   }
 ];
 
@@ -265,6 +280,11 @@ export default async function PPFTintingPage({ params }: { params: Promise<{ loc
               </div>
             ))}
           </div>
+
+          {/* ═══ E-E-A-T: Verification Badges ═══ */}
+          <div style={{ marginTop: 'var(--space-6)' }}>
+            <Certifications sector="حماية الطلاء" />
+          </div>
         </div>
       </section>
 
@@ -289,10 +309,42 @@ export default async function PPFTintingPage({ params }: { params: Promise<{ loc
         </div>
       </section>
 
+      {/* ═══ YMYL Safety Warnings — E-E-A-T Trust ═══ */}
+      <ServiceDisclaimer
+        title={isAr ? 'تحذير: الـ PPF الرخيص يدمر طلاء سيارتك' : 'Warning: Cheap PPF Ruins Your Paint'}
+        text={isAr ? 'تركيب PPF بسعر 3,000 ريال يعني غالباً استخدام فيلم PVC صيني رخيص، يصفر خلال 6 أشهر ويترك صمغاً يابساً يتلف بوية سيارتك الأصلية عند إزالته. استثمر في أفلام بولي يوريثان (TPU) الأصلية.' : 'Installing PPF for 3,000 SAR usually means cheap Chinese PVC film, which yellows within 6 months and leaves hardened glue that destroys your original paint upon removal. Invest in genuine TPU films.'}
+      />
+      <ServiceDisclaimer
+        title={isAr ? 'تحذير تقني: شفرات القص اليدوي' : 'Technical Warning: Manual Cutting Blades'}
+        text={isAr ? 'احذر من المراكز التي تستخدم المشرط (الشفرة اليدوية) لقص الفيلم على سيارتك! قد يتسبب ذلك بخدوش عميقة في الطلاء لا تكتشفها إلا بعد إزالة الفيلم. في عزل كور نستخدم نظام قص الكمبيوتر XPEL DAP.' : 'Beware of centers using manual blades to cut the film on your car! This causes deep paint scratches you only discover after removing the film. At AzelCore, we use the XPEL DAP computer cutting system.'}
+      />
+
+      {/* ═══ E-E-A-T: Expert Review Entity ═══ */}
+      <section className={styles.section} style={{ paddingTop: 0 }}>
+        <div className={styles.container}>
+          <AuthorProfile
+            isAr={isAr}
+            expertName={isAr ? OWNER_NAME : OWNER_NAME_EN}
+            expertTitle={isAr ? OWNER_TITLE : 'Technical Director'}
+            organization={isAr ? 'عزل كور (وكيل معتمد)' : 'AzelCore (Authorized Dealer)'}
+            quote={isAr ? 'حماية الطلاء PPF هي خط الدفاع الأول والأقوى ضد الترميل وحصى الطرقات في السعودية. اختيار فيلم TPU مقصوص بالكمبيوتر يوفر عليك آلاف الريالات من إعادة رش الطلاء.' : 'PPF is the first and strongest line of defense against sandblasting and road chips in Saudi Arabia. Choosing a computer-cut TPU film saves you thousands of Riyals in repainting costs.'}
+            reviewDate="2026-05-15"
+          />
+        </div>
+      </section>
+
       <CrossSellCards
         currentPage="car-insulation-jeddah"
         locale={locale as Locale}
       />
+
+      {/* ═══ Voice Search Speakable Answers — TTS/CarPlay/Siri Targets ═══ */}
+      <div id="voice-answer-1" style={{ display: 'none' }} aria-hidden="true">
+        {isAr ? 'أفضل حماية لطلاء السيارة هي أفلام بي بي اف PPF وتحديداً من شركة إكس بيل لأنها تتميز بالمعالجة الذاتية للخدوش بضمان يصل لعشر سنوات.' : 'The best car paint protection is PPF films, specifically from XPEL, as they feature self-healing scratches with a warranty of up to ten years.'}
+      </div>
+      <div id="voice-answer-2" style={{ display: 'none' }} aria-hidden="true">
+        {isAr ? 'سعر تظليل وتغليف السيارة بي بي اف كامل في جدة يتراوح بين سبعة آلاف إلى خمسة عشر ألف ريال سعودي حسب حجم السيارة ونوع الفيلم.' : 'The price of full car PPF wrapping in Jeddah ranges between seven thousand to fifteen thousand Saudi Riyals depending on the car size and film type.'}
+      </div>
     </>
   );
 }
