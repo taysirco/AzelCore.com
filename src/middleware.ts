@@ -279,7 +279,8 @@ export function middleware(request: NextRequest) {
     const newPath = pathname.replace(/^\/ar(\/|$)/, '/');
     const redirectUrl = new URL(newPath, request.url);
     redirectUrl.search = request.nextUrl.search;
-    const response = NextResponse.redirect(redirectUrl, 308);
+    const response = NextResponse.redirect(redirectUrl, 307);
+    response.headers.set('Cache-Control', 'no-store, max-age=0');
     response.cookies.set('x-locale', 'ar', {
       httpOnly: false,
       secure: true,
@@ -325,7 +326,8 @@ export function middleware(request: NextRequest) {
     const newPathname = pathname === '/' ? '' : pathname;
     const redirectUrl = new URL(`/en${newPathname}`, request.url);
     redirectUrl.search = request.nextUrl.search;
-    const response = NextResponse.redirect(redirectUrl, 308);
+    const response = NextResponse.redirect(redirectUrl, 307);
+    response.headers.set('Cache-Control', 'no-store, max-age=0');
     response.cookies.set('x-locale', 'en', {
       httpOnly: false,
       secure: true,

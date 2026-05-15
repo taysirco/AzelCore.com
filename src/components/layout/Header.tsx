@@ -24,7 +24,7 @@ export default function Header({ locale = 'ar' }: HeaderProps) {
 
   const currentPath = pathname ? pathname.replace(/^\/(ar|en)(\/|$)/, '/') : '/';
   const switchLangUrl = altLocale === 'ar' 
-    ? `/ar${currentPath === '/' ? '' : currentPath}`
+    ? currentPath
     : `/en${currentPath === '/' ? '' : currentPath}`;
 
   useEffect(() => {

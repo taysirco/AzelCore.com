@@ -20,6 +20,7 @@ import tintRemovalDefroster from './tint-removal-defroster-lines';
 import uvProtectionHealth from './uv-protection-car-tint-health';
 import residentialPrivacy from './residential-privacy-tinting';
 import roiCalculator from './roi-calculator-commercial-tint';
+import flirThermalTest from './flir-thermal-camera-tint-test';
 
 export type { ArticleModule, ArticleData, ArticleSection, ArticleServiceLink } from './types';
 
@@ -42,6 +43,7 @@ export const articles: Record<string, ArticleModule> = {
   'uv-protection-car-tint-health': uvProtectionHealth,
   'residential-privacy-tinting': residentialPrivacy,
   'roi-calculator-commercial-tint': roiCalculator,
+  'flir-thermal-camera-tint-test': flirThermalTest,
 };
 
 /** All available slugs (for generateStaticParams) */

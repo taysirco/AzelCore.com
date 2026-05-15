@@ -123,4 +123,15 @@ export const blogTopics: BlogTopic[] = [
     outlineEn: ["Proper Cleaning", "Prohibited Products", "When to Replace Tint", "Signs of Early Damage"],
     priority: 3,
   },
+  {
+    slug: "flir-thermal-camera-tint-test",
+    titleAr: "تقنية الـ FLIR الفحص الحراري: دليلك العلمي لاختبار جودة العزل الحراري بنفسك",
+    titleEn: "FLIR Thermal Testing Technology: Your Scientific Guide to Testing Thermal Insulation Quality Yourself",
+    targetKeyword: "كشف التظليل بالكاميرا الحرارية",
+    intent: "how-to",
+    linksToServices: ["car-tinting", "thermal-cars"],
+    outline: ["خدعة اللمبة الحمراء والضوء المرئي", "كيف تعمل كاميرات FLIR في كشف العزل؟", "لماذا يجب أن تطلب هذا الاختبار قبل الدفع؟", "تقنية الـ VLT مقابل تقنية الـ IR Rejection"],
+    outlineEn: ["The Red Lamp and Visible Light Trick", "How Do FLIR Cameras Work in Detecting Insulation?", "Why You Must Request This Test Before Paying?", "VLT Technology vs. IR Rejection Technology"],
+    priority: 1,
+  },
 ];
