@@ -2,6 +2,7 @@ import styles from './OfficialPartnerBar.module.css';
 import { GOVERNMENT_ENTITIES } from '@/data/trust-anchors';
 
 interface OfficialPartnerBarProps {
+  isAr?: boolean;
   /** Array of entity keys to display. If empty, displays all. */
   entityKeys?: string[];
   /** Title for the bar. Default: 'مرجعياتنا والمعايير المعتمدة' */
@@ -16,9 +17,13 @@ interface OfficialPartnerBarProps {
  */
 export default function OfficialPartnerBar({ 
   entityKeys,
-  title = 'مرجعياتنا والمعايير المعتمدة'
+  title,
+  isAr = true
 }: OfficialPartnerBarProps) {
   
+  const defaultTitle = isAr ? 'مرجعياتنا والمعايير المعتمدة' : 'Our References & Standards';
+  const finalTitle = title || defaultTitle;
+
   const entitiesToDisplay = entityKeys 
     ? GOVERNMENT_ENTITIES.filter(gov => entityKeys.includes(gov.key))
     : GOVERNMENT_ENTITIES;
@@ -26,7 +31,7 @@ export default function OfficialPartnerBar({
   if (entitiesToDisplay.length === 0) return null;
 
   return (
-    <div className={styles.trustBar} aria-label="المرجعيات الحكومية والمعايير">
+    <div className={styles.trustBar} aria-label={isAr ? "المرجعيات الحكومية والمعايير" : "Government and standard references"}>
       <div className={styles.trustContainer}>
         <p className={styles.trustTitle}>{title}</p>
         <div className={styles.entitiesList}>

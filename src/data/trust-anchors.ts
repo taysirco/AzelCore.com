@@ -32,7 +32,9 @@ export interface Regulation {
 export interface VerificationBadge {
   sector: string;
   badge: string;
+  badgeEn?: string;
   grantedBy: string;
+  grantedByEn?: string;
   url: string;
   icon: string;
 }

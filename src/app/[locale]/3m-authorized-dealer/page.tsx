@@ -203,7 +203,7 @@ export default async function ThreeMDealerPage({ params }: { params: Promise<{ l
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image src="/images/hero-car-tinting-jeddah.webp" alt="تظليل 3M Crystalline على سيارة في جدة" fill priority fetchPriority="high" quality={75} sizes="100vw" style={{ objectFit: 'cover' }} />
+          <Image src="/images/hero-car-tinting-jeddah.webp" alt={isAr ? "تظليل 3M Crystalline على سيارة في جدة" : "3M Crystalline tint on a car in Jeddah"} fill priority fetchPriority="high" quality={75} sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>

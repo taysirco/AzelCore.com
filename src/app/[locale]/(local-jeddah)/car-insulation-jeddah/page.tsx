@@ -302,7 +302,7 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
         <div className={styles.heroBg}>
           <Image
             src="/images/hero-car-tinting-process.webp"
-            alt="فني يركب تظليل نانو سيراميك على سيارة في ورشة عزل كور جدة"
+            alt={isAr ? "فني يركب تظليل نانو سيراميك على سيارة في ورشة عزل كور جدة" : "Technician installing nano-ceramic tint on a car at AzelCore workshop in Jeddah"}
             fill
             priority={true}
             fetchPriority="high"

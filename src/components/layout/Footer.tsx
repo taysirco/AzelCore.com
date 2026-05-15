@@ -47,7 +47,7 @@ export default function Footer({ locale = 'ar' }: FooterProps) {
           <p className={styles.desc}>
             {isAr
               ? 'تظليل وعزل حراري احترافي في جدة — وكيل جونسون و 3M المعتمد. نحمي سيارتك ومبناك من حرارة السعودية بأفضل الأفلام الأمريكية.'
-              : 'Professional car tinting & thermal insulation in Jeddah — Authorized Johnson & 3M dealer. Protecting your vehicle and building from Saudi heat with premium American films.'
+              : 'Professional thermal insulation and window tinting in Jeddah — Authorized Johnson & 3M Dealer. We protect your car and building from Saudi heat with the best American films.'
             }
           </p>
           <div className={styles.socials}>

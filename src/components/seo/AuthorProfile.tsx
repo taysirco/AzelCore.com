@@ -33,6 +33,7 @@ interface AuthorProfileProps {
  * />
  */
 export default function AuthorProfile({
+  isAr = true,
   expertName,
   expertTitle,
   expertUrl,
@@ -40,7 +41,7 @@ export default function AuthorProfile({
   quote,
   reviewDate = '2026-04-15',
   variant = 'full',
-}: AuthorProfileProps) {
+}: AuthorProfileProps & { isAr?: boolean }) {
   // ReviewedBy Schema — injected inline
   const reviewedBySchema = {
     '@context': 'https://schema.org',
@@ -66,11 +67,11 @@ export default function AuthorProfile({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewedBySchema) }}
       />
-      <aside className={`${styles.reviewBox} ${styles[variant]}`} aria-label="صندوق المراجعة الفنية">
+      <aside className={`${styles.reviewBox} ${styles[variant]}`} aria-label={isAr ? "صندوق المراجعة الفنية" : "Technical Review Box"}>
         <div className={styles.header}>
           <div className={styles.badge}>
             <span className={styles.badgeIcon}>🔍</span>
-            <span className={styles.badgeText}>محتوى مراجَع فنياً</span>
+            <span className={styles.badgeText}>{isAr ? 'محتوى مراجَع فنياً' : 'Technically Reviewed'}</span>
           </div>
         </div>
 
@@ -82,11 +83,11 @@ export default function AuthorProfile({
           </div>
           <div className={styles.info}>
             <div className={styles.meta}>
-              <span className={styles.label}>✍️ إعداد:</span>
-              <span className={styles.value}>فريق تحرير عزل كور</span>
+              <span className={styles.label}>✍️ {isAr ? 'إعداد:' : 'Author:'}</span>
+              <span className={styles.value}>{isAr ? 'فريق تحرير عزل كور' : 'AzelCore Editorial Team'}</span>
             </div>
             <div className={styles.meta}>
-              <span className={styles.label}>🔍 المراجعة الفنية:</span>
+              <span className={styles.label}>🔍 {isAr ? 'المراجعة الفنية:' : 'Technical Review:'}</span>
               {expertUrl ? (
                 <a href={expertUrl} target="_blank" rel="noopener noreferrer" className={styles.expertLink}>
                   {expertName}
@@ -108,7 +109,7 @@ export default function AuthorProfile({
 
             {reviewDate && (
               <time className={styles.date} dateTime={reviewDate}>
-                آخر مراجعة: {new Date(reviewDate).toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' })}
+                {isAr ? 'آخر مراجعة:' : 'Last reviewed:'} {new Date(reviewDate).toLocaleDateString(isAr ? 'ar-SA' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
               </time>
             )}
           </div>

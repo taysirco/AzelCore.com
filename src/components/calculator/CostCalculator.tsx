@@ -73,7 +73,7 @@ export default function CostCalculator({ isAr = true }: { isAr?: boolean }) {
 
   const copyResult = () => {
     const text = isAr 
-      ? `عزل كور - التسعيرة المبدئية: من ${estimatedPrice.min} إلى ${estimatedPrice.max} ر.س`
+      ? (isAr ? `عزل كور - التسعيرة المبدئية: من ${estimatedPrice.min} إلى ${estimatedPrice.max} ر.س` : `AzelCore - Estimate: ${estimatedPrice.min} - ${estimatedPrice.max} SAR`)
       : `AzelCore - Estimated Quote: from ${estimatedPrice.min} to ${estimatedPrice.max} SAR`;
     navigator.clipboard.writeText(text);
     setCopied(true);
@@ -82,11 +82,11 @@ export default function CostCalculator({ isAr = true }: { isAr?: boolean }) {
 
   const getWhatsAppMessage = () => {
     return encodeURIComponent(
-      `مرحباً عزل كور، استعملت الحاسبة في موقعكم وهذه تسعيرتي المبدئية:\n` +
+      (isAr ? `مرحباً عزل كور، استعملت الحاسبة في موقعكم وهذه تسعيرتي المبدئية:\n` : `Hello AzelCore, I used the calculator and this is my estimate:\n`) +
       `- حجم السيارة: ${getCarSizes(isAr).find(s => s.id === carSize)?.label}\n` +
       `- نوع الفيلم: ${getFilmTypes(isAr).find(f => f.id === filmType)?.label}\n` +
-      `- السعر التقريبي: ${estimatedPrice.min} - ${estimatedPrice.max} ر.س\n\n` +
-      `أريد حجز موعد لتأكيد السعر.`
+      `- ${isAr ? 'السعر التقريبي' : 'Approximate price'}: ${estimatedPrice.min} - ${estimatedPrice.max} ${isAr ? 'ر.س' : 'SAR'}\n\n` +
+      (isAr ? `أريد حجز موعد لتأكيد السعر.` : `I want to book an appointment to confirm the price.`)
     );
   };
 

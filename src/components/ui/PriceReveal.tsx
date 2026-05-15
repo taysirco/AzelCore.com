@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useParams } from 'next/navigation';
 import styles from './PriceReveal.module.css';
 
 interface PriceRevealProps {
@@ -13,7 +14,11 @@ interface PriceRevealProps {
  * Behavioral engineering element: Hiding the price behind an interaction forces 
  * psychological commitment (micro-conversion) before the price anchors their perception.
  */
-export default function PriceReveal({ price, label = 'اكتشف السعر' }: PriceRevealProps) {
+export default function PriceReveal({ price, label }: PriceRevealProps) {
+  const params = useParams();
+  const isAr = params.locale === 'ar';
+  const finalLabel = label || (isAr ? 'اكتشف السعر' : 'Reveal Price');
+
   const [revealed, setRevealed] = useState(false);
 
   const handleReveal = () => {
@@ -27,18 +32,18 @@ export default function PriceReveal({ price, label = 'اكتشف السعر' }: 
         <button 
           onClick={handleReveal} 
           className={styles.revealBtn}
-          aria-label="انقر لمعرفة السعر"
+          aria-label={isAr ? "انقر لمعرفة السعر" : "Click to reveal price"}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
             <circle cx="12" cy="12" r="3" />
           </svg>
-          {label}
+          {finalLabel}
         </button>
       ) : (
         <div className={styles.priceDisplay}>
           <span>{price}</span>
-          <span className={styles.currency}>ر.س</span>
+          <span className={styles.currency}>{isAr ? 'ر.س' : 'SAR'}</span>
         </div>
       )}
     </div>

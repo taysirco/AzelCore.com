@@ -5,15 +5,18 @@
 import { localVoiceFaqs } from '@/data/frequently-asked-questions';
 import styles from './VoiceSearchFAQ.module.css';
 
-export default function VoiceSearchFAQ() {
+export default function VoiceSearchFAQ({ isAr = true }: { isAr?: boolean }) {
+  const title = isAr ? 'أسئلة الناس في جدة عن التظليل' : 'People\'s Questions about Tinting in Jeddah';
+  const subtitle = isAr ? '{subtitle}' : 'Candid answers — the exact questions our clients ask every day.';
+  const overline = isAr ? '🎤 أسئلة بلهجتك' : '🎤 Local Questions';
   return (
     <section className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <span className={styles.overline}>🎤 أسئلة بلهجتك</span>
-          <h2 className={styles.title}>أسئلة الناس في جدة عن التظليل</h2>
+          <span className={styles.overline}>{overline}</span>
+          <h2 className={styles.title}>{title}</h2>
           <p className={styles.subtitle}>
-            أجوبة صريحة بلهجة جداوية — نفس الأسئلة اللي يسألونها العملاء كل يوم.
+            {subtitle}
           </p>
         </div>
 
@@ -22,10 +25,10 @@ export default function VoiceSearchFAQ() {
             <details key={faq.id} className={styles.faqItem}>
               <summary className={styles.question}>
                 <span className={styles.voiceBadge}>🎤</span>
-                {faq.question}
+                {isAr ? faq.question : (faq.questionEn || faq.question)}
                 <span className={styles.chevron} aria-hidden="true">▾</span>
               </summary>
-              <p className={styles.answer}>{faq.answer}</p>
+              <p className={styles.answer}>{isAr ? faq.answer : (faq.answerEn || faq.answer)}</p>
             </details>
           ))}
         </div>

@@ -1,4 +1,4 @@
-// ═══ AzelCore — Local FAQ Section ═══
+content = """// ═══ AzelCore — Local FAQ Section ═══
 // Hijazi dialect + conversational Arabic for voice search intent capture
 // Targets: Google Voice Search, Siri, Google Assistant (ar-SA locale)
 
@@ -15,9 +15,9 @@ export const localVoiceFaqs: VoiceFAQ[] = [
   {
     id: 'voice-1',
     question: 'ليش التظليل يقشر في الصيف بجدة؟',
-    questionEn: 'Why does window tint peel in Jeddah\'s summer?',
+    questionEn: 'Why does window tint peel in Jeddah\\'s summer?',
     answer: 'التقشر يحصل لسببين: (1) فيلم رخيص مصبوغ ما يتحمل حرارة جدة اللي توصل 50°C على الزجاج، (2) تركيب غلط بدون تنظيف عميق. الحل: استخدم نانو سيراميك أمريكي (جونسون أو 3M) — ما يقشر أبداً لأن الجزيئات السيراميكية مندمجة في الفيلم مش مجرد طبقة فوقية. عندنا ضمان 10 سنوات ضد التقشر.',
-    answerEn: 'Peeling happens for two reasons: (1) cheap dyed film that cannot withstand Jeddah\'s heat reaching 50°C on the glass, (2) poor installation without deep cleaning. The solution: Use American nano-ceramic (Johnson or 3M) — it never peels because the ceramic particles are embedded in the film, not just a top layer. We offer a 10-year warranty against peeling.',
+    answerEn: 'Peeling happens for two reasons: (1) cheap dyed film that cannot withstand Jeddah\\'s heat reaching 50°C on the glass, (2) poor installation without deep cleaning. The solution: Use American nano-ceramic (Johnson or 3M) — it never peels because the ceramic particles are embedded in the film, not just a top layer. We offer a 10-year warranty against peeling.',
     voiceIntent: 'تظليل يقشر صيف جدة',
   },
   {
@@ -31,7 +31,7 @@ export const localVoiceFaqs: VoiceFAQ[] = [
   {
     id: 'voice-3',
     question: 'التظليل يخرب من شمس جدة؟',
-    questionEn: 'Does window tint degrade from Jeddah\'s sun?',
+    questionEn: 'Does window tint degrade from Jeddah\\'s sun?',
     answer: 'التظليل العادي (المصبوغ) يخرب خلال 6 أشهر — يتحول بنفسجي ويتفقع. لكن النانو سيراميك مصمم خصيصاً لحرارة الخليج: يتحمل لـ 15 سنة بدون تغيير لون. السر في الجزيئات السيراميكية اللي ما تتأثر بالأشعة فوق البنفسجية.',
     answerEn: 'Regular (dyed) tint degrades within 6 months — turns purple and bubbles. But nano-ceramic is specifically designed for Gulf heat: it lasts up to 15 years without color change. The secret is the ceramic particles that are unaffected by UV rays.',
     voiceIntent: 'تظليل يخرب شمس',
@@ -49,7 +49,7 @@ export const localVoiceFaqs: VoiceFAQ[] = [
     question: 'النانو سيراميك يستاهل فلوسه ولا الكربوني يكفي؟',
     questionEn: 'Is nano-ceramic worth the money, or is carbon tint enough?',
     answer: 'النانو سيراميك يحجب 97% حرارة مقابل 55% للكربوني — يعني فرق 42% في الحماية. في حرارة جدة (48°C صيفاً)، المكيف يشتغل أقل بكثير = توفير بنزين + عمر مكيف أطول. سعر النانو أعلى (1500-3000 ر.س مقابل 600-1200)، لكنه يدوم 10-15 سنة مقابل 5-8 للكربوني. الحساب الذكي: النانو أوفر على المدى الطويل.',
-    answerEn: 'Nano-ceramic blocks 97% of heat compared to 55% for carbon — a 42% difference in protection. In Jeddah\'s heat (48°C in summer), the AC runs much less = fuel savings + longer AC life. Nano is pricier (1500-3000 SAR vs. 600-1200), but lasts 10-15 years compared to 5-8 for carbon. Smart calculation: Nano is more economical in the long run.',
+    answerEn: 'Nano-ceramic blocks 97% of heat compared to 55% for carbon — a 42% difference in protection. In Jeddah\\'s heat (48°C in summer), the AC runs much less = fuel savings + longer AC life. Nano is pricier (1500-3000 SAR vs. 600-1200), but lasts 10-15 years compared to 5-8 for carbon. Smart calculation: Nano is more economical in the long run.',
     voiceIntent: 'نانو سيراميك ولا كربوني',
   },
   {
@@ -77,3 +77,7 @@ export const localVoiceFaqs: VoiceFAQ[] = [
     voiceIntent: 'سعر تظليل سيارة كامل جدة',
   },
 ];
+"""
+with open('src/data/frequently-asked-questions.ts', 'w', encoding='utf-8') as f:
+    f.write(content)
+print("Updated frequently-asked-questions.ts")
