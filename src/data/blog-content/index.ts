@@ -13,6 +13,13 @@ import jeddahHeat from './jeddah-heat-car-damage';
 import signalInterference from './tint-signal-interference';
 import vision2030 from './vision-2030-energy-efficiency';
 import tintMaintenance from './car-tint-maintenance-guide';
+import commercialBuildingTint from './commercial-building-tint-jeddah';
+import evRangeTint from './ev-range-window-tint';
+import clearWindshieldTint from './clear-windshield-tint-3m';
+import tintRemovalDefroster from './tint-removal-defroster-lines';
+import uvProtectionHealth from './uv-protection-car-tint-health';
+import residentialPrivacy from './residential-privacy-tinting';
+import roiCalculator from './roi-calculator-commercial-tint';
 
 export type { ArticleModule, ArticleData, ArticleSection, ArticleServiceLink } from './types';
 
@@ -28,6 +35,13 @@ export const articles: Record<string, ArticleModule> = {
   'tint-signal-interference': signalInterference,
   'vision-2030-energy-efficiency': vision2030,
   'car-tint-maintenance-guide': tintMaintenance,
+  'commercial-building-tint-jeddah': commercialBuildingTint,
+  'ev-range-window-tint': evRangeTint,
+  'clear-windshield-tint-3m': clearWindshieldTint,
+  'tint-removal-defroster-lines': tintRemovalDefroster,
+  'uv-protection-car-tint-health': uvProtectionHealth,
+  'residential-privacy-tinting': residentialPrivacy,
+  'roi-calculator-commercial-tint': roiCalculator,
 };
 
 /** All available slugs (for generateStaticParams) */

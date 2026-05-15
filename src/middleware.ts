@@ -279,7 +279,15 @@ export function middleware(request: NextRequest) {
     const newPath = pathname.replace(/^\/ar(\/|$)/, '/');
     const redirectUrl = new URL(newPath, request.url);
     redirectUrl.search = request.nextUrl.search;
-    return NextResponse.redirect(redirectUrl, 308);
+    const response = NextResponse.redirect(redirectUrl, 308);
+    response.cookies.set('x-locale', 'ar', {
+      httpOnly: false,
+      secure: true,
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 365, // 1 year
+      path: '/',
+    });
+    return response;
   }
 
   // If path starts with /en, allow it to pass normally
