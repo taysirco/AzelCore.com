@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Locale, localePath } from '@/lib/i18n';
-import { SITE_URL, SITE_NAME, SITE_NAME_EN, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_NAME_EN, OWNER_TITLE, VAT_ID, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
+import { getAlternates } from '@/lib/seo';
+import { SITE_URL, SITE_NAME, SITE_NAME_EN, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_NAME_EN, OWNER_TITLE, VAT_ID, CRN, GEO, ADDRESS_STRUCTURED } from '@/lib/constants';
 import ServiceSummary from '@/components/seo/ServiceSummary';
 import CrossSellCards from '@/components/sections/CrossSellCards';
 import LiveJeddahWeatherBanner from '@/components/sections/LiveJeddahWeatherBanner';
@@ -47,6 +48,8 @@ const getBenefits = (isAr: boolean) => [
   { icon: '💎', title: isAr ? 'لمعان كريستالي' : 'Crystal Clear Finish', desc: isAr ? 'يحسن من مظهر الطلاء الأصلي ويزيد من لمعانه وعمقه بدون تشوه أو اصفرار.' : 'Enhances the original paintwork, adding gloss and depth without yellowing or distortion.' },
   { icon: '💻', title: isAr ? 'قص كمبيوتر دقيق XPEL DAP' : 'XPEL DAP Precise Computer Cut', desc: isAr ? 'نستخدم برنامج XPEL للقص بالكمبيوتر — الفيلم يركب كأنه قطعة واحدة بدون شفرات.' : 'We use XPEL software for pre-cut patterns — zero blades touch your car.' },
   { icon: '🏜️', title: isAr ? 'مضاد للترميل والحصى' : 'Anti-Sand & Rock Chips', desc: isAr ? 'حماية فيزيائية قوية ضد حصى الطرق السريعة (خط الساحل ومكة).' : 'Strong physical defense against highway rocks and sandblasting (Makkah & Coastal roads).' },
+  { icon: '💰', title: isAr ? 'حفظ قيمة البيع' : 'Resale Value Protection', desc: isAr ? 'الطلاء الأصلي 100% يحافظ على قيمة سيارتك. سيارة بدون إعادة رش = سعر بيع أعلى بـ 15-25%.' : 'Keeping 100% original paint preserves your car\'s value. No repaint = 15-25% higher resale price.' },
+  { icon: '🏭', title: isAr ? 'غرف عزل مكيفة HEPA' : 'HEPA Clean Room Install', desc: isAr ? 'تركيب في غرف مغلقة بتنقية هواء HEPA — صفر غبار وصفر فقاعات تحت الفيلم.' : 'Installation in enclosed rooms with HEPA air filtration — zero dust, zero bubbles under the film.' },
 ];
 
 const getProcessSteps = (isAr: boolean) => [
@@ -60,32 +63,50 @@ const ppfFaqs = [
   {
     question: 'ما هو الفرق بين النانو سيراميك و PPF لحماية الطلاء؟',
     questionEn: 'What is the difference between Nano Ceramic and PPF?',
-    answer: 'النانو سيراميك سائل يحمي من بهتان اللون ويعطي لمعان، لكن لا يحمي من الخدوش أو الحصى. الـ PPF هو فيلم فيزيائي بسماكة 8 ميل يحمي الطلاء من الخدوش العميقة والترميل والحصى بفضل المعالجة الذاتية.',
-    answerEn: 'Nano Ceramic is a liquid that protects against fading and adds gloss, but not against scratches or rocks. PPF is a physical 8-mil film that protects against deep scratches, sandblasting, and rock chips thanks to self-healing.',
+    answer: 'النانو سيراميك سائل بسماكة 1-3 ميكرون يحمي من بهتان اللون ويعطي لمعان وسهولة غسيل، لكنه لا يحمي من الخدوش العميقة أو حصى الطرق. الـ PPF فيلم فيزيائي بسماكة 150-200 ميكرون (8 ميل) — أي أسمك بـ 50-100 مرة — يحمي الطلاء من الخدوش العميقة والترميل والحصى بفضل المعالجة الذاتية بالحرارة. الحل المثالي: تركيب PPF أولاً ثم نانو سيراميك فوقه.',
+    answerEn: 'Nano Ceramic is a liquid at 1-3 microns that protects against fading and adds gloss, but cannot protect against deep scratches or rock chips. PPF is a physical film at 150-200 microns (8 mil) — 50-100x thicker — protecting paint from deep scratches, sandblasting, and rock chips with heat-activated self-healing. Ideal solution: install PPF first, then Nano Ceramic on top.',
   },
   {
     question: 'هل يمكن تركيب PPF لجزء من السيارة فقط؟',
     questionEn: 'Can I install PPF on just a part of the car?',
-    answer: 'نعم، الباقة الأكثر طلباً هي (حماية المقدمة) وتشمل الكبوت، الصدام الأمامي، الرفارف، والمرايا الجانبية — وهي الأجزاء الأكثر عرضة للحصى في طرق جدة.',
-    answerEn: 'Yes, the most popular package is (Front-End Protection), covering the hood, front bumper, fenders, and side mirrors — the parts most vulnerable to road debris in Jeddah.',
+    answer: 'نعم، الباقة الأكثر طلباً هي (حماية المقدمة) وتشمل الكبوت، الصدام الأمامي، الرفارف، والمرايا الجانبية — وهي الأجزاء الأكثر عرضة للحصى في طرق جدة السريعة (خط الساحل وطريق مكة). هذه الباقة توفر 80% من الحماية بـ 40% من التكلفة.',
+    answerEn: 'Yes, the most popular package is (Front-End Protection), covering the hood, front bumper, fenders, and side mirrors — the parts most vulnerable to road debris on Jeddah highways (Coastal road and Makkah road). This package provides 80% of the protection at 40% of the cost.',
   },
   {
     question: 'هل فيلم PPF يصفر مع الوقت؟',
     questionEn: 'Does PPF film turn yellow over time?',
-    answer: 'نحن نستخدم أفلام عالية الجودة (مثل XPEL) المصممة بطبقة مضادة للاصفرار (Non-Yellowing) مع ضمان يمتد لـ 10 سنوات ضد الاصفرار والتشقق.',
-    answerEn: 'We use high-quality films (like XPEL) engineered with a non-yellowing topcoat, backed by a 10-year warranty against yellowing and cracking.',
+    answer: 'الأفلام الرخيصة (PVC) تصفر خلال 6-12 شهراً. أفلام TPU الأصلية مثل XPEL مصممة بطبقة Top Coat مضادة للاصفرار (Non-Yellowing) مع ضمان 10 سنوات ضد الاصفرار والتشقق والتقشير. في عزل كور نستخدم فقط أفلام TPU أصلية.',
+    answerEn: 'Cheap PVC films yellow within 6-12 months. Original TPU films like XPEL are engineered with a Non-Yellowing Top Coat, backed by a 10-year warranty against yellowing, cracking, and peeling. At AzelCore, we use only original TPU films.',
   },
   {
     question: 'هل يغطي الضمان عيوب التركيب؟',
     questionEn: 'Does the warranty cover installation defects?',
-    answer: 'نعم، ضماننا يغطي جودة الفيلم ضد الاصفرار والتشقق والتقشير، ويغطي أيضاً عيوب التركيب مثل الفقاعات، لضمان راحة بالك التامة.',
-    answerEn: 'Yes, our warranty covers the film quality against yellowing, cracking, and peeling, and also covers installation defects like bubbling, ensuring your complete peace of mind.',
+    answer: 'نعم، ضماننا مزدوج: ضمان المصنع يغطي جودة الفيلم (اصفرار، تشقق، تقشير)، وضمان عزل كور يغطي جودة التركيب (فقاعات، رفع أطراف، تلوث غبار). الضمان إلكتروني برقم تسلسلي يمكنك التحقق منه أونلاين.',
+    answerEn: 'Yes, our warranty is dual: the manufacturer warranty covers film quality (yellowing, cracking, peeling), and AzelCore warranty covers installation quality (bubbles, lifting edges, dust contamination). The warranty is electronic with a serial number verifiable online.',
   },
   {
     question: 'متى أقدر أغسل سيارتي بعد تركيب الـ PPF؟',
     questionEn: 'When can I wash my car after installing PPF?',
-    answer: 'يجب الانتظار 7 أيام بعد التركيب قبل غسيل السيارة بالضغط العالي (البستم) لضمان جفاف المادة اللاصقة تماماً وتثبيت الفيلم على بودي السيارة.',
-    answerEn: 'You must wait 7 days after installation before washing the car with high-pressure water. This ensures the adhesive cures completely and bonds to the car body.',
+    answer: 'يجب الانتظار 7 أيام قبل غسيل السيارة بالضغط العالي (البستم) لضمان جفاف اللاصق تماماً. بعد ذلك، اغسل بشامبو PH محايد وتجنب الغسيل الآلي (الفراشي) نهائياً لأنها تخدش طبقة الـ Top Coat.',
+    answerEn: 'Wait 7 days before high-pressure washing to ensure the adhesive fully cures. After that, wash with pH-neutral shampoo and permanently avoid automatic (brush) car washes as they scratch the Top Coat layer.',
+  },
+  {
+    question: 'ما الفرق بين القص اليدوي والقص بالكمبيوتر للـ PPF؟',
+    questionEn: 'What is the difference between manual and computer-cut PPF?',
+    answer: 'القص اليدوي يتطلب تمرير مشرط حاد على هيكل سيارتك لقص الفيلم الزائد — مما يخدش الطلاء الأصلي حتماً. القص الآلي (XPEL DAP) يجهز الفيلم مسبقاً بدقة 0.1 ملم حسب موديل سيارتك — صفر شفرات على الهيكل. في عزل كور نستخدم القص الآلي حصرياً.',
+    answerEn: 'Manual cutting requires running a sharp blade over your car body to trim excess film — inevitably scratching original paint. Computer-cut (XPEL DAP) pre-cuts the film with 0.1mm precision for your exact model — zero blades on the body. At AzelCore, we exclusively use computer cutting.',
+  },
+  {
+    question: 'هل PPF يحمي من الرمال والترميل في طرق جدة؟',
+    questionEn: 'Does PPF protect against sand and sandblasting on Jeddah roads?',
+    answer: 'نعم — وهذا هو السبب الرئيسي لتركيب PPF في السعودية. الفيلم بسماكة 8 ميل (200 ميكرون) يمتص صدمات حصى الطرق السريعة وذرات الرمل. طرق جدة الساحلية وطريق مكة المكرمة من أكثر الطرق عرضة للترميل — PPF هو الحل الوحيد الفعلي.',
+    answerEn: 'Yes — this is the primary reason for PPF installation in Saudi Arabia. The 8-mil (200 micron) film absorbs highway rock chip impacts and sand particles. Jeddah coastal roads and Makkah highway are among the most sandblasting-prone — PPF is the only real solution.',
+  },
+  {
+    question: 'كم سعر تركيب PPF كامل للسيارة في جدة؟',
+    questionEn: 'How much does full car PPF cost in Jeddah?',
+    answer: 'تغليف كامل (Full Body) بفيلم XPEL الأصلي: سيدان 7,000-12,000 ر.س، SUV 10,000-15,000 ر.س، سيارات فارهة 12,000-18,000 ر.س. حماية المقدمة فقط (كبوت + صدام + رفارف): 2,500-4,500 ر.س. الأسعار تعتمد على حجم وموديل السيارة.',
+    answerEn: 'Full Body wrap with original XPEL film: Sedan 7,000-12,000 SAR, SUV 10,000-15,000 SAR, Luxury cars 12,000-18,000 SAR. Front-End only (hood + bumper + fenders): 2,500-4,500 SAR. Prices depend on car size and model.',
   }
 ];
 
@@ -97,17 +118,20 @@ const getGraphSchema = (isAr: boolean) => {
   return {
   '@context': 'https://schema.org',
   '@graph': [
+    // ── 1. AutoBodyShop (Local Entity — Jeddah) ──
     {
       '@type': 'AutoBodyShop',
       '@id': `${SITE_URL}/#autobodyshop`,
-      name: isAr ? 'عزل كور — حماية طلاء السيارات PPF' : 'AzelCore — Paint Protection Film (PPF)',
+      name: isAr ? 'عزل كور — حماية طلاء السيارات PPF جدة' : 'AzelCore — PPF Paint Protection Film Jeddah',
+      alternateName: 'AzelCore PPF Jeddah',
       url: `${SITE_URL}/paint-protection-film-jeddah`,
       telephone: PHONE,
       image: `${SITE_URL}/images/xpel-ppf-protection-jeddah.webp`,
       logo: `${SITE_URL}/images/azelcore-logo.webp`,
       description: isAr ? 'أفضل مركز لتركيب أفلام حماية الطلاء PPF في جدة. حماية كاملة ضد الترميل والخدوش باستخدام أفلام XPEL مع خاصية المعالجة الذاتية وقص كمبيوتر دقيق.' : 'Top center for Paint Protection Film (PPF) installation in Jeddah. Full defense against sandblasting and scratches using XPEL with self-healing and computer cut.',
-      priceRange: '2500-15000 SAR',
+      priceRange: '2500-18000 SAR',
       currenciesAccepted: 'SAR',
+      paymentAccepted: isAr ? 'نقدي, تحويل بنكي, مدى, Apple Pay' : 'Cash, Bank Transfer, Mada, Apple Pay',
       geo: {
         '@type': 'GeoCoordinates',
         latitude: GEO.lat,
@@ -125,11 +149,20 @@ const getGraphSchema = (isAr: boolean) => {
           closes: '22:00',
         },
       ],
+      sameAs: ['https://www.instagram.com/azelcore'],
+      parentOrganization: { '@id': `${SITE_URL}/#organization` },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        ratingCount: '89',
+        bestRating: '5',
+      },
       potentialAction: {
         '@type': 'ReserveAction',
         target: {
           '@type': 'EntryPoint',
           urlTemplate: WHATSAPP_LINK,
+          actionPlatform: ['http://schema.org/DesktopWebPlatform', 'http://schema.org/MobileWebPlatform'],
         },
         result: {
           '@type': 'Reservation',
@@ -137,21 +170,107 @@ const getGraphSchema = (isAr: boolean) => {
         },
       },
     },
+    // ── 2. Organization (Parent KSA Company) ──
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      alternateName: SITE_NAME_EN,
+      url: SITE_URL,
+      logo: `${SITE_URL}/images/azelcore-logo.webp`,
+      foundingDate: '2024',
+      taxID: VAT_ID,
+      legalName: isAr ? `مؤسسة ${OWNER_NAME} للتجارة` : `${OWNER_NAME} Trading Est.`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: isAr ? 'جدة' : 'Jeddah',
+        addressRegion: isAr ? 'منطقة مكة المكرمة' : 'Makkah Province',
+        addressCountry: 'SA',
+      },
+      founder: {
+        '@type': 'Person',
+        name: OWNER_NAME, OWNER_NAME_EN,
+        jobTitle: OWNER_TITLE,
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: PHONE,
+        contactType: 'customer service',
+        availableLanguage: ['ar', 'en'],
+      },
+    },
+    // ── 3. Service + AggregateOffer + WarrantyPromise ──
     {
       '@type': 'Service',
       '@id': `${SITE_URL}/paint-protection-film-jeddah#service`,
-      name: isAr ? 'حماية الطلاء PPF' : 'Paint Protection Film (PPF)',
-      description: isAr ? 'تركيب فيلم حماية الطلاء XPEL للسيارات لحمايتها من الخدوش والترميل.' : 'Installation of XPEL Paint Protection Film for cars to protect against scratches and sandblasting.',
+      name: isAr ? 'حماية الطلاء PPF — أفلام XPEL' : 'Paint Protection Film (PPF) — XPEL Films',
+      description: isAr ? 'تركيب أفلام حماية الطلاء XPEL بالقص الآلي مع معالجة ذاتية للخدوش وضمان 10 سنوات' : 'XPEL Paint Protection Film installation with computer-cut precision, self-healing technology, and 10-year warranty',
       provider: { '@id': `${SITE_URL}/#autobodyshop` },
+      areaServed: {
+        '@type': 'City',
+        name: isAr ? 'جدة' : 'Jeddah',
+        sameAs: 'https://www.wikidata.org/wiki/Q5880',
+      },
       serviceType: 'Paint Protection Film',
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'SAR',
+        lowPrice: '2500',
+        highPrice: '18000',
+        offerCount: '3',
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: isAr ? 'باقات PPF' : 'PPF Packages',
+        itemListElement: getPPFTypes(isAr).map((t, i) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: t.name,
+            description: isAr ? `سماكة: ${t.thickness} | معالجة ذاتية: ${t.selfHealing} | ضمان: ${t.warranty}` : `Thickness: ${t.thickness} | Self-Healing: ${t.selfHealing} | Warranty: ${t.warranty}`,
+          },
+          price: t.price.split(' - ')[0].replace(',', ''),
+          priceCurrency: 'SAR',
+          position: i + 1,
+        })),
+      },
+      termsOfService: `${SITE_URL}/about`,
+      warranty: {
+        '@type': 'WarrantyPromise',
+        warrantyScope: {
+          '@type': 'WarrantyScope',
+          name: isAr ? 'ضمان شامل ضد الاصفرار والتشقق والتقشير وعيوب التركيب' : 'Comprehensive warranty against yellowing, cracking, peeling, and installation defects',
+        },
+        durationOfWarranty: {
+          '@type': 'QuantitativeValue',
+          value: 10,
+          unitCode: 'ANN',
+        },
+      },
     },
+    // ── 4. FAQPage ──
     {
       '@type': 'FAQPage',
+      '@id': `${SITE_URL}/paint-protection-film-jeddah#faq`,
       mainEntity: ppfFaqs.map(f => ({
         '@type': 'Question',
         name: isAr ? f.question : f.questionEn,
         acceptedAnswer: { '@type': 'Answer', text: isAr ? f.answer : f.answerEn },
       })),
+    },
+    // ── 5. BreadcrumbList ──
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${SITE_URL}/paint-protection-film-jeddah#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: isAr ? 'الرئيسية' : 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: isAr ? 'حماية الطلاء PPF جدة' : 'PPF Jeddah', item: `${SITE_URL}/paint-protection-film-jeddah` },
+      ],
+    },
+    // ── 6. SpeakableSpecification — Voice Search ──
+    {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['#voice-answer-1', '#voice-answer-2', '#voice-answer-3'],
     },
   ],
   };
@@ -340,18 +459,51 @@ export default async function PPFTintingPage({ params }: { params: Promise<{ loc
         </div>
       </section>
 
-      <CrossSellCards
-        currentPage="car-insulation-jeddah"
-        locale={locale as Locale}
-      />
+      <CrossSellCards currentPage="paint-protection-film-jeddah" locale={locale as Locale} />
 
-      {/* ═══ Voice Search Speakable Answers — TTS/CarPlay/Siri Targets ═══ */}
+      {/* ═══ Gallery Preview ═══ */}
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.overline}>{isAr ? 'أعمالنا' : 'Our Work'}</span>
+            <h2 className={styles.sectionTitle}>{isAr ? 'من أعمالنا في حماية الطلاء PPF' : 'Our PPF Installation Gallery'}</h2>
+          </div>
+          <div className={styles.galleryGrid}>
+            {['gallery-car-after-01', 'gallery-car-after-02', 'gallery-car-after-03', 'gallery-car-before-01', 'gallery-car-before-02', 'gallery-car-before-03'].map((img, i) => (
+              <div key={i} className={styles.galleryItem}>
+                <Image src={`/images/${img}.webp`} alt={isAr ? `حماية طلاء PPF جدة — عمل ${i + 1}` : `PPF Paint Protection Jeddah — Work ${i + 1}`} width={400} height={300} sizes="(max-width: 768px) 50vw, 33vw" loading="lazy" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
+            <Link href={localePath(locale as Locale, '/gallery')} className={styles.secondaryBtn}>{isAr ? 'شاهد كل أعمالنا ←' : 'View All Gallery ←'}</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ CTA — data-nosnippet ═══ */}
+      <section className={styles.ctaSection} data-nosnippet>
+        <div className={styles.container}>
+          <h2 className={styles.ctaTitle}>{isAr ? 'جاهز تحمي طلاء سيارتك من ' : 'Ready to protect your paint from '}<span className={styles.blueGradient}>{isAr ? 'خدوش طرق جدة' : 'Jeddah road damage'}</span>؟</h2>
+          <p className={styles.ctaSubtitle}>{isAr ? 'استشارة مجانية + تسعيرة دقيقة حسب موديل سيارتك — أفلام XPEL الأصلية بضمان 10 سنوات' : 'Free consultation + precise quote for your car model — Original XPEL films with 10-year warranty'}</p>
+          <div className={styles.ctaActions}>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.primaryBtn}>{isAr ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}</a>
+            <a href={`tel:${PHONE}`} className={styles.secondaryBtn}>📞 {PHONE}</a>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ Voice Search Speakable Answers ═══ */}
       <div id="voice-answer-1" style={{ display: 'none' }} aria-hidden="true">
         {isAr ? 'أفضل حماية لطلاء السيارة هي أفلام بي بي اف PPF وتحديداً من شركة إكس بيل لأنها تتميز بالمعالجة الذاتية للخدوش بضمان يصل لعشر سنوات.' : 'The best car paint protection is PPF films, specifically from XPEL, as they feature self-healing scratches with a warranty of up to ten years.'}
       </div>
       <div id="voice-answer-2" style={{ display: 'none' }} aria-hidden="true">
         {isAr ? 'سعر تظليل وتغليف السيارة بي بي اف كامل في جدة يتراوح بين سبعة آلاف إلى خمسة عشر ألف ريال سعودي حسب حجم السيارة ونوع الفيلم.' : 'The price of full car PPF wrapping in Jeddah ranges between seven thousand to fifteen thousand Saudi Riyals depending on the car size and film type.'}
       </div>
+      <div id="voice-answer-3" style={{ display: 'none' }} aria-hidden="true">
+        {isAr ? 'الفرق بين بي بي اف والنانو سيراميك أن البي بي اف فيلم فيزيائي سميك يحمي من الخدوش والحصى بينما النانو سيراميك سائل رقيق يعطي لمعان فقط.' : 'The difference between PPF and Nano Ceramic is that PPF is a thick physical film protecting against scratches and rocks, while Nano Ceramic is a thin liquid that only provides gloss.'}
+      </div>
     </>
   );
 }
+
