@@ -225,39 +225,46 @@ export default async function PPFTintingPage({ params }: { params: Promise<{ loc
         </div>
       </section>
 
+      {/* ═══ Tint Comparison — Premium Cards ═══ */}
       <section id="types" className={styles.section} style={{ backgroundColor: 'var(--gray-900)' }}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
+            <span className={styles.overline}>{isAr ? 'أنواع حماية الطلاء' : 'PPF Types'}</span>
             <h2 className={styles.sectionTitle}>{isAr ? 'باقات Paint Protection Film' : 'PPF Packages'}</h2>
             <p className={styles.sectionSubtitle} style={{ color: 'var(--gray-400)' }}>{isAr ? 'أسعار تقريبية تعتمد على حجم السيارة.' : 'Approximate prices based on car size.'}</p>
           </div>
           
-          <div className={styles.tableWrapper}>
-            <table className={styles.specsTable}>
-              <thead>
-                <tr>
-                  <th scope="col">{isAr ? 'نوع الحماية' : 'Protection Type'}</th>
-                  <th scope="col">{isAr ? 'السماكة' : 'Thickness'}</th>
-                  <th scope="col">{isAr ? 'المعالجة الذاتية' : 'Self Healing'}</th>
-                  <th scope="col">{isAr ? 'الضمان' : 'Warranty'}</th>
-                  <th scope="col" style={{ textAlign: isAr ? 'left' : 'right' }}>{isAr ? 'السعر (ر.س)' : 'Price (SAR)'}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {getPPFTypes(isAr).map((t, i) => (
-                  <tr key={i} className={t.best ? styles.highlightRow : ''}>
-                    <td data-label={isAr ? 'النوع' : 'Type'} className={styles.boldCell}>
-                      {t.name}
-                      {t.best && <span className={styles.bestBadge}>{isAr ? 'الأكثر طلباً' : 'Most Popular'}</span>}
-                    </td>
-                    <td data-label={isAr ? 'السماكة' : 'Thickness'}>{t.thickness}</td>
-                    <td data-label={isAr ? 'معالجة ذاتية' : 'Self Healing'} className={styles.successCell}>{t.selfHealing}</td>
-                    <td data-label={isAr ? 'الضمان' : 'Warranty'}>{t.warranty}</td>
-                    <td data-label={isAr ? 'السعر' : 'Price'} className={styles.priceCell}>{t.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className={styles.pricingGrid}>
+            {getPPFTypes(isAr).map((t, i) => (
+              <div key={i} className={`${styles.pricingCard} ${t.best ? styles.pricingCardBest : ''}`}>
+                {t.best && <div className={styles.bestBadge}>{isAr ? 'الأكثر طلباً' : 'Most Popular'}</div>}
+                <div className={styles.pricingHeader}>
+                  <h3 className={styles.pricingTitle}>{t.name}</h3>
+                  <div className={styles.pricingPrice}>
+                    <span className={styles.priceValue}>{t.price}</span>
+                    <span className={styles.priceCurrency}>{isAr ? 'ر.س' : 'SAR'}</span>
+                  </div>
+                  <p className={styles.pricingDesc}>{isAr ? 'السعر يعتمد على موديل وحجم السيارة' : 'Price depends on car model and size'}</p>
+                </div>
+                <div className={styles.pricingFeatures}>
+                  <div className={styles.featureItem}>
+                    <span className={styles.featureLabel}>{isAr ? 'السماكة' : 'Thickness'}</span>
+                    <span className={styles.featureValueHighlight}>{t.thickness}</span>
+                  </div>
+                  <div className={styles.featureItem}>
+                    <span className={styles.featureLabel}>{isAr ? 'المعالجة الذاتية (الخدوش)' : 'Self Healing'}</span>
+                    <span className={styles.featureValue} style={{ color: 'hsl(142, 70%, 45%)' }}>{t.selfHealing}</span>
+                  </div>
+                  <div className={styles.featureItem}>
+                    <span className={styles.featureLabel}>{isAr ? 'الضمان (اصفرار/تشقق)' : 'Warranty'}</span>
+                    <span className={styles.featureValue}>{t.warranty}</span>
+                  </div>
+                </div>
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={t.best ? styles.primaryBtn : styles.secondaryBtn} style={{ width: '100%', justifyContent: 'center' }}>
+                  {isAr ? 'اطلب تسعيرة دقيقة لسيارتك' : 'Get Exact Quote'}
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -361,7 +361,7 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
       {/* ═══ Interaction Engagement Feature — Interactive Thermal Slider ═══ */}
       <ThermalSliderBeforeAfter locale={locale} />
 
-      {/* ═══ Tint Comparison — schema.org/Table for SGE ═══ */}
+      {/* ═══ Tint Comparison — Premium Cards ═══ */}
       <section className={`${styles.section} ${styles.sectionAlt}`} id="types">
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
@@ -369,35 +369,42 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
             <h2 className={styles.sectionTitle}>{isAr ? 'اختر النوع المناسب لسيارتك' : 'Choose the Right Type for Your Car'}</h2>
             <p className={styles.sectionSubtitle}>{isAr ? 'كل الأرقام حقيقية من الداتاشيت الرسمي — لا مبالغات.' : 'All numbers are real from official datasheets — no exaggerations.'}</p>
           </div>
-          <div className={styles.typesTable}>
-            <table
-              className={styles.table}
-              itemScope
-              itemType="http://schema.org/Table"
-            >
-              <caption className={styles.tableCaption} itemProp="about">
-                {isAr ? 'مقارنة أنواع تظليل السيارات في جدة 2026 — نانو سيراميك vs كربوني vs هايبرد' : 'Car Tinting Comparison in Jeddah 2026 — Nano Ceramic vs Carbon vs Hybrid'}
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col">{isAr ? 'النوع' : 'Type'}</th>
-                  <th scope="col">{isAr ? 'حجب IR' : 'IR Block'}</th>
-                  <th scope="col">{isAr ? 'حجب UV' : 'UV Block'}</th>
-                  <th scope="col">{isAr ? 'الضمان' : 'Warranty'}</th>
-                  <th scope="col">{isAr ? 'السعر (سيدان)' : 'Price (Sedan)'}</th>
-                  <th scope="col">{isAr ? 'الإشارات' : 'Signals'}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {getTintTypes(isAr).map((t, i) => (
-                  <tr key={i} className={t.best ? styles.bestRow : ''}>
-                    <td className={styles.typeName}>{t.name} {t.best && '⭐'}</td>
-                    <td>{t.ir}</td><td>{t.uv}</td><td>{t.warranty}</td>
-                    <td className={styles.price}>{t.price} ر.س</td><td>{t.signal}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          
+          <div className={styles.pricingGrid}>
+            {getTintTypes(isAr).map((t, i) => (
+              <div key={i} className={`${styles.pricingCard} ${t.best ? styles.pricingCardBest : ''}`}>
+                {t.best && <div className={styles.bestBadge}>{isAr ? 'الأكثر طلباً' : 'Most Popular'}</div>}
+                <div className={styles.pricingHeader}>
+                  <h3 className={styles.pricingTitle}>{t.name}</h3>
+                  <div className={styles.pricingPrice}>
+                    <span className={styles.priceValue}>{t.price}</span>
+                    <span className={styles.priceCurrency}>{isAr ? 'ر.س' : 'SAR'}</span>
+                  </div>
+                  <p className={styles.pricingDesc}>{isAr ? 'السعر التقديري لسيارات السيدان' : 'Estimated price for sedans'}</p>
+                </div>
+                <div className={styles.pricingFeatures}>
+                  <div className={styles.featureItem}>
+                    <span className={styles.featureLabel}>{isAr ? 'عزل الحرارة (IR)' : 'Heat Block (IR)'}</span>
+                    <span className={styles.featureValueHighlight}>{t.ir}</span>
+                  </div>
+                  <div className={styles.featureItem}>
+                    <span className={styles.featureLabel}>{isAr ? 'عزل الأشعة الضارة (UV)' : 'UV Block'}</span>
+                    <span className={styles.featureValue}>{t.uv}</span>
+                  </div>
+                  <div className={styles.featureItem}>
+                    <span className={styles.featureLabel}>{isAr ? 'الضمان' : 'Warranty'}</span>
+                    <span className={styles.featureValue}>{t.warranty}</span>
+                  </div>
+                  <div className={styles.featureItem}>
+                    <span className={styles.featureLabel}>{isAr ? 'الإشارات (GPS/جوال)' : 'Signals (GPS/Cell)'}</span>
+                    <span className={styles.featureValue}>{t.signal}</span>
+                  </div>
+                </div>
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={t.best ? styles.primaryBtn : styles.secondaryBtn} style={{ width: '100%', justifyContent: 'center' }}>
+                  {isAr ? 'احجز هذا النوع' : 'Book This Type'}
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </section>

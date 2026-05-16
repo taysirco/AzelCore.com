@@ -43,16 +43,106 @@
 .typeTitle { font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-2); }
 .typeDesc { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.7; }
 
-/* Film Table */
-.filmTable { overflow-x: auto; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--surface); }
-.table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 500px; }
-.table th { padding: var(--space-4) var(--space-5); background: var(--surface-elevated); font-weight: 600; color: hsl(220, 10%, 65%); text-align: right; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
-.table td { padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--border); color: var(--text-secondary); }
-.table tbody tr:last-child td { border-bottom: none; }
-.table tbody tr:hover { background: var(--surface-hover); }
-.bestRow { background: hsla(150,70%,45%,0.04); }
-.filmName { font-weight: 600; color: var(--text); }
-.bestRow .filmName { color: hsl(150,70%,45%); }
+/* ─── Premium Pricing Cards ─── */
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.pricingCard {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--duration-normal) var(--ease-out);
+  overflow: hidden;
+}
+
+.pricingCard:hover {
+  transform: translateY(-8px);
+  border-color: hsl(150, 70%, 45%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.pricingCardBest {
+  border-color: hsl(150, 70%, 45%);
+  background: linear-gradient(180deg, hsla(150, 70%, 45%, 0.05), var(--surface));
+  box-shadow: 0 10px 30px hsla(150, 70%, 45%, 0.1);
+  transform: scale(1.02);
+}
+
+.pricingCardBest:hover {
+  border-color: hsl(150, 70%, 55%);
+  box-shadow: 0 20px 40px hsla(150, 70%, 45%, 0.2);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.bestBadge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, hsl(150, 70%, 55%), hsl(150, 70%, 45%));
+  color: white;
+  padding: var(--space-1) var(--space-4);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  border-bottom-left-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 10px hsla(150, 70%, 45%, 0.3);
+}
+
+.pricingHeader {
+  text-align: center;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--border);
+}
+
+.pricingTitle {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: var(--space-4);
+}
+
+.pricingFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  flex-grow: 1;
+}
+
+.featureItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-sm);
+}
+
+.featureLabel {
+  color: var(--text-secondary);
+}
+
+.featureValue {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.featureValueHighlight {
+  font-weight: 700;
+  color: hsl(150, 70%, 45%);
+  font-family: var(--font-en);
+  direction: ltr;
+}
 
 /* Benefits */
 .benefitsGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }

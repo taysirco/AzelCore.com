@@ -200,28 +200,47 @@ export default async function BuildingInsulationPage({ params }: { params: Promi
         </div>
       </section>
 
-      {/* Film Types */}
+      {/* Film Types — Premium Pricing Cards */}
       <section className={`${styles.section} ${styles.sectionAlt}`} id="types">
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <span className={styles.overline}>{isAr ? 'أنواع الأفلام' : 'Film Types'}</span>
             <h2 className={styles.sectionTitle}>{isAr ? 'اختر الفيلم المناسب لمبناك' : 'Choose the Right Film for Your Building'}</h2>
           </div>
-          <div className={styles.filmTable}>
-            <table className={styles.table} itemScope itemType="http://schema.org/Table">
-              <caption className={styles.tableCaption} itemProp="about">{isAr ? 'مقارنة أنواع أفلام عزل المباني في السعودية 2026 — حسب معايير ASHRAE و SBC' : 'Comparison of Building Insulation Film Types in KSA 2026 — Based on ASHRAE and SBC Standards'}</caption>
-              <thead>
-                <tr><th scope="col">{isAr ? 'نوع الفيلم' : 'Film Type'}</th><th scope="col">{isAr ? 'حجب IR' : 'IR Block'}</th><th scope="col">{isAr ? 'حجب UV' : 'UV Block'}</th><th scope="col">{isAr ? 'نفاذية الضوء' : 'VLT'}</th><th scope="col">{isAr ? 'الضمان' : 'Warranty'}</th></tr>
-              </thead>
-              <tbody>
-                {getFilmTypes(isAr).map((f, i) => (
-                  <tr key={i} className={f.best ? styles.bestRow : ''}>
-                    <td className={styles.filmName}>{f.name} {f.best && '⭐'}</td>
-                    <td>{f.ir}</td><td>{f.uv}</td><td>{f.light}</td><td>{f.warranty}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          
+          <div className={styles.pricingGrid}>
+            {getFilmTypes(isAr).map((f, i) => (
+              <div key={i} className={`${styles.pricingCard} ${f.best ? styles.pricingCardBest : ''}`}>
+                {f.best && <div className={styles.bestBadge}>{isAr ? 'الأكثر طلباً' : 'Most Popular'}</div>}
+                
+                <div className={styles.pricingHeader}>
+                  <h3 className={styles.pricingTitle}>{f.name}</h3>
+                </div>
+                
+                <div className={styles.pricingFeatures}>
+                  <div className={styles.featureItem}>
+                    <span className={styles.featureLabel}>{isAr ? 'حجب الحرارة (IR)' : 'IR Rejection'}</span>
+                    <span className={styles.featureValueHighlight}>{f.ir}</span>
+                  </div>
+                  <div className={styles.featureItem}>
+                    <span className={styles.featureLabel}>{isAr ? 'حجب الأشعة (UV)' : 'UV Rejection'}</span>
+                    <span className={styles.featureValue} style={{ color: 'hsl(142, 70%, 45%)' }}>{f.uv}</span>
+                  </div>
+                  <div className={styles.featureItem}>
+                    <span className={styles.featureLabel}>{isAr ? 'نفاذية الضوء (VLT)' : 'Light Transmission'}</span>
+                    <span className={styles.featureValue}>{f.light}</span>
+                  </div>
+                  <div className={styles.featureItem}>
+                    <span className={styles.featureLabel}>{isAr ? 'الضمان' : 'Warranty'}</span>
+                    <span className={styles.featureValue}>{f.warranty}</span>
+                  </div>
+                </div>
+                
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={f.best ? styles.primaryBtn : styles.secondaryBtn} style={{ width: '100%', justifyContent: 'center' }}>
+                  {isAr ? 'طلب معاينة وعرض سعر' : 'Request Inspection'}
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </section>

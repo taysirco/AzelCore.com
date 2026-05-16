@@ -1,7 +1,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'nano-ceramic-vs-carbon.webp',
+  ogImage: 'nano-ceramic-tint-applied.webp',
   serviceLinks: [
     { href: '/nano-ceramic-jeddah', text: 'حماية النانو سيراميك الأصلية للسيارات', textEn: 'Original Nano Ceramic Car Protection' },
     { href: '/paint-protection-film-jeddah', text: 'الفرق بين النانو سيراميك و PPF - اكتشف أيهما الأنسب', textEn: 'Nano Ceramic vs PPF - Discover What Suits You' }

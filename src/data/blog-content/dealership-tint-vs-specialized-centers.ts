@@ -1,7 +1,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'best-car-tint-jeddah.webp',
+  ogImage: 'why-choose-us-workshop.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'تظليل سيارتك بأفلام النانو سيراميك الأصلية بضمان 10 سنوات', textEn: 'Tint Your Car with Original Nano Ceramic Films with a 10-Year Warranty' }
   ],

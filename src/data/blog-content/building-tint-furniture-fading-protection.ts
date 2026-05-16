@@ -1,7 +1,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'commercial-building-tint.webp',
+  ogImage: 'villa-window-insulation-jeddah.webp',
   serviceLinks: [
     { href: '/building-glass', text: 'احمِ أثاث منزلك بعوازل النانو سيراميك الشفافة', textEn: 'Protect Your Furniture with Clear Nano Ceramic Insulation' },
     { href: '/car-insulation-jeddah', text: 'تظليل وعزل حراري للسيارات والمنازل', textEn: 'Thermal Insulation for Cars and Homes' }

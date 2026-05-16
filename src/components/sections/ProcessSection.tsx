@@ -18,8 +18,10 @@ export default function ProcessSection({ locale = 'ar' }: { locale?: string }) {
             <div key={i} className={styles.step}>
               <div className={styles.stepIcon}>{step.icon}</div>
               <div className={styles.stepNumber}>{step.number}</div>
-              <h3 className={styles.stepTitle}>{step.title}</h3>
-              <p className={styles.stepDesc}>{step.desc}</p>
+              <div className={styles.stepContent}>
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+                <p className={styles.stepDesc}>{step.desc}</p>
+              </div>
               {i < dict.process.steps.length - 1 && <div className={styles.connector} aria-hidden="true" />}
             </div>
           ))}

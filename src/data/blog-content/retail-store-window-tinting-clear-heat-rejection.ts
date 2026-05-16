@@ -1,7 +1,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'commercial-building-tint.webp',
+  ogImage: 'commercial-facade-tinting.webp',
   serviceLinks: [
     { href: '/building-glass', text: 'عزل زجاج المعارض والمحلات التجارية بتقنية النانو', textEn: 'Showroom and Retail Glass Insulation with Nano Tech' }
   ],

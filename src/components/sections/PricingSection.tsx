@@ -21,29 +21,36 @@ export default function PricingSection({ locale = 'ar' }: { locale?: string }) {
           <p className={styles.subtitle}>{dict.pricing.subtitle}</p>
         </div>
 
-        <div className={styles.grid}>
+        <div className={styles.pricingGrid}>
           {tiers.map((tier, i) => (
-            <div key={i} className={`${styles.card} ${i === 0 ? styles.featured : ''}`}>
-              {i === 0 && <span className={styles.badge}>{dict.pricing.mostPopular}</span>}
-              <h3 className={styles.cardTitle}>{!isAr && tier.filmTypeEn ? tier.filmTypeEn : tier.filmType}</h3>
-              <div className={styles.priceRow}>
-                <span className={styles.priceLabel}>{dict.pricing.sedan}</span>
-                <PriceReveal price={tier.sedan.price} label={dict.common.price} />
+            <div key={i} className={`${styles.pricingCard} ${i === 0 ? styles.pricingCardBest : ''}`}>
+              {i === 0 && <div className={styles.bestBadge}>{dict.pricing.mostPopular}</div>}
+              
+              <div className={styles.pricingHeader}>
+                <h3 className={styles.pricingTitle}>{!isAr && tier.filmTypeEn ? tier.filmTypeEn : tier.filmType}</h3>
+                <div className={styles.pricingPrice}>
+                  <PriceReveal price={tier.sedan.price} />
+                </div>
+                <p className={styles.pricingDesc}>{dict.pricing.sedan}</p>
               </div>
-              <div className={styles.priceRow}>
-                <span className={styles.priceLabel}>{dict.pricing.suv}</span>
-                <PriceReveal price={tier.suv.price} label={dict.common.price} />
+
+              <div className={styles.pricingFeatures}>
+                <div className={styles.featureItem}>
+                  <span className={styles.featureLabel}>{dict.pricing.suv}</span>
+                  <span className={styles.featureValue}><PriceReveal price={tier.suv.price} /></span>
+                </div>
+                <div className={styles.featureItem}>
+                  <span className={styles.featureLabel}>{dict.pricing.warranty}</span>
+                  <span className={styles.featureValueHighlight}>{!isAr && tier.warrantyEn ? tier.warrantyEn : tier.warranty}</span>
+                </div>
+                <ul className={styles.includes}>
+                  {(!isAr && tier.includesEn ? tier.includesEn : tier.includes).map((item: string, j: number) => (
+                    <li key={j}>✓ {item}</li>
+                  ))}
+                </ul>
               </div>
-              <div className={styles.warrantyRow}>
-                <span>{dict.pricing.warranty}</span>
-                <strong>{!isAr && tier.warrantyEn ? tier.warrantyEn : tier.warranty}</strong>
-              </div>
-              <ul className={styles.includes}>
-                {(!isAr && tier.includesEn ? tier.includesEn : tier.includes).map((item: string, j: number) => (
-                  <li key={j}>✓ {item}</li>
-                ))}
-              </ul>
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className={`${styles.cardBtn} ${i === 0 ? styles.cardBtnPrimary : ''}`} data-nosnippet>
+
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className={i === 0 ? styles.primaryBtn : styles.secondaryBtn} style={{ width: '100%', justifyContent: 'center' }} data-nosnippet>
                 {dict.pricing.bookNow}
               </a>
             </div>

@@ -1,38 +1,262 @@
-.section { padding: var(--space-24) 0; background: var(--bg-secondary); }
-.container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-6); }
-.header { text-align: center; margin-bottom: var(--space-16); }
-.overline { display: inline-block; font-size: var(--text-sm); font-weight: 600; color: var(--success-light); margin-bottom: var(--space-3); text-transform: uppercase; letter-spacing: 0.1em; }
-.title { font-size: var(--text-4xl); font-weight: 700; }
-.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); position: relative; }
+/* ═══ Process Section — Premium Timeline ═══ */
+
+.section {
+  padding: var(--space-32) 0;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background glow */
+.section::before {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, hsla(142, 70%, 40%, 0.05), transparent 70%);
+  filter: blur(100px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Header ─── */
+.header {
+  text-align: center;
+  margin-bottom: var(--space-20);
+}
+
+.overline {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: hsl(142, 70%, 45%);
+  margin-bottom: var(--space-3);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: hsla(142, 70%, 40%, 0.1);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid hsla(142, 70%, 40%, 0.2);
+}
+
+.title {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, hsl(220, 10%, 70%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Steps Grid & Connector ─── */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-8);
+  position: relative;
+}
+
+/* Continuous connecting line for Desktop */
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 45px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    hsla(142, 70%, 40%, 0) 0%,
+    hsla(142, 70%, 40%, 0.5) 20%,
+    hsla(142, 70%, 40%, 0.5) 80%,
+    hsla(142, 70%, 40%, 0) 100%
+  );
+  z-index: 0;
+}
+
+/* ─── Individual Step Card ─── */
 .step {
   position: relative;
   text-align: center;
-  padding: var(--space-8) var(--space-4);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  transition: all var(--duration-normal) var(--ease-out);
+  padding: var(--space-8) var(--space-6);
+  background: hsla(220, 25%, 6%, 0.5);
+  border: 1px solid hsla(0, 0%, 100%, 0.05);
+  border-radius: var(--radius-2xl);
+  transition: all var(--duration-normal) cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
-.step:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: var(--shadow-glow); }
-.stepIcon { font-size: var(--text-3xl); margin-bottom: var(--space-4); }
+
+.step::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, hsla(142, 70%, 40%, 0.05), transparent);
+  opacity: 0;
+  transition: opacity var(--duration-normal) ease;
+}
+
+.step:hover {
+  transform: translateY(-8px);
+  border-color: hsla(142, 70%, 40%, 0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 hsla(0,0,100%,0.05);
+}
+
+.step:hover::before {
+  opacity: 1;
+}
+
+/* Step Icon & Node */
+.stepIcon {
+  font-size: var(--text-3xl);
+  margin: 0 auto var(--space-6);
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsla(220, 25%, 8%, 1);
+  border: 2px solid hsla(0, 0%, 100%, 0.1);
+  border-radius: 50%;
+  position: relative;
+  transition: all var(--duration-normal) ease;
+  z-index: 2;
+  box-shadow: 0 0 0 8px var(--bg-secondary);
+}
+
+.step:hover .stepIcon {
+  border-color: hsl(142, 70%, 40%);
+  color: hsl(142, 70%, 45%);
+  transform: scale(1.05);
+  box-shadow: 0 0 0 8px var(--bg-secondary), 0 0 20px hsla(142, 70%, 40%, 0.2);
+}
+
 .stepNumber {
   font-family: var(--font-en);
-  font-size: var(--text-5xl);
+  font-size: var(--text-6xl);
   font-weight: 800;
   color: var(--border);
   position: absolute;
-  top: var(--space-4);
-  left: var(--space-4);
+  top: var(--space-2);
+  right: var(--space-4);
   line-height: 1;
-  opacity: 0.3;
+  opacity: 0.15;
+  transition: all var(--duration-normal) ease;
 }
-.stepTitle { font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-3); }
-.stepDesc { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.7; }
+
+:global([dir="ltr"]) .stepNumber {
+  right: auto;
+  left: var(--space-4);
+}
+
+.step:hover .stepNumber {
+  color: hsl(142, 70%, 40%);
+  opacity: 0.2;
+}
+
+.stepTitle {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+  color: var(--text);
+  position: relative;
+  z-index: 2;
+}
+
+.stepDesc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
 .connector { display: none; }
-@media (max-width: 768px) {
-  .steps { grid-template-columns: 1fr 1fr; }
+
+/* ═══ Responsive ═══ */
+@media (max-width: 1024px) {
+  .steps { grid-template-columns: 1fr 1fr; gap: var(--space-10) var(--space-6); }
+  .steps::before { display: none; /* Hide connector line on multi-row */ }
+  .section { padding: var(--space-20) 0; }
   .title { font-size: var(--text-3xl); }
 }
+
+@media (max-width: 768px) {
+  .header { margin-bottom: var(--space-12); }
+  .title { font-size: var(--text-2xl); }
+  .step { padding: var(--space-6) var(--space-4); }
+  .stepIcon { width: 70px; height: 70px; font-size: var(--text-2xl); }
+}
+
 @media (max-width: 480px) {
-  .steps { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; gap: var(--space-6); }
+  
+  /* Create vertical timeline for mobile */
+  .steps::before {
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 45px;
+    right: auto;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, 
+      hsla(142, 70%, 40%, 0) 0%,
+      hsla(142, 70%, 40%, 0.3) 10%,
+      hsla(142, 70%, 40%, 0.3) 90%,
+      hsla(142, 70%, 40%, 0) 100%
+    );
+  }
+
+  :global([dir="ltr"]) .steps::before {
+    left: 45px;
+  }
+  :global([dir="rtl"]) .steps::before {
+    right: 45px;
+    left: auto;
+  }
+
+  .step {
+    display: flex;
+    text-align: right;
+    align-items: center;
+    padding: var(--space-5);
+    background: hsla(220, 25%, 6%, 0.8);
+    border: 1px solid hsla(0,0,100%,0.05);
+  }
+  :global([dir="ltr"]) .step { text-align: left; }
+
+  .stepIcon {
+    margin: 0 0 0 var(--space-4);
+    width: 50px;
+    height: 50px;
+    font-size: var(--text-xl);
+    box-shadow: 0 0 0 4px var(--bg-secondary);
+    flex-shrink: 0;
+  }
+  :global([dir="ltr"]) .stepIcon { margin: 0 var(--space-4) 0 0; }
+
+  .stepNumber {
+    font-size: var(--text-4xl);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .stepContent {
+    flex: 1;
+  }
+  
+  .stepTitle { margin-bottom: 2px; font-size: var(--text-base); }
+  .stepDesc { font-size: var(--text-xs); line-height: 1.5; }
 }

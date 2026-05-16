@@ -1,7 +1,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'computer-cut-ppf-jeddah.webp',
+  ogImage: 'xpel-ppf-protection-jeddah.webp',
   serviceLinks: [
     { href: '/paint-protection-film-jeddah', text: 'تركيب PPF بالقص الآلي (الكمبيوتر) بدون تفكيك أجزاء السيارة', textEn: 'Computer-Cut PPF Installation Without Dismantling Car Parts' }
   ],

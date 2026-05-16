@@ -1,7 +1,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'ppf-car-protection.webp',
+  ogImage: 'blog-ppf-vs-ceramic-coating.webp',
   serviceLinks: [
     { href: '/paint-protection-film-jeddah', text: 'حماية طلاء سيارتك بفيلم PPF بضمان 10 سنوات', textEn: 'Protect Your Car Paint with PPF 10-Year Warranty' },
     { href: '/car-insulation-jeddah', text: 'تظليل وعزل حراري للسيارات بتقنية النانو', textEn: 'Nano Ceramic Thermal Car Insulation' }

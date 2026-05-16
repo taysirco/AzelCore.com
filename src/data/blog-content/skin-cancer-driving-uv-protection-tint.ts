@@ -1,7 +1,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'uv-protection-car-tint.webp',
+  ogImage: 'uv-ir-blocking-diagram.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'أفلام تظليل معتمدة لحماية الجلد', textEn: 'Certified Skin Protection Tint Films' }
   ],
