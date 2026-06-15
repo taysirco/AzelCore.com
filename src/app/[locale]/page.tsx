@@ -5,6 +5,8 @@ import ServicesSection from '@/components/sections/ServicesSection';
 import JohnsonSection from '@/components/sections/JohnsonSection';
 import LiveReviews from '@/components/sections/LiveReviews';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import Link from 'next/link';
+import { jeddahDistricts } from '@/data/local-jeddah';
 import { SITE_URL, GEO, ADDRESS_STRUCTURED, ADDRESS_STRUCTURED_EN, CRN, VAT_ID, PHONE, getWhatsAppLink } from '@/lib/constants';
 import { type Locale, localePath } from '@/lib/i18n';
 import { getAlternates } from '@/lib/seo';
@@ -136,6 +138,28 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <ScrollReveal delay={50}><TestimonialsSection locale={locale} /></ScrollReveal>
       <LiveReviews locale={locale} />
       <ScrollReveal><TrustSection locale={locale} /></ScrollReveal>
+      {/* ═══ Service areas in Jeddah — local SEO + equity to district spokes ═══ */}
+      <ScrollReveal>
+        <section className="container" aria-labelledby="service-areas-heading" style={{ paddingBlock: 'var(--space-12)' }}>
+          <h2 id="service-areas-heading" style={{ marginBottom: 'var(--space-3)' }}>
+            {isAr ? 'مناطق خدمة تظليل السيارات في جدة' : 'Car Tinting Service Areas in Jeddah'}
+          </h2>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-6)', maxWidth: '760px' }}>
+            {isAr ? 'نخدم جميع أحياء جدة — شمالها وجنوبها وأبحر والكورنيش — بخدمة تركيب احترافية وخدمة متنقلة. اختر حيّك لمعرفة التوصية المناسبة لمناخه المحلي:' : 'We serve every district of Jeddah — north, south, Obhur and the Corniche — with professional and mobile installation. Pick your district for a climate-tailored recommendation:'}
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
+            {jeddahDistricts.map((d) => (
+              <Link
+                key={d.id}
+                href={localePath(locale, `/car-insulation-jeddah/${d.id}`)}
+                style={{ display: 'inline-block', padding: '0.5rem 0.9rem', borderRadius: '999px', border: '1px solid var(--border)', background: 'var(--surface)', color: 'var(--text-secondary)', fontWeight: 600, fontSize: '0.9rem', textDecoration: 'none' }}
+              >
+                {isAr ? `تظليل سيارات ${d.nameAr}` : `Car Tinting ${d.nameEn}`}
+              </Link>
+            ))}
+          </div>
+        </section>
+      </ScrollReveal>
       {/* ═══ Quick Answers — visible content marked Speakable for voice/AI assistants ═══ */}
       <ScrollReveal>
         <section
