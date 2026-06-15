@@ -131,9 +131,9 @@ export default async function DistrictPage({ params }: { params: Promise<{ local
         </div>
         <div className={styles.heroContent}>
           <nav className={styles.breadcrumb} aria-label={isAr ? "مسار التنقل" : "Breadcrumbs"}>
-            <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <Link href={localePath(locale as Locale, '/car-insulation-jeddah')}>{isAr ? 'تظليل سيارات' : 'Car Tinting'}</Link> / <span>{isAr ? d.nameAr : d.nameEn}</span>
+            <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <Link href={localePath(locale as Locale, '/car-insulation-jeddah')}>{isAr ? 'تظليل سيارات جدة' : 'Car Tinting Jeddah'}</Link> / <span>{isAr ? d.nameAr : d.nameEn}</span>
           </nav>
-          <h1 className={styles.heroTitle}>{isAr ? 'تظليل سيارات في ' : 'Car Tinting in '}<span className={styles.blueGradient}>{isAr ? d.nameAr : d.nameEn}</span></h1>
+          <h1 className={styles.heroTitle}>{isAr ? 'تظليل سيارات ' : 'Car Tinting '}<span className={styles.blueGradient}>{isAr ? d.nameAr : d.nameEn}</span>{isAr ? ' جدة' : ' Jeddah'}</h1>
           <p className={styles.heroSubtitle}>
             {isAr ? `حلول تظليل مخصصة لمناخ ${d.nameAr} — رطوبة ${d.humidity}، أشعة UV بمستوى ${d.uvIndex}.` : `Custom tinting solutions for ${d.nameEn} climate — humidity ${d.humidity}, UV level ${d.uvIndex}.`}
           </p>

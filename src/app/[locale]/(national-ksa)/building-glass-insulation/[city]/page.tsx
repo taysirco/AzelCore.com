@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!cityObj) return {};
 
   return {
-    title: isAr ? `عزل واجهات زجاج المباني في ${cityObj.nameAr} — وفّر 40% كهرباء` : `Building Glass Facade Insulation in ${cityObj.nameEn} — Save 40% Electricity`,
+    title: isAr ? `عزل مباني ${cityObj.nameAr} — عزل حراري للواجهات يوفّر 40%` : `Building Insulation ${cityObj.nameEn} — Glass Façade Heat Control`,
     description: isAr ? `عزل حراري احترافي لواجهات المباني والفلل في ${cityObj.nameAr}. نانو سيراميك يحجب 97% حرارة، متوافق مع كود البناء السعودي. خصم للمشاريع.` : `Professional thermal insulation for building facades and villas in ${cityObj.nameEn}. Nano ceramic blocks 97% of heat, compliant with Saudi Building Code. Project discounts.`,
     alternates: getAlternates(locale as Locale, `/building-glass-insulation/${cityObj.id}`),
     openGraph: {
@@ -107,10 +107,10 @@ export default async function BuildingInsulationCityPage({ params }: { params: P
         </div>
         <div className={styles.heroContent}>
           <nav className={styles.breadcrumb} aria-label={isAr ? "مسار التنقل" : "Breadcrumbs"}>
-            <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <Link href={localePath(locale as Locale, '/building-glass-insulation')}>{isAr ? 'عزل المباني' : 'Building Insulation'}</Link> / <span>{isAr ? cityObj.nameAr : cityObj.nameEn}</span>
+            <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <Link href={localePath(locale as Locale, '/building-glass-insulation')}>{isAr ? 'عزل مباني جدة' : 'Building Insulation Jeddah'}</Link> / <span>{isAr ? cityObj.nameAr : cityObj.nameEn}</span>
           </nav>
           <h1 className={styles.heroTitle}>
-            {isAr ? 'عزل زجاج المباني في ' : 'Building Glass Insulation in '}<span className={styles.greenGradient}>{isAr ? cityObj.nameAr : cityObj.nameEn}</span>
+            {isAr ? 'عزل مباني ' : 'Building Insulation '}<span className={styles.greenGradient}>{isAr ? cityObj.nameAr : cityObj.nameEn}</span>{isAr ? ' — عزل واجهات الزجاج الحراري' : ' — Glass Façade Heat Control'}
           </h1>
           <p className={styles.heroSubtitle}>
             {isAr ? `حلول متوافقة مع مناخ ${cityObj.nameAr} (رطوبة ${cityObj.humidity}، حرارة تصل ${cityObj.avgTemp})` : `Solutions compatible with ${cityObj.nameEn} climate (Humidity ${cityObj.humidity}, Heat up to ${cityObj.avgTemp})`}
