@@ -5,7 +5,7 @@ const article: ArticleModule = {
   ogImage: 'uv-ir-blocking-diagram.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'أفلام عزل 3M الموصى بها من مؤسسة سرطان الجلد', textEn: '3M Tint Films Recommended by Skin Cancer Foundation' },
-    { href: '/services', text: 'تظليل زجاج السيارات الأمامي والجانبي', textEn: 'Front and Side Car Window Tinting' },
+    { href: '/car-insulation-jeddah', text: 'تظليل زجاج السيارات الأمامي والجانبي', textEn: 'Front and Side Car Window Tinting' },
     { href: '/contact', text: 'احجز حماية متكاملة لعائلتك الآن', textEn: 'Book Complete Protection for Your Family Now' },
   ],
   content: {

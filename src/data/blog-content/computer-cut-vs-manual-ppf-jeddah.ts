@@ -5,7 +5,7 @@ const article: ArticleModule = {
   ogImage: 'xpel-ppf-protection-jeddah.webp',
   serviceLinks: [
     { href: '/paint-protection-film-jeddah', text: 'تركيب PPF بالقص الآلي (الكمبيوتر) بدون تفكيك أجزاء السيارة', textEn: 'Computer-Cut PPF Installation Without Dismantling Car Parts' },
-    { href: '/nano-ceramic-jeddah', text: 'حماية النانو سيراميك + PPF — الحماية المزدوجة', textEn: 'Nano Ceramic + PPF — Double Protection' },
+    { href: '/car-insulation-jeddah', text: 'حماية النانو سيراميك + PPF — الحماية المزدوجة', textEn: 'Nano Ceramic + PPF — Double Protection' },
     { href: '/car-insulation-jeddah', text: 'باقات الحماية الشاملة للسيارات الجديدة', textEn: 'Comprehensive Protection Packages for New Cars' },
   ],
   content: {

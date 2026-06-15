@@ -4,7 +4,7 @@ import type { ArticleModule } from './types';
 const article: ArticleModule = {
   ogImage: 'villa-window-insulation-jeddah.webp',
   serviceLinks: [
-    { href: '/building-glass', text: 'احمِ أثاث منزلك بعوازل النانو سيراميك الشفافة', textEn: 'Protect Your Furniture with Clear Nano Ceramic Insulation' },
+    { href: '/building-glass-insulation', text: 'احمِ أثاث منزلك بعوازل النانو سيراميك الشفافة', textEn: 'Protect Your Furniture with Clear Nano Ceramic Insulation' },
     { href: '/car-insulation-jeddah', text: 'تظليل وعزل حراري للسيارات والمنازل', textEn: 'Thermal Insulation for Cars and Homes' },
     { href: '/johnson-authorized-dealer', text: 'أفلام جونسون المعمارية — وكيل معتمد', textEn: 'Johnson Architectural Films — Authorized Dealer' },
   ],

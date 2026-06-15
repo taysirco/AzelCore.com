@@ -4,7 +4,7 @@ import type { ArticleModule } from './types';
 const article: ArticleModule = {
   ogImage: 'blog-building-insulation-savings.webp',
   serviceLinks: [
-    { href: '/building-insulation', text: 'مشاريع العزل التجاري للشركات', textEn: 'Commercial Insulation Projects for Companies' },
+    { href: '/building-glass-insulation', text: 'مشاريع العزل التجاري للشركات', textEn: 'Commercial Insulation Projects for Companies' },
     { href: '/contact', text: 'احصل على تحليل طاقة مجاني لمبناك', textEn: 'Get a Free Energy Analysis for Your Building' },
   ],
   content: {
