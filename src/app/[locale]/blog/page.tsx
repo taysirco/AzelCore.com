@@ -102,8 +102,22 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
       <section className={styles.pageHeader}>
         <div className={styles.container}>
           <nav className={styles.breadcrumb}><Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'المدونة' : 'Blog'}</span></nav>
-          <h1 className={styles.pageTitle}>{isAr ? 'مدونة ' : 'AzelCore '}<span className={styles.highlight}>{isAr ? 'عزل كور' : 'Blog'}</span></h1>
-          <p className={styles.pageSubtitle}>{isAr ? 'مقالات متخصصة من فريقنا — نصائح فنية، مقارنات، وأخبار.' : 'Specialized articles from our team — technical tips, comparisons, and news.'}</p>
+          <h1 className={styles.pageTitle}>{isAr ? 'مدونة تظليل السيارات والعزل الحراري في ' : 'Car Tinting & Insulation Blog in '}<span className={styles.highlight}>{isAr ? 'جدة' : 'Jeddah'}</span></h1>
+          <p className={styles.pageSubtitle}>{isAr ? 'دليلك المتخصص في تظليل السيارات وحماية الطلاء PPF وعزل المباني — مقارنات الأفلام، قوانين التظليل السعودية، ونصائح الخبراء.' : 'Your specialist guide to car tinting, PPF paint protection and building insulation — film comparisons, Saudi tint laws, and expert tips.'}</p>
+        </div>
+      </section>
+
+      {/* ═══ SEO intro + cluster hub links (passes equity to money pages) ═══ */}
+      <section className={styles.section} style={{ paddingBottom: 0 }}>
+        <div className={styles.container} style={{ maxWidth: '820px' }}>
+          <p style={{ color: 'var(--text-secondary)', lineHeight: 1.9 }}>
+            {isAr ? 'مرحبًا بك في مدونة عزل كور — مرجعك العملي لكل ما يخص تظليل السيارات والعزل الحراري في جدة والسعودية. تجد هنا مقارنات دقيقة بين أفلام النانو سيراميك والكربوني، شرح قوانين التظليل ونسبة 30% المسموحة نظامًا، أدلة اختيار وكيل جونسون و 3M المعتمد، وحسابات توفير الطاقة لعزل المباني — كلها من خبرتنا الميدانية ومدعومة بمصادر رسمية.' : 'Welcome to the AzelCore blog — your practical reference for car tinting and thermal insulation in Jeddah and Saudi Arabia. Here you will find precise comparisons between nano-ceramic and carbon films, explanations of Saudi tint laws and the legal 30% VLT limit, guides to choosing an authorized Johnson and 3M dealer, and energy-saving math for building insulation — all from our field experience and backed by official sources.'}
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1.25rem' }}>
+            <Link href={localePath(locale as Locale, '/car-insulation-jeddah')} style={{ color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}>{isAr ? 'تظليل سيارات جدة ←' : 'Car Tinting Jeddah →'}</Link>
+            <Link href={localePath(locale as Locale, '/paint-protection-film-jeddah')} style={{ color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}>{isAr ? 'حماية طلاء السيارات PPF ←' : 'PPF Paint Protection →'}</Link>
+            <Link href={localePath(locale as Locale, '/building-glass-insulation')} style={{ color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}>{isAr ? 'عزل مباني جدة ←' : 'Building Insulation Jeddah →'}</Link>
+          </div>
         </div>
       </section>
 
@@ -111,7 +125,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
         <div className={styles.container}>
           <div className={styles.postsGrid}>
             {blogPosts.map((post) => (
-              <Link key={post.slug} href={`/${locale}/blog/${post.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Link key={post.slug} href={localePath(locale as Locale, `/blog/${post.slug}`)} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <article className={styles.postCard}>
                   <div className={styles.postImage}>
                     <Image src={`/images/${post.image}`} alt={post.title} width={400} height={240} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
