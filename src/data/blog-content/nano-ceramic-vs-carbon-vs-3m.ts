@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'blog-nano-vs-carbon-3m.webp',
+  ogImage: 'blog-nano-vs-carbon-tint.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'باقات عزل النانو سيراميك الفاخرة', textEn: 'Premium Nano-Ceramic Insulation Packages' },
     { href: '/3m-authorized-dealer', text: 'عازل 3M Crystalline الأصلي', textEn: 'Original 3M Crystalline Insulation' },

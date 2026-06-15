@@ -337,6 +337,9 @@ export default async function BuildingInsulationPage({ params }: { params: Promi
                       <p style={{ fontSize: '0.9rem', color: 'hsl(220, 10%, 65%)' }}><strong>{isAr ? 'الفيلم الموصى:' : 'Recommended Film:'}</strong> {isAr ? content.recommendedFilm : ((content as any).recommendedFilmEn || content.recommendedFilm)}</p>
                     </div>
                   )}
+                  <Link href={localePath(locale as Locale, `/building-glass-insulation/${city.id}`)} style={{ display: 'inline-block', marginTop: '0.85rem', color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}>
+                    {isAr ? `تفاصيل عزل المباني في ${city.nameAr} ←` : `Building insulation in ${city.nameEn} →`}
+                  </Link>
                 </details>
               );
             })}

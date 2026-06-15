@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'ev-range-window-tint.webp',
+  ogImage: 'car-tint-heat-comparison.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'تظليل سيارات كهربائية (لوسيد، تيسلا) بجدة', textEn: 'Electric Vehicle Tinting (Lucid, Tesla) in Jeddah' },
     { href: '/thermal-cars', text: 'أفلام النانو سيراميك 100% متوافقة مع أنظمة GPS/Bluetooth', textEn: 'Nano-Ceramic Films 100% Compatible with GPS/Bluetooth' },

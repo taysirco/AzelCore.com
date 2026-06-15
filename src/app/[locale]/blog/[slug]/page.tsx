@@ -87,7 +87,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const title = rawTitle || slug;
   
   return {
-    title: `${title} | ${isAr ? 'عزل كور' : 'AzelCore'}`,
+    title: title,
     description: content.intro.slice(0, 155),
     alternates: getAlternates(locale as Locale, `/blog/${slug}`),
     openGraph: {

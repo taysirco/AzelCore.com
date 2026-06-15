@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'uv-protection-car-tint-health.webp',
+  ogImage: 'uv-ir-blocking-diagram.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'أفلام عزل 3M الموصى بها من مؤسسة سرطان الجلد', textEn: '3M Tint Films Recommended by Skin Cancer Foundation' },
     { href: '/services', text: 'تظليل زجاج السيارات الأمامي والجانبي', textEn: 'Front and Side Car Window Tinting' },

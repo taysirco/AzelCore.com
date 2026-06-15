@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'tint-removal-defroster-lines.webp',
+  ogImage: 'blog-car-tint-maintenance.webp',
   serviceLinks: [
     { href: '/services', text: 'خدمة إزالة التظليل الاحترافية بالبخار', textEn: 'Professional Steam Tint Removal Service' },
     { href: '/contact', text: 'احجز موعد إزالة تظليل تالف', textEn: 'Book a Damaged Tint Removal Appointment' },

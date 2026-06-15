@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'commercial-building-tint.webp', // Assuming this image exists or will be added
+  ogImage: 'commercial-facade-tinting.webp', // Assuming this image exists or will be added
   serviceLinks: [
     { href: '/building-glass-insulation', text: 'خدمات تظليل وعزل واجهات المباني بجدة', textEn: 'Building Glass Tinting & Insulation Services in Jeddah' },
     { href: '/calculator', text: 'احسب العائد على الاستثمار لشركتك (حاسبة التوفير)', textEn: 'Calculate Your Company\'s ROI (Savings Calculator)' },

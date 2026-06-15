@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'clear-windshield-tint.webp',
+  ogImage: '3m-crystalline-tint-jeddah.webp',
   serviceLinks: [
     { href: '/3m-authorized-dealer', text: 'وكيل 3M المعتمد — فيلم Crystalline للزجاج الأمامي', textEn: 'Authorized 3M Dealer — Crystalline Film for Windshield' },
     { href: '/johnson-authorized-dealer', text: 'أفلام جونسون Supreme الشفافة 00', textEn: 'Johnson Supreme Clear Films 00' },
