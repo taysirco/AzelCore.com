@@ -89,22 +89,22 @@ export const en: Dictionary = {
     learnMore: 'Learn more →',
     ariaLabel: 'Our Services',
     card1: {
-      title: 'Car Window Tinting',
+      title: 'Car Tinting Jeddah — Nano Ceramic',
       desc: 'American nano-ceramic films blocking 97% of heat with vehicle-lifetime warranty. Fully compliant with Saudi traffic regulations.',
       features: ['97% IR Rejection', 'Signal-Friendly', 'Lifetime Warranty'],
     },
     card2: {
-      title: 'Building Glass Insulation',
+      title: 'Building Glass Insulation Jeddah',
       desc: 'Advanced thermal insulation solutions for commercial and residential building facades — save up to 40% on electricity bills.',
       features: ['40% Energy Savings', '99% UV Protection', '15-Year Warranty'],
     },
     card3: {
-      title: 'Johnson Window Films',
+      title: 'Authorized Johnson Dealer',
       desc: 'Authorized Johnson dealer — 5 American product lines. Authorized 3M dealer — Crystalline with 200+ nano layers.',
       features: ['5 Product Lines', 'Lifetime Warranty', 'CST™ Technology'],
     },
     card4: {
-      title: 'Advanced Thermal Insulation',
+      title: 'Car Thermal Insulation in Jeddah',
       desc: 'Comprehensive thermal solutions for cars and buildings — real FLIR camera tests proving insulation efficiency.',
       features: ['FLIR Testing', '47% Reduction', 'Real Comparison'],
     },
