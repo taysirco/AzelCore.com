@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'وكيل جونسون المعتمد في جدة — Johnson Window Films' : 'Authorized Johnson Dealer in Jeddah — Johnson Window Films | AzelCore',
+    title: isAr ? 'وكيل جونسون المعتمد في جدة — Johnson Window Films' : 'Authorized Johnson Dealer in Jeddah — Johnson Window Films',
     description: isAr ? 'عزل كور الوكيل الرسمي لأفلام جونسون الأمريكية في جدة. Supreme IR يحجب 97% من الأشعة تحت الحمراء. 5 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.' : 'AzelCore is the official authorized dealer for American Johnson Films in Jeddah. Supreme IR blocks 97% of IR. 5 product lines with lifetime warranty. Book now.',
     alternates: getAlternates(locale as Locale, '/johnson-authorized-dealer'),
   };

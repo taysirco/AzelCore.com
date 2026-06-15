@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'عزل واجهات زجاج المباني في جدة — وفّر 40% من فاتورة الكهرباء' : 'Building Glass Insulation in Jeddah — Save 40% on Electricity | AzelCore',
+    title: isAr ? 'عزل واجهات زجاج المباني في جدة — وفّر 40% من فاتورة الكهرباء' : 'Building Glass Insulation in Jeddah — Save 40% on Electricity',
     description: isAr ? 'عزل حراري احترافي لواجهات المباني والفلل في جدة. أفلام نانو سيراميك تحجب 97% حرارة وتوفر 40% من تكاليف التكييف. ضمان 15 سنة.' : 'Professional thermal insulation for building facades and villas in Jeddah. Nano-ceramic films block 97% of heat and save 40% on AC costs. 15-year warranty.',
     alternates: getAlternates(locale as Locale, '/building-glass-insulation'),
     openGraph: {

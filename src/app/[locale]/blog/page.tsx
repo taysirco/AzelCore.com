@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'مدونة — نصائح تظليل وعزل حراري من خبراء' : 'Blog — Tinting and Insulation Tips from Experts | AzelCore',
+    title: isAr ? 'مدونة — نصائح تظليل وعزل حراري من خبراء' : 'Blog — Tinting and Insulation Tips from Experts',
     description: isAr ? 'مقالات متخصصة في تظليل السيارات وعزل المباني — نصائح فنية، مقارنات أفلام، قوانين التظليل السعودية، وأكثر.' : 'Specialized articles on car tinting and building insulation — technical tips, film comparisons, Saudi tinting laws, and more.',
     alternates: getAlternates(locale as Locale, '/blog'),
   };

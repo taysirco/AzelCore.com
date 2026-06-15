@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'حماية طلاء السيارات PPF جدة — أفلام إكس بيل XPEL الأفضل' : 'PPF Paint Protection Film Jeddah — Best XPEL Protection | AzelCore',
+    title: isAr ? 'حماية طلاء السيارات PPF جدة — أفلام إكس بيل XPEL الأفضل' : 'PPF Paint Protection Film Jeddah — Best XPEL Protection',
     description: isAr ? 'أفضل مركز لتركيب أفلام حماية الطلاء PPF في جدة. حماية كاملة للسيارة من الخدوش والرمال باستخدام XPEL Paint Protection Film مع معالجة ذاتية للخدوش.' : 'Top PPF paint protection film near me in Jeddah. Full car protection against scratches and sand using XPEL with self-healing technology.',
     alternates: getAlternates(locale as Locale, '/paint-protection-film-jeddah'),
     openGraph: {

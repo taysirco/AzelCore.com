@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'من نحن — خبراء التظليل والعزل في جدة' : 'About Us — Tinting & Insulation Experts in Jeddah | AzelCore',
+    title: isAr ? 'من نحن — خبراء التظليل والعزل في جدة' : 'About Us — Tinting & Insulation Experts in Jeddah',
     description: isAr ? 'تعرف على فريق عزل كور المتخصص في تظليل السيارات والعزل الحراري في جدة. وكيل جونسون و 3M المعتمد — فنيون معتمدون + ضمان حقيقي.' : 'Meet the AzelCore team specializing in car tinting and thermal insulation in Jeddah. Authorized Johnson & 3M dealer — certified technicians + real warranty.',
     alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/about')}` },
   };

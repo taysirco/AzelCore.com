@@ -27,6 +27,8 @@ function getResourceLinks(locale: Locale) {
     { href: localePath(locale, '/gallery'), label: isAr ? 'معرض أعمالنا' : 'Our Work Gallery' },
     { href: localePath(locale, '/blog'), label: isAr ? 'المدونة' : 'Blog' },
     { href: localePath(locale, '/faq'), label: isAr ? 'الأسئلة الشائعة' : 'FAQ' },
+    // /research is locale-exempt (served at the app root, no /en variant) — plain href
+    { href: '/research/ksa-thermal-report-2026', label: isAr ? 'تقرير البحث الحراري 2026' : 'Thermal Research Report 2026' },
   ];
 }
 

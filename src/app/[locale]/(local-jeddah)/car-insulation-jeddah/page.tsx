@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'تظليل سيارات جدة — نانو سيراميك + ضمان عمر السيارة' : 'Jeddah Car Tinting — Nano Ceramic + Lifetime Warranty | AzelCore',
+    title: isAr ? 'تظليل سيارات جدة — نانو سيراميك + ضمان عمر السيارة' : 'Jeddah Car Tinting — Nano Ceramic + Lifetime Warranty',
     description: isAr ? 'أفضل تظليل سيارات في جدة بأفلام نانو سيراميك أمريكية من جونسون و 3M. حجب 97% حرارة، ضمان عمر السيارة، لا يحجب الإشارات. وكيل جونسون و 3M المعتمد.' : 'Best car tinting in Jeddah with American nano-ceramic films from Johnson & 3M. 97% heat rejection, lifetime warranty, no signal interference. Authorized dealer.',
     alternates: getAlternates(locale as Locale, '/car-insulation-jeddah'),
     openGraph: {
