@@ -364,6 +364,43 @@ export default async function ThreeMDealerPage({ params }: { params: Promise<{ l
       />
 
       {/* Cross-sell */}
+      {/* ═══ Indexable price table (server-rendered for SEO/AI) ═══ */}
+      {(() => {
+        const c: React.CSSProperties = { padding: '0.7rem 0.9rem', borderBottom: '1px solid var(--border)', textAlign: isAr ? 'right' : 'left' };
+        const th: React.CSSProperties = { ...c, fontWeight: 700, color: 'var(--text)', background: 'var(--surface)' };
+        const rows = [
+          { line: 'FX Premium', tier: isAr ? 'اقتصادي' : 'Economy', sedan: 400, suv: 480 },
+          { line: 'Color Stable', tier: isAr ? 'قيمة عالية' : 'High Value', sedan: 700, suv: 840 },
+          { line: 'Ceramic IR', tier: isAr ? 'بريميوم' : 'Premium', sedan: 1200, suv: 1440 },
+          { line: 'Crystalline', tier: isAr ? 'الفلاجشيب' : 'Flagship', sedan: 2400, suv: 2880 },
+        ];
+        return (
+          <section style={{ maxWidth: '900px', margin: '3rem auto 0', padding: '0 1.5rem' }} aria-labelledby="prices-3m">
+            <h2 id="prices-3m" style={{ marginBottom: '0.75rem' }}>{isAr ? 'كم سعر تظليل 3M في جدة؟ (أسعار 2026)' : 'How Much Does 3M Tint Cost in Jeddah? (2026)'}</h2>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>{isAr ? 'تبدأ أسعار تظليل 3M في جدة من 400 ريال لخط FX الاقتصادي وتصل إلى 2,400 ريال لأفلام 3M Crystalline للسيارة السيدان (جيب SUV +20%). الأسعار تشمل التركيب الكامل بضمان عمر السيارة.' : '3M tint prices in Jeddah start at 400 SAR for the FX line and reach 2,400 SAR for 3M Crystalline on a sedan (SUV +20%). Prices include full installation with a lifetime warranty.'}</p>
+            <div style={{ overflowX: 'auto', border: '1px solid var(--border)', borderRadius: '12px' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
+                <thead><tr>
+                  <th style={th}>{isAr ? 'خط 3M' : '3M Line'}</th>
+                  <th style={{ ...th, textAlign: 'center' }}>{isAr ? 'سيدان (يبدأ من)' : 'Sedan (from)'}</th>
+                  <th style={{ ...th, textAlign: 'center' }}>{isAr ? 'جيب SUV (يبدأ من)' : 'SUV (from)'}</th>
+                </tr></thead>
+                <tbody>
+                  {rows.map(r => (
+                    <tr key={r.line}>
+                      <td style={{ ...c, fontWeight: 600 }}>{r.line} <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>({r.tier})</span></td>
+                      <td style={{ ...c, textAlign: 'center', color: 'var(--text-secondary)' }}>{r.sedan.toLocaleString(isAr ? 'ar-SA' : 'en-US')} {isAr ? 'ر.س' : 'SAR'}</td>
+                      <td style={{ ...c, textAlign: 'center', color: 'var(--text-secondary)' }}>{r.suv.toLocaleString(isAr ? 'ar-SA' : 'en-US')} {isAr ? 'ر.س' : 'SAR'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.6rem' }}>{isAr ? 'الأسعار تقديرية لعام 2026 وتعتمد على نوع السيارة ودرجة التظليل. للسعر الدقيق اطلب عرض سعر مجاني عبر واتساب.' : 'Estimated 2026 prices; final price depends on the vehicle and tint shade. Request a free WhatsApp quote.'}</p>
+          </section>
+        );
+      })()}
+
       <CrossSellCards currentPage="3m-authorized-dealer" locale={locale} />
 
       {/* CTA */}

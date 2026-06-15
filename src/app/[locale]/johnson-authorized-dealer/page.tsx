@@ -375,6 +375,44 @@ export default async function JohnsonDealerPage({ params }: { params: Promise<{ 
       </section>
 
       {/* Cross-sell — Causal Internal Linking */}
+      {/* ═══ Indexable price table (server-rendered for SEO/AI) ═══ */}
+      {(() => {
+        const c: React.CSSProperties = { padding: '0.7rem 0.9rem', borderBottom: '1px solid var(--border)', textAlign: isAr ? 'right' : 'left' };
+        const th: React.CSSProperties = { ...c, fontWeight: 700, color: 'var(--text)', background: 'var(--surface)' };
+        const rows = [
+          { line: 'Ray Guard', tier: isAr ? 'اقتصادي' : 'Economy', sedan: 600, suv: 720 },
+          { line: 'Renegade', tier: isAr ? 'كلاسيكي' : 'Classic', sedan: 800, suv: 960 },
+          { line: 'Marathon', tier: isAr ? 'نانو سيراميك' : 'Nano-Ceramic', sedan: 1100, suv: 1320 },
+          { line: 'InsulatIR', tier: isAr ? 'نانو سيراميك' : 'Nano-Ceramic', sedan: 1500, suv: 1800 },
+          { line: 'Supreme IR', tier: isAr ? 'الفلاجشيب' : 'Flagship', sedan: 1800, suv: 2160 },
+        ];
+        return (
+          <section style={{ maxWidth: '900px', margin: '3rem auto 0', padding: '0 1.5rem' }} aria-labelledby="prices-johnson">
+            <h2 id="prices-johnson" style={{ marginBottom: '0.75rem' }}>{isAr ? 'كم سعر تظليل جونسون في جدة؟ (أسعار 2026)' : 'How Much Does Johnson Tint Cost in Jeddah? (2026)'}</h2>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>{isAr ? 'تبدأ أسعار تظليل جونسون في جدة من 600 ريال لخط Ray Guard وتصل إلى 1,800 ريال لـ Supreme IR الفلاجشيب للسيارة السيدان (جيب SUV +20%). الأسعار تشمل التركيب الكامل، وضمان عمر السيارة لخطوط Supreme IR و InsulatIR.' : 'Johnson tint prices in Jeddah start at 600 SAR for Ray Guard and reach 1,800 SAR for the flagship Supreme IR on a sedan (SUV +20%). Prices include full installation, with a lifetime warranty on Supreme IR & InsulatIR.'}</p>
+            <div style={{ overflowX: 'auto', border: '1px solid var(--border)', borderRadius: '12px' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
+                <thead><tr>
+                  <th style={th}>{isAr ? 'خط جونسون' : 'Johnson Line'}</th>
+                  <th style={{ ...th, textAlign: 'center' }}>{isAr ? 'سيدان (يبدأ من)' : 'Sedan (from)'}</th>
+                  <th style={{ ...th, textAlign: 'center' }}>{isAr ? 'جيب SUV (يبدأ من)' : 'SUV (from)'}</th>
+                </tr></thead>
+                <tbody>
+                  {rows.map(r => (
+                    <tr key={r.line}>
+                      <td style={{ ...c, fontWeight: 600 }}>{r.line} <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>({r.tier})</span></td>
+                      <td style={{ ...c, textAlign: 'center', color: 'var(--text-secondary)' }}>{r.sedan.toLocaleString(isAr ? 'ar-SA' : 'en-US')} {isAr ? 'ر.س' : 'SAR'}</td>
+                      <td style={{ ...c, textAlign: 'center', color: 'var(--text-secondary)' }}>{r.suv.toLocaleString(isAr ? 'ar-SA' : 'en-US')} {isAr ? 'ر.س' : 'SAR'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.6rem' }}>{isAr ? 'الأسعار تقديرية لعام 2026 وتعتمد على نوع السيارة ودرجة التظليل. للسعر الدقيق اطلب عرض سعر مجاني عبر واتساب.' : 'Estimated 2026 prices; final price depends on the vehicle and tint shade. Request a free WhatsApp quote.'}</p>
+          </section>
+        );
+      })()}
+
       <CrossSellCards currentPage="johnson-authorized-dealer" locale={locale} />
 
       {/* CTA — data-nosnippet (vector density) */}

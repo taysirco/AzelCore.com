@@ -347,6 +347,42 @@ export default async function BuildingInsulationPage({ params }: { params: Promi
         </div>
       </section>
 
+      {/* ═══ Indexable price table (server-rendered for SEO/AI) ═══ */}
+      {(() => {
+        const c: React.CSSProperties = { padding: '0.7rem 0.9rem', borderBottom: '1px solid var(--border)', textAlign: isAr ? 'right' : 'left' };
+        const th: React.CSSProperties = { ...c, fontWeight: 700, color: 'var(--text)', background: 'var(--surface)' };
+        const rows = [
+          { film: isAr ? 'فيلم عاكس (فضي/رمادي)' : 'Reflective (Silver/Grey)', use: isAr ? 'أبراج ومكاتب' : 'Towers & Offices', price: isAr ? 'من 50 ر.س/م²' : 'from 50 SAR/m²' },
+          { film: isAr ? 'نانو سيراميك شفاف' : 'Clear Nano-Ceramic', use: isAr ? 'فلل وواجهات تحافظ على المنظر' : 'Villas & view-preserving facades', price: isAr ? 'من 90 ر.س/م²' : 'from 90 SAR/m²' },
+          { film: isAr ? 'فيلم أمان وحماية' : 'Safety & Security', use: isAr ? 'مدارس ومستشفيات وواجهات أرضية' : 'Schools, hospitals, ground floors', price: isAr ? 'من 120 ر.س/م²' : 'from 120 SAR/m²' },
+        ];
+        return (
+          <section style={{ maxWidth: '900px', margin: '3rem auto 0', padding: '0 1.5rem' }} aria-labelledby="prices-building">
+            <h2 id="prices-building" style={{ marginBottom: '0.75rem' }}>{isAr ? 'كم تكلفة عزل المباني في جدة؟ (أسعار 2026)' : 'How Much Does Building Insulation Cost in Jeddah? (2026)'}</h2>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>{isAr ? 'تبدأ تكلفة عزل المباني وواجهات الزجاج في جدة من نحو 50 ريالاً للمتر المربع، وتختلف حسب نوع الفيلم والمساحة. تُسترد التكلفة عادةً خلال 12–18 شهرًا من توفير فاتورة الكهرباء — فيلا متوسطة تبدأ من ~8,000 ريال، والمباني التجارية تُسعّر حسب مساحة الواجهة.' : 'Building & glass facade insulation in Jeddah starts at about 50 SAR per square meter, depending on film type and area. The cost typically pays back within 12–18 months from electricity savings — a mid-size villa starts from ~8,000 SAR, and commercial buildings are priced by facade area.'}</p>
+            <div style={{ overflowX: 'auto', border: '1px solid var(--border)', borderRadius: '12px' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
+                <thead><tr>
+                  <th style={th}>{isAr ? 'نوع الفيلم' : 'Film Type'}</th>
+                  <th style={th}>{isAr ? 'الأنسب لـ' : 'Best for'}</th>
+                  <th style={{ ...th, textAlign: 'center' }}>{isAr ? 'السعر' : 'Price'}</th>
+                </tr></thead>
+                <tbody>
+                  {rows.map(r => (
+                    <tr key={r.film}>
+                      <td style={{ ...c, fontWeight: 600 }}>{r.film}</td>
+                      <td style={{ ...c, color: 'var(--text-secondary)' }}>{r.use}</td>
+                      <td style={{ ...c, textAlign: 'center', color: 'var(--primary)', fontWeight: 700 }}>{r.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.6rem' }}>{isAr ? 'الأسعار تقديرية لعام 2026. استخدم حاسبة العائد للحصول على تقدير دقيق لمبناك.' : 'Estimated 2026 prices. Use the ROI calculator for a precise estimate for your building.'}</p>
+          </section>
+        );
+      })()}
+
       {/* ═══ Further Reading — Service → Blog (bidirectional internal linking) ═══ */}
       <section aria-labelledby="further-reading-bld" style={{ maxWidth: '900px', margin: '3rem auto 0', padding: '0 1.5rem' }}>
         <h2 id="further-reading-bld" style={{ marginBottom: '1rem' }}>{isAr ? 'اقرأ أيضًا' : 'Further Reading'}</h2>
