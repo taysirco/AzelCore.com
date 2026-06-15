@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'تظليل سيارات جدة — نانو سيراميك + ضمان عمر السيارة' : 'Jeddah Car Tinting — Nano Ceramic + Lifetime Warranty',
-    description: isAr ? 'أفضل تظليل سيارات في جدة بأفلام نانو سيراميك أمريكية من جونسون و 3M. حجب 97% حرارة، ضمان عمر السيارة، لا يحجب الإشارات. وكيل جونسون و 3M المعتمد.' : 'Best car tinting in Jeddah with American nano-ceramic films from Johnson & 3M. 97% heat rejection, lifetime warranty, no signal interference. Authorized dealer.',
+    title: isAr ? 'تظليل سيارات جدة نانو سيراميك — حجب 97% للحرارة' : 'Car Tinting Jeddah — Nano Ceramic, 97% Heat Block',
+    description: isAr ? 'تظليل سيارات جدة بأفلام نانو سيراميك تحجب 97% من الحرارة وضمان مدى الحياة. وكيل 3M وجونسون المعتمد. احجز موعدك الآن.' : 'Car tinting Jeddah with American nano-ceramic film: 97% heat rejection, lifetime warranty, no signal loss. Authorized Johnson & 3M dealer. Free quote now.',
     alternates: getAlternates(locale as Locale, '/car-insulation-jeddah'),
     openGraph: {
       title: isAr ? 'تظليل سيارات جدة — نانو سيراميك' : 'Car Tinting Jeddah — Nano Ceramic',
@@ -316,7 +316,7 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
           <nav className={styles.breadcrumb} aria-label={isAr ? "مسار التنقل" : "Breadcrumb"}>
             <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'تظليل سيارات' : 'Car Tinting'}</span>
           </nav>
-          <h1 className={styles.heroTitle}>{isAr ? 'تظليل سيارات في ' : 'Car Tinting in '}<span className={styles.blueGradient}>{isAr ? 'جدة' : 'Jeddah'}</span></h1>
+          <h1 className={styles.heroTitle}>{isAr ? 'تظليل سيارات ' : 'Car Tinting '}<span className={styles.blueGradient}>{isAr ? 'جدة' : 'Jeddah'}</span>{isAr ? ' نانو سيراميك أمريكي' : ' — American Nano-Ceramic'}</h1>
           <p className={styles.heroSubtitle}>
             {isAr ? <>أفلام نانو سيراميك أمريكية تحجب <strong>97% من الأشعة تحت الحمراء</strong> — ضمان حتى عمر السيارة. وكيل جونسون و 3M المعتمد في جدة.</> : <>American nano-ceramic films rejecting <strong>97% of infrared rays</strong> — lifetime warranty. Authorized Johnson & 3M dealer in Jeddah.</>}
           </p>

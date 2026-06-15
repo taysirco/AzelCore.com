@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'حماية طلاء السيارات PPF جدة — أفلام إكس بيل XPEL الأفضل' : 'PPF Paint Protection Film Jeddah — Best XPEL Protection',
-    description: isAr ? 'أفضل مركز لتركيب أفلام حماية الطلاء PPF في جدة. حماية كاملة للسيارة من الخدوش والرمال باستخدام XPEL Paint Protection Film مع معالجة ذاتية للخدوش.' : 'Top PPF paint protection film near me in Jeddah. Full car protection against scratches and sand using XPEL with self-healing technology.',
+    title: isAr ? 'حماية طلاء السيارات PPF جدة — أفلام XPEL ضمان 10 سنوات' : 'Paint Protection Film (PPF) Jeddah — XPEL 10-Yr Warranty',
+    description: isAr ? 'تركيب أفلام حماية الطلاء PPF في جدة بأفلام XPEL الأصلية وقص كمبيوتر. حماية من الترميل والخدوش وضمان 10 سنوات. احجز تسعيرتك الآن.' : 'Original XPEL PPF paint protection film in Jeddah with computer-cut precision. Self-healing defense against scratches & sand, 10-year warranty. Get a quote now.',
     alternates: getAlternates(locale as Locale, '/paint-protection-film-jeddah'),
     openGraph: {
       title: isAr ? 'حماية طلاء السيارات PPF في جدة' : 'PPF Paint Protection Film in Jeddah',
@@ -309,7 +309,7 @@ export default async function PPFTintingPage({ params }: { params: Promise<{ loc
           <nav className={styles.breadcrumb}>
             <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'حماية الطلاء PPF' : 'Paint Protection Film'}</span>
           </nav>
-          <h1 className={styles.heroTitle}>{isAr ? 'أفلام حماية الطلاء PPF في ' : 'PPF Car Protection in '}<span className={styles.blueGradient}>{isAr ? 'جدة' : 'Jeddah'}</span></h1>
+          <h1 className={styles.heroTitle}>{isAr ? 'حماية طلاء السيارات PPF في ' : 'Paint Protection Film (PPF) in '}<span className={styles.blueGradient}>{isAr ? 'جدة' : 'Jeddah'}</span></h1>
           <p className={styles.heroSubtitle}>
             {isAr ? <>ودّع الخدوش العميقة والترميل. ركّب <strong>XPEL Paint Protection Film</strong> لحماية فيزيائية كاملة مع <strong>معالجة ذاتية</strong> بالحرارة لطلاء سيارتك.</> : <>Say goodbye to deep scratches and sandblasting. Install <strong>XPEL Paint Protection Film</strong> for physical defense with <strong>heat-activated self-healing</strong>.</>}
           </p>

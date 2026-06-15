@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'عزل واجهات زجاج المباني في جدة — وفّر 40% من فاتورة الكهرباء' : 'Building Glass Insulation in Jeddah — Save 40% on Electricity',
-    description: isAr ? 'عزل حراري احترافي لواجهات المباني والفلل في جدة. أفلام نانو سيراميك تحجب 97% حرارة وتوفر 40% من تكاليف التكييف. ضمان 15 سنة.' : 'Professional thermal insulation for building facades and villas in Jeddah. Nano-ceramic films block 97% of heat and save 40% on AC costs. 15-year warranty.',
+    title: isAr ? 'عزل مباني جدة — عزل واجهات زجاج حراري يوفّر 40%' : 'Building Glass Insulation Jeddah — Save 40% on Energy',
+    description: isAr ? 'عزل مباني وواجهات زجاج حراري في جدة بأفلام نانو سيراميك تحجب 97% حرارة وتوفّر 40% كهرباء. ضمان 15 سنة. اطلب معاينة مجانية.' : 'Building & glass facade thermal insulation in Jeddah. Nano-ceramic films block 97% heat, cut AC bills 40%. 15-yr warranty. Free site survey.',
     alternates: getAlternates(locale as Locale, '/building-glass-insulation'),
     openGraph: {
       title: isAr ? 'عزل زجاج واجهات المباني في جدة' : 'Building Glass Insulation in Jeddah',
@@ -147,7 +147,7 @@ export default async function BuildingInsulationPage({ params }: { params: Promi
           <nav className={styles.breadcrumb} aria-label={isAr ? 'مسار التنقل' : 'Breadcrumb'}>
             <Link href={localePath(locale as Locale, '/')}>{isAr ? 'الرئيسية' : 'Home'}</Link> / <span>{isAr ? 'عزل واجهات مباني' : 'Building Facade Insulation'}</span>
           </nav>
-          <h1 className={styles.heroTitle}>{isAr ? 'عزل واجهات ' : 'Building '}<span className={styles.greenGradient}>{isAr ? 'المباني' : 'Facade Insulation'}</span>{isAr ? ' في جدة' : ' in Jeddah'}</h1>
+          <h1 className={styles.heroTitle}>{isAr ? 'عزل ' : 'Building '}<span className={styles.greenGradient}>{isAr ? 'مباني جدة' : 'Glass Facade Insulation'}</span>{isAr ? ' — عزل واجهات الزجاج الحراري' : ' in Jeddah'}</h1>
           <p className={styles.heroSubtitle}>
             {isAr ? 'وفّر ' : 'Save '}<strong>{isAr ? '40% من فاتورة الكهرباء' : '40% on electricity bills'}</strong>{isAr ? ' بأفلام عزل حراري أمريكية — حجب 97% من الحرارة مع الحفاظ على الإضاءة الطبيعية والمنظر الخارجي.' : ' with American thermal insulation films — blocking 97% of heat while maintaining natural lighting and exterior views.'}
           </p>

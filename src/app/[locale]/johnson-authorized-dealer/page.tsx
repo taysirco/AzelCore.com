@@ -12,8 +12,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'وكيل جونسون المعتمد في جدة — Johnson Window Films' : 'Authorized Johnson Dealer in Jeddah — Johnson Window Films',
-    description: isAr ? 'عزل كور الوكيل الرسمي لأفلام جونسون الأمريكية في جدة. Supreme IR يحجب 97% من الأشعة تحت الحمراء. 5 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.' : 'AzelCore is the official authorized dealer for American Johnson Films in Jeddah. Supreme IR blocks 97% of IR. 5 product lines with lifetime warranty. Book now.',
+    title: isAr ? 'وكيل جونسون المعتمد في جدة — عازل وتظليل جونسون الأصلي' : 'Authorized Johnson Dealer Jeddah — Original Window Films',
+    description: isAr ? 'عزل كور وكيل جونسون المعتمد في جدة. Supreme IR يحجب 97% حرارة بضمان عمر السيارة. 5 خطوط أصلية. احجز استشارة مجانية الآن.' : 'AzelCore is the authorized Johnson dealer in Jeddah. Supreme IR blocks 97% heat with lifetime warranty. 5 original lines. Book a free quote now.',
     alternates: getAlternates(locale as Locale, '/johnson-authorized-dealer'),
   };
 }
@@ -221,8 +221,8 @@ export default async function JohnsonDealerPage({ params }: { params: Promise<{ 
             🇺🇸 {isAr ? 'وكيل جونسون المعتمد — AzelCore' : 'Authorized Johnson Dealer — AzelCore'}
           </div>
           <h1 className={styles.heroTitle}>
-            {isAr ? 'أفلام ' : 'American '}<span className={styles.goldGradient}>Johnson Window Films</span>
-            <br />{isAr ? 'الأمريكية في جدة' : 'in Jeddah'}
+            {isAr ? 'وكيل ' : 'Authorized '}<span className={styles.goldGradient}>{isAr ? 'جونسون' : 'Johnson'}</span>{isAr ? ' المعتمد في جدة' : ' Window Films Dealer in Jeddah'}
+            <br />{isAr ? 'عازل وتظليل جونسون الأمريكي الأصلي' : 'Original American Window Films'}
           </h1>
           <p className={styles.heroSubtitle}>
             {isAr ? '5 خطوط إنتاج — من Supreme IR الفلاجشيب بحجب ' : '5 Product Lines — From the Flagship Supreme IR blocking '}<strong>97% IR</strong>{isAr ? ' إلى Ray Guard الاقتصادي. كل فيلم أصلي بشهادة ضمان رسمية.' : ' down to Economy Ray Guard. Every film is original with an official warranty.'}

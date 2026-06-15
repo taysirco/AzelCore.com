@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'وكيل 3M المعتمد في جدة — 3M Window Films' : 'Authorized 3M Dealer in Jeddah — 3M Window Films',
-    description: isAr ? 'عزل كور الوكيل الرسمي لأفلام 3M الأمريكية في جدة. Crystalline يحجب 97% من الأشعة تحت الحمراء مع 99.9% حجب UV. 4 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.' : 'AzelCore is the official authorized dealer for American 3M Films in Jeddah. Crystalline blocks 97% of IR with 99.9% UV block. 4 product lines with lifetime warranty. Book now.',
+    title: isAr ? 'تظليل 3M الأمريكي في جدة — وكيل 3M المعتمد' : '3M Car Tint Jeddah — Authorized 3M Dealer',
+    description: isAr ? 'وكيل 3M المعتمد في جدة. تظليل 3M كريستالين يحجب 97% حرارة و99.9% UV بضمان عمر السيارة. أسعار وخطوط 3M الأصلية. احجز الآن.' : 'AzelCore is the authorized 3M dealer in Jeddah. 3M Crystalline tint blocks 97% heat & 99.9% UV with a lifetime warranty. Original 3M lines & pricing. Book now.',
     alternates: getAlternates(locale as Locale, '/3m-authorized-dealer'),
   };
 }
@@ -200,8 +200,8 @@ export default async function ThreeMDealerPage({ params }: { params: Promise<{ l
             🇺🇸 {isAr ? 'وكيل 3M المعتمد — AzelCore' : 'Authorized 3M Dealer — AzelCore'}
           </div>
           <h1 className={styles.heroTitle}>
-            {isAr ? 'أفلام ' : 'American '}<span className={styles.redGradient}>3M Window Films</span>
-            <br />{isAr ? 'الأمريكية في جدة' : 'in Jeddah'}
+            {isAr ? 'تظليل ' : '3M '}<span className={styles.redGradient}>3M</span>{isAr ? ' الأمريكي في جدة' : ' Window Tint in Jeddah'}
+            <br />{isAr ? 'وكيل 3M المعتمد' : 'Authorized 3M Dealer'}
           </h1>
           <p className={styles.heroSubtitle}>
             {isAr ? '4 خطوط إنتاج — من Crystalline الفلاجشيب بـ 200+ طبقة نانو وحجب ' : '4 Product Lines — From the Flagship Crystalline with 200+ nano layers blocking '}<strong>97% IR + 99.9% UV</strong>{isAr ? ' إلى FX الاقتصادي. كل فيلم أصلي بتغليف المصنع الأمريكي.' : ' down to the Economy FX. Every film is original in American factory packaging.'}

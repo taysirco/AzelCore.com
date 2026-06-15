@@ -10,8 +10,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'حاسبة تكلفة عزل وتظليل السيارات' : 'Car Insulation & Tinting Cost Calculator',
-    description: isAr ? 'احسب التكلفة التقديرية لعزل وتظليل سيارتك في جدة (نانو سيراميك، 3M، لومار). أداة ذكية لمعرفة الأسعار التقريبية قبل الحجز.' : 'Calculate the estimated cost for insulating and tinting your car in Jeddah (Nano Ceramic, 3M, Johnson). A smart tool to get approximate prices before booking.',
+    title: isAr ? 'أسعار تظليل السيارات في جدة 2026 + حاسبة التكلفة' : 'Car Tint Prices Jeddah 2026 + Cost Calculator',
+    description: isAr ? 'احسب أسعار تظليل السيارات في جدة فوراً: نانو سيراميك، 3M وجونسون حسب حجم سيارتك. حاسبة مجانية بأسعار 2026. أرسل تسعيرتك واتساب الآن.' : 'Calculate car tinting prices in Jeddah instantly: nano-ceramic, 3M & Johnson by car size. Free 2026 price calculator. Send your quote on WhatsApp now.',
     alternates: getAlternates(locale as Locale, '/calculator'),
   };
 }
@@ -43,7 +43,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getCalculatorSchema(isAr)) }} />
       <section className={styles.hero}>
         <div className={styles.container}>
-          <h1 className={styles.title}>{isAr ? 'حاسبة تكلفة العزل' : 'Insulation Cost Calculator'}</h1>
+          <h1 className={styles.title}>{isAr ? 'أسعار وحاسبة تكلفة تظليل وعزل السيارات في جدة' : 'Car Tint Prices & Cost Calculator in Jeddah'}</h1>
           <p className={styles.subtitle}>
             {isAr ? 'احسب التكلفة التقديرية لتظليل وعزل سيارتك في ثوانٍ.' : 'Calculate the estimated cost to tint and insulate your car in seconds.'}
           </p>
