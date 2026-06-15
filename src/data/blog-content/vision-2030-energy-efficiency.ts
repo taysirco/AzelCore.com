@@ -49,6 +49,11 @@ const article: ArticleModule = {
       { q: 'كيف يساعد عزل الزجاج في الحصول على شهادة LEED؟', qEn: 'How does glass insulation help in getting LEED certification?', a: 'عزل الزجاج يمنح المبنى 3-7 نقاط في فئة Energy & Atmosphere ضمن تقييم LEED. وهو من أسرع الحلول تنفيذاً وأقلها تكلفة مقارنة بتغيير أنظمة التكييف أو العزل الإنشائي.', aEn: 'Glass insulation grants the building 3-7 points in the Energy & Atmosphere category within the LEED evaluation. It is one of the fastest solutions to implement and lowest in cost compared to changing AC systems or structural insulation.' },
       { q: 'هل يوجد دعم حكومي لعزل المباني القائمة؟', qEn: 'Is there government support for insulating existing buildings?', a: 'برنامج "كفاءة" يدعم حلول توفير الطاقة. بعض أمانات المدن تقدم تسهيلات للمباني الملتزمة بمعايير SBC 601. التأمين على المباني التجارية يكون أرخص مع وجود شهادة كفاءة الطاقة.', aEn: 'The "Kafa\'ah" program supports energy-saving solutions. Some city municipalities provide facilities for buildings complying with SBC 601 standards. Commercial building insurance is cheaper with an energy efficiency certificate.' },
     ],
+    sources: [
+      { label: 'كود البناء السعودي (SBC)', labelEn: 'Saudi Building Code (SBC)', url: 'https://sbc.gov.sa/' },
+      { label: 'رؤية السعودية 2030', labelEn: 'Saudi Vision 2030', url: 'https://www.vision2030.gov.sa/' },
+      { label: 'المركز السعودي لكفاءة الطاقة (SEEC)', labelEn: 'Saudi Energy Efficiency Center (SEEC)', url: 'https://www.seec.gov.sa/' },
+    ],
     warning: 'المباني غير الملتزمة بمعايير SBC 601 بعد 2025 قد تواجه غرامات مالية وتأخيراً في إصدار رخص التشغيل والتجديد. عزل الزجاج بالفيلم هو أسرع وأرخص طريقة للامتثال — بدون تكسير أو إيقاف نشاط المبنى.', warningEn: 'Buildings non-compliant with SBC 601 standards after 2025 may face financial fines and delays in issuing and renewing operating permits. Glass film insulation is the fastest and cheapest way to comply — without breaking or halting building activity.',
     cta: 'ساهم في أهداف رؤية 2030 ووفّر آلاف الريالات. احصل على تقييم حراري مجاني لمبناك من خبراء عزل كور.', ctaEn: 'Contribute to Vision 2030 goals and save thousands of Riyals. Get a free thermal assessment for your building from AzelCore experts.',
   },

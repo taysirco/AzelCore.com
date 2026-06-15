@@ -210,6 +210,9 @@ export default async function LocaleLayout({
       </head>
       <body>
         <ThemeProvider>
+          <a href="#main-content" className="skip-link">
+            {locale === 'ar' ? 'تخطَّ إلى المحتوى' : 'Skip to content'}
+          </a>
           {/* ═══ data-nosnippet: Vector Density Forcing ═══ */}
           <div data-nosnippet>
             <Header locale={locale} />

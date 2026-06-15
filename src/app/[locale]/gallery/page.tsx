@@ -11,9 +11,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'معرض أعمالنا — تظليل سيارات وعزل مباني في جدة' : 'معرض أعمالنا — تظليل سيارات وعزل مباني في جدة | AzelCore',
-    description: isAr ? 'شاهد أعمالنا في تظليل السيارات وعزل واجهات المباني في جدة. صور حقيقية قبل وبعد — أفلام جونسون و 3M الأمريكية.' : 'شاهد أعمالنا في تظليل السيارات وعزل واجهات المباني في جدة. صور حقيقية قبل وبعد — أفلام جونسون و 3M الأمريكية.',
-    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/gallery')}` },
+    title: isAr ? 'معرض أعمالنا — تظليل سيارات وعزل مباني في جدة' : 'Our Work Gallery — Car Tinting & Building Insulation in Jeddah',
+    description: isAr ? 'شاهد أعمالنا في تظليل السيارات وعزل واجهات المباني في جدة. صور حقيقية قبل وبعد — أفلام جونسون و 3M الأمريكية.' : "See AzelCore's real before/after work tinting cars and insulating building facades in Jeddah — genuine American Johnson & 3M films.",
+    alternates: getAlternates(locale as Locale, '/gallery'),
   };
 }
 

@@ -23,7 +23,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: isAr ? 'حماية طلاء السيارات PPF جدة — أفلام إكس بيل XPEL الأفضل' : 'PPF Paint Protection Film Jeddah — Best XPEL Protection | AzelCore',
     description: isAr ? 'أفضل مركز لتركيب أفلام حماية الطلاء PPF في جدة. حماية كاملة للسيارة من الخدوش والرمال باستخدام XPEL Paint Protection Film مع معالجة ذاتية للخدوش.' : 'Top PPF paint protection film near me in Jeddah. Full car protection against scratches and sand using XPEL with self-healing technology.',
-    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/(local-jeddah)/paint-protection-film-jeddah')}` },
+    alternates: getAlternates(locale as Locale, '/paint-protection-film-jeddah'),
+    openGraph: {
+      title: isAr ? 'حماية طلاء السيارات PPF في جدة' : 'PPF Paint Protection Film in Jeddah',
+      description: isAr ? 'أفلام XPEL ذاتية المعالجة لحماية طلاء سيارتك من الخدوش والرمال.' : 'Self-healing XPEL film protecting your car paint from scratches and sand.',
+      url: `${SITE_URL}${localePath(locale as Locale, '/paint-protection-film-jeddah')}`,
+      images: [{ url: `${SITE_URL}/api/og?title=${encodeURIComponent(isAr ? 'حماية طلاء PPF جدة' : 'PPF Paint Protection Jeddah')}&type=car`, width: 1200, height: 630 }],
+    },
     keywords: isAr ? 'ppf, حماية الطلاء ppf, xpel paint protection film, حماية سيارات, افلام الحماية ppf' : 'ppf, paint protection film, paint protection film near me, ppf near me, xpel paint protection film, ppf car, ppf car protection',
   };
 }
@@ -151,12 +157,6 @@ const getGraphSchema = (isAr: boolean) => {
       ],
       sameAs: ['https://www.instagram.com/azelcore'],
       parentOrganization: { '@id': `${SITE_URL}/#organization` },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        ratingCount: '89',
-        bestRating: '5',
-      },
       potentialAction: {
         '@type': 'ReserveAction',
         target: {
@@ -189,7 +189,7 @@ const getGraphSchema = (isAr: boolean) => {
       },
       founder: {
         '@type': 'Person',
-        name: OWNER_NAME, OWNER_NAME_EN,
+        name: isAr ? OWNER_NAME : OWNER_NAME_EN,
         jobTitle: OWNER_TITLE,
       },
       contactPoint: {
@@ -457,6 +457,16 @@ export default async function PPFTintingPage({ params }: { params: Promise<{ loc
             reviewDate="2026-05-15"
           />
         </div>
+      </section>
+
+      {/* ═══ Further Reading — Service → Blog (bidirectional internal linking) ═══ */}
+      <section aria-labelledby="further-reading-ppf" style={{ maxWidth: '900px', margin: '3rem auto 0', padding: '0 1.5rem' }}>
+        <h2 id="further-reading-ppf" style={{ marginBottom: '1rem' }}>{isAr ? 'اقرأ أيضًا' : 'Further Reading'}</h2>
+        <ul style={{ display: 'grid', gap: '0.75rem', listStyle: 'none', padding: 0, margin: 0 }}>
+          <li><Link href={localePath(locale as Locale, '/blog/ppf-vs-ceramic-coating')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'PPF مقابل النانو سيراميك — أيهما أفضل؟ ←' : 'PPF vs Ceramic Coating — Which Is Better? ←'}</Link></li>
+          <li><Link href={localePath(locale as Locale, '/blog/ppf-vs-car-polish-paint-damage')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'PPF مقابل تلميع السيارة وحماية الطلاء ←' : 'PPF vs Car Polish & Paint Damage ←'}</Link></li>
+          <li><Link href={localePath(locale as Locale, '/blog/computer-cut-vs-manual-ppf-jeddah')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'القص الكمبيوتري مقابل اليدوي في PPF ←' : 'Computer-Cut vs Manual PPF ←'}</Link></li>
+        </ul>
       </section>
 
       <CrossSellCards currentPage="paint-protection-film-jeddah" locale={locale as Locale} />

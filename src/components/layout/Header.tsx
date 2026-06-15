@@ -267,7 +267,7 @@ export default function Header({ locale = 'ar' }: HeaderProps) {
       </header>
 
       {/* ═══ Mobile Drawer Menu ═══ */}
-      <div className={`${styles.overlay} ${menuOpen ? styles.overlayVisible : ''}`} onClick={closeMenu} />
+      <div className={`${styles.overlay} ${menuOpen ? styles.overlayVisible : ''}`} onClick={closeMenu} aria-hidden="true" />
       <nav
         ref={menuRef}
         className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`}

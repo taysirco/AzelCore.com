@@ -107,6 +107,10 @@ const article: ArticleModule = {
       { q: 'لماذا يفشل التظليل درجة 02 في الفحص الدوري أحياناً؟', qEn: 'Why does shade 02 tint sometimes fail periodic inspection?', a: 'لأن الزجاج الأصلي للوكالة يحتوي مسبقاً على نسبة تعتيم خفيفة. إضافة تظليل بنسبة 30% يجعله يتخطى الحد المسموح. يجب حساب الشفافية الإجمالية بدقة قبل التركيب.', aEn: 'Because the original factory glass already contains a light dimming percentage. Adding a 30% tint pushes it over the allowed limit. Total transparency must be accurately calculated before installation.' },
       { q: 'هل المظلات الشمسية القابلة للإزالة تعتبر مخالفة؟', qEn: 'Are removable sunshades considered a violation?', a: 'نعم، أثناء القيادة يُمنع وضع أي حواجز أو مظلات على النوافذ تعيق الرؤية. يمكن استخدامها فقط أثناء وقوف السيارة التام للحماية من الشمس.', aEn: 'Yes, while driving it is prohibited to place any barriers or sunshades on the windows that obstruct vision. They can only be used while the car is completely parked to protect from the sun.' }
     ],
+    sources: [
+      { label: 'الهيئة السعودية للمواصفات والمقاييس والجودة (SASO)', labelEn: 'Saudi Standards, Metrology and Quality Org. (SASO)', url: 'https://www.saso.gov.sa/' },
+      { label: 'وزارة الداخلية — الإدارة العامة للمرور', labelEn: 'Ministry of Interior — General Department of Traffic', url: 'https://www.moi.gov.sa/' },
+    ],
     warning: 'احذر من التظليل العاكس للضوء (المرايا) أو التظليل الملون (مثل الأزرق والأحمر الفاقع) والرسومات الزخرفية على الزجاج. جميعها تُعد مخالفات مرورية صريحة تستوجب الإزالة الفورية والغرامة المالية المغلظة، وتعيق الرؤية الليلية بشكل خطير يؤدي للحوادث.',
     warningEn: 'Beware of light-reflective tint (mirrors) or brightly colored tint (like blue and red) and decorative decals on the glass. All of these are explicit traffic violations requiring immediate removal and a hefty financial fine, and they severely impair night vision leading to accidents.',
     cta: 'تريد تظليلاً بارداً وقانونياً بنسبة 100% يجنبك غرامات المرور والفشل في الفحص الدوري؟ تواصل فوراً مع خبراء عزل كور بجدة للحصول على استشارة مجانية وتحديد الدرجات المناسبة لنوع سيارتك بدقة.',

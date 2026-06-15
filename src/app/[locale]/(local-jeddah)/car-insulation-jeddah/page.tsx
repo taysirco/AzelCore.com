@@ -31,7 +31,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: isAr ? 'تظليل سيارات جدة — نانو سيراميك + ضمان عمر السيارة' : 'Jeddah Car Tinting — Nano Ceramic + Lifetime Warranty | AzelCore',
     description: isAr ? 'أفضل تظليل سيارات في جدة بأفلام نانو سيراميك أمريكية من جونسون و 3M. حجب 97% حرارة، ضمان عمر السيارة، لا يحجب الإشارات. وكيل جونسون و 3M المعتمد.' : 'Best car tinting in Jeddah with American nano-ceramic films from Johnson & 3M. 97% heat rejection, lifetime warranty, no signal interference. Authorized dealer.',
-    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/(local-jeddah)/car-insulation-jeddah')}` },
+    alternates: getAlternates(locale as Locale, '/car-insulation-jeddah'),
+    openGraph: {
+      title: isAr ? 'تظليل سيارات جدة — نانو سيراميك' : 'Car Tinting Jeddah — Nano Ceramic',
+      description: isAr ? 'حجب 97% حرارة وضمان عمر السيارة — وكيل جونسون و 3M المعتمد.' : '97% heat rejection, lifetime warranty — authorized Johnson & 3M dealer.',
+      url: `${SITE_URL}${localePath(locale as Locale, '/car-insulation-jeddah')}`,
+      images: [{ url: `${SITE_URL}/api/og?title=${encodeURIComponent(isAr ? 'تظليل سيارات جدة' : 'Car Tinting Jeddah')}&type=car`, width: 1200, height: 630 }],
+    },
   };
 }
 
@@ -116,12 +122,6 @@ const getGraphSchema = (isAr: boolean) => {
         'https://www.instagram.com/azelcore',
       ],
       parentOrganization: { '@id': `${SITE_URL}/#organization` },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        ratingCount: '127',
-        bestRating: '5',
-      },
       // ── Agentic Schema: ReserveAction ──
       potentialAction: {
         '@type': 'ReserveAction',
@@ -495,6 +495,16 @@ export default async function CarTintingPage({ params }: { params: Promise<{ loc
             reviewDate="2026-05-01"
           />
         </div>
+      </section>
+
+      {/* ═══ Further Reading — Service → Blog (bidirectional internal linking) ═══ */}
+      <section aria-labelledby="further-reading-car" style={{ maxWidth: '900px', margin: '3rem auto 0', padding: '0 1.5rem' }}>
+        <h2 id="further-reading-car" style={{ marginBottom: '1rem' }}>{isAr ? 'اقرأ أيضًا' : 'Further Reading'}</h2>
+        <ul style={{ display: 'grid', gap: '0.75rem', listStyle: 'none', padding: 0, margin: 0 }}>
+          <li><Link href={localePath(locale as Locale, '/blog/tint-laws-saudi-2026')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'قوانين تظليل السيارات في السعودية 2026 ←' : 'Saudi Car Tinting Laws 2026 ←'}</Link></li>
+          <li><Link href={localePath(locale as Locale, '/blog/nano-ceramic-vs-carbon-vs-3m')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'نانو سيراميك مقابل كربوني مقابل 3M ←' : 'Nano Ceramic vs Carbon vs 3M ←'}</Link></li>
+          <li><Link href={localePath(locale as Locale, '/blog/best-car-tint-jeddah-2026')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'أفضل محل تظليل سيارات في جدة 2026 ←' : 'Best Car Tinting Shop in Jeddah 2026 ←'}</Link></li>
+        </ul>
       </section>
 
       {/* ═══ Cross-sell — Causal Internal Linking ═══ */}

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Locale, localePath } from '@/lib/i18n';
+import { Locale } from '@/lib/i18n';
 import { getAlternates } from '@/lib/seo';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_NAME_EN, OWNER_TITLE, VAT_ID, CRN } from '@/lib/constants';
 import ServiceSummary from '@/components/seo/ServiceSummary';
@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: isAr ? 'وكيل 3M المعتمد في جدة — 3M Window Films' : 'Authorized 3M Dealer in Jeddah — 3M Window Films | AzelCore',
     description: isAr ? 'عزل كور الوكيل الرسمي لأفلام 3M الأمريكية في جدة. Crystalline يحجب 97% من الأشعة تحت الحمراء مع 99.9% حجب UV. 4 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.' : 'AzelCore is the official authorized dealer for American 3M Films in Jeddah. Crystalline blocks 97% of IR with 99.9% UV block. 4 product lines with lifetime warranty. Book now.',
-    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/3m-authorized-dealer')}` },
+    alternates: getAlternates(locale as Locale, '/3m-authorized-dealer'),
   };
 }
 
@@ -152,18 +152,6 @@ const getGraphSchema = (isAr: boolean) => ({
           '@type': 'Reservation',
           name: isAr ? 'حجز موعد تظليل 3M' : 'Book 3M Tinting Appointment',
         },
-      },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '64',
-        bestRating: '5',
-      },
-      review: {
-        '@type': 'Review',
-        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-        author: { '@type': 'Person', name: isAr ? 'عبدالله القرشي' : 'Abdullah Al-Qurashi' },
-        reviewBody: isAr ? 'ركبت Crystalline CR70 على الأمامي — الفرق خيالي. الحرارة انخفضت بشكل واضح والزجاج تقريباً شفاف.' : 'Installed Crystalline CR70 on my windshield — the difference is unreal. Heat dropped significantly and the glass is nearly transparent.',
       },
     },
     {

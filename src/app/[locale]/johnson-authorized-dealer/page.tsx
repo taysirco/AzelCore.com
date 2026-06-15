@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Locale, localePath } from '@/lib/i18n';
+import { Locale } from '@/lib/i18n';
 import { getAlternates } from '@/lib/seo';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, PHONE, OWNER_NAME, OWNER_TITLE, VAT_ID, CRN } from '@/lib/constants';
 import ServiceSummary from '@/components/seo/ServiceSummary';
@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: isAr ? 'وكيل جونسون المعتمد في جدة — Johnson Window Films' : 'Authorized Johnson Dealer in Jeddah — Johnson Window Films | AzelCore',
     description: isAr ? 'عزل كور الوكيل الرسمي لأفلام جونسون الأمريكية في جدة. Supreme IR يحجب 97% من الأشعة تحت الحمراء. 5 خطوط إنتاج — ضمان عمر السيارة. احجز الآن.' : 'AzelCore is the official authorized dealer for American Johnson Films in Jeddah. Supreme IR blocks 97% of IR. 5 product lines with lifetime warranty. Book now.',
-    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/johnson-authorized-dealer')}` },
+    alternates: getAlternates(locale as Locale, '/johnson-authorized-dealer'),
   };
 }
 
@@ -169,18 +169,6 @@ const getGraphSchema = (isAr: boolean) => ({
           '@type': 'Reservation',
           name: isAr ? 'حجز موعد تظليل جونسون' : 'Book Johnson Tint Appointment',
         },
-      },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '89',
-        bestRating: '5',
-      },
-      review: {
-        '@type': 'Review',
-        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-        author: { '@type': 'Person', name: isAr ? 'محمد الزهراني' : 'Mohammed Al-Zahrani' },
-        reviewBody: isAr ? 'ركبت Supreme IR على لكزس — فرق الحرارة واضح من أول يوم. الضمان مكتوب والشغل نظيف.' : 'Installed Supreme IR on a Lexus — the heat difference is clear from day one. Written warranty and clean work.',
       },
     },
     {

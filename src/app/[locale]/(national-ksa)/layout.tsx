@@ -11,6 +11,7 @@ export default function NationalKsaLayout({
   children: React.ReactNode;
 }) {
   const nationalServiceSchema = {
+    "@context": "https://schema.org",
     ...schemaConfigs.nationalService,
     "@id": `${SITE_URL}/building-glass-insulation/#service`,
     "provider": {

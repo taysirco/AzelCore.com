@@ -98,6 +98,9 @@ const article: ArticleModule = {
       text: 'النانو سيراميك منتج رائع لسهولة الغسيل واللمعان الخيالي — ونحن نستخدمه يومياً. لكن يجب أن نكون صادقين مع العميل: عمره الحقيقي في مناخنا السعودي هو 2-3 سنوات كحد أقصى مع استخدام صيانة دورية (Booster) كل 6 أشهر. نرفض أن نبيع وهم \"الضمان مدى الحياة\" — لأن العميل سيكتشف الحقيقة بعد سنة ويفقد الثقة. الصدق مع العميل هو أفضل ضمان.',
       textEn: 'Nano Ceramic is an amazing product for easy washing and incredible shine — and we use it daily. But we must be honest with the client: its real lifespan in our Saudi climate is 2-3 years maximum with periodic maintenance (Booster) every 6 months. We refuse to sell the \"lifetime warranty\" illusion — because the client will discover the truth after a year and lose trust. Honesty with the client is the best warranty.'
     },
+    sources: [
+      { label: 'الجمعية الدولية لأفلام النوافذ (IWFA)', labelEn: 'International Window Film Association (IWFA)', url: 'https://www.iwfa.com/' },
+    ],
     warning: 'احذر من المراكز التي تبيع \"10 طبقات نانو سيراميك\" بأسعار مبالغ فيها. كيميائياً، السطح يتشبع بعد الطبقة الثالثة — أي طبقات إضافية يتم مسحها بالفوطة أثناء التلميع. اسأل عن اسم المنتج ونسبة SiO2 فيه — وليس عن عدد الطبقات. إذا لم يستطع المركز الإجابة = منتج مجهول.',
     warningEn: 'Beware of centers selling \"10 layers of Nano Ceramic\" at inflated prices. Chemically, the surface saturates after the 3rd layer — any additional layers are wiped off by the towel during buffing. Ask about the product name and its SiO2 percentage — not the number of layers. If the center can\'t answer = unknown product.',
     cta: 'تعرف على باقات النانو سيراميك الصادقة لدينا — نقدم جدول صيانة شفاف مع كل باقة + جلسة Booster مجانية بعد 6 أشهر.',

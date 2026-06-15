@@ -24,7 +24,6 @@ export const schemaConfigs = {
     priceRange: "$$",
     openingHours: "Sa-Th 08:00-22:00",
     paymentAccepted: "Cash, Credit Card, Apple Pay, Mada",
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "0" },
   },
 
   // صومعة المباني (national-ksa)

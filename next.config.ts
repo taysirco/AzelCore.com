@@ -32,12 +32,7 @@ const nextConfig: NextConfig = {
           { key: 'X-Permitted-Cross-Domain-Policies', value: 'none' },
           { key: 'Cross-Origin-Resource-Policy', value: 'same-site' },
           { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
-          { key: 'Content-Security-Policy', value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; frame-src https://maps.google.com https://www.google.com https://maps.googleapis.com; connect-src 'self' https://api.open-meteo.com; object-src 'none'; base-uri 'self'; form-action 'self'" },
-          // ═══ Module 4: Bot Hypnosis — Server-Timing ═══
-          // Signals optimal edge-cache performance to crawl bots
-          { key: 'Server-Timing', value: 'edge;desc="Firebase CDN";dur=0.8, cache;desc="HIT";dur=0, render;desc="SSG";dur=1.2' },
-          { key: 'X-Edge-Cache', value: 'HIT' },
-          { key: 'X-Served-By', value: 'Firebase App Hosting - KSA Edge' },
+          { key: 'Content-Security-Policy', value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; frame-src https://maps.google.com https://www.google.com https://maps.googleapis.com; connect-src 'self' https://api.open-meteo.com; object-src 'none'; base-uri 'self'; form-action 'self'" },
         ],
       },
       // ═══ RFC 8288 — Link Response Headers for Agent Discovery (Homepage) ═══
@@ -65,20 +60,6 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/.well-known/agent-skills/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=86400, s-maxage=604800' },
-          { key: 'Access-Control-Allow-Origin', value: '*' },
-        ],
-      },
-      {
-        source: '/.well-known/openid-configuration',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=86400, s-maxage=604800' },
-          { key: 'Access-Control-Allow-Origin', value: '*' },
-        ],
-      },
-      {
-        source: '/.well-known/oauth-protected-resource',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=86400, s-maxage=604800' },
           { key: 'Access-Control-Allow-Origin', value: '*' },
@@ -168,17 +149,13 @@ const nextConfig: NextConfig = {
         destination: '/:path+',
         permanent: true,
       },
-      // Legacy URL 301s — edge-level (faster than page-level permanentRedirect)
-      {
-        source: '/thermal-cars',
-        destination: '/car-insulation-jeddah',
-        permanent: true,
-      },
-      {
-        source: '/thermal-windows',
-        destination: '/building-glass-insulation',
-        permanent: true,
-      },
+      // Legacy URL 301s — edge-level, all locale variants (single hop, no duplicate HTML)
+      { source: '/thermal-cars', destination: '/car-insulation-jeddah', permanent: true },
+      { source: '/ar/thermal-cars', destination: '/car-insulation-jeddah', permanent: true },
+      { source: '/en/thermal-cars', destination: '/en/car-insulation-jeddah', permanent: true },
+      { source: '/thermal-windows', destination: '/building-glass-insulation', permanent: true },
+      { source: '/ar/thermal-windows', destination: '/building-glass-insulation', permanent: true },
+      { source: '/en/thermal-windows', destination: '/en/building-glass-insulation', permanent: true },
     ];
   },
 };

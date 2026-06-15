@@ -49,8 +49,7 @@
       "mada"
     ],
     "authentication": {
-      "type": "none",
-      "discovery": "https://azelcore.com/.well-known/openid-configuration"
+      "type": "none"
     }
   },
   "merchant": {

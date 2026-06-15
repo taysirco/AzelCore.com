@@ -52,6 +52,9 @@ const article: ArticleModule = {
       { q: 'سيارتي فيها تظليل وإشارة الجوال ضعيفة — كيف أتأكد أن السبب هو التظليل؟', qEn: 'My car is tinted and mobile signal is weak — how can I confirm the tint is the cause?', a: 'اختبر قوة الإشارة مع نافذة مفتوحة ثم مغلقة في نفس الموقع. إذا تحسنت الإشارة بشكل ملحوظ عند فتح النافذة = فيلمك معدني. الحل: إزالة المعدني وتركيب نانو سيراميك.', aEn: 'Test the signal strength with an open window then closed in the same location. If the signal significantly improves when the window is open = your film is metalized. Solution: remove metalized and install nano-ceramic.' },
       { q: 'لماذا بعض المحلات لا تزال تستخدم الأفلام المعدنية؟', qEn: 'Why do some shops still use metalized films?', a: 'لأنها أرخص بكثير في التكلفة (الفيلم المعدني يكلف التاجر 30-50 ريالاً للرول مقابل 200-400 ريال للنانو سيراميك). بعض المحلات تبيعه على أنه "نانو" لتحقيق هامش ربح عالٍ.', aEn: 'Because they are much cheaper in cost (metalized film costs the merchant 30-50 SAR per roll versus 200-400 SAR for nano-ceramic). Some shops sell it as "nano" to achieve a high profit margin.' },
     ],
+    sources: [
+      { label: 'الجمعية الدولية لأفلام النوافذ (IWFA)', labelEn: 'International Window Film Association (IWFA)', url: 'https://www.iwfa.com/' },
+    ],
     warning: 'بعض المحلات تبيع فيلماً "نانو سيراميك" لكنه في الحقيقة معدني مخلوط. اطلب ورقة المواصفات (Datasheet) وتأكد أن خانة "Metallic Content" = 0%. أي نسبة معدن مهما كانت ضئيلة = حجب إشارات.', warningEn: 'Some shops sell a "nano-ceramic" film that is actually a metal blend. Ask for the Datasheet and ensure the "Metallic Content" = 0%. Any metal percentage, no matter how small = signal interference.',
     cta: 'تريد تظليلاً بأقصى حجب حراري وصفر تداخل مع إشارات 5G؟ تواصل مع عزل كور بجدة.', ctaEn: 'Want a tint with maximum heat rejection and zero 5G signal interference? Contact AzelCore in Jeddah.',
   },

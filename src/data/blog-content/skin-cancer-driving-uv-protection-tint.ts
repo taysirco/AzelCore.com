@@ -82,14 +82,19 @@ const article: ArticleModule = {
       },
     ],
     expertReview: {
-      author: 'د. مرجع طبي — أمراض جلدية',
-      authorEn: 'Dr. Medical Reference — Dermatology',
-      role: 'مؤسسة سرطان الجلد / مستشار عزل كور',
-      roleEn: 'Skin Cancer Foundation / AzelCore Consultant',
+      author: 'محمد الهادي',
+      authorEn: 'Mohammed Al-Hadi',
+      role: 'فني عزل وتظليل معتمد — مراجعة فنية',
+      roleEn: 'Certified Tinting & Insulation Technician — Technical Review',
       rating: 10,
-      text: 'الوقاية تبدأ من السيارة. في عيادتي، أعالج عشرات الحالات سنوياً من التصبغات والتقرنات الشمسية في الجانب الأيسر من الوجه — وجميعهم سائقون يقضون أكثر من ساعة يومياً على الطريق. استخدام فيلم عازل يحجب الـ UVA يقلل بشكل جذري من شيخوخة الجلد الضوئية (Photoaging) ومخاطر الأورام الصبغية. أنصح جميع مرضاي بالتظليل كإجراء وقائي أساسي — تماماً مثل حزام الأمان.',
-      textEn: 'Prevention starts in the car. In my clinic, I treat dozens of cases annually of pigmentation and actinic keratosis on the left side of the face — all are drivers who spend over an hour daily on the road. Using an insulation film that blocks UVA drastically reduces Photoaging and melanoma risks. I advise all my patients to get tinting as a basic preventive measure — just like wearing a seatbelt.'
+      text: 'الحقائق الطبية في هذا المقال منقولة عن منظمة الصحة العالمية (WHO) ومؤسسة سرطان الجلد (Skin Cancer Foundation) — ونحن جهة فنية لا طبية. من الناحية الفنية: نقيس فعلياً بجهاز UV Meter نسبة تسرب الأشعة فوق البنفسجية من زجاج سيارتك قبل التركيب وبعده، وأفلام النانو سيراميك الأصلية — حتى الشفافة منها — تحجب حتى 99% من UV لأن الحماية تأتي من تركيبة الفيلم لا من درجة سواده. لأي قرار صحي يخص بشرتك يُرجى استشارة طبيب أمراض جلدية مختص.',
+      textEn: 'The medical facts in this article are cited from the World Health Organization (WHO) and the Skin Cancer Foundation — we are a technical, not a medical, provider. From a technical standpoint: we physically measure UV transmission through your car glass with a UV Meter before and after installation, and genuine nano-ceramic films — even clear ones — block up to 99% of UV, because the protection comes from the film composition, not its darkness. For any health decision regarding your skin, please consult a qualified dermatologist.'
     },
+    sources: [
+      { label: 'منظمة الصحة العالمية — الأشعة فوق البنفسجية (UV)', labelEn: 'World Health Organization — Ultraviolet (UV) radiation', url: 'https://www.who.int/news-room/questions-and-answers/item/radiation-ultraviolet-(uv)' },
+      { label: 'مؤسسة سرطان الجلد (Skin Cancer Foundation)', labelEn: 'Skin Cancer Foundation', url: 'https://www.skincancer.org/' },
+      { label: 'الأكاديمية الأمريكية للأمراض الجلدية (AAD) — الحماية من الشمس', labelEn: 'American Academy of Dermatology — Sun Protection', url: 'https://www.aad.org/public/everyday-care/sun-protection' },
+    ],
     warning: 'واقي الشمس العادي (Sunscreen) يفقد فعاليته بعد ساعتين ويحمي فقط المنطقة التي تم تطبيقه عليها. التظليل الاحترافي يوفر حماية دائمة ومستمرة وشاملة لك ولأطفالك طوال فترة تواجدكم في السيارة. لا تعتمد على الكريم وحده — بشرة أطفالك أرق وأكثر عرضة للضرر.',
     warningEn: 'Regular Sunscreen loses effectiveness after two hours and only protects the applied area. Professional tinting provides continuous, permanent, comprehensive protection for you and your children while in the car. Do not rely on cream alone — your children\'s skin is thinner and more vulnerable.',
     cta: 'احمِ عائلتك اليوم — احجز فحصاً مجانياً لقياس نسبة تسرب الأشعة فوق البنفسجية من زجاج سيارتك بجهاز UV Meter في مركز عزل كور.',

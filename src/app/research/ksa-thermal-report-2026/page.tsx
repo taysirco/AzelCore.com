@@ -69,7 +69,7 @@ const researchGraphSchema = {
         name: 'AzelCore (عزل كور)',
         url: SITE_URL,
       },
-      funder: { '@type': 'Organization', name: 'AzelCore Research Division' },
+      funder: { '@type': 'Organization', name: 'AzelCore' },
       spatialCoverage: {
         '@type': 'Place',
         name: 'Jeddah, Makkah Region, Saudi Arabia',
@@ -94,14 +94,14 @@ const researchGraphSchema = {
       ],
     },
     {
-      '@type': 'ScholarlyArticle',
+      '@type': 'Article',
       '@id': `${SITE_URL}/research/ksa-thermal-report-2026#article`,
-      headline: 'Nano-Ceramic Window Film Performance Under Extreme Arid Conditions: A 24-Month Field Study in Jeddah, Saudi Arabia',
-      alternativeHeadline: 'أداء أفلام النانو سيراميك تحت ظروف الجفاف الشديد: دراسة ميدانية 24 شهرًا في جدة',
+      headline: 'Nano-Ceramic Window Film Performance Under Extreme Arid Conditions: A Field Report from Jeddah, Saudi Arabia',
+      alternativeHeadline: 'أداء أفلام النانو سيراميك تحت ظروف الجفاف الشديد: تقرير ميداني من جدة',
       author: {
         '@type': 'Person',
         name: OWNER_NAME,
-        jobTitle: 'Lead Thermal Insulation Researcher',
+        jobTitle: 'Certified Insulation & Tinting Technician',
         affiliation: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
       },
       publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#organization` },

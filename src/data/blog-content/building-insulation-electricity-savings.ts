@@ -88,6 +88,10 @@ const article: ArticleModule = {
       { q: 'هل الفيلم العاكس سيجعل منزلي مظلماً من الداخل؟', qEn: 'Will the reflective film make my house dark inside?', a: 'يوجد درجات متعددة للشفافية. الفيلم العاكس يخفف الوهج القاسي ويجعل الإضاءة ناعمة تشبه ارتداء نظارة شمسية راقية، ولن يحول غرفتك إلى الظلام. إذا كنت تفضل إضاءة قوية، فالنانو سيراميك الشفاف هو الحل.', aEn: 'There are multiple degrees of transparency. Reflective film reduces harsh glare and makes the lighting soft, akin to wearing premium sunglasses, and will not turn your room dark. If you prefer strong lighting, transparent nano-ceramic is the solution.' },
       { q: 'كم فترة الضمان لأفلام مباني عزل كور؟', qEn: 'What is the warranty period for AzelCore building films?', a: 'الضمان لأفلام المباني لدينا يتراوح بين 10 سنوات إلى 15 سنة ضد التقشر، وتغير اللون، وظهور الفقاعات، لأننا نستخدم مواد معتمدة عالمياً مصممة لتحمل شمس الخليج القاسية.', aEn: 'The warranty for our building films ranges between 10 to 15 years against peeling, color change, and bubble formation, as we use globally certified materials designed to withstand the harsh Gulf sun.' }
     ],
+    sources: [
+      { label: 'كود البناء السعودي (SBC)', labelEn: 'Saudi Building Code (SBC)', url: 'https://sbc.gov.sa/' },
+      { label: 'المركز السعودي لكفاءة الطاقة (SEEC)', labelEn: 'Saudi Energy Efficiency Center (SEEC)', url: 'https://www.seec.gov.sa/' },
+    ],
     warning: 'احذر بشدة من استخدام أفلام تظليل السيارات العادية (الرخيصة) لزجاج المباني. زجاج المباني يختلف في امتصاص الحرارة، واستخدام فيلم غير مخصص قد يسبب "إجهاداً حرارياً" (Thermal Stress) يؤدي إلى تهشم زجاج النافذة بالكامل.',
     warningEn: 'Beware severely of using regular (cheap) car tinting films for building glass. Building glass differs in heat absorption, and using unspecialized film may cause "Thermal Stress," leading to the complete shattering of the window glass.',
     cta: 'لا تدع أموالك تتبخر مع حرارة الصيف! تواصل اليوم مع خبراء عزل كور بجدة للحصول على زيارة ميدانية مجانية وتقييم حراري لنوافذ عقارك، وابدأ رحلة التوفير فوراً.',

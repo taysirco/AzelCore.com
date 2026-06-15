@@ -11,6 +11,7 @@ export default function LocalJeddahLayout({
   children: React.ReactNode;
 }) {
   const localBusinessSchema = {
+    "@context": "https://schema.org",
     ...schemaConfigs.localBusiness,
     "@id": `${SITE_URL}/car-insulation-jeddah/#localbusiness`,
     "parentOrganization": {

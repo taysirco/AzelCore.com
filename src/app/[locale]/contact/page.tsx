@@ -39,12 +39,6 @@ const getContactSchema = (isAr: boolean) => ({
           name: 'Commercial Registration (CR)',
           value: CRN,
         },
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.9',
-          ratingCount: '127',
-          bestRating: '5',
-        },
         potentialAction: {
           '@type': 'ReserveAction',
           target: {

@@ -10,7 +10,6 @@ export * from './company-info';
 
 // دعم المحتوى
 export * from './comparison-tables';
-export * from './meta-templates';
 export * from './quick-answers';
 export * from './pricing-tiers';
 export * from './process-steps';

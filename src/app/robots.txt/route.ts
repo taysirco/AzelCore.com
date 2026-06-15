@@ -18,7 +18,10 @@ Disallow: /_next/
 Disallow: /admin/
 
 # ═══ Content Signals (IETF draft-romm-aipref-contentsignals) ═══
-Content-Signal: ai-train=no, search=yes, ai-input=no
+# search=yes: allow classic search indexing
+# ai-input=yes: ALLOW AI answer engines to ground/cite this content (GEO/AEO goal)
+# ai-train=no: do not use this content for model training
+Content-Signal: ai-train=no, search=yes, ai-input=yes
 
 User-agent: GPTBot
 Allow: /blog/
@@ -99,11 +102,11 @@ Disallow: /api/reindex/
 Disallow: /contact/
 Disallow: /admin/
 
-# ═══ Aggressive scrapers — full block ═══
+# ═══ Bulk training scrapers — blocked (consistent with ai-train=no) ═══
+# Note: ClaudeBot, GPTBot, Google-Extended, PerplexityBot, ChatGPT-User are
+# allowed above so the site can be cited in AI answers. CCBot (Common Crawl)
+# and Bytespider are bulk crawlers blocked to honor the no-training preference.
 User-agent: CCBot
-Disallow: /
-
-User-agent: anthropic-ai
 Disallow: /
 
 User-agent: Bytespider

@@ -16,7 +16,11 @@ export default async function LiveReviews({ locale = 'ar' }: { locale?: string }
   const dict = getDictionary(locale as Locale);
   const isAr = locale === 'ar';
 
-  const aggregateSchema = {
+  // Only emit AggregateRating/Review structured data when it comes from the
+  // verifiable Google Places API. Emitting ratings from hardcoded fallback data
+  // would be self-serving review markup (a Google structured-data policy violation).
+  const isVerified = source === 'google-api';
+  const aggregateSchema = isVerified ? {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': `${SITE_URL}/#reviews`,
@@ -33,13 +37,14 @@ export default async function LiveReviews({ locale = 'ar' }: { locale?: string }
       author: { '@type': 'Person', name: r.authorName },
       reviewRating: { '@type': 'Rating', ratingValue: r.rating.toString() },
       reviewBody: r.text,
-      datePublished: '2026-04-15',
     })),
-  };
+  } : null;
 
   return (
     <section className={styles.reviews} aria-label={dict.liveReviews.ariaLabel}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateSchema) }} />
+      {aggregateSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateSchema) }} />
+      )}
       
       <div className={styles.container}>
         <div className={styles.header}>

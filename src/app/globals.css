@@ -228,6 +228,34 @@ ul, ol { list-style: none; }
   /* Drop will-change after animation completes to free GPU memory */
   will-change: auto;
 }
+/* No-JS / scripting disabled: reveal all content immediately so below-the-fold
+   sections are never stuck at opacity:0 when JS fails or hydration is slow. */
+@media (scripting: none) {
+  .sr-hidden { opacity: 1; transform: none; }
+}
+
+/* ─── Accessibility: visible keyboard focus (WCAG 2.4.7) + skip link (2.4.1) ─── */
+:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+.skip-link {
+  position: absolute;
+  top: -120px;
+  inset-inline-start: 1rem;
+  z-index: 2000;
+  background: var(--primary);
+  color: #fff;
+  padding: 0.6rem 1.1rem;
+  border-radius: 0 0 8px 8px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.2s var(--ease-out);
+}
+.skip-link:focus {
+  top: 0;
+}
 
 /* ─── Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {

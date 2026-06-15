@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, OWNER_NAME, OWNER_NAME_EN, OWNER_TITLE } from '@/lib/constants';
 import { blogTopics, type BlogTopic } from '@/data/blog-topics';
 import { articles, articleSlugs } from '@/data/blog-content';
+import { getArticleDate } from '@/data/blog-dates';
 import { Locale, localePath } from '@/lib/i18n';
 import { getAlternates } from '@/lib/seo';
 import AuthorProfile from '@/components/seo/AuthorProfile';
@@ -113,7 +114,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
   const topic = getTopicBySlug(slug);
   const rawTitle = isAr ? topic?.titleAr : (topic as any)?.titleEn || topic?.titleAr;
   const title = rawTitle || slug;
-  const date = '2026-05-01';
+  const { published: pubDate, modified: modDate } = getArticleDate(slug);
 
   const introStr = !isAr && content.introEn ? content.introEn : content.intro;
   const ctaStr = !isAr && content.ctaEn ? content.ctaEn : content.cta;
@@ -145,8 +146,8 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
           url: `${SITE_URL}${locale === 'ar' ? '' : '/en'}/johnson-authorized-dealer`
         },
         publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME, logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/azelcore-logo.webp` } },
-        datePublished: date,
-        dateModified: date,
+        datePublished: pubDate,
+        dateModified: modDate,
         mainEntityOfPage: `${SITE_URL}${locale === 'ar' ? '' : '/en'}/blog/${slug}`,
         image: `${SITE_URL}/images/${article.ogImage}`,
         inLanguage: locale,
@@ -201,6 +202,26 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
     else categoryStr = isAr ? 'معلوماتي' : 'Information';
   }
 
+  // ── Citations (machine-readable) from authoritative sources ──
+  if (content.sources && content.sources.length > 0) {
+    articleGraphSchema['@graph'][0].citation = content.sources.map((s: { label: string; labelEn?: string; url: string }) => ({
+      '@type': 'CreativeWork',
+      name: !isAr && s.labelEn ? s.labelEn : s.label,
+      url: s.url,
+    }));
+  }
+
+  // ── Related articles (same intent first, then fill) — bidirectional internal linking ──
+  const relatedSlugs = (() => {
+    const others = articleSlugs.filter((s) => s !== slug);
+    if (topic) {
+      const sameIntent = others.filter((s) => getTopicBySlug(s)?.intent === topic.intent);
+      const rest = others.filter((s) => !sameIntent.includes(s));
+      return [...sameIntent, ...rest].slice(0, 3);
+    }
+    return others.slice(0, 3);
+  })();
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleGraphSchema) }} />
@@ -217,9 +238,14 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
 
         <div className={styles.meta}>
           {topic && <span className={styles.category}>{categoryStr}</span>}
-          <time className={styles.date} dateTime={date}>
-            {new Date(date).toLocaleDateString(isAr ? 'ar-SA' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          <time className={styles.date} dateTime={pubDate}>
+            {new Date(pubDate).toLocaleDateString(isAr ? 'ar-SA' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
+          {modDate !== pubDate && (
+            <time className={styles.date} dateTime={modDate}>
+              {isAr ? 'آخر تحديث: ' : 'Updated: '}{new Date(modDate).toLocaleDateString(isAr ? 'ar-SA' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+          )}
         </div>
 
         <h1 id={`article-${slug}-title`} className={styles.title}>{title}</h1>
@@ -302,6 +328,22 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
             </div>
           )}
 
+          {/* Authoritative Sources / References (YMYL E-E-A-T + AI citation) */}
+          {content.sources && content.sources.length > 0 && (
+            <div className={styles.ctaBox} style={{ textAlign: 'start' }}>
+              <h3>{isAr ? 'المصادر والمراجع' : 'Sources & References'}</h3>
+              <ul>
+                {content.sources.map((s: { label: string; labelEn?: string; url: string }, i: number) => (
+                  <li key={i} style={{ marginBottom: '0.5rem' }}>
+                    <a href={s.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', fontWeight: 600 }}>
+                      {!isAr && s.labelEn ? s.labelEn : s.label} ↗
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {/* Internal Links → Services (Link Equity Pyramid) */}
           {serviceLinks.length > 0 && (
             <div className={styles.ctaBox} style={{ textAlign: 'start' }} data-nosnippet>
@@ -334,7 +376,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
               expertTitle={!isAr && content.expertReview.roleEn ? content.expertReview.roleEn : content.expertReview.role}
               organization={SITE_NAME}
               quote={!isAr && content.expertReview.textEn ? content.expertReview.textEn : content.expertReview.text}
-              reviewDate={date}
+              reviewDate={modDate}
             />
           ) : (
             <AuthorProfile
@@ -345,12 +387,31 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
               quote={isAr 
                 ? "المعلومات الواردة في هذا الدليل مبنية على خبرتنا الميدانية وتطبيقنا لمعايير الجودة السعودية (SASO). احرص دائماً على التعامل مع وكيل معتمد لضمان النتيجة." 
                 : "The information in this guide is based on our field experience and application of Saudi quality standards (SASO). Always deal with an authorized agent to guarantee results."}
-              reviewDate={date}
+              reviewDate={modDate}
             />
           )}
         </div>
 
-        <Link href={`/${locale}/blog`} className={styles.backLink}>
+        {relatedSlugs.length > 0 && (
+          <section aria-labelledby="related-heading" style={{ marginTop: '2.5rem' }}>
+            <h2 id="related-heading" style={{ marginBottom: '1rem' }}>{isAr ? 'مقالات ذات صلة' : 'Related Articles'}</h2>
+            <ul style={{ display: 'grid', gap: '0.75rem', listStyle: 'none', padding: 0, margin: 0 }}>
+              {relatedSlugs.map((s) => {
+                const t = getTopicBySlug(s);
+                const rTitle = t ? (isAr ? t.titleAr : (t.titleEn || t.titleAr)) : s;
+                return (
+                  <li key={s}>
+                    <Link href={localePath(locale as Locale, `/blog/${s}`)} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>
+                      {rTitle} ←
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
+
+        <Link href={localePath(locale as Locale, '/blog')} className={styles.backLink} style={{ marginTop: '2rem', display: 'inline-block' }}>
           {isAr ? '→ العودة للمدونة' : '→ Back to Blog'}
         </Link>
       </article>

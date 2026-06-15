@@ -1,23 +1,14 @@
 import { MetadataRoute } from 'next';
 import { jeddahDistricts, ksaCities } from '@/data/local-jeddah';
+import { articleSlugs } from '@/data/blog-content';
+import { getArticleDate } from '@/data/blog-dates';
 import { SITE_URL } from '@/lib/constants';
 
-// Static last-modified date — update manually after significant content changes
-const LAST_MODIFIED = '2026-05-15';
+// Static last-modified date — update after significant content changes
+const LAST_MODIFIED = '2026-06-15';
 
-// Blog article slugs (must match blog/[slug]/page.tsx generateStaticParams)
-const blogSlugs = [
-  'tint-laws-saudi-2026',
-  'nano-ceramic-vs-carbon-vs-3m',
-  'best-car-tint-jeddah-2026',
-  'building-insulation-electricity-savings',
-  'how-to-spot-fake-tint',
-  'ppf-vs-ceramic-coating',
-  'jeddah-heat-car-damage',
-  'tint-signal-interference',
-  'vision-2030-energy-efficiency',
-  'car-tint-maintenance-guide',
-];
+// Blog article slugs — single source of truth (same list generateStaticParams uses)
+const blogSlugs = articleSlugs;
 
 /**
  * Helper function to generate deep, bidirectional hreflang entries
@@ -74,9 +65,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     createI18nEntries(`/building-glass-insulation/${c.id}`, { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.8 })
   );
 
-  // Blog article pages
-  const blogPages: MetadataRoute.Sitemap = blogSlugs.flatMap(slug => 
-    createI18nEntries(`/blog/${slug}`, { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 })
+  // Blog article pages — real per-article modified date (freshness signal)
+  const blogPages: MetadataRoute.Sitemap = blogSlugs.flatMap(slug =>
+    createI18nEntries(`/blog/${slug}`, { lastModified: getArticleDate(slug).modified, changeFrequency: 'monthly', priority: 0.7 })
   );
 
   return [...staticPages, ...districtPages, ...cityPages, ...blogPages];

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getPageMarkdown } from '@/lib/page-markdown';
 
 /**
  * Edge Middleware — i18n Locale Detection + Firebase Geo Personalization + Markdown Content Negotiation
@@ -39,6 +40,7 @@ const LOCALE_EXEMPT_PATHS = [
   '/openapi.json',
   '/.well-known/',
   '/manifest',
+  '/research', // app-root route (not under [locale]) — must not be rewritten to /ar/*
 ];
 
 function isJeddahUser(request: NextRequest): boolean {
@@ -249,37 +251,53 @@ Premium American nano-ceramic films rejecting **97% of Infrared Heat** with a li
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // ═══ Skip locale-exempt paths (static assets, API, etc.) ═══
-  if (isLocaleExempt(pathname)) {
-    return NextResponse.next();
-  }
-
-  // ═══ Markdown Content Negotiation ═══
+  // ═══ Markdown Content Negotiation (token-efficient variants for AI agents) ═══
+  // Runs BEFORE the locale-exempt check so app-root routes (e.g. /research) can serve markdown.
   const acceptHeader = request.headers.get('accept') || '';
-  if ((pathname === '/' || pathname === '/ar' || pathname === '/ar/' || pathname === '/en' || pathname === '/en/') && acceptHeader.includes('text/markdown')) {
-    const isEn = pathname.startsWith('/en');
-    const markdown = getHomepageMarkdown(isEn);
-    const tokenCount = markdown.split(/\s+/).length;
-    
-    return new NextResponse(markdown, {
+  if (acceptHeader.includes('text/markdown')) {
+    const mdHeaders = (md: string) => ({
       status: 200,
       headers: {
         'Content-Type': 'text/markdown; charset=utf-8',
-        'x-markdown-tokens': tokenCount.toString(),
+        'x-markdown-tokens': md.split(/\s+/).length.toString(),
         'Cache-Control': 'public, max-age=86400, s-maxage=604800',
       },
     });
+
+    // Homepage
+    if (pathname === '/' || pathname === '/ar' || pathname === '/ar/' || pathname === '/en' || pathname === '/en/') {
+      const markdown = getHomepageMarkdown(pathname.startsWith('/en'));
+      return new NextResponse(markdown, mdHeaders(markdown));
+    }
+
+    // Key money pages (service / dealer / research) — normalize locale prefix
+    const isEn = pathname === '/en' || pathname.startsWith('/en/');
+    let clean = pathname.replace(/^\/(ar|en)(?=\/|$)/, '');
+    if (clean === '') clean = '/';
+    if (clean.length > 1 && clean.endsWith('/')) clean = clean.slice(0, -1);
+    const pageMd = getPageMarkdown(clean, isEn);
+    if (pageMd) {
+      return new NextResponse(pageMd, mdHeaders(pageMd));
+    }
+  }
+
+  // ═══ Skip locale-exempt paths (static assets, API, app-root routes like /research) ═══
+  if (isLocaleExempt(pathname)) {
+    return NextResponse.next();
   }
 
   // ═══ Locale Detection ═══
   const pathLocale = getPathLocale(pathname);
 
-  // If path starts with /ar, we MUST redirect it to the root to avoid duplicate content
+  // If path starts with /ar, we MUST redirect it to the root to avoid duplicate content.
+  // 308 (permanent) so Google consolidates the duplicate /ar/* prefix onto the
+  // prefix-less canonical. (The cookie-based →/en redirect below stays 307 — it is
+  // personalization, not a permanent move.)
   if (pathLocale === 'ar') {
     const newPath = pathname.replace(/^\/ar(\/|$)/, '/');
     const redirectUrl = new URL(newPath, request.url);
     redirectUrl.search = request.nextUrl.search;
-    const response = NextResponse.redirect(redirectUrl, 307);
+    const response = NextResponse.redirect(redirectUrl, 308);
     response.headers.set('Cache-Control', 'no-store, max-age=0');
     response.cookies.set('x-locale', 'ar', {
       httpOnly: false,

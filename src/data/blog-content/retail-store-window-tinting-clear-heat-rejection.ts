@@ -92,6 +92,10 @@ const article: ArticleModule = {
       text: 'عملنا مع أكثر من 120 محلاً تجارياً في جدة. النتيجة المتكررة: العميل يسترد تكلفة العزل بالكامل خلال أول صيف. المانيكان، الملابس الفاخرة، والمواد الغذائية كانت تتلف بسرعة بسبب الـ UV. حجب 99.9% من هذه الأشعة يحمي استثمارات المعرض ويقلل الهدر المالي بشكل ملحوظ. نقدم لكل عميل تجاري تقريراً هندسياً يحسب العائد على الاستثمار (ROI) قبل التنفيذ.',
       textEn: 'We have worked with over 120 commercial stores in Jeddah. The recurring result: the client recovers the full insulation cost during the first summer. Mannequins, luxury clothes, and food spoil rapidly due to UV. Blocking 99.9% protects showroom investments and significantly reduces financial waste. We provide every commercial client with an engineering report calculating ROI before execution.'
     },
+    sources: [
+      { label: 'الجمعية الدولية لأفلام النوافذ (IWFA)', labelEn: 'International Window Film Association (IWFA)', url: 'https://www.iwfa.com/' },
+      { label: 'كود البناء السعودي (SBC)', labelEn: 'Saudi Building Code (SBC)', url: 'https://sbc.gov.sa/' },
+    ],
     warning: 'احذر من أفلام التظليل التجارية الرخيصة التي تعد بالشفافية ولكنها تعتمد على امتصاص الحرارة (Heat Absorption) بدل عكسها (Heat Reflection). هذا النوع يخزن الحرارة في الزجاج مما قد يؤدي إلى تكسر حراري (Thermal Breakage) — خاصة في الزجاج الملون أو المعالج. تأكد أن الفيلم المستخدم يحمل شهادة IWFA وأنه من نوع Reflective وليس Absorptive.',
     warningEn: 'Beware of cheap commercial tint films that promise transparency but rely on Heat Absorption instead of Heat Reflection. This type stores heat in the glass, potentially causing Thermal Breakage — especially in tinted or treated glass. Ensure the film used carries IWFA certification and is Reflective type, not Absorptive.',
     cta: 'اطلب تقريراً هندسياً مجانياً يحسب العائد على الاستثمار (ROI) لعزل واجهة محلك التجاري — مع قياسات حرارية دقيقة قبل وبعد.',

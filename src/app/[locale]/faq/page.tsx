@@ -10,9 +10,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === 'ar';
   return {
-    title: isAr ? 'الأسئلة الشائعة — تظليل سيارات وعزل مباني في جدة' : 'Frequently Asked Questions — Car Tinting & Building Insulation in Jeddah | AzelCore',
+    title: isAr ? 'الأسئلة الشائعة — تظليل سيارات وعزل مباني في جدة' : 'Car Tinting & Building Insulation FAQ — Jeddah',
     description: isAr ? 'إجابات شاملة عن تظليل السيارات وعزل المباني في جدة — قوانين التظليل، الأسعار، الفرق بين الأفلام، الضمان، والمزيد.' : 'Comprehensive answers about car tinting and building insulation in Jeddah — tinting laws, prices, film differences, warranty, and more.',
-    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/faq')}` },
+    alternates: getAlternates(locale as Locale, '/faq'),
   };
 }
 

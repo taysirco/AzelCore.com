@@ -56,18 +56,23 @@ const article: ArticleModule = {
       }
     ],
     expertReview: {
-      author: 'د. استشاري جلدية / م. أحمد سالم',
-      authorEn: 'Dr. Dermatologist / Eng. Ahmed Salem',
-      role: 'مراجعة مشتركة طبية وهندسية',
-      roleEn: 'Joint Medical & Engineering Review',
+      author: 'محمد الهادي',
+      authorEn: 'Mohammed Al-Hadi',
+      role: 'فني عزل وتظليل معتمد — مراجعة فنية',
+      roleEn: 'Certified Tinting & Insulation Technician — Technical Review',
       rating: 10,
-      text: 'في العيادات الجلدية، نرى بوضوح الضرر الناتج عن قيادة السيارات غير المظللة. التظليل ليس فقط لراحة المكيف، بل هو "وصفة طبية وقائية". كمهندس أؤكد لكم: أي فيلم تظليل أصلي (حتى الدرجة الشفافة 00) سيوفر نسبة الحماية الطبية 99.9%. السر ليس في السواد، بل في تركيبة البوليستر المعالج.',
-      textEn: 'In dermatology clinics, we clearly see the damage caused by driving untinted cars. Tinting is not just for AC comfort; it is a "preventative medical prescription." As an engineer, I assure you: any original tint film (even the clear 00 shade) will provide the 99.9% medical protection rate. The secret is not in the darkness, but in the treated polyester composition.'
+      text: 'من الناحية الفنية: أي فيلم تظليل أصلي — حتى الدرجة الشفافة 00 — يحجب حتى 99% من الأشعة فوق البنفسجية، لأن الحماية تأتي من تركيبة البوليستر المعالَج وطبقات النانو لا من درجة السواد. أما المعلومات الصحية المتعلقة بالجلد والعين فمصدرها جهات طبية متخصصة (منظمة الصحة العالمية ومؤسسة سرطان الجلد)؛ لأي تقييم صحي يُرجى استشارة طبيب مختص.',
+      textEn: 'From a technical standpoint: any genuine tint film — even the clear 00 shade — blocks up to 99% of UV, because the protection comes from the treated polyester and nano layers, not from how dark it is. Health information about skin and eyes is sourced from specialized medical bodies (the World Health Organization and the Skin Cancer Foundation); for any health assessment, please consult a qualified physician.'
     },
     faqs: [
       { q: 'هل التظليل الشفاف تماماً (00) يحمي من سرطان الجلد؟', qEn: 'Does a completely clear tint (00) protect against skin cancer?', a: 'نعم، قطعياً! الحماية من الأشعة فوق البنفسجية (UV) لا تعتمد على درجة قتامة الفيلم. الأفلام الشفافة جداً المخصصة للزجاج الأمامي مثل 3M Crystalline تحجب 99.9% من أشعة UV تماماً مثل الأفلام الكاتمة.', aEn: 'Yes, absolutely! Protection from Ultraviolet (UV) rays does not depend on the film\'s darkness shade. Ultra-clear films dedicated to the windshield like 3M Crystalline block 99.9% of UV rays exactly like the darkest films.' },
       { q: 'هل واقي الشمس (الكريم) يغني عن التظليل؟', qEn: 'Does Sunscreen (cream) substitute for tinting?', a: 'واقي الشمس الكيميائي (Cream) يحتاج لتجديد كل ساعتين، ويفقد فاعليته مع التعرق، ومن الصعب وضعه يومياً لكل المشاوير. التظليل الأصلي هو "واقي شمس فيزيائي دائم ومجاني" يغطي كل من في السيارة دون أي مجهود يومي.', aEn: 'Chemical Sunscreen (Cream) requires reapplication every two hours, loses effectiveness with sweat, and is tedious to apply daily for every trip. Original tint is a "Permanent and Free Physical Sunblock" that covers everyone in the car without any daily effort.' },
       { q: 'هل الأفلام التجارية الرخيصة توفر هذه الحماية؟', qEn: 'Do cheap commercial films provide this protection?', a: 'غالباً لا. الأفلام التجارية تركز على "تغيير لون الزجاج" بصبغات رخيصة ولا تهتم بمرشحات الـ UV المكلفة. الأسوأ أن الفيلم الداكن الرخيص يجعل بؤبؤ العين يتسع (ظناً منه أنه في الظلام)، مما يسمح بمرور كمية أكبر من الأشعة فوق البنفسجية الضارة لداخل العين!', aEn: 'Mostly no. Commercial films focus on "changing the glass color" with cheap dyes and don\'t care about expensive UV filters. Worse, a cheap dark film causes the eye\'s pupil to dilate (thinking it\'s in the dark), allowing a larger amount of harmful UV rays to pass deep into the eye!' }
+    ],
+    sources: [
+      { label: 'منظمة الصحة العالمية — الأشعة فوق البنفسجية (UV)', labelEn: 'World Health Organization — Ultraviolet (UV) radiation', url: 'https://www.who.int/news-room/questions-and-answers/item/radiation-ultraviolet-(uv)' },
+      { label: 'مؤسسة سرطان الجلد (Skin Cancer Foundation)', labelEn: 'Skin Cancer Foundation', url: 'https://www.skincancer.org/' },
+      { label: 'الأكاديمية الأمريكية للأمراض الجلدية (AAD) — الحماية من الشمس', labelEn: 'American Academy of Dermatology — Sun Protection', url: 'https://www.aad.org/public/everyday-care/sun-protection' },
     ],
     warning: 'الخطر الأكبر هو تركيب تظليل تجاري كاتم (03) رخيص. السواد يقلل الضوء المرئي مما يجعل "بؤبؤ عين" أطفالك يتسع بشكل طبيعي. لأن الفيلم الرخيص لا يحجب أشعة (UV) غير المرئية، ستعبر هذه الأشعة المدمرة بكميات مضاعفة مباشرة إلى شبكية العين المتسعة! لا تساوم على صحة عائلتك.',
     warningEn: 'The biggest danger is installing cheap, dark (03) commercial tint. The darkness reduces visible light causing your children\'s "eye pupils" to naturally dilate. Because cheap film doesn\'t block invisible (UV) rays, these destructive rays will enter in double amounts directly into the dilated retina! Do not compromise your family\'s health.',

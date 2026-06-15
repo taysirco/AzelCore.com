@@ -31,6 +31,13 @@ export interface ArticleReview {
   textEn?: string;
 }
 
+/** Authoritative external source/citation (for YMYL E-E-A-T + AI citation) */
+export interface ArticleSource {
+  label: string;
+  labelEn?: string;
+  url: string;
+}
+
 export interface ArticleData {
   /** AEO Highlights: 40-60 words max, extremely dense */
   quickAnswer?: string;
@@ -47,7 +54,10 @@ export interface ArticleData {
   
   /** Trust signal review box */
   expertReview?: ArticleReview;
-  
+
+  /** Authoritative external sources/citations (rendered as a References section) */
+  sources?: ArticleSource[];
+
   warning?: string;
   warningEn?: string;
   cta: string;

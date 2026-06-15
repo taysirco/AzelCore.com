@@ -25,7 +25,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: isAr ? 'عزل واجهات زجاج المباني في جدة — وفّر 40% من فاتورة الكهرباء' : 'Building Glass Insulation in Jeddah — Save 40% on Electricity | AzelCore',
     description: isAr ? 'عزل حراري احترافي لواجهات المباني والفلل في جدة. أفلام نانو سيراميك تحجب 97% حرارة وتوفر 40% من تكاليف التكييف. ضمان 15 سنة.' : 'Professional thermal insulation for building facades and villas in Jeddah. Nano-ceramic films block 97% of heat and save 40% on AC costs. 15-year warranty.',
-    alternates: { canonical: `${SITE_URL}${localePath(locale as Locale, '/(national-ksa)/building-glass-insulation')}` },
+    alternates: getAlternates(locale as Locale, '/building-glass-insulation'),
+    openGraph: {
+      title: isAr ? 'عزل زجاج واجهات المباني في جدة' : 'Building Glass Insulation in Jeddah',
+      description: isAr ? 'وفّر حتى 40% من فاتورة الكهرباء — عزل حراري متوافق مع كود البناء السعودي.' : 'Save up to 40% on electricity — thermal insulation compliant with the Saudi Building Code.',
+      url: `${SITE_URL}${localePath(locale as Locale, '/building-glass-insulation')}`,
+      images: [{ url: `${SITE_URL}/api/og?title=${encodeURIComponent(isAr ? 'عزل زجاج المباني' : 'Building Glass Insulation')}&type=building`, width: 1200, height: 630 }],
+    },
   };
 }
 
@@ -59,7 +65,7 @@ const getGraphSchema = (isAr: boolean) => {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': ['Product', 'Service', 'B2BService' as string],
+      '@type': 'Service',
       '@id': `${SITE_URL}/building-glass-insulation#service`,
       name: isAr ? 'عزل واجهات زجاج المباني — جدة والمملكة' : 'Building Glass Insulation — Jeddah & KSA',
       image: `${SITE_URL}/images/hero-building-glass-insulation.webp`,
@@ -89,12 +95,6 @@ const getGraphSchema = (isAr: boolean) => {
           '@type': 'Reservation',
           name: isAr ? 'حجز معاينة عزل مباني' : 'Book Building Insulation Inspection',
         },
-      },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        ratingCount: '38',
-        bestRating: '5',
       },
     },
     {
@@ -342,6 +342,16 @@ export default async function BuildingInsulationPage({ params }: { params: Promi
             })}
           </div>
         </div>
+      </section>
+
+      {/* ═══ Further Reading — Service → Blog (bidirectional internal linking) ═══ */}
+      <section aria-labelledby="further-reading-bld" style={{ maxWidth: '900px', margin: '3rem auto 0', padding: '0 1.5rem' }}>
+        <h2 id="further-reading-bld" style={{ marginBottom: '1rem' }}>{isAr ? 'اقرأ أيضًا' : 'Further Reading'}</h2>
+        <ul style={{ display: 'grid', gap: '0.75rem', listStyle: 'none', padding: 0, margin: 0 }}>
+          <li><Link href={localePath(locale as Locale, '/blog/building-insulation-electricity-savings')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'كم توفّر فاتورة الكهرباء بعزل المباني؟ ←' : 'How Much Do You Save on Electricity? ←'}</Link></li>
+          <li><Link href={localePath(locale as Locale, '/blog/vision-2030-energy-efficiency')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'كفاءة الطاقة ورؤية 2030 ←' : 'Energy Efficiency & Vision 2030 ←'}</Link></li>
+          <li><Link href={localePath(locale as Locale, '/blog/commercial-building-tint-jeddah')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'عزل المباني التجارية في جدة ←' : 'Commercial Building Insulation in Jeddah ←'}</Link></li>
+        </ul>
       </section>
 
       <CrossSellCards currentPage="building-glass-insulation" locale={locale} />

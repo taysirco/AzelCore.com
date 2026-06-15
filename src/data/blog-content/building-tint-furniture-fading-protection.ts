@@ -90,6 +90,10 @@ const article: ArticleModule = {
       text: 'شاهدنا خسائر بعشرات الآلاف في أثاث منازل بجدة بسبب واجهات زجاجية غير معزولة. في مشروع واحد فقط بحي الشاطئ، كان العميل قد خسر سجاداً إيرانياً بقيمة 45,000 ريال خلال سنتين فقط. تركيب طبقة عزل نانو سيراميك شفافة مرة واحدة يحمي الديكور مدى الحياة ويخفض فاتورة التكييف بنسبة تصل لـ 25%. القاعدة الذهبية: ابدأ بعزل النوافذ المواجهة للغرب والجنوب — فهي تستقبل 60% من الإشعاع الحراري اليومي.',
       textEn: 'We have seen tens of thousands in furniture losses in Jeddah homes due to uninsulated glass facades. In just one project in Al-Shati district, the client lost Iranian carpets worth 45,000 SAR in just two years. Installing a clear nano ceramic insulation film once protects decor for a lifetime and reduces AC bills by up to 25%. Golden rule: start by insulating west and south-facing windows — they receive 60% of daily thermal radiation.'
     },
+    sources: [
+      { label: 'الجمعية الدولية لأفلام النوافذ (IWFA)', labelEn: 'International Window Film Association (IWFA)', url: 'https://www.iwfa.com/' },
+      { label: 'مؤسسة سرطان الجلد (Skin Cancer Foundation)', labelEn: 'Skin Cancer Foundation', url: 'https://www.skincancer.org/' },
+    ],
     warning: 'الستائر الثقيلة لا تمنع الأشعة فوق البنفسجية من اختراق الزجاج — هي فقط تحجب الضوء المرئي. الأشعة فوق البنفسجية غير مرئية وتمر عبر الأقمشة. العزل من خارج الزجاج أو داخله مباشرة (فيلم نانو سيراميك) هو الحل الوحيد لمنع دخول الإشعاع المدمر للألوان. لا تنتظر حتى يبهت أثاثك — الضرر تراكمي ولا يمكن عكسه.',
     warningEn: 'Heavy curtains do not prevent UV rays from penetrating the glass — they only block visible light. UV rays are invisible and pass through fabrics. Direct insulation on the glass (Nano Ceramic film) is the only solution to prevent color-destroying radiation entry. Do not wait until your furniture fades — the damage is cumulative and irreversible.',
     cta: 'احجز زيارة تقييم مجانية لمنزلك — مهندسونا يفحصون الزجاج بجهاز UV Meter ويقدمون تقريراً بنسبة التسرب الإشعاعي وخطة الحماية المثالية لأثاثك.',
