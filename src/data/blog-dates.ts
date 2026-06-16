@@ -53,6 +53,21 @@ export const articleDates: Record<string, ArticleDate> = {
   'ir-uv-tser-metrics-decoded': { published: '2026-06-16', modified: '2026-06-16' },
   'vlt-explained-saudi-tint-law': { published: '2026-06-16', modified: '2026-06-16' },
   'why-cheap-tint-costs-more-jeddah': { published: '2026-06-16', modified: '2026-06-16' },
+  // Spoke articles (batch B):
+  'villa-glass-insulation-jeddah-cost-guide': { published: '2026-06-17', modified: '2026-06-17' },
+  'glass-facade-tower-curtain-wall-insulation': { published: '2026-06-17', modified: '2026-06-17' },
+  'security-anti-shatter-safety-window-film': { published: '2026-06-17', modified: '2026-06-17' },
+  'sbc-601-602-glass-compliance-guide': { published: '2026-06-17', modified: '2026-06-17' },
+  'why-tint-turns-purple-bubbles-jeddah': { published: '2026-06-17', modified: '2026-06-17' },
+  'tesla-ev-tint-jeddah': { published: '2026-06-17', modified: '2026-06-17' },
+  'children-pets-hot-car-heat-safety-jeddah': { published: '2026-06-17', modified: '2026-06-17' },
+  'how-to-clean-tinted-windows-safely': { published: '2026-06-17', modified: '2026-06-17' },
+  'tint-warranty-claim-process-saudi': { published: '2026-06-17', modified: '2026-06-17' },
+  'mosque-hospital-school-window-film': { published: '2026-06-17', modified: '2026-06-17' },
+  'full-windshield-tint-options-saudi': { published: '2026-06-17', modified: '2026-06-17' },
+  'self-healing-ppf-explained': { published: '2026-06-17', modified: '2026-06-17' },
+  'tint-reduce-ac-load-fuel-savings-jeddah': { published: '2026-06-17', modified: '2026-06-17' },
+  'fleet-company-car-tinting-ksa': { published: '2026-06-17', modified: '2026-06-17' },
 };
 
 /** Get the real dates for an article slug (falls back to a sane default). */

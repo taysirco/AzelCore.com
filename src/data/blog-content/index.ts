@@ -48,6 +48,21 @@ import johnsonVsCheapChineseFilm from './johnson-vs-cheap-chinese-film';
 import irUvTserMetricsDecoded from './ir-uv-tser-metrics-decoded';
 import vltExplainedSaudiTintLaw from './vlt-explained-saudi-tint-law';
 import whyCheapTintCostsMoreJeddah from './why-cheap-tint-costs-more-jeddah';
+// Spoke articles (batch B — ranks 17-30)
+import villaGlassInsulationJeddahCostGuide from './villa-glass-insulation-jeddah-cost-guide';
+import glassFacadeTowerCurtainWallInsulation from './glass-facade-tower-curtain-wall-insulation';
+import securityAntiShatterSafetyWindowFilm from './security-anti-shatter-safety-window-film';
+import sbc601602GlassComplianceGuide from './sbc-601-602-glass-compliance-guide';
+import whyTintTurnsPurpleBubblesJeddah from './why-tint-turns-purple-bubbles-jeddah';
+import teslaEvTintJeddah from './tesla-ev-tint-jeddah';
+import childrenPetsHotCarHeatSafetyJeddah from './children-pets-hot-car-heat-safety-jeddah';
+import howToCleanTintedWindowsSafely from './how-to-clean-tinted-windows-safely';
+import tintWarrantyClaimProcessSaudi from './tint-warranty-claim-process-saudi';
+import mosqueHospitalSchoolWindowFilm from './mosque-hospital-school-window-film';
+import fullWindshieldTintOptionsSaudi from './full-windshield-tint-options-saudi';
+import selfHealingPpfExplained from './self-healing-ppf-explained';
+import tintReduceAcLoadFuelSavingsJeddah from './tint-reduce-ac-load-fuel-savings-jeddah';
+import fleetCompanyCarTintingKsa from './fleet-company-car-tinting-ksa';
 
 export type { ArticleModule, ArticleData, ArticleSection, ArticleServiceLink } from './types';
 
@@ -97,6 +112,21 @@ export const articles: Record<string, ArticleModule> = {
   'ir-uv-tser-metrics-decoded': irUvTserMetricsDecoded,
   'vlt-explained-saudi-tint-law': vltExplainedSaudiTintLaw,
   'why-cheap-tint-costs-more-jeddah': whyCheapTintCostsMoreJeddah,
+  // Spoke articles (batch B):
+  'villa-glass-insulation-jeddah-cost-guide': villaGlassInsulationJeddahCostGuide,
+  'glass-facade-tower-curtain-wall-insulation': glassFacadeTowerCurtainWallInsulation,
+  'security-anti-shatter-safety-window-film': securityAntiShatterSafetyWindowFilm,
+  'sbc-601-602-glass-compliance-guide': sbc601602GlassComplianceGuide,
+  'why-tint-turns-purple-bubbles-jeddah': whyTintTurnsPurpleBubblesJeddah,
+  'tesla-ev-tint-jeddah': teslaEvTintJeddah,
+  'children-pets-hot-car-heat-safety-jeddah': childrenPetsHotCarHeatSafetyJeddah,
+  'how-to-clean-tinted-windows-safely': howToCleanTintedWindowsSafely,
+  'tint-warranty-claim-process-saudi': tintWarrantyClaimProcessSaudi,
+  'mosque-hospital-school-window-film': mosqueHospitalSchoolWindowFilm,
+  'full-windshield-tint-options-saudi': fullWindshieldTintOptionsSaudi,
+  'self-healing-ppf-explained': selfHealingPpfExplained,
+  'tint-reduce-ac-load-fuel-savings-jeddah': tintReduceAcLoadFuelSavingsJeddah,
+  'fleet-company-car-tinting-ksa': fleetCompanyCarTintingKsa,
 };
 
 /** All available slugs (for generateStaticParams) */
