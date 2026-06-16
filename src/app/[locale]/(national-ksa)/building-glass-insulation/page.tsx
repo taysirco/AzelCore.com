@@ -387,6 +387,7 @@ export default async function BuildingInsulationPage({ params }: { params: Promi
       <section aria-labelledby="further-reading-bld" style={{ maxWidth: '900px', margin: '3rem auto 0', padding: '0 1.5rem' }}>
         <h2 id="further-reading-bld" style={{ marginBottom: '1rem' }}>{isAr ? 'اقرأ أيضًا' : 'Further Reading'}</h2>
         <ul style={{ display: 'grid', gap: '0.75rem', listStyle: 'none', padding: 0, margin: 0 }}>
+          <li><Link href={localePath(locale as Locale, '/blog/building-insulation-saudi-arabia-guide')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'دليل عزل المباني في السعودية وكود البناء SBC ←' : 'Building Insulation in Saudi Arabia & SBC Code Guide ←'}</Link></li>
           <li><Link href={localePath(locale as Locale, '/blog/building-insulation-electricity-savings')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'كم توفّر فاتورة الكهرباء بعزل المباني؟ ←' : 'How Much Do You Save on Electricity? ←'}</Link></li>
           <li><Link href={localePath(locale as Locale, '/blog/vision-2030-energy-efficiency')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'كفاءة الطاقة ورؤية 2030 ←' : 'Energy Efficiency & Vision 2030 ←'}</Link></li>
           <li><Link href={localePath(locale as Locale, '/blog/commercial-building-tint-jeddah')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'عزل المباني التجارية في جدة ←' : 'Commercial Building Insulation in Jeddah ←'}</Link></li>

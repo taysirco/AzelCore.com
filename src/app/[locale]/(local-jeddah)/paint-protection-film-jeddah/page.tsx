@@ -463,6 +463,7 @@ export default async function PPFTintingPage({ params }: { params: Promise<{ loc
       <section aria-labelledby="further-reading-ppf" style={{ maxWidth: '900px', margin: '3rem auto 0', padding: '0 1.5rem' }}>
         <h2 id="further-reading-ppf" style={{ marginBottom: '1rem' }}>{isAr ? 'اقرأ أيضًا' : 'Further Reading'}</h2>
         <ul style={{ display: 'grid', gap: '0.75rem', listStyle: 'none', padding: 0, margin: 0 }}>
+          <li><Link href={localePath(locale as Locale, '/blog/car-protection-tinting-vs-ceramic-vs-ppf')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'تظليل أم نانو سيراميك أم PPF؟ دليل القرار الكامل ←' : 'Tinting vs Ceramic vs PPF — Complete Decision Guide ←'}</Link></li>
           <li><Link href={localePath(locale as Locale, '/blog/ppf-vs-ceramic-coating')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'PPF مقابل النانو سيراميك — أيهما أفضل؟ ←' : 'PPF vs Ceramic Coating — Which Is Better? ←'}</Link></li>
           <li><Link href={localePath(locale as Locale, '/blog/ppf-vs-car-polish-paint-damage')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'PPF مقابل تلميع السيارة وحماية الطلاء ←' : 'PPF vs Car Polish & Paint Damage ←'}</Link></li>
           <li><Link href={localePath(locale as Locale, '/blog/computer-cut-vs-manual-ppf-jeddah')} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>{isAr ? 'القص الكمبيوتري مقابل اليدوي في PPF ←' : 'Computer-Cut vs Manual PPF ←'}</Link></li>

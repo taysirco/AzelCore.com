@@ -36,6 +36,9 @@ export const articleDates: Record<string, ArticleDate> = {
   'computer-cut-vs-manual-ppf-jeddah': { published: '2026-05-15', modified: '2026-05-16' },
   'retail-store-window-tinting-clear-heat-rejection': { published: '2026-05-15', modified: '2026-06-15' },
   'dealership-tint-vs-specialized-centers': { published: '2026-05-15', modified: '2026-05-16' },
+  'complete-guide-car-tinting-jeddah': { published: '2026-06-16', modified: '2026-06-16' },
+  'car-protection-tinting-vs-ceramic-vs-ppf': { published: '2026-06-16', modified: '2026-06-16' },
+  'building-insulation-saudi-arabia-guide': { published: '2026-06-16', modified: '2026-06-16' },
 };
 
 /** Get the real dates for an article slug (falls back to a sane default). */

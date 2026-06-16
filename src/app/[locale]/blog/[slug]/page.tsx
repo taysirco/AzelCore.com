@@ -211,6 +211,27 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
     }));
   }
 
+  // ── Topical signals: keywords + articleSection ──
+  if (topic) {
+    articleGraphSchema['@graph'][0].keywords = topic.targetKeyword;
+    articleGraphSchema['@graph'][0].articleSection = categoryStr || (isAr ? 'تظليل وعزل حراري' : 'Tinting & Insulation');
+  }
+
+  // ── Hub ItemList — models internal hub→spoke links (depth signal for pillar pages) ──
+  if (serviceLinks.length > 0) {
+    articleGraphSchema['@graph'].push({
+      '@type': 'ItemList',
+      '@id': `${SITE_URL}${locale === 'ar' ? '' : '/en'}/blog/${slug}#related`,
+      name: isAr ? 'روابط وخدمات ذات صلة' : 'Related links & services',
+      itemListElement: serviceLinks.map((l: { href: string; text: string; textEn?: string }, i: number) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: !isAr && l.textEn ? l.textEn : l.text,
+        url: `${SITE_URL}${locale === 'ar' ? '' : '/en'}${l.href}`,
+      })),
+    });
+  }
+
   // ── Related articles (same intent first, then fill) — bidirectional internal linking ──
   const relatedSlugs = (() => {
     const others = articleSlugs.filter((s) => s !== slug);

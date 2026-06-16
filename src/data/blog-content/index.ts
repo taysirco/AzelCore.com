@@ -30,6 +30,11 @@ import computerCutVsManual from './computer-cut-vs-manual-ppf-jeddah';
 import retailStoreTint from './retail-store-window-tinting-clear-heat-rejection';
 import dealershipTintVsSpecialized from './dealership-tint-vs-specialized-centers';
 
+// Pillar hubs (topical-authority anchors)
+import completeGuideCarTinting from './complete-guide-car-tinting-jeddah';
+import carProtectionDecision from './car-protection-tinting-vs-ceramic-vs-ppf';
+import buildingInsulationGuide from './building-insulation-saudi-arabia-guide';
+
 export type { ArticleModule, ArticleData, ArticleSection, ArticleServiceLink } from './types';
 
 /** All articles keyed by slug */
@@ -60,6 +65,10 @@ export const articles: Record<string, ArticleModule> = {
   'computer-cut-vs-manual-ppf-jeddah': computerCutVsManual,
   'retail-store-window-tinting-clear-heat-rejection': retailStoreTint,
   'dealership-tint-vs-specialized-centers': dealershipTintVsSpecialized,
+  // Pillar hubs (topical-authority anchors):
+  'complete-guide-car-tinting-jeddah': completeGuideCarTinting,
+  'car-protection-tinting-vs-ceramic-vs-ppf': carProtectionDecision,
+  'building-insulation-saudi-arabia-guide': buildingInsulationGuide,
 };
 
 /** All available slugs (for generateStaticParams) */
