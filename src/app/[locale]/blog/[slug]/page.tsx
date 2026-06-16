@@ -95,7 +95,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title,
       url: `${SITE_URL}${locale === 'ar' ? '' : '/en'}/blog/${slug}`,
       type: 'article',
-      images: [{ url: `/images/${article.ogImage}`, width: 1200, height: 630 }],
+      images: [{ url: `${SITE_URL}/images/${article.ogImage}`, width: 1200, height: 630 }],
     },
   };
 }
