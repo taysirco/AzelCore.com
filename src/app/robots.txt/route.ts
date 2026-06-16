@@ -13,8 +13,11 @@ export function GET() {
 
 User-agent: *
 Allow: /
+# Let crawlers fetch render assets (CSS/JS/optimized images) so pages render fully
+Allow: /_next/static/
+Allow: /_next/image
+Disallow: /_next/data/
 Disallow: /api/reindex/
-Disallow: /_next/
 Disallow: /admin/
 
 # ═══ Content Signals (IETF draft-romm-aipref-contentsignals) ═══

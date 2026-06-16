@@ -39,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     ...createI18nEntries('/', { lastModified: LAST_MODIFIED, changeFrequency: 'weekly', priority: 1.0 }),
     ...createI18nEntries('/car-insulation-jeddah', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 }),
+    ...createI18nEntries('/paint-protection-film-jeddah', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 }),
     ...createI18nEntries('/building-glass-insulation', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 }),
     ...createI18nEntries('/johnson-authorized-dealer', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 }),
     ...createI18nEntries('/3m-authorized-dealer', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 }),
