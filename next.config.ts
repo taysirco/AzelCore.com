@@ -156,6 +156,13 @@ const nextConfig: NextConfig = {
       { source: '/thermal-windows', destination: '/building-glass-insulation', permanent: true },
       { source: '/ar/thermal-windows', destination: '/building-glass-insulation', permanent: true },
       { source: '/en/thermal-windows', destination: '/en/building-glass-insulation', permanent: true },
+      // Renamed slugs surfaced by GSC "Not found (404)" report (crawled before rename) — 301 to preserve equity
+      { source: '/nano-ceramic-jeddah', destination: '/car-insulation-jeddah', permanent: true },
+      { source: '/ar/nano-ceramic-jeddah', destination: '/car-insulation-jeddah', permanent: true },
+      { source: '/en/nano-ceramic-jeddah', destination: '/en/car-insulation-jeddah', permanent: true },
+      { source: '/building-glass', destination: '/building-glass-insulation', permanent: true },
+      { source: '/ar/building-glass', destination: '/building-glass-insulation', permanent: true },
+      { source: '/en/building-glass', destination: '/en/building-glass-insulation', permanent: true },
     ];
   },
 };
