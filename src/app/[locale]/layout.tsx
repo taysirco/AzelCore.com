@@ -10,6 +10,7 @@ import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
 import BackToTop from '@/components/ui/BackToTop';
 import GeoBanner from '@/components/ui/GeoBanner';
 import WebMCPProvider from '@/components/agents/WebMCPProvider';
+import PhoneCallTracker from '@/components/analytics/PhoneCallTracker';
 import { locales, isValidLocale, getDirection, getOgLocale, localePath, type Locale } from '@/lib/i18n';
 import { getDictionary } from '@/lib/dictionaries';
 import { getAlternates } from '@/lib/seo';
@@ -230,6 +231,8 @@ export default async function LocaleLayout({
           </div>
           {/* ═══ WebMCP — Expose tools to in-browser AI agents ═══ */}
           <WebMCPProvider locale={locale} />
+          {/* ═══ GA4 — track tel: clicks (phone-call conversion; not covered by Enhanced Measurement) ═══ */}
+          <PhoneCallTracker />
         </ThemeProvider>
         {/* ═══ Google Analytics 4 — afterInteractive so it never blocks paint/CWV ═══ */}
         <Script
