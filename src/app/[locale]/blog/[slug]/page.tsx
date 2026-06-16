@@ -280,7 +280,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
           <div className={styles.heroImage}>
             <Image
               src={`/images/${article.ogImage}`}
-              alt={title}
+              alt={topic ? `${title} | ${topic.targetKeyword} - ${isAr ? 'عزل كور' : 'AzelCore'}` : title}
               width={1200}
               height={675}
               priority
@@ -347,7 +347,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
                 <div className={styles.innerImageContainer}>
                   <Image
                     src={`/images/${article.innerImage}`}
-                    alt={!isAr && section.headingEn ? section.headingEn : section.heading}
+                    alt={topic ? `${!isAr && section.headingEn ? section.headingEn : section.heading} | ${topic.targetKeyword}` : (!isAr && section.headingEn ? section.headingEn : section.heading)}
                     width={800}
                     height={533}
                     loading="lazy"
