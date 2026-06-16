@@ -9,6 +9,7 @@ import { SITE_NAME, SITE_NAME_EN, SITE_URL, VAT_ID, CRN, PHONE, OWNER_NAME, OWNE
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
 import BackToTop from '@/components/ui/BackToTop';
 import GeoBanner from '@/components/ui/GeoBanner';
+import CookieConsent from '@/components/ui/CookieConsent';
 import WebMCPProvider from '@/components/agents/WebMCPProvider';
 import PhoneCallTracker from '@/components/analytics/PhoneCallTracker';
 import { locales, isValidLocale, getDirection, getOgLocale, localePath, type Locale } from '@/lib/i18n';
@@ -228,6 +229,7 @@ export default async function LocaleLayout({
             <WhatsAppFloat locale={locale} />
             <BackToTop locale={locale} />
             <GeoBanner locale={locale} />
+            <CookieConsent locale={locale} />
           </div>
           {/* ═══ WebMCP — Expose tools to in-browser AI agents ═══ */}
           <WebMCPProvider locale={locale} />
@@ -242,6 +244,8 @@ export default async function LocaleLayout({
         <Script id="ga4-init" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+var __azConsent='denied';try{if(localStorage.getItem('azelcore-consent')==='granted')__azConsent='granted';}catch(e){}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:__azConsent,functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 gtag('js', new Date());
 gtag('config', '${GA_MEASUREMENT_ID}');`}
         </Script>
