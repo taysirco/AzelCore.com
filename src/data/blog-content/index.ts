@@ -34,6 +34,20 @@ import dealershipTintVsSpecialized from './dealership-tint-vs-specialized-center
 import completeGuideCarTinting from './complete-guide-car-tinting-jeddah';
 import carProtectionDecision from './car-protection-tinting-vs-ceramic-vs-ppf';
 import buildingInsulationGuide from './building-insulation-saudi-arabia-guide';
+// Spoke articles (batch A — ranks 4-16)
+import saudiTintVltPercentageByWindow2026 from './saudi-tint-vlt-percentage-by-window-2026';
+import carTintCostJeddahByCarSize from './car-tint-cost-jeddah-by-car-size';
+import ppfCostJeddahCoveragePackages from './ppf-cost-jeddah-coverage-packages';
+import johnsonSupremeIrVs3mCrystalline from './johnson-supreme-ir-vs-3m-crystalline';
+import xpelVs3mVsSuntekPpf from './xpel-vs-3m-vs-suntek-ppf';
+import fullBodyVsPartialPpfJeddah from './full-body-vs-partial-ppf-jeddah';
+import saudiTintFinesFahasInspectionGuide from './saudi-tint-fines-fahas-inspection-guide';
+import verifyAuthenticJohnson3mFilmSerialWarranty from './verify-authentic-johnson-3m-film-serial-warranty';
+import bestTintLandCruiserPatrolJeddah from './best-tint-land-cruiser-patrol-jeddah';
+import johnsonVsCheapChineseFilm from './johnson-vs-cheap-chinese-film';
+import irUvTserMetricsDecoded from './ir-uv-tser-metrics-decoded';
+import vltExplainedSaudiTintLaw from './vlt-explained-saudi-tint-law';
+import whyCheapTintCostsMoreJeddah from './why-cheap-tint-costs-more-jeddah';
 
 export type { ArticleModule, ArticleData, ArticleSection, ArticleServiceLink } from './types';
 
@@ -69,6 +83,20 @@ export const articles: Record<string, ArticleModule> = {
   'complete-guide-car-tinting-jeddah': completeGuideCarTinting,
   'car-protection-tinting-vs-ceramic-vs-ppf': carProtectionDecision,
   'building-insulation-saudi-arabia-guide': buildingInsulationGuide,
+  // Spoke articles (batch A):
+  'saudi-tint-vlt-percentage-by-window-2026': saudiTintVltPercentageByWindow2026,
+  'car-tint-cost-jeddah-by-car-size': carTintCostJeddahByCarSize,
+  'ppf-cost-jeddah-coverage-packages': ppfCostJeddahCoveragePackages,
+  'johnson-supreme-ir-vs-3m-crystalline': johnsonSupremeIrVs3mCrystalline,
+  'xpel-vs-3m-vs-suntek-ppf': xpelVs3mVsSuntekPpf,
+  'full-body-vs-partial-ppf-jeddah': fullBodyVsPartialPpfJeddah,
+  'saudi-tint-fines-fahas-inspection-guide': saudiTintFinesFahasInspectionGuide,
+  'verify-authentic-johnson-3m-film-serial-warranty': verifyAuthenticJohnson3mFilmSerialWarranty,
+  'best-tint-land-cruiser-patrol-jeddah': bestTintLandCruiserPatrolJeddah,
+  'johnson-vs-cheap-chinese-film': johnsonVsCheapChineseFilm,
+  'ir-uv-tser-metrics-decoded': irUvTserMetricsDecoded,
+  'vlt-explained-saudi-tint-law': vltExplainedSaudiTintLaw,
+  'why-cheap-tint-costs-more-jeddah': whyCheapTintCostsMoreJeddah,
 };
 
 /** All available slugs (for generateStaticParams) */

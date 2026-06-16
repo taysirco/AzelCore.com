@@ -39,6 +39,20 @@ export const articleDates: Record<string, ArticleDate> = {
   'complete-guide-car-tinting-jeddah': { published: '2026-06-16', modified: '2026-06-16' },
   'car-protection-tinting-vs-ceramic-vs-ppf': { published: '2026-06-16', modified: '2026-06-16' },
   'building-insulation-saudi-arabia-guide': { published: '2026-06-16', modified: '2026-06-16' },
+  // Spoke articles (batch A):
+  'saudi-tint-vlt-percentage-by-window-2026': { published: '2026-06-16', modified: '2026-06-16' },
+  'car-tint-cost-jeddah-by-car-size': { published: '2026-06-16', modified: '2026-06-16' },
+  'ppf-cost-jeddah-coverage-packages': { published: '2026-06-16', modified: '2026-06-16' },
+  'johnson-supreme-ir-vs-3m-crystalline': { published: '2026-06-16', modified: '2026-06-16' },
+  'xpel-vs-3m-vs-suntek-ppf': { published: '2026-06-16', modified: '2026-06-16' },
+  'full-body-vs-partial-ppf-jeddah': { published: '2026-06-16', modified: '2026-06-16' },
+  'saudi-tint-fines-fahas-inspection-guide': { published: '2026-06-16', modified: '2026-06-16' },
+  'verify-authentic-johnson-3m-film-serial-warranty': { published: '2026-06-16', modified: '2026-06-16' },
+  'best-tint-land-cruiser-patrol-jeddah': { published: '2026-06-16', modified: '2026-06-16' },
+  'johnson-vs-cheap-chinese-film': { published: '2026-06-16', modified: '2026-06-16' },
+  'ir-uv-tser-metrics-decoded': { published: '2026-06-16', modified: '2026-06-16' },
+  'vlt-explained-saudi-tint-law': { published: '2026-06-16', modified: '2026-06-16' },
+  'why-cheap-tint-costs-more-jeddah': { published: '2026-06-16', modified: '2026-06-16' },
 };
 
 /** Get the real dates for an article slug (falls back to a sane default). */
