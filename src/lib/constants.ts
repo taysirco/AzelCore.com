@@ -3,6 +3,8 @@ import type { Locale } from '@/lib/i18n';
 export const SITE_URL = 'https://azelcore.com';
 export const SITE_NAME = 'عزل كور';
 export const SITE_NAME_EN = 'AzelCore';
+/** Google Analytics 4 Measurement ID (public, exposed client-side by design). */
+export const GA_MEASUREMENT_ID = 'G-TSKGYJ2X0G';
 export const WHATSAPP = '+966564612017';
 export const WHATSAPP_LINK = `https://api.whatsapp.com/send/?phone=966564612017&text=${encodeURIComponent('السلام عليكم، أبي استفسر عن خدمات العزل والتظليل')}`;
 export const PHONE = '+966564612017';

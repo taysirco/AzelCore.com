@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
 import { ibmPlexArabic, inter } from '@/lib/fonts';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
-import { SITE_NAME, SITE_NAME_EN, SITE_URL, VAT_ID, CRN, PHONE, OWNER_NAME, OWNER_TITLE, GEO, ADDRESS_STRUCTURED, ADDRESS_STRUCTURED_EN } from '@/lib/constants';
+import { SITE_NAME, SITE_NAME_EN, SITE_URL, VAT_ID, CRN, PHONE, OWNER_NAME, OWNER_TITLE, GEO, ADDRESS_STRUCTURED, ADDRESS_STRUCTURED_EN, GA_MEASUREMENT_ID } from '@/lib/constants';
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
 import BackToTop from '@/components/ui/BackToTop';
 import GeoBanner from '@/components/ui/GeoBanner';
@@ -193,7 +194,6 @@ export default async function LocaleLayout({
         <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json" />
         <link rel="describedby" href="/.well-known/mcp/server-card.json" type="application/json" title="MCP Server Card" />
         <link rel="describedby" href="/.well-known/agent-skills/index.json" type="application/json" title="Agent Skills Index" />
-        <link rel="describedby" href="/.well-known/openid-configuration" type="application/json" title="OpenID Connect Discovery" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationSchema(locale)) }}
@@ -231,6 +231,17 @@ export default async function LocaleLayout({
           {/* ═══ WebMCP — Expose tools to in-browser AI agents ═══ */}
           <WebMCPProvider locale={locale} />
         </ThemeProvider>
+        {/* ═══ Google Analytics 4 — afterInteractive so it never blocks paint/CWV ═══ */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`}
+        </Script>
       </body>
     </html>
   );

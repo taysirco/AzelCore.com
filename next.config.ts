@@ -32,7 +32,7 @@ const nextConfig: NextConfig = {
           { key: 'X-Permitted-Cross-Domain-Policies', value: 'none' },
           { key: 'Cross-Origin-Resource-Policy', value: 'same-site' },
           { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
-          { key: 'Content-Security-Policy', value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; frame-src https://maps.google.com https://www.google.com https://maps.googleapis.com; connect-src 'self' https://api.open-meteo.com; object-src 'none'; base-uri 'self'; form-action 'self'" },
+          { key: 'Content-Security-Policy', value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; frame-src https://maps.google.com https://www.google.com https://maps.googleapis.com; connect-src 'self' https://api.open-meteo.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'" },
         ],
       },
       // ═══ RFC 8288 — Link Response Headers for Agent Discovery (Homepage) ═══
