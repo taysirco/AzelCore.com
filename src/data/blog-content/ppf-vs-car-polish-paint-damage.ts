@@ -2,7 +2,8 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'xpel-ppf-protection-jeddah.webp',
+  ogImage: 'blog/ppf-vs-car-polish-paint-damage-1.webp',
+  innerImage: 'blog/ppf-vs-car-polish-paint-damage-2.webp',
   serviceLinks: [
     { href: '/paint-protection-film-jeddah', text: 'تركيب PPF بالقص الآلي — حماية بدون ملامسة الطلاء بأي شفرة', textEn: 'Computer-Cut PPF Installation — Protection Without Any Blade Touching Paint' },
     { href: '/car-insulation-jeddah', text: 'النانو سيراميك — لمعان بدون إزالة الطلاء', textEn: 'Nano Ceramic — Shine Without Removing Paint' },

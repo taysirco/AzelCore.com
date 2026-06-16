@@ -75,4 +75,6 @@ export interface ArticleModule {
   serviceLinks: ArticleServiceLink[];
   /** OG image filename (in /public/images/) */
   ogImage: string;
+  /** Inner body image filename (optional) */
+  innerImage?: string;
 }

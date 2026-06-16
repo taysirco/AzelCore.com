@@ -2,7 +2,8 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'xpel-ppf-protection-jeddah.webp',
+  ogImage: 'blog/computer-cut-vs-manual-ppf-jeddah-1.webp',
+  innerImage: 'blog/computer-cut-vs-manual-ppf-jeddah-2.webp',
   serviceLinks: [
     { href: '/paint-protection-film-jeddah', text: 'تركيب PPF بالقص الآلي (الكمبيوتر) بدون تفكيك أجزاء السيارة', textEn: 'Computer-Cut PPF Installation Without Dismantling Car Parts' },
     { href: '/car-insulation-jeddah', text: 'حماية النانو سيراميك + PPF — الحماية المزدوجة', textEn: 'Nano Ceramic + PPF — Double Protection' },

@@ -2,7 +2,8 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'why-choose-us-workshop.webp',
+  ogImage: 'blog/dealership-tint-vs-specialized-centers-1.webp',
+  innerImage: 'blog/dealership-tint-vs-specialized-centers-2.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'تظليل سيارتك بأفلام النانو سيراميك الأصلية بضمان 10 سنوات', textEn: 'Tint Your Car with Original Nano Ceramic Films with a 10-Year Warranty' },
     { href: '/johnson-authorized-dealer', text: 'وكيل جونسون المعتمد — ضمان إلكتروني من المصنع', textEn: 'Authorized Johnson Dealer — Factory Electronic Warranty' },

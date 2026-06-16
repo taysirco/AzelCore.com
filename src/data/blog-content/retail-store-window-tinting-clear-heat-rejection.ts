@@ -2,7 +2,8 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'commercial-facade-tinting.webp',
+  ogImage: 'blog/retail-store-window-tinting-clear-heat-rejection-1.webp',
+  innerImage: 'blog/retail-store-window-tinting-clear-heat-rejection-2.webp',
   serviceLinks: [
     { href: '/building-glass-insulation', text: 'عزل زجاج المعارض والمحلات التجارية بتقنية النانو', textEn: 'Showroom and Retail Glass Insulation with Nano Tech' },
     { href: '/johnson-authorized-dealer', text: 'أفلام جونسون التجارية للواجهات — وكيل معتمد', textEn: 'Johnson Commercial Facade Films — Authorized Dealer' },

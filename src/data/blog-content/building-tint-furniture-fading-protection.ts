@@ -2,7 +2,8 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'villa-window-insulation-jeddah.webp',
+  ogImage: 'blog/building-tint-furniture-fading-protection-1.webp',
+  innerImage: 'blog/building-tint-furniture-fading-protection-2.webp',
   serviceLinks: [
     { href: '/building-glass-insulation', text: 'احمِ أثاث منزلك بعوازل النانو سيراميك الشفافة', textEn: 'Protect Your Furniture with Clear Nano Ceramic Insulation' },
     { href: '/car-insulation-jeddah', text: 'تظليل وعزل حراري للسيارات والمنازل', textEn: 'Thermal Insulation for Cars and Homes' },

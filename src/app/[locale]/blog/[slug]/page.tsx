@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, OWNER_NAME, OWNER_NAME_EN, OWNER_TITLE } from '@/lib/constants';
 import { blogTopics, type BlogTopic } from '@/data/blog-topics';
@@ -275,6 +276,20 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
           🕐 {Math.ceil(approximateWordCount / 200)} {isAr ? 'دقائق قراءة' : 'min read'} · {approximateWordCount} {isAr ? 'كلمة' : 'words'}
         </div>
 
+        {article.ogImage && (
+          <div className={styles.heroImage}>
+            <Image
+              src={`/images/${article.ogImage}`}
+              alt={title}
+              width={1200}
+              height={675}
+              priority
+              sizes="(max-width: 768px) 100vw, 1200px"
+              style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+            />
+          </div>
+        )}
+
         <div style={{ margin: '2rem 0' }}>
           <OfficialPartnerBar entityKeys={['GOV.SASO', 'GOV.SBC', 'GOV.BALADI']} isAr={isAr} />
         </div>
@@ -328,6 +343,19 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
             <div key={i}>
               <h2>{!isAr && section.headingEn ? section.headingEn : section.heading}</h2>
               <SmartTextFormatter text={!isAr && section.bodyEn ? section.bodyEn : section.body} />
+              {i === 1 && article.innerImage && (
+                <div className={styles.innerImageContainer}>
+                  <Image
+                    src={`/images/${article.innerImage}`}
+                    alt={!isAr && section.headingEn ? section.headingEn : section.heading}
+                    width={800}
+                    height={533}
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                    style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
+                  />
+                </div>
+              )}
             </div>
           ))}
 

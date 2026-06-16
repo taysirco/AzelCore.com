@@ -2,7 +2,8 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'uv-ir-blocking-diagram.webp',
+  ogImage: 'blog/skin-cancer-driving-uv-protection-tint-1.webp',
+  innerImage: 'blog/skin-cancer-driving-uv-protection-tint-2.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'أفلام تظليل معتمدة لحماية الجلد من الأشعة فوق البنفسجية', textEn: 'Certified Skin Protection Tint Films Against UV' },
     { href: '/3m-authorized-dealer', text: '3M Crystalline — حماية طبية بشفافية عالية', textEn: '3M Crystalline — Medical-Grade Protection with High Clarity' },

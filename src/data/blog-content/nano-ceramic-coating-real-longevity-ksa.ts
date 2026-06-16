@@ -2,7 +2,8 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'nano-ceramic-tint-applied.webp',
+  ogImage: 'blog/nano-ceramic-coating-real-longevity-ksa-1.webp',
+  innerImage: 'blog/nano-ceramic-coating-real-longevity-ksa-2.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'حماية النانو سيراميك الأصلية للسيارات — بجدول صيانة شفاف', textEn: 'Original Nano Ceramic Car Protection — With Transparent Maintenance Schedule' },
     { href: '/paint-protection-film-jeddah', text: 'الفرق بين النانو سيراميك و PPF — اكتشف أيهما الأنسب', textEn: 'Nano Ceramic vs PPF — Discover What Suits You' },
