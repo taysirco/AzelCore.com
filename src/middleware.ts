@@ -36,7 +36,7 @@ const LOCALE_EXEMPT_PATHS = [
   '/icon',
   '/sitemap',
   '/robots.txt',
-  '/llms.txt',
+  '/llms', // covers /llms.txt + /llms-full.txt (app-root routes — must not be rewritten to /ar/*)
   '/openapi.json',
   '/.well-known/',
   '/manifest',
