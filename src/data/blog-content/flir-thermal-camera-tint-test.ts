@@ -2,7 +2,8 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'thermal-camera-car-test.webp',
+  ogImage: 'blog/flir-thermal-camera-tint-test-1.webp',
+  innerImage: 'blog/flir-thermal-camera-tint-test-2.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'تظليل نانو سيراميك مثبت الفعالية بالفحص الحراري', textEn: 'Nano-Ceramic Tint Proven by Thermal Testing' },
     { href: '/thermal-cars', text: 'اختبر سيارتك مجاناً بجهاز FLIR في مركزنا', textEn: 'Test Your Car for Free with FLIR in Our Center' },
