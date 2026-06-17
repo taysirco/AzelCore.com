@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Tint Fines & How Fahas / Periodic Inspection Catches Illegal Tint (Tint Meter Procedure) 2026
 // Spoke article · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "office-window-tinting.webp",
+  "ogImage": "blog/saudi-tint-fines-fahas-inspection-guide-1.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

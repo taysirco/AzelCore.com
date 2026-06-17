@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Kids & Pets in a Hot Car: How Jeddah Cabins Hit 70°C in Minutes — and the Role of Tint in Saving Lives
 // Spoke article · authored 2026-06-17 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "gallery-car-before-03.webp",
+  "ogImage": "blog/children-pets-hot-car-heat-safety-jeddah-1.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

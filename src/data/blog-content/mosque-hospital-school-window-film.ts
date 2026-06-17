@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Glass Insulation for Mosques, Hospitals & Schools — Certified Solutions for Institutions & Tenders
 // Spoke article · authored 2026-06-17 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "hero-building-glass-insulation.webp",
+  "ogImage": "blog/mosque-hospital-school-window-film-1.webp",
   "serviceLinks": [
     {
       "href": "/building-glass-insulation",

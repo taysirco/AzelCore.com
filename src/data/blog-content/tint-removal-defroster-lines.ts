@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'gallery-car-before-02.webp',
+  ogImage: 'blog/tint-removal-defroster-lines-1.webp',
   serviceLinks: [
     { href: '/car-insulation-jeddah', text: 'خدمة إزالة التظليل الاحترافية بالبخار', textEn: 'Professional Steam Tint Removal Service' },
     { href: '/contact', text: 'احجز موعد إزالة تظليل تالف', textEn: 'Book a Damaged Tint Removal Appointment' },

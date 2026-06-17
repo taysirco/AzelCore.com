@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // How Much Fuel Does Tint Save? Cutting AC Load & Fuel Use in Jeddah Heat (With Numbers)
 // Spoke article · authored 2026-06-17 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "gallery-car-after-01.webp",
+  "ogImage": "blog/tint-reduce-ac-load-fuel-savings-jeddah-1.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

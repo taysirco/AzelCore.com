@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Why Cheap Car Tint Costs You More Long-Term — The Real Cost in Jeddah
 // Spoke article · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "gallery-car-after-02.webp",
+  "ogImage": "blog/why-cheap-tint-costs-more-jeddah-1.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

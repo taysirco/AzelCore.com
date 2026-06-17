@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Genuine Johnson vs Cheap Chinese Film: Why the 1,500-SAR Gap Saves You Thousands
 // Spoke article · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "reflective-film-building.webp",
+  "ogImage": "blog/johnson-vs-cheap-chinese-film-1.webp",
   "serviceLinks": [
     {
       "href": "/johnson-authorized-dealer",

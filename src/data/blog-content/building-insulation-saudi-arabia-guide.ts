@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Building Insulation Guide in Saudi Arabia 2026 — SBC Code, Energy Savings, Film Types & Cost
 // Pillar hub · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "building-tint-before-after.webp",
+  "ogImage": "blog/building-insulation-saudi-arabia-guide-1.webp",
   "serviceLinks": [
     {
       "href": "/building-glass-insulation",

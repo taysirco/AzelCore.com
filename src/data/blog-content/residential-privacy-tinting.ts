@@ -2,7 +2,7 @@
 import type { ArticleModule } from './types';
 
 const article: ArticleModule = {
-  ogImage: 'villa-window-insulation-jeddah.webp',
+  ogImage: 'blog/residential-privacy-tinting-1.webp',
   serviceLinks: [
     { href: '/building-glass-insulation', text: 'خدمات العزل الحراري المعماري للفلل والمنازل', textEn: 'Architectural Thermal Insulation Services for Villas & Homes' },
     { href: '/contact', text: 'اطلب معاينة مجانية لمنزلك بجدة', textEn: 'Request a Free Home Inspection in Jeddah' },

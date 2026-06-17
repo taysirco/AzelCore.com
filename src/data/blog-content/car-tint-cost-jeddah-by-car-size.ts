@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Real Cost of Car Tinting in Jeddah by Car Size — Full SAR Breakdown (Land Cruiser, Camry, Patrol, Tesla)
 // Spoke article · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "nano-ceramic-tint-applied.webp",
+  "ogImage": "blog/car-tint-cost-jeddah-by-car-size-1.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

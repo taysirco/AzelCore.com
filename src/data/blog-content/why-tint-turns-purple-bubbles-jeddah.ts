@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Why Does Tint Turn Purple and How to Avoid It? The Real Chemical Cause in Jeddah's Heat
 // Spoke article · authored 2026-06-17 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "gallery-car-after-03.webp",
+  "ogImage": "blog/why-tint-turns-purple-bubbles-jeddah-1.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

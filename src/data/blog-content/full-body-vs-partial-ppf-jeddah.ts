@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Full-Body vs Partial PPF: Front-End, Track Pack & Full Wrap Compared (Jeddah)
 // Spoke article · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "xpel-ppf-protection-jeddah.webp",
+  "ogImage": "blog/full-body-vs-partial-ppf-jeddah-1.webp",
   "serviceLinks": [
     {
       "href": "/paint-protection-film-jeddah",

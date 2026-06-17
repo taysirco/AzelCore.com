@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Glass-Facade Tower Insulation (Curtain Wall) in Jeddah — Developer & FM Solutions
 // Spoke article · authored 2026-06-17 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "gallery-building-after-02.webp",
+  "ogImage": "blog/glass-facade-tower-curtain-wall-insulation-1.webp",
   "serviceLinks": [
     {
       "href": "/building-glass-insulation",
