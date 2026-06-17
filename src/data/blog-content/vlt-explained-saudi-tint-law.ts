@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // VLT % Explained for Saudi Tint Law: Why It's Not the Same as Heat Rejection
 // Spoke article · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "uv-ir-blocking-diagram.webp",
+  "ogImage": "service-card-building-glass.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Full Windshield Tinting in Saudi Arabia — What's Legal vs What Gets You Fined
 // Spoke article · authored 2026-06-17 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "blog-tint-laws-saudi-2026.webp",
+  "ogImage": "gallery-building-before-02.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

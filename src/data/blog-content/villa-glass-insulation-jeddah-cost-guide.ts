@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Villa Glass Insulation in Jeddah — Cost, Film Types & Buyer's Guide 2026
 // Spoke article · authored 2026-06-17 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "villa-window-insulation-jeddah.webp",
+  "ogImage": "service-card-thermal-insulation.webp",
   "serviceLinks": [
     {
       "href": "/building-glass-insulation",

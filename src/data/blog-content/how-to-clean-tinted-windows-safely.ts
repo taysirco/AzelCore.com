@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // How to Safely Clean Tinted Car Windows: Banned Products and the Correct Wiping Method
 // Spoke article · authored 2026-06-17 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "blog-car-tint-maintenance.webp",
+  "ogImage": "gallery-car-before-01.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

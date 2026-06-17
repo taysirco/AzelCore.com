@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Tinting vs Nano-Ceramic Coating vs PPF — The Complete Car Protection Decision Guide for Jeddah 2026
 // Pillar hub · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "blog-ppf-vs-ceramic-coating.webp",
+  "ogImage": "hero-car-tinting-process.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

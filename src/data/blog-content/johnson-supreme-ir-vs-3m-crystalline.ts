@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Johnson Supreme IR vs 3M Crystalline: The Definitive Head-to-Head for Jeddah Heat (2026)
 // Spoke article · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "3m-crystalline-tint-jeddah.webp",
+  "ogImage": "trusted-brands-banner.webp",
   "serviceLinks": [
     {
       "href": "/3m-authorized-dealer",

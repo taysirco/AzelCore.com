@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Self-Healing PPF Explained: How Scratches Vanish in Jeddah's Heat
 // Spoke article · authored 2026-06-17 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "xpel-ppf-protection-jeddah.webp",
+  "ogImage": "why-choose-us-workshop.webp",
   "serviceLinks": [
     {
       "href": "/paint-protection-film-jeddah",

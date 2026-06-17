@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Fleet & Company-Car Tinting in Jeddah — Bulk Contracts & Driver Heat Protection
 // Spoke article · authored 2026-06-17 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "car-tint-heat-comparison.webp",
+  "ogImage": "llumar-tint-installation.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

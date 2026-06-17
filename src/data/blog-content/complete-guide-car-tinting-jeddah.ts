@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // The Complete Guide to Car Window Tinting in Jeddah 2026 — Types, Prices, Laws, and How to Choose
 // Pillar hub · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "blog-best-car-tint-jeddah.webp",
+  "ogImage": "hero-car-tinting-jeddah.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

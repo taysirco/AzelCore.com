@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // XPEL vs 3M vs SunTek: Which PPF Brand Is Best in Saudi Arabia?
 // Spoke article · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "xpel-ppf-protection-jeddah.webp",
+  "ogImage": "about-workshop-interior.webp",
   "serviceLinks": [
     {
       "href": "/paint-protection-film-jeddah",

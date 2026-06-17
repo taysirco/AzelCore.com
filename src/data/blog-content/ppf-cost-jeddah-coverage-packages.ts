@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // How Much Does PPF Cost in Jeddah? Pricing by Coverage Package (Front-End, Partial, Full Body)
 // Spoke article · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "xpel-ppf-protection-jeddah.webp",
+  "ogImage": "service-card-car-tinting.webp",
   "serviceLinks": [
     {
       "href": "/paint-protection-film-jeddah",

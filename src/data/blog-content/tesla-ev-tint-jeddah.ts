@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Tesla & EV Tinting in Jeddah — Glass Roof, Sensor-Safe Install (Not Range)
 // Spoke article · authored 2026-06-17 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "car-tint-heat-comparison.webp",
+  "ogImage": "car-tinting-tools-equipment.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

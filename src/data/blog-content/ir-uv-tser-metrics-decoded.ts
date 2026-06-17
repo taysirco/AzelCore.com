@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // IR vs UV vs TSER Decoded: The Window-Film Spec Sheet Every KSA Buyer Misreads
 // Spoke article · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "uv-ir-blocking-diagram.webp",
+  "ogImage": "hero-thermal-insulation.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

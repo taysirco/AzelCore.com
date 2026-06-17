@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // How to Verify an Authentic Johnson or 3M Film: Serial Number, Warranty Card and Registration
 // Spoke article · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "blog-spot-fake-tint.webp",
+  "ogImage": "about-certifications.webp",
   "serviceLinks": [
     {
       "href": "/johnson-authorized-dealer",

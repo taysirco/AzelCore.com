@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // Best Tint for Land Cruiser, Patrol & Tahoe in Jeddah 2026 — The Large SUV Guide
 // Spoke article · authored 2026-06-16 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "car-tint-heat-comparison.webp",
+  "ogImage": "hero-car-tinting-workshop.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",

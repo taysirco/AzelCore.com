@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // SBC 601/602 Building-Glass Compliance Guide: Climate Zones, SHGC & U-Value Limits, Permit Requirements
 // Spoke article · authored 2026-06-17 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "commercial-facade-tinting.webp",
+  "ogImage": "gallery-building-before-01.webp",
   "serviceLinks": [
     {
       "href": "/building-glass-insulation",

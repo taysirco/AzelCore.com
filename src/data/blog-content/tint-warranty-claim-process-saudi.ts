@@ -3,7 +3,7 @@ import type { ArticleModule } from './types';
 // How to Claim Your Tint Warranty in Saudi Arabia: The Certificate, Conditions, and Claim Steps
 // Spoke article · authored 2026-06-17 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "blog-spot-fake-tint.webp",
+  "ogImage": "thermal-film-window-demo.webp",
   "serviceLinks": [
     {
       "href": "/car-insulation-jeddah",
