@@ -1,14 +1,15 @@
 import { MetadataRoute } from 'next';
 import { jeddahDistricts, ksaCities } from '@/data/local-jeddah';
 import { articleSlugs } from '@/data/blog-content';
-import { getArticleDate } from '@/data/blog-dates';
+import { getArticleDate, filterPublished } from '@/data/blog-dates';
 import { SITE_URL } from '@/lib/constants';
+
+// Regenerate hourly so scheduled articles enter the sitemap on their publish
+// date without a deploy (matches the blog routes' ISR window).
+export const revalidate = 3600;
 
 // Static last-modified date — update after significant content changes
 const LAST_MODIFIED = '2026-06-15';
-
-// Blog article slugs — single source of truth (same list generateStaticParams uses)
-const blogSlugs = articleSlugs;
 
 /**
  * Helper function to generate deep, bidirectional hreflang entries
@@ -66,8 +67,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     createI18nEntries(`/building-glass-insulation/${c.id}`, { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.8 })
   );
 
-  // Blog article pages — real per-article modified date (freshness signal)
-  const blogPages: MetadataRoute.Sitemap = blogSlugs.flatMap(slug =>
+  // Blog article pages — real per-article modified date (freshness signal).
+  // Scheduled (not-yet-published) articles are excluded: their URLs 404 until
+  // their publish date, and a sitemap must never advertise a 404.
+  const blogPages: MetadataRoute.Sitemap = filterPublished(articleSlugs).flatMap(slug =>
     createI18nEntries(`/blog/${slug}`, { lastModified: getArticleDate(slug).modified, changeFrequency: 'monthly', priority: 0.7 })
   );
 

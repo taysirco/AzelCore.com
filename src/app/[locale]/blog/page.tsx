@@ -6,8 +6,13 @@ import { SITE_URL, SITE_NAME } from '@/lib/constants';
 import { getAlternates } from '@/lib/seo';
 import { articles, articleSlugs } from '@/data/blog-content';
 import { blogTopics } from '@/data/blog-topics';
-import { getArticleDate } from '@/data/blog-dates';
+import { getArticleDate, filterPublished } from '@/data/blog-dates';
 import styles from './page.module.css';
+
+// ═══ Scheduled publishing ═══
+// Regenerate hourly so an article whose publish date has arrived appears
+// automatically, with no deploy. See src/data/blog-dates.ts.
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -28,7 +33,7 @@ const CATEGORY_LABEL = (intent: string, isAr: boolean) =>
 // Derived from the single source of truth (articleSlugs + blogTopics + dates) so
 // the index can never drift out of sync with the actual published articles.
 const getBlogPosts = (isAr: boolean) =>
-  articleSlugs
+  filterPublished(articleSlugs)
     .map((slug) => {
       const topic = blogTopics.find((t) => t.slug === slug);
       const art = articles[slug];

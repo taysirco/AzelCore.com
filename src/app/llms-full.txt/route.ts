@@ -17,8 +17,12 @@ import { jeddahThermalDataset, datasetMeta } from '@/data/jeddah-thermal-researc
 import { localVoiceFaqs } from '@/data/frequently-asked-questions';
 import { ksaCities, jeddahDistricts } from '@/data/local-jeddah';
 import { blogTopics } from '@/data/blog-topics';
+import { isPublished } from '@/data/blog-dates';
 
 export const dynamic = 'force-static';
+// Regenerate hourly so scheduled articles are listed for AI engines on their
+// publish date (matches the blog routes' ISR window).
+export const revalidate = 3600;
 
 function avg(nums: number[]): number {
   return Math.round((nums.reduce((a, b) => a + b, 0) / nums.length) * 10) / 10;
@@ -56,9 +60,11 @@ export function GET() {
   const districts = jeddahDistricts.map(d => d.nameEn).join(', ');
   const cities = ksaCities.map(c => c.nameEn).join(', ');
 
-  const blogLines = blogTopics.map(b =>
-    `- [${b.titleEn || b.titleAr}](${SITE_URL}/blog/${b.slug})`
-  ).join('\n');
+  // Scheduled articles are excluded — never point an AI engine at a 404.
+  const blogLines = blogTopics
+    .filter(b => isPublished(b.slug))
+    .map(b => `- [${b.titleEn || b.titleAr}](${SITE_URL}/blog/${b.slug})`)
+    .join('\n');
 
   const markdown = `# ${SITE_NAME_EN} (${SITE_NAME}) — Full Reference for AI Systems
 

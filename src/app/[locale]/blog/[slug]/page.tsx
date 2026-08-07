@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { SITE_URL, SITE_NAME, WHATSAPP_LINK, OWNER_NAME, OWNER_NAME_EN, OWNER_TITLE } from '@/lib/constants';
 import { blogTopics, type BlogTopic } from '@/data/blog-topics';
 import { articles, articleSlugs } from '@/data/blog-content';
-import { getArticleDate } from '@/data/blog-dates';
+import { getArticleDate, isPublished } from '@/data/blog-dates';
 import { Locale, localePath } from '@/lib/i18n';
 import { getAlternates } from '@/lib/seo';
 import AuthorProfile from '@/components/seo/AuthorProfile';
@@ -68,6 +68,13 @@ const SmartTextFormatter = ({ text }: { text: string }) => {
 // ═══════════════════════════════════════════
 export const dynamicParams = false; // 404 for unknown slugs — all pages are pre-built
 
+// ═══ Scheduled publishing ═══
+// Every slug is pre-built (dynamicParams=false means an un-built slug could
+// never appear later), but a not-yet-published article renders as 404. This
+// hourly regeneration re-evaluates the date, so a scheduled article flips live
+// on its own without a deploy. See src/data/blog-dates.ts.
+export const revalidate = 3600;
+
 export function generateStaticParams() {
   return articleSlugs.map(slug => ({ slug }));
 }
@@ -108,6 +115,8 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
   const isAr = locale === 'ar';
   const article = articles[slug];
   if (!article) notFound();
+  // Scheduled article — stays a 404 until its publish date arrives in Riyadh time.
+  if (!isPublished(slug)) notFound();
 
   const content = article.content;
   const serviceLinks = article.serviceLinks;

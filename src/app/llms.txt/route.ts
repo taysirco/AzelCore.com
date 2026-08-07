@@ -10,13 +10,18 @@ import {
 } from '@/lib/constants';
 import { datasetMeta } from '@/data/jeddah-thermal-research';
 import { blogTopics } from '@/data/blog-topics';
+import { isPublished } from '@/data/blog-dates';
 
 export const dynamic = 'force-static';
+// Regenerate hourly so scheduled articles are listed for AI engines on their
+// publish date (matches the blog routes' ISR window).
+export const revalidate = 3600;
 
 export function GET() {
   // Top guides = priority-1 blog topics (curated; full list is in /llms-full.txt)
+  // Scheduled articles are excluded — never point an AI engine at a 404.
   const topGuides = blogTopics
-    .filter(b => b.priority === 1)
+    .filter(b => b.priority === 1 && isPublished(b.slug))
     .slice(0, 8)
     .map(b => `- [${b.titleEn || b.titleAr}](${SITE_URL}/blog/${b.slug})`)
     .join('\n');

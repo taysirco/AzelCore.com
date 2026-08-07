@@ -74,3 +74,41 @@ export const articleDates: Record<string, ArticleDate> = {
 export function getArticleDate(slug: string): ArticleDate {
   return articleDates[slug] || DEFAULT_DATE;
 }
+
+// ═══════════════════════════════════════════════════════════════════
+// Publishing schedule
+// ═══════════════════════════════════════════════════════════════════
+// An article's `published` date doubles as its scheduled go-live date.
+// Give a future date and the article stays hidden from the blog index,
+// the sitemap, llms.txt and its own URL (404) until that date arrives.
+//
+// Going live is automatic: the blog routes use ISR, so each regeneration
+// re-evaluates the date and the article appears without any deploy.
+
+/** Business timezone — Asia/Riyadh is UTC+3 year-round (no DST). */
+const RIYADH_UTC_OFFSET_HOURS = 3;
+
+/** Today's date in Riyadh local time, as YYYY-MM-DD. */
+export function todayInRiyadh(): string {
+  return new Date(Date.now() + RIYADH_UTC_OFFSET_HOURS * 3_600_000)
+    .toISOString()
+    .slice(0, 10);
+}
+
+/**
+ * Has this article's publish date arrived?
+ * ISO date strings (YYYY-MM-DD) compare correctly lexicographically.
+ */
+export function isPublished(slug: string, today: string = todayInRiyadh()): boolean {
+  return getArticleDate(slug).published <= today;
+}
+
+/** Filter any slug list down to those already published. */
+export function filterPublished(slugs: string[], today: string = todayInRiyadh()): string[] {
+  return slugs.filter((slug) => isPublished(slug, today));
+}
+
+/** Articles still waiting for their publish date — for tooling/diagnostics. */
+export function getScheduledSlugs(slugs: string[], today: string = todayInRiyadh()): string[] {
+  return slugs.filter((slug) => !isPublished(slug, today));
+}
