@@ -50,10 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...createI18nEntries('/about', { lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.7 }),
     ...createI18nEntries('/contact', { lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.6 }),
     ...createI18nEntries('/calculator', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 }),
-    
+
+    // Research report — now under [locale], so it gets both language entries with
+    // hreflang like every other page (it used to be a single root-only URL).
+    ...createI18nEntries('/research/ksa-thermal-report-2026', { lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.6 }),
+
     // API and AI discovery endpoints (Locale Exempt)
     { url: `${SITE_URL}/api/research/jeddah-thermal-data`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.5 },
-    { url: `${SITE_URL}/research/ksa-thermal-report-2026`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE_URL}/llms.txt`, lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.3 },
   ];
 

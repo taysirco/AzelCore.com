@@ -180,7 +180,7 @@ const research: PageBuilder = (isEn) => isEn ? `# KSA Thermal Rejection Field Re
 
 ## Data
 - JSON dataset: ${SITE}/api/research/jeddah-thermal-data
-- Full report: ${url('/research/ksa-thermal-report-2026', false)}
+- Full report: ${url('/research/ksa-thermal-report-2026', isEn)}
 ${footer(isEn)}` : `# تقرير حراري ميداني للمملكة 2026 (عزل كور)
 
 > قياسات ميدانية لحرارة مقصورة السيارة قبل وبعد النانو سيراميك عبر أحياء جدة.
@@ -197,7 +197,7 @@ ${footer(isEn)}` : `# تقرير حراري ميداني للمملكة 2026 (ع
 
 ## البيانات
 - مجموعة بيانات JSON: ${SITE}/api/research/jeddah-thermal-data
-- التقرير الكامل: ${url('/research/ksa-thermal-report-2026', false)}
+- التقرير الكامل: ${url('/research/ksa-thermal-report-2026', isEn)}
 ${footer(isEn)}`;
 
 const PAGES: Record<string, PageBuilder> = {

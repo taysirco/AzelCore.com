@@ -40,7 +40,6 @@ const LOCALE_EXEMPT_PATHS = [
   '/openapi.json',
   '/.well-known/',
   '/manifest',
-  '/research', // app-root route (not under [locale]) — must not be rewritten to /ar/*
 ];
 
 function isJeddahUser(request: NextRequest): boolean {
@@ -211,7 +210,7 @@ Premium American nano-ceramic films rejecting **97% of Infrared Heat** with a li
 
 | المورد | الرابط |
 |--------|--------|
-| تقرير حراري 2026 | [/ar/research/ksa-thermal-report-2026](https://azelcore.com/ar/research/ksa-thermal-report-2026) |
+| تقرير حراري 2026 | [/research/ksa-thermal-report-2026](https://azelcore.com/research/ksa-thermal-report-2026) |
 | بيانات حرارية API | [/api/research/jeddah-thermal-data](https://azelcore.com/api/research/jeddah-thermal-data) |
 | حاسبة العائد | [/api/calculate-roi](https://azelcore.com/api/calculate-roi) |
 | OpenAPI Spec | [/openapi.json](https://azelcore.com/openapi.json) |
