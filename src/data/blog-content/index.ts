@@ -64,6 +64,14 @@ import selfHealingPpfExplained from './self-healing-ppf-explained';
 import tintReduceAcLoadFuelSavingsJeddah from './tint-reduce-ac-load-fuel-savings-jeddah';
 import fleetCompanyCarTintingKsa from './fleet-company-car-tinting-ksa';
 
+// Batch 7 — scheduled publishing
+import carTintResaleValueInsuranceSaudi from './car-tint-resale-value-insurance-saudi';
+import mostadamLeedWindowFilmEnergyCredits from './mostadam-leed-window-film-energy-credits';
+import bestTintCamryAccordSonataSedanJeddah from './best-tint-camry-accord-sonata-sedan-jeddah';
+import doubleGlazingVsWindowFilmBuildingsKsa from './double-glazing-vs-window-film-buildings-ksa';
+import tintCuringPeriodHazeBubblesNormal from './tint-curing-period-haze-bubbles-normal';
+import windowFilmThermalStressGlassBreakage from './window-film-thermal-stress-glass-breakage';
+
 export type { ArticleModule, ArticleData, ArticleSection, ArticleServiceLink } from './types';
 
 /** All articles keyed by slug */
@@ -127,6 +135,13 @@ export const articles: Record<string, ArticleModule> = {
   'self-healing-ppf-explained': selfHealingPpfExplained,
   'tint-reduce-ac-load-fuel-savings-jeddah': tintReduceAcLoadFuelSavingsJeddah,
   'fleet-company-car-tinting-ksa': fleetCompanyCarTintingKsa,
+  // Batch 7:
+  'car-tint-resale-value-insurance-saudi': carTintResaleValueInsuranceSaudi,
+  'mostadam-leed-window-film-energy-credits': mostadamLeedWindowFilmEnergyCredits,
+  'best-tint-camry-accord-sonata-sedan-jeddah': bestTintCamryAccordSonataSedanJeddah,
+  'double-glazing-vs-window-film-buildings-ksa': doubleGlazingVsWindowFilmBuildingsKsa,
+  'tint-curing-period-haze-bubbles-normal': tintCuringPeriodHazeBubblesNormal,
+  'window-film-thermal-stress-glass-breakage': windowFilmThermalStressGlassBreakage,
 };
 
 /** All available slugs (for generateStaticParams) */

@@ -68,6 +68,13 @@ export const articleDates: Record<string, ArticleDate> = {
   'self-healing-ppf-explained': { published: '2026-06-17', modified: '2026-06-17' },
   'tint-reduce-ac-load-fuel-savings-jeddah': { published: '2026-06-17', modified: '2026-06-17' },
   'fleet-company-car-tinting-ksa': { published: '2026-06-17', modified: '2026-06-17' },
+  // Batch 7 — scheduled publishing:
+  'car-tint-resale-value-insurance-saudi': { published: '2026-08-18', modified: '2026-08-18' },
+  'mostadam-leed-window-film-energy-credits': { published: '2026-08-21', modified: '2026-08-21' },
+  'best-tint-camry-accord-sonata-sedan-jeddah': { published: '2026-08-24', modified: '2026-08-24' },
+  'double-glazing-vs-window-film-buildings-ksa': { published: '2026-08-27', modified: '2026-08-27' },
+  'tint-curing-period-haze-bubbles-normal': { published: '2026-08-30', modified: '2026-08-30' },
+  'window-film-thermal-stress-glass-breakage': { published: '2026-09-02', modified: '2026-09-02' },
 };
 
 /** Get the real dates for an article slug (falls back to a sane default). */
