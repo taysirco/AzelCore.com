@@ -4,7 +4,7 @@ import type { ArticleModule } from './types';
 // Batch 7 · scheduled 2026-09-02 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
   // TODO(image): re-enable once public/images/blog/window-film-thermal-stress-glass-breakage-1.webp exists.
-  // Until then the blog card shows the brand placeholder instead of a broken image.
+  // Gemini quota (limit: 0) blocked this one; the blog card shows the brand placeholder.
   // "ogImage": "blog/window-film-thermal-stress-glass-breakage-1.webp",
   "serviceLinks": [
     {

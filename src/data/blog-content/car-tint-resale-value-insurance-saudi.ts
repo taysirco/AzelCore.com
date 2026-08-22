@@ -3,9 +3,7 @@ import type { ArticleModule } from './types';
 // Car Tint, Resale Value and Insurance in Saudi Arabia: What Actually Matters
 // Batch 7 · scheduled 2026-08-18 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  // TODO(image): re-enable once public/images/blog/car-tint-resale-value-insurance-saudi-1.webp exists.
-  // Until then the blog card shows the brand placeholder instead of a broken image.
-  // "ogImage": "blog/car-tint-resale-value-insurance-saudi-1.webp",
+  "ogImage": "blog/car-tint-resale-value-insurance-saudi-1.webp",
   "serviceLinks": [
     {
       "href": "/blog/saudi-tint-fines-fahas-inspection-guide",

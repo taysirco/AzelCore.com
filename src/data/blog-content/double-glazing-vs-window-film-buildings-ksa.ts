@@ -3,9 +3,7 @@ import type { ArticleModule } from './types';
 // Double Glazing vs Retrofit Window Film for Buildings in Saudi Arabia: The Real Cost/Benefit Decision
 // Batch 7 · scheduled 2026-08-27 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  // TODO(image): re-enable once public/images/blog/double-glazing-vs-window-film-buildings-ksa-1.webp exists.
-  // Until then the blog card shows the brand placeholder instead of a broken image.
-  // "ogImage": "blog/double-glazing-vs-window-film-buildings-ksa-1.webp",
+  "ogImage": "blog/double-glazing-vs-window-film-buildings-ksa-1.webp",
   "serviceLinks": [
     {
       "href": "/building-glass-insulation",

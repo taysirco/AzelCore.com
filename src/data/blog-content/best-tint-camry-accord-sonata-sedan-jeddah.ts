@@ -3,9 +3,7 @@ import type { ArticleModule } from './types';
 // Best Window Tint for Sedans in Jeddah 2026: Camry, Accord, Sonata and Altima — The Complete Guide
 // Batch 7 · scheduled 2026-08-24 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  // TODO(image): re-enable once public/images/blog/best-tint-camry-accord-sonata-sedan-jeddah-1.webp exists.
-  // Until then the blog card shows the brand placeholder instead of a broken image.
-  // "ogImage": "blog/best-tint-camry-accord-sonata-sedan-jeddah-1.webp",
+  "ogImage": "blog/best-tint-camry-accord-sonata-sedan-jeddah-1.webp",
   "serviceLinks": [
     {
       "href": "/blog/best-tint-land-cruiser-patrol-jeddah",
