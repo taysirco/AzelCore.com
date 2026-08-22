@@ -415,3 +415,19 @@
     margin: var(--space-6) 0;
   }
 }
+
+
+/* Contextual link inside article prose — underlined so it reads as an editorial
+   reference rather than a button, and clearly distinct from surrounding text. */
+.inlineLink {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--primary) 45%, transparent);
+  transition: text-decoration-color var(--duration-fast, 150ms) ease;
+}
+.inlineLink:hover {
+  text-decoration-color: var(--primary);
+}

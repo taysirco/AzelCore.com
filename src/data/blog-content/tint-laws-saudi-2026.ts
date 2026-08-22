@@ -7,6 +7,11 @@ const article: ArticleModule = {
     { href: '/car-insulation-jeddah', text: 'تظليل نانو سيراميك مطابق لنظام المرور (00 و 01)', textEn: 'Nano-Ceramic Tint Compliant with Traffic Laws (00 and 01)' },
     { href: '/johnson-authorized-dealer', text: 'عازل جونسون الأصلي — معتمد لدى الفحص الدوري', textEn: 'Original Johnson Tint — Approved by Vehicle Inspection' },
     { href: '/3m-authorized-dealer', text: '3M Crystalline CR70 — شفاف ومطابق للمرور', textEn: '3M Crystalline CR70 — Transparent and Traffic Compliant' },
+    {
+      "href": "/faq",
+      "text": "أسئلة متكررة حول النظام والنِّسب المسموحة والفحص",
+      "textEn": "Frequent questions on the regulation, allowed shades and inspection"
+    }
   ],
   content: {
     quickAnswer: 'يُسمح بتظليل الزجاج الجانبي الخلفي للسيارات بدرجة لا تتجاوز 02 (شفافية 30%). يُمنع منعاً باتاً تظليل الزجاج الأمامي أو الجانبي للسائق والمرافق إلا بدرجة 00 (شفاف تماماً) لدواعٍ الحماية من الحرارة بشرط ألا يعيق الرؤية. غرامة التظليل المخالف تتراوح بين 500 و 900 ريال.',

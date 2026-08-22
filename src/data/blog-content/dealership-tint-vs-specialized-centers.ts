@@ -8,6 +8,11 @@ const article: ArticleModule = {
     { href: '/car-insulation-jeddah', text: 'تظليل سيارتك بأفلام النانو سيراميك الأصلية بضمان 10 سنوات', textEn: 'Tint Your Car with Original Nano Ceramic Films with a 10-Year Warranty' },
     { href: '/johnson-authorized-dealer', text: 'وكيل جونسون المعتمد — ضمان إلكتروني من المصنع', textEn: 'Authorized Johnson Dealer — Factory Electronic Warranty' },
     { href: '/3m-authorized-dealer', text: '3M Crystalline — تركيب في غرف عزل مكيفة', textEn: '3M Crystalline — Installation in Air-Conditioned Clean Rooms' },
+    {
+      "href": "/about",
+      "text": "تعرّف على المركز والفني المعتمد الذي سينفّذ التركيب",
+      "textEn": "Meet the centre and the certified technician doing the work"
+    }
   ],
   content: {
     intro: 'عند شرائك سيارة جديدة من الوكالة، يعرض عليك موظف المبيعات بكل حماس \"باقة حماية وتظليل\" كإضافة للسيارة قبل استلامها. قد يخبرك أنها \"مجانية\" ضمن عرض الشراء، أو يطلب مبلغاً يصل إلى 3,000 ريال. في سوق السيارات السعودي وحده، تحقق وكالات السيارات أرباحاً سنوية تتجاوز 200 مليون ريال من \"باقات الحماية\" — وهي ليست أرباح مصنّعي السيارات، بل هوامش ربح الوكالة المحلية. السؤال الجوهري: هل هذه الباقة تستحق حقاً؟ أم أنها مجرد هامش ربح خفي يستغل حماسك للسيارة الجديدة؟ في هذا التحقيق التقني المفصّل، نكشف بالأرقام الحقيقة الكاملة خلف \"تظليل الوكالة\" ونقارنها بالمراكز المتخصصة.',

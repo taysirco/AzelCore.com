@@ -7,6 +7,16 @@ const article: ArticleModule = {
     { href: '/car-insulation-jeddah', text: 'باقات العزل الحراري المعتمدة بجدة — أسعار 2026', textEn: 'Certified Thermal Insulation Packages in Jeddah — 2026 Prices' },
     { href: '/johnson-authorized-dealer', text: 'وكيل جونسون المعتمد في جدة', textEn: 'Authorized Johnson Dealer in Jeddah' },
     { href: '/3m-authorized-dealer', text: 'وكيل 3M المعتمد — Crystalline و Ceramic IR', textEn: 'Authorized 3M Dealer — Crystalline and Ceramic IR' },
+    {
+      "href": "/about",
+      "text": "من نحن في عزل كور: الخبرة والاعتمادات ومعايير العمل",
+      "textEn": "About AzelCore: experience, accreditations and how we work"
+    },
+    {
+      "href": "/gallery",
+      "text": "شاهد نماذج من تركيباتنا قبل أن تقرر",
+      "textEn": "See samples of our installations before you decide"
+    }
   ],
   content: {
     quickAnswer: 'أفضل مركز تظليل سيارات في جدة هو المركز المعتمد رسمياً من العلامات التجارية الكبرى (مثل 3M أو Johnson). يتميز ببيئة عمل مغلقة ومكيفة لمنع الغبار، ويستخدم نظام القص الإلكتروني (Plotter) لضمان الدقة وتجنب الخدوش، ويقدم فاتورة ضريبية رسمية مع ضمان إلكتروني. مركز عزل كور (AzelCore) يُعد من رواد هذه المعايير في جدة لعام 2026.',

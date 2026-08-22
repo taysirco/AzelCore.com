@@ -26,7 +26,41 @@ function getTopicBySlug(slug: string): BlogTopic | undefined {
 // ═══════════════════════════════════════════
 // Smart Text Formatter — Converts raw string blobs into readable paragraphs
 // ═══════════════════════════════════════════
-const SmartTextFormatter = ({ text }: { text: string }) => {
+/**
+ * Inline contextual links inside article prose.
+ *
+ * Article bodies are plain strings, so a link is written as an explicit token:
+ *     [[/car-insulation-jeddah|نص الرابط]]
+ * Only this exact shape becomes a link — nothing is auto-linked and no HTML is
+ * interpreted, so a body can never inject markup. Anchors stay editorial because
+ * a human writes them into the sentence where they belong.
+ */
+const LINK_TOKEN = /\[\[(\/[^\]|]*)\|([^\]]+)\]\]/g;
+
+const renderInline = (text: string, locale: string, keyPrefix: string): React.ReactNode => {
+  LINK_TOKEN.lastIndex = 0;
+  if (!LINK_TOKEN.test(text)) return text;
+  LINK_TOKEN.lastIndex = 0;
+
+  const out: React.ReactNode[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = LINK_TOKEN.exec(text)) !== null) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    out.push(
+      <Link key={`${keyPrefix}-${m.index}`} href={localePath(locale as Locale, m[1])} className={styles.inlineLink}>
+        {m[2]}
+      </Link>
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return <>{out}</>;
+};
+
+const hasLinkToken = (t: string) => { LINK_TOKEN.lastIndex = 0; return LINK_TOKEN.test(t); };
+
+const SmartTextFormatter = ({ text, locale }: { text: string; locale: string }) => {
   if (!text) return null;
 
   // If text already has line breaks, just split by them
@@ -34,7 +68,7 @@ const SmartTextFormatter = ({ text }: { text: string }) => {
     return (
       <>
         {text.split('\n').filter(p => p.trim() !== '').map((p, i) => (
-          <p key={i}>{p}</p>
+          <p key={i}>{renderInline(p, locale, `b${i}`)}</p>
         ))}
       </>
     );
@@ -43,7 +77,7 @@ const SmartTextFormatter = ({ text }: { text: string }) => {
   // Otherwise, smartly break long walls of text by periods.
   const sentences = text.split(/(?<=\.)\s+/);
   if (sentences.length <= 2) {
-    return <p>{text}</p>;
+    return <p>{renderInline(text, locale, 's0')}</p>;
   }
 
   const paragraphs = [];
@@ -56,15 +90,20 @@ const SmartTextFormatter = ({ text }: { text: string }) => {
     <>
       {paragraphs.map((p, i) => {
         // Highlight bold-like structures "الزجاج الأمامي: ..."
-        const parts = p.split(/(:|—|-)/);
-        if (parts.length > 1 && parts[0].length < 50 && !parts[0].includes('.')) {
-          return (
-            <p key={i}>
-              <strong>{parts[0]}</strong>{parts.slice(1).join('')}
-            </p>
-          );
+        // Skipped when the paragraph carries a link token, because the ':' / '-'
+        // split would tear the token apart.
+        if (!hasLinkToken(p)) {
+          const parts = p.split(/(:|—|-)/);
+          if (parts.length > 1 && parts[0].length < 50 && !parts[0].includes('.')) {
+            return (
+              <p key={i}>
+                <strong>{parts[0]}</strong>{parts.slice(1).join('')}
+              </p>
+            );
+          }
+          return <p key={i}>{p}</p>;
         }
-        return <p key={i}>{p}</p>;
+        return <p key={i}>{renderInline(p, locale, `p${i}`)}</p>;
       })}
     </>
   );
@@ -401,7 +440,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
           {content.sections.map((section: any, i: number) => (
             <div key={i}>
               <h2>{!isAr && section.headingEn ? section.headingEn : section.heading}</h2>
-              <SmartTextFormatter text={!isAr && section.bodyEn ? section.bodyEn : section.body} />
+              <SmartTextFormatter text={!isAr && section.bodyEn ? section.bodyEn : section.body} locale={locale} />
               {i === 1 && article.innerImage && (
                 <div className={styles.innerImageContainer}>
                   <Image

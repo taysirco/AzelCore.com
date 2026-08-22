@@ -8,6 +8,11 @@ const article: ArticleModule = {
     { href: '/paint-protection-film-jeddah', text: 'تركيب PPF بالقص الآلي (الكمبيوتر) بدون تفكيك أجزاء السيارة', textEn: 'Computer-Cut PPF Installation Without Dismantling Car Parts' },
     { href: '/car-insulation-jeddah', text: 'حماية النانو سيراميك + PPF — الحماية المزدوجة', textEn: 'Nano Ceramic + PPF — Double Protection' },
     { href: '/car-insulation-jeddah', text: 'باقات الحماية الشاملة للسيارات الجديدة', textEn: 'Comprehensive Protection Packages for New Cars' },
+    {
+      "href": "/gallery",
+      "text": "معرض أعمالنا: نماذج قص وتركيب منفّذة فعلياً",
+      "textEn": "Our gallery: real cutting and installation work"
+    }
   ],
   content: {
     intro: 'عند قرارك بتركيب حماية PPF (Paint Protection Film) لسيارتك الجديدة، فإن السؤال الأهم لا ينبغي أن يكون \"ما هو نوع الفيلم؟\" فحسب، بل \"كيف سيتم قص وتركيب هذا الفيلم؟\". الطريقة التقليدية (القص اليدوي بالمشرط) قد تكلفك طلاء سيارتك الأصلي — وهي تكلفة لا تظهر إلا بعد سنوات عند إزالة الفيلم. في السوق السعودي، أكثر من 60% من مراكز تركيب PPF لا تزال تستخدم القص اليدوي بالمشرط (Blade) على هيكل السيارة مباشرة — إما لتوفير تكلفة جهاز البلوتر (25,000-60,000 ريال)، أو بسبب عدم الاشتراك في قواعد بيانات الباترن الرقمية. في هذا الدليل الهندسي، نكشف بالأرقام والصور الفرق الحاسم بين الطريقتين وتأثيرهما على قيمة سيارتك.',
