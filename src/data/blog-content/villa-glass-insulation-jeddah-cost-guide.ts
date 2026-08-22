@@ -44,6 +44,16 @@ const article: ArticleModule = {
       "href": "/blog/building-tint-furniture-fading-protection",
       "text": "حماية الأثاث من البهتان بعزل النوافذ",
       "textEn": "Protecting Furniture from Fading with Window Film"
+    },
+    {
+      "href": "/blog/residential-privacy-tinting",
+      "text": "تظليل الخصوصية للمنازل: كيف تحجب الرؤية دون أن تُعتم غرفتك",
+      "textEn": "Residential privacy tinting: blocking the view without darkening the room"
+    },
+    {
+      "href": "/blog/window-film-thermal-stress-glass-breakage",
+      "text": "قبل تركيب الفيلم: فحص توافق الزجاج والإجهاد الحراري",
+      "textEn": "Before filming: the glass-compatibility and thermal-stress survey"
     }
   ],
   "content": {

@@ -7,6 +7,11 @@ const article: ArticleModule = {
     { href: '/building-glass-insulation', text: 'خدمات تظليل وعزل واجهات المباني بجدة', textEn: 'Building Glass Tinting & Insulation Services in Jeddah' },
     { href: '/calculator', text: 'احسب العائد على الاستثمار لشركتك (حاسبة التوفير)', textEn: 'Calculate Your Company\'s ROI (Savings Calculator)' },
     { href: '/contact', text: 'طلب تسعيرة لقطاع الأعمال (B2B)', textEn: 'Request a B2B Quote' },
+    {
+      "href": "/blog/retail-store-window-tinting-clear-heat-rejection",
+      "text": "واجهات المحلات: عزل الحرارة مع الحفاظ على وضوح العرض",
+      "textEn": "Retail storefronts: rejecting heat while keeping the display clear"
+    }
   ],
   content: {
     quickAnswer: 'تظليل واجهات المباني التجارية والشركات في السعودية ليس مجرد تحسين للمظهر. هندسياً، تقوم أفلام العزل المعمارية المتقدمة بتخفيض أحمال التكييف المركزي (HVAC) بنسبة تصل إلى 30%، وتقليل الوهج المزعج على شاشات الموظفين بنسبة 85% مما يرفع الإنتاجية، وتحجب 99.9% من الأشعة فوق البنفسجية التي تتلف الأثاث المكتبي. العائد المالي (ROI) للمشاريع التجارية يتحقق عادة خلال 18 إلى 24 شهراً فقط من خلال التوفير المباشر في فواتير الكهرباء.',

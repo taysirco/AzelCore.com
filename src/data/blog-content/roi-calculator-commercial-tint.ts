@@ -6,6 +6,11 @@ const article: ArticleModule = {
   serviceLinks: [
     { href: '/building-glass-insulation', text: 'مشاريع العزل التجاري للشركات', textEn: 'Commercial Insulation Projects for Companies' },
     { href: '/contact', text: 'احصل على تحليل طاقة مجاني لمبناك', textEn: 'Get a Free Energy Analysis for Your Building' },
+    {
+      "href": "/blog/retail-store-window-tinting-clear-heat-rejection",
+      "text": "حالة المحلات التجارية: أثر العزل على فاتورة التبريد والعرض",
+      "textEn": "The retail case: insulation, the cooling bill, and product display"
+    }
   ],
   content: {
     quickAnswer: 'في المشاريع التجارية والمكاتب الإدارية في السعودية، التظليل المعماري ليس "مصروفاً" بل "استثمار مالي". عبر خفض الحمل الحراري عن المكيفات المركزية (Chillers)، يمكن للأفلام العاكسة خفض فاتورة الكهرباء الشهرية بنسبة تتراوح بين 15% إلى 30%. بناءً على التعرفة التجارية للكهرباء، فإن العائد على الاستثمار (ROI) - أي الوقت المستغرق لاسترداد تكلفة تركيب الفيلم من التوفير في الفواتير - يتراوح عادة بين 1.5 إلى 3 سنوات فقط. بعد هذه الفترة، يصبح كل ريال يتم توفيره هو "ربح صافي" للمؤسسة.',

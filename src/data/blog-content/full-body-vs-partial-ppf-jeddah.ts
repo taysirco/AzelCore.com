@@ -44,6 +44,11 @@ const article: ArticleModule = {
       "href": "/blog/xpel-vs-3m-vs-suntek-ppf",
       "text": "مقارنة أفلام PPF: XPEL مقابل 3M مقابل SunTek",
       "textEn": "PPF Films Compared: XPEL vs 3M vs SunTek"
+    },
+    {
+      "href": "/blog/self-healing-ppf-explained",
+      "text": "المعالجة الذاتية: ما الذي تصلحه حرارة جدة وما الذي لا تصلحه",
+      "textEn": "Self-healing: what Jeddah's heat repairs and what it does not"
     }
   ],
   "content": {

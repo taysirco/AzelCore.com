@@ -44,6 +44,11 @@ const article: ArticleModule = {
       "href": "/blog/full-body-vs-partial-ppf-jeddah",
       "text": "حماية كاملة أم جزئية للسيارة بـ PPF؟",
       "textEn": "Full-Body vs Partial PPF for Your Car"
+    },
+    {
+      "href": "/blog/self-healing-ppf-explained",
+      "text": "كيف تعمل خاصية المعالجة الذاتية في أفلام PPF فعلياً",
+      "textEn": "How the self-healing property in PPF actually works"
     }
   ],
   "content": {

@@ -44,6 +44,11 @@ const article: ArticleModule = {
       "href": "/blog/building-insulation-electricity-savings",
       "text": "كيف يوفّر عزل زجاج المباني فاتورة الكهرباء؟",
       "textEn": "How Building Glass Insulation Saves Your Electricity Bill"
+    },
+    {
+      "href": "/blog/window-film-thermal-stress-glass-breakage",
+      "text": "الإجهاد الحراري: متى يشكّل الفيلم خطراً على الزجاج القائم",
+      "textEn": "Thermal stress: when film is a risk to existing glass"
     }
   ],
   "content": {

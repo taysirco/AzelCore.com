@@ -12,6 +12,13 @@ import AuthorProfile from '@/components/seo/AuthorProfile';
 import OfficialPartnerBar from '@/components/seo/OfficialPartnerBar';
 import styles from './page.module.css';
 
+/** Topical-authority hubs — worth a small boost when suggesting related reading. */
+const PILLAR_SLUGS = [
+  'complete-guide-car-tinting-jeddah',
+  'car-protection-tinting-vs-ceramic-vs-ppf',
+  'building-insulation-saudi-arabia-guide',
+];
+
 function getTopicBySlug(slug: string): BlogTopic | undefined {
   return blogTopics.find(t => t.slug === slug);
 }
@@ -258,15 +265,42 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
     });
   }
 
-  // ── Related articles (same intent first, then fill) — bidirectional internal linking ──
+  // ── Related articles — relevance-ranked, then rotated so link equity spreads ──
+  // The previous version took the first three same-intent slugs in registry order,
+  // so six articles absorbed every related link and 46 received none. Ranking by
+  // shared service and intent keeps the suggestions relevant; starting each
+  // article at its own offset in that ranked pool spreads inbound links across
+  // the whole blog instead of concentrating them.
   const relatedSlugs = (() => {
     const others = articleSlugs.filter((s) => s !== slug);
-    if (topic) {
-      const sameIntent = others.filter((s) => getTopicBySlug(s)?.intent === topic.intent);
-      const rest = others.filter((s) => !sameIntent.includes(s));
-      return [...sameIntent, ...rest].slice(0, 3);
+    if (!topic) return others.slice(0, 3);
+
+    const myServices = new Set(topic.linksToServices || []);
+    const relevance = (s: string) => {
+      const t = getTopicBySlug(s);
+      if (!t) return 0;
+      let score = 0;
+      if ((t.linksToServices || []).some((x) => myServices.has(x))) score += 3;
+      if (t.intent === topic.intent) score += 2;
+      if (PILLAR_SLUGS.includes(s)) score += 1;
+      return score;
+    };
+
+    // Stable ranking: relevance first, slug as the tie-break so builds are deterministic.
+    const ranked = others
+      .map((s) => ({ s, score: relevance(s) }))
+      .sort((a, b) => b.score - a.score || a.s.localeCompare(b.s))
+      .map((x) => x.s);
+
+    // Draw from the relevant band, offset by this article's own position.
+    const band = ranked.slice(0, Math.max(12, Math.min(ranked.length, 24)));
+    const offset = Math.abs(articleSlugs.indexOf(slug)) % band.length;
+    const picked: string[] = [];
+    for (let i = 0; i < band.length && picked.length < 3; i++) {
+      const cand = band[(offset + i) % band.length];
+      if (!picked.includes(cand)) picked.push(cand);
     }
-    return others.slice(0, 3);
+    return picked;
   })();
 
   return (

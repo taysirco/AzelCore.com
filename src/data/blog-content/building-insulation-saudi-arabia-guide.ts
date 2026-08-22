@@ -39,6 +39,11 @@ const article: ArticleModule = {
       "href": "/blog/roi-calculator-commercial-tint",
       "text": "حاسبة العائد على الاستثمار لتظليل المباني التجارية",
       "textEn": "ROI Calculator for Commercial Building Tint"
+    },
+    {
+      "href": "/blog/residential-privacy-tinting",
+      "text": "حلول الخصوصية البصرية لنوافذ المنازل والفلل",
+      "textEn": "Visual privacy solutions for home and villa windows"
     }
   ],
   "content": {
