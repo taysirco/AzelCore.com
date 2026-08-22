@@ -3,7 +3,9 @@ import type { ArticleModule } from './types';
 // The Tint Curing Period: Which Haze and Bubbles Are Normal, and Which Mean a Bad Install
 // Batch 7 · scheduled 2026-08-30 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "blog/tint-curing-period-haze-bubbles-normal-1.webp",
+  // TODO(image): re-enable once public/images/blog/tint-curing-period-haze-bubbles-normal-1.webp exists.
+  // Until then the blog card shows the brand placeholder instead of a broken image.
+  // "ogImage": "blog/tint-curing-period-haze-bubbles-normal-1.webp",
   "serviceLinks": [
     {
       "href": "/blog/why-tint-turns-purple-bubbles-jeddah",

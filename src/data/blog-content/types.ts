@@ -73,8 +73,10 @@ export interface ArticleServiceLink {
 export interface ArticleModule {
   content: ArticleData;
   serviceLinks: ArticleServiceLink[];
-  /** OG image filename (in /public/images/) */
-  ogImage: string;
+  /** OG image filename (in /public/images/). Optional: an article may be published
+   *  before its hero image is produced — the page omits the hero and the blog card
+   *  falls back to the brand placeholder rather than rendering a broken image. */
+  ogImage?: string;
   /** Inner body image filename (optional) */
   innerImage?: string;
 }

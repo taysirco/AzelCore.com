@@ -51,11 +51,14 @@ for (const slug of registered) {
 
 // ── hero images + internal links ────────────────────────────────────────────
 for (const slug of registered) {
-  const src = readFileSync(join(CONTENT_DIR, `${slug}.ts`), 'utf8');
+  const raw = readFileSync(join(CONTENT_DIR, `${slug}.ts`), 'utf8');
+  // Strip line comments so a deliberately commented-out ogImage (image not produced yet)
+  // is treated as absent rather than as a broken reference.
+  const src = raw.replace(/^\s*\/\/.*$/gm, '');
 
   const img = src.match(/["']?ogImage["']?\s*:\s*["']([^"']+)["']/);
   if (!img) {
-    warn.push(`${slug}: no ogImage (article renders without a hero; blog card image will be broken)`);
+    warn.push(`${slug}: no ogImage — article renders without a hero and the blog card shows the placeholder`);
   } else if (!existsSync(join(ROOT, 'public/images', img[1]))) {
     problems.push(`${slug}: ogImage file missing → public/images/${img[1]}`);
   }

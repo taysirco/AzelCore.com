@@ -133,7 +133,12 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
               <Link key={post.slug} href={localePath(locale as Locale, `/blog/${post.slug}`)} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <article className={styles.postCard}>
                   <div className={styles.postImage}>
-                    <Image src={`/images/${post.image}`} alt={post.title} width={400} height={240} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                    {post.image ? (
+                      <Image src={`/images/${post.image}`} alt={post.title} width={400} height={240} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                    ) : (
+                      /* No hero image yet — render the brand placeholder rather than a broken <img>. */
+                      <div className={styles.postImageFallback} aria-hidden="true">AzelCore</div>
+                    )}
                     <span className={styles.postCategory}>{post.category}</span>
                   </div>
                   <div className={styles.postContent}>

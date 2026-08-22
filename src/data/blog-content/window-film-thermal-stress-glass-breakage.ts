@@ -3,7 +3,9 @@ import type { ArticleModule } from './types';
 // Does Window Film Crack or Break Glass? Thermal Stress Explained (Buildings + Cars)
 // Batch 7 · scheduled 2026-09-02 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "blog/window-film-thermal-stress-glass-breakage-1.webp",
+  // TODO(image): re-enable once public/images/blog/window-film-thermal-stress-glass-breakage-1.webp exists.
+  // Until then the blog card shows the brand placeholder instead of a broken image.
+  // "ogImage": "blog/window-film-thermal-stress-glass-breakage-1.webp",
   "serviceLinks": [
     {
       "href": "/building-glass-insulation",

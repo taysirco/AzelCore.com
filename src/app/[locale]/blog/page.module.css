@@ -21,6 +21,14 @@
 
 .postImage { position: relative; aspect-ratio: 16/10; overflow: hidden; }
 .postImage img { transition: transform var(--duration-normal) var(--ease-out); }
+/* Shown when an article has no hero image yet, so the card never renders a broken image. */
+.postImageFallback {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--surface-2, #1b2430), var(--surface-3, #2a3646));
+  color: var(--text-muted, #8fa0b5);
+  font-weight: 700; letter-spacing: .08em; font-size: var(--text-sm);
+}
 .postCard:hover .postImage img { transform: scale(1.05); }
 .postCategory {
   position: absolute; top: var(--space-3); right: var(--space-3);

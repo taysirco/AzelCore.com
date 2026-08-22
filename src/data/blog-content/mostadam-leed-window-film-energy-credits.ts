@@ -3,7 +3,9 @@ import type { ArticleModule } from './types';
 // Mostadam, LEED and Window Film: Where Retrofit Film Actually Contributes to Saudi Green-Building Energy Credits
 // Batch 7 · scheduled 2026-08-21 · grounded in real AzelCore data (no fabricated ratings)
 const article: ArticleModule = {
-  "ogImage": "blog/mostadam-leed-window-film-energy-credits-1.webp",
+  // TODO(image): re-enable once public/images/blog/mostadam-leed-window-film-energy-credits-1.webp exists.
+  // Until then the blog card shows the brand placeholder instead of a broken image.
+  // "ogImage": "blog/mostadam-leed-window-film-energy-credits-1.webp",
   "serviceLinks": [
     {
       "href": "/blog/sbc-601-602-glass-compliance-guide",
