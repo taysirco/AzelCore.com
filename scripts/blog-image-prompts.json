@@ -1,0 +1,30 @@
+{
+  "_note": "Hero-image prompts for the 6 scheduled articles. 16:9, photoreal, no text/watermarks/logos, Jeddah/Saudi context. Output as public/images/blog/<slug>-1.webp",
+  "_style": "Photorealistic editorial photograph, natural daylight, shallow depth of field, clean composition, no text, no watermark, no logo, no visible faces, no brand names on products.",
+  "images": [
+    {
+      "slug": "car-tint-resale-value-insurance-saudi",
+      "prompt": "Photorealistic editorial photo: the pristine interior of a well-kept modern sedan in Saudi Arabia, dashboard and leather seats in excellent condition with no sun cracking, viewed through a tinted side window from outside, warm late-afternoon desert light, a car key and a folded document resting on the passenger seat suggesting a private sale handover. Clean, premium, trustworthy mood. No text, no watermark, no logo, no people."
+    },
+    {
+      "slug": "mostadam-leed-window-film-energy-credits",
+      "prompt": "Photorealistic architectural photo: a modern glass-facade commercial office tower in Saudi Arabia under bright daylight, seen from a low angle, with crisp reflections of blue sky on spectrally-selective glazing. Foreground softly out of focus showing a rolled architectural drawing and a hard hat on a table, suggesting a sustainability consultant's site review. Professional, corporate, energy-efficiency mood. No text, no watermark, no logo, no people."
+    },
+    {
+      "slug": "best-tint-camry-accord-sonata-sedan-jeddah",
+      "prompt": "Photorealistic automotive photo: a clean modern midsize sedan parked on a sunlit street in Jeddah, three-quarter front view, freshly tinted windows with an even dark finish and a large sloped rear windshield visible, palm trees and warm coastal light in the background. Crisp reflections, professional detailing-shop quality. No text, no watermark, no logo, no visible badges, no people."
+    },
+    {
+      "slug": "double-glazing-vs-window-film-buildings-ksa",
+      "prompt": "Photorealistic split-comparison photo: a modern villa window in Saudi Arabia shown as two halves of one frame — the left half a thick insulated double-glazed unit with a visible spacer bar at the edge, the right half a single pane with a thin applied heat-rejection film, intense desert sunlight striking both from outside. Technical, explanatory, clean studio-architectural lighting. No text, no watermark, no logo, no people."
+    },
+    {
+      "slug": "tint-curing-period-haze-bubbles-normal",
+      "prompt": "Photorealistic macro photo: a freshly tinted car side window during the curing period, showing tiny trapped water pockets and a faint milky haze under the film, backlit by bright sunlight so the moisture beads glow, extremely shallow depth of field, water droplets and film edge crisply visible. Clinical, close-up, diagnostic mood. No text, no watermark, no logo, no people."
+    },
+    {
+      "slug": "window-film-thermal-stress-glass-breakage",
+      "prompt": "Photorealistic detail photo: a large architectural glass pane in an aluminium frame with a single thermal-stress crack running perpendicular from the shaded frame edge toward the sunlit centre of the glass, harsh Saudi midday sun on the exposed centre and cool shadow at the edge, high contrast showing the temperature boundary. Technical, serious, forensic-engineering mood. No text, no watermark, no logo, no people."
+    }
+  ]
+}
