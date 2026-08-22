@@ -44,7 +44,10 @@ const getBlogPosts = (isAr: boolean) =>
         title: topic ? (isAr ? topic.titleAr : (topic.titleEn || topic.titleAr)) : slug,
         excerpt,
         image: art.ogImage,
-        date: getArticleDate(slug).modified,
+        // The index shows the PUBLISH date — that is what a reader expects from a blog
+        // listing. Showing `modified` made a post published on 2 May read as 15 June, because
+        // site-wide passes (images, schema) touched many articles on the same day.
+        date: getArticleDate(slug).published,
         category: topic ? CATEGORY_LABEL(topic.intent, isAr) : (isAr ? 'معلوماتي' : 'Information'),
       };
     })
